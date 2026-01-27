@@ -1,0 +1,27 @@
+{
+    "common": {
+        "nav": {
+            "home": "Inicio",
+            "services": "Servicios",
+            "showreel": "Showreel",
+            "about": "Nosotros",
+            "contact": "Contacto",
+            "getStarted": "Empezar"
+        },
+        "footer": {
+            "rights": "Todos los derechos reservados.",
+            "services": "Servicios",
+            "company": "Compañía",
+            "getInTouch": "Contacto"
+        }
+    },
+    "hero": {
+        "badge": "Disponible para nuevos proyectos",
+        "title1": "Creamos",
+        "titleGradient": "Experiencias Digitales",
+        "title2": "Que Impulsan Resultados",
+        "subtitle": "Transforma tu visión en una realidad impresionante. Creamos sitios web de alto rendimiento, interfaces intuitivas y soluciones digitales escalables que elevan tu marca.",
+        "ctaPrimary": "Empezar Proyecto",
+        "ctaSecondary": "Ver Nuestro Trabajo"
+    }
+}

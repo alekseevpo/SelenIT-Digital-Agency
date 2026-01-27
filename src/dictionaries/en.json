@@ -1,0 +1,27 @@
+{
+    "common": {
+        "nav": {
+            "home": "Home",
+            "services": "Services",
+            "showreel": "Showreel",
+            "about": "About",
+            "contact": "Contact",
+            "getStarted": "Get Started"
+        },
+        "footer": {
+            "rights": "All rights reserved.",
+            "services": "Services",
+            "company": "Company",
+            "getInTouch": "Get in Touch"
+        }
+    },
+    "hero": {
+        "badge": "Available for new projects",
+        "title1": "We Build",
+        "titleGradient": "Digital Experiences",
+        "title2": "That Drive Results",
+        "subtitle": "Transform your vision into a stunning reality. We craft high-performance websites, intuitive interfaces, and scalable digital solutions that elevate your brand.",
+        "ctaPrimary": "Start Your Project",
+        "ctaSecondary": "View Our Work"
+    }
+}
