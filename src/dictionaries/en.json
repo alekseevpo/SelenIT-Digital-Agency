@@ -15,6 +15,61 @@
             "getInTouch": "Get in Touch"
         }
     },
+    "contact": {
+        "hero": {
+            "badge": "Contact Us",
+            "title1": "Let us Start a",
+            "titleGradient": "Conversation",
+            "subtitle": "Ready to transform your digital presence? We would love to hear from you."
+        },
+        "info": {
+            "title": "Get in Touch",
+            "subtitle": "Have a project in mind? Let us talk about how we can help you achieve your goals.",
+            "email": "Email",
+            "phone": "Phone",
+            "office": "Office",
+            "hoursTitle": "Office Hours",
+            "mondayFriday": "Monday - Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday",
+            "closed": "Closed"
+        },
+        "form": {
+            "title": "Write to Us",
+            "subtitle": "Fill out the form below",
+            "fullName": "Full Name",
+            "email": "Email Address",
+            "company": "Company Name",
+            "companyPlaceholder": "Your Company",
+            "service": "Service Interested In",
+            "serviceOptions": [
+                "Web Development",
+                "UI/UX Design",
+                "E-Commerce",
+                "Web Application",
+                "Support & Maintenance",
+                "Other"
+            ],
+            "budget": "Project Budget",
+            "budgetOptions": [
+                "Under $5,000",
+                "$5,000 - $15,000",
+                "$15,000 - $50,000",
+                "$50,000 - $100,000",
+                "$100,000+"
+            ],
+            "details": "Project Details",
+            "detailsPlaceholder": "Tell us about your project, goals, and timeline...",
+            "submit": "Send Message",
+            "sending": "Sending...",
+            "success": "Success",
+            "successTitle": "Thank You!",
+            "successSubtitle": "Your message has been sent successfully.",
+            "sendAnother": "Send Another Message",
+            "selectService": "Select a service",
+            "selectBudget": "Select budget range"
+        }
+    },
     "hero": {
         "badge": "Available for new projects",
         "title1": "We Build",
@@ -23,5 +78,352 @@
         "subtitle": "Transform your vision into a stunning reality. We craft high-performance websites, intuitive interfaces, and scalable digital solutions that elevate your brand.",
         "ctaPrimary": "Start Your Project",
         "ctaSecondary": "View Our Work"
-    }
+    },
+    "home": {
+        "services": {
+            "badge": "Our Services",
+            "title1": "Everything You Need to",
+            "titleGradient": "Succeed Online",
+            "subtitle": "From concept to launch and beyond, we provide comprehensive digital solutions tailored to your business needs.",
+            "learnMore": "Learn More"
+        },
+        "showreel": {
+            "badge": "Portfolio",
+            "title1": "Featured",
+            "titleGradient": "Projects",
+            "subtitle": "Discover how we help brands grow with custom digital solutions.",
+            "videoId": "QT3L4tZ14-4",
+            "button": "View All Projects"
+        },
+        "testimonials": {
+            "badge": "Testimonials",
+            "title1": "What Our",
+            "titleGradient": "Clients Say",
+            "subtitle": "Don't just take our word for it. Hear from the brands we've helped transform."
+        },
+        "cta": {
+            "title1": "Ready to Transform Your",
+            "titleGradient": "Digital Presence?",
+            "subtitle": "Join 50+ happy clients and start your journey with Selen.IT today.",
+            "button": "Get a Quote"
+        }
+    },
+    "services": {
+        "hero": {
+            "badge": "Our Services",
+            "title1": "Comprehensive",
+            "titleGradient": "Digital Solutions",
+            "subtitle": "From concept to launch, we provide end-to-end digital services to help your business grow in the digital age."
+        },
+        "list": [
+            {
+                "id": "web-development",
+                "videoId": "QT3L4tZ14-4",
+                "title": "Web Development",
+                "description": "We build fast, secure, and scalable websites using modern technologies and best practices.",
+                "features": [
+                    "Custom website development",
+                    "React & Next.js applications",
+                    "API development & integration",
+                    "Database design & optimization",
+                    "Cloud deployment & hosting",
+                    "Performance optimization"
+                ]
+            },
+            {
+                "id": "ui-ux-design",
+                "videoId": "QT3L4tZ14-4",
+                "title": "UI/UX Design",
+                "description": "Beautiful, intuitive interfaces that engage users and deliver exceptional experiences.",
+                "features": [
+                    "User research & analysis",
+                    "Information architecture",
+                    "Wireframing & prototyping",
+                    "Visual design & branding",
+                    "Interaction design",
+                    "Usability testing"
+                ]
+            },
+            {
+                "id": "ecommerce",
+                "videoId": "EVPItl_YJ3A",
+                "title": "E-Commerce Solutions",
+                "description": "Powerful online stores that convert visitors into customers with seamless shopping experiences.",
+                "features": [
+                    "Custom e-commerce platforms",
+                    "Payment gateway integration",
+                    "Inventory management",
+                    "Order fulfillment systems",
+                    "Customer portal & accounts",
+                    "Analytics & reporting"
+                ]
+            },
+            {
+                "id": "web-applications",
+                "videoId": "QT3L4tZ14-4",
+                "title": "Web Applications",
+                "description": "Complex, feature-rich applications that solve real business problems and scale with your growth.",
+                "features": [
+                    "SaaS platform development",
+                    "Dashboard & admin panels",
+                    "Real-time features & chat",
+                    "Third-party integrations",
+                    "Workflow automation",
+                    "Multi-tenant architecture"
+                ]
+            },
+            {
+                "id": "mobile-first",
+                "videoId": "bioIp3vay6I",
+                "title": "Mobile-First Development",
+                "description": "Progressive web apps and responsive solutions that work perfectly on any device.",
+                "features": [
+                    "Progressive Web Apps (PWA)",
+                    "Responsive web design",
+                    "Cross-platform compatibility",
+                    "Offline functionality",
+                    "Push notifications",
+                    "App-like experience"
+                ]
+            },
+            {
+                "id": "maintenance",
+                "videoId": "QT3L4tZ14-4",
+                "title": "Support & Maintenance",
+                "description": "Keep your digital products running smoothly with our comprehensive support packages.",
+                "features": [
+                    "24/7 monitoring & alerts",
+                    "Regular security updates",
+                    "Performance optimization",
+                    "Bug fixes & patches",
+                    "Content updates",
+                    "Technical consultation"
+                ]
+            }
+        ],
+        "process": {
+            "badge": "Our Process",
+            "title1": "How We",
+            "titleGradient": "Work",
+            "subtitle": "Our proven methodology ensures every project is delivered on time, within budget, and to the highest quality standards.",
+            "steps": [
+                {
+                    "step": "01",
+                    "title": "Discovery",
+                    "description": "We learn about your business, goals, and target audience to create a tailored strategy."
+                },
+                {
+                    "step": "02",
+                    "title": "Planning",
+                    "description": "Detailed project roadmap, wireframes, and technical specifications are created."
+                },
+                {
+                    "step": "03",
+                    "title": "Design",
+                    "description": "We craft beautiful, intuitive interfaces that reflect your brand and engage users."
+                },
+                {
+                    "step": "04",
+                    "title": "Development",
+                    "description": "Your project comes to life with clean, efficient code and rigorous testing."
+                },
+                {
+                    "step": "05",
+                    "title": "Launch",
+                    "description": "Thorough QA testing and seamless deployment to get your project live."
+                },
+                {
+                    "step": "06",
+                    "title": "Support",
+                    "description": "Ongoing maintenance, updates, and optimization to ensure continued success."
+                }
+            ]
+        },
+        "cta": {
+            "title": "Ready to Start Your Project?",
+            "subtitle": "Let us discuss your requirements and how we can help you achieve your goals.",
+            "button": "Get a Free Quote"
+        }
+    },
+    "showreel": {
+        "hero": {
+            "badge": "Our Showreel",
+            "title1": "Work That",
+            "titleGradient": "Speaks for Itself",
+            "subtitle": "Explore our collection of successful projects across various industries.",
+            "videoId": "QT3L4tZ14-4"
+        },
+        "grid": {
+            "filterAll": "All",
+            "projectPreview": "Project Preview",
+            "client": "Client",
+            "year": "Year",
+            "results": "Results"
+        },
+        "projects": [
+            {
+                "id": 1,
+                "title": "Luxe Fashion E-Commerce",
+                "category": "E-Commerce",
+                "videoId": "QT3L4tZ14-4",
+                "description": "A premium online fashion store with advanced filtering and seamless checkout experience.",
+                "client": "Luxe Brands Inc.",
+                "year": "2024",
+                "results": [
+                    "+200% conversion",
+                    "+150% order value",
+                    "2.5s load"
+                ]
+            },
+            {
+                "id": 2,
+                "title": "FinTech Analytics Dashboard",
+                "category": "Web Application",
+                "videoId": "QT3L4tZ14-4",
+                "description": "Real-time financial analytics platform with interactive charts and AI insights.",
+                "client": "FinanceHub Corp.",
+                "year": "2024",
+                "results": [
+                    "50K+ users",
+                    "99.9% uptime",
+                    "Real-time data"
+                ]
+            }
+        ],
+        "cta": {
+            "title1": "Ready to Join Our",
+            "titleGradient": "Showreel?",
+            "subtitle": "Your project could be our next success story. Let's build something amazing together.",
+            "button": "Start Your Project"
+        },
+        "categories": [
+            "All",
+            "Web Development",
+            "E-Commerce",
+            "Web Application",
+            "UI/UX Design"
+        ]
+    },
+    "about": {
+        "hero": {
+            "badge": "About Us",
+            "title1": "We are a Team of",
+            "titleGradient": "Digital Craftsmen",
+            "subtitle": "Passionate about creating exceptional digital experiences that transform businesses and delight users."
+        },
+        "story": {
+            "badge": "Our Story",
+            "title1": "From a Small Studio to a",
+            "titleGradient": "Global Agency",
+            "p1": "Selen.IT was founded in 2016 with a simple mission: to bridge the gap between complex technology and meaningful user experiences.",
+            "p2": "What started as a two-person operation has grown into a full-service digital agency with clients across three continents.",
+            "p3": "Today, we partner with startups and enterprises alike to build the digital products of tomorrow."
+        },
+        "stats": [
+            {
+                "value": "8+",
+                "label": "Years in Business"
+            },
+            {
+                "value": "150+",
+                "label": "Projects Delivered"
+            },
+            {
+                "value": "50+",
+                "label": "Happy Clients"
+            },
+            {
+                "value": "15+",
+                "label": "Team Members"
+            }
+        ],
+        "values": {
+            "badge": "Our Values",
+            "title1": "What",
+            "titleGradient": "Drives Us",
+            "subtitle": "Our core values guide every decision we make and every project we undertake.",
+            "list": [
+                {
+                    "id": "innovation",
+                    "title": "Innovation First",
+                    "description": "We stay ahead of the curve, constantly exploring new technologies and approaches to deliver cutting-edge solutions."
+                },
+                {
+                    "id": "partnership",
+                    "title": "Client Partnership",
+                    "description": "We treat every project as a true partnership, working closely with clients to understand their vision and goals."
+                },
+                {
+                    "id": "quality",
+                    "title": "Quality Obsession",
+                    "description": "We never compromise on quality. Every pixel, every line of code is crafted with meticulous attention to detail."
+                },
+                {
+                    "id": "results",
+                    "title": "Results Driven",
+                    "description": "Beautiful design is nothing without results. We focus on measurable outcomes that drive your business forward."
+                }
+            ]
+        },
+        "team": {
+            "badge": "Our Team",
+            "title1": "Meet the",
+            "titleGradient": "People Behind Selen.IT",
+            "subtitle": "A diverse team of experts passionate about creating exceptional digital experiences.",
+            "members": [
+                {
+                    "id": "alexander",
+                    "name": "Pavel Alekseev",
+                    "role": "Founder & CEO",
+                    "bio": "15+ years in tech, previously led engineering at major tech companies.",
+                    "avatar": "/images/founder.jpg"
+                },
+                {
+                    "id": "maria",
+                    "name": "Maria Ivanova",
+                    "role": "Creative Director",
+                    "bio": "Award-winning designer with a passion for creating beautiful user experiences.",
+                    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+                },
+                {
+                    "id": "dmitry",
+                    "name": "Dmitry Sokolov",
+                    "role": "Lead Developer",
+                    "bio": "Full-stack expert specializing in React, Node.js, and cloud architecture.",
+                    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+                },
+                {
+                    "id": "elena",
+                    "name": "Elena Kozlova",
+                    "role": "UX Researcher",
+                    "bio": "User psychology specialist who ensures our products delight and convert.",
+                    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+                }
+            ]
+        },
+        "cta": {
+            "title1": "Ready to Work",
+            "titleGradient": "Together?",
+            "subtitle": "Let us discuss how we can help you achieve your digital goals and grow your business.",
+            "button": "Get in Touch"
+        }
+    },
+    "testimonials": [
+        {
+            "id": 1,
+            "content": "Selen.IT transformed our outdated website into a modern, high-converting machine. Our leads increased by 200% within the first month.",
+            "author": "Sarah Johnson",
+            "role": "CEO, TechStart Inc.",
+            "avatar": "SJ",
+            "rating": 5
+        },
+        {
+            "id": 2,
+            "content": "Working with Selen.IT was an absolute pleasure. They understood our vision and delivered beyond expectations.",
+            "author": "Michael Chen",
+            "role": "Founder, Luxe Brands",
+            "avatar": "MC",
+            "rating": 5
+        }
+    ]
 }

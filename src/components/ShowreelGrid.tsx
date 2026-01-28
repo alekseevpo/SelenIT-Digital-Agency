@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import YouTubeEmbed from './ui/YouTubeEmbed';
 
 interface Project {
     id: number;
@@ -9,6 +10,7 @@ interface Project {
     description: string;
     client: string;
     year: string;
+    videoId?: string;
     tags: string[];
     color: string;
     results: string[];
@@ -63,12 +65,18 @@ export default function ShowreelGrid({ projects, categories, lang, dict }: Showr
                                 key={project.id}
                                 className="glass-card overflow-hidden group card-hover bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800"
                             >
-                                {/* Image Placeholder */}
-                                <div className={`aspect-video bg-gradient-to-br ${project.color} relative`}>
-                                    <div className="absolute inset-0 bg-dark-900/40 group-hover:bg-dark-900/20 transition-all duration-500" />
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <span className="text-white/80 text-sm">{dict.projectPreview}</span>
-                                    </div>
+                                {/* Video or Image Placeholder */}
+                                <div className="aspect-video relative">
+                                    {project.videoId ? (
+                                        <YouTubeEmbed videoId={project.videoId} title={project.title} />
+                                    ) : (
+                                        <div className={`w-full h-full bg-gradient-to-br ${project.color} relative`}>
+                                            <div className="absolute inset-0 bg-dark-900/40 group-hover:bg-dark-900/20 transition-all duration-500" />
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <span className="text-white/80 text-sm">{dict.projectPreview}</span>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Content */}

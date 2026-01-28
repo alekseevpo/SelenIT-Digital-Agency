@@ -10,6 +10,7 @@ interface ContactFormProps {
         fullName: string;
         email: string;
         company: string;
+        companyPlaceholder: string;
         service: string;
         serviceOptions: string[];
         budget: string;
@@ -27,6 +28,13 @@ interface ContactFormProps {
     };
 }
 
+interface FormErrors {
+    name?: string;
+    email?: string;
+    service?: string;
+    message?: string;
+}
+
 export default function ContactForm({ lang, dict }: ContactFormProps) {
     const [formState, setFormState] = useState({
         name: '',
@@ -36,26 +44,50 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         budget: '',
         message: '',
     });
+    const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
+    const validate = (): boolean => {
+        const newErrors: FormErrors = {};
+        if (!formState.name.trim()) newErrors.name = lang === 'ru' ? 'Введите имя' : lang === 'es' ? 'Ingrese su nombre' : 'Name is required';
+        if (!formState.email.trim()) {
+            newErrors.email = lang === 'ru' ? 'Введите email' : lang === 'es' ? 'Ingrese su email' : 'Email is required';
+        } else if (!/\S+@\S+\.\S+/.test(formState.email)) {
+            newErrors.email = lang === 'ru' ? 'Некорректный email' : lang === 'es' ? 'Email inválido' : 'Invalid email format';
+        }
+        if (!formState.service) newErrors.service = lang === 'ru' ? 'Выберите услугу' : lang === 'es' ? 'Seleccione un servicio' : 'Please select a service';
+        if (!formState.message.trim()) newErrors.message = lang === 'ru' ? 'Введите детали' : lang === 'es' ? 'Ingrese detalles' : 'Details are required';
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!validate()) return;
+
         setIsSubmitting(true);
+        // Simulate API call
         await new Promise((resolve) => setTimeout(resolve, 1500));
         setIsSubmitting(false);
         setIsSubmitted(true);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
         setFormState((prev) => ({
             ...prev,
-            [e.target.name]: e.target.value,
+            [name === 'name' ? 'name' : name === 'message' ? 'message' : name]: value,
         }));
+        // Real-time validation clear
+        if (errors[name as keyof FormErrors]) {
+            setErrors(prev => ({ ...prev, [name]: undefined }));
+        }
     };
 
     return (
-        <div className="glass-card p-8 lg:p-12 bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 shadow-xl transition-colors duration-300">
+        <div className="glass-card p-8 lg:p-12 shadow-xl transition-colors duration-300">
             {isSubmitted ? (
                 <div className="text-center py-12">
                     <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
@@ -75,7 +107,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                     </button>
                 </div>
             ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-dark-300 mb-2">
@@ -85,12 +117,15 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 type="text"
                                 id="name"
                                 name="name"
-                                required
                                 value={formState.name}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-dark-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
+                                className={`w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.name
+                                    ? 'border-red-500 text-red-900 dark:text-red-400'
+                                    : 'border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500'
+                                    }`}
                                 placeholder="John Doe"
                             />
+                            {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
                         </div>
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-dark-300 mb-2">
@@ -100,12 +135,15 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 type="email"
                                 id="email"
                                 name="email"
-                                required
                                 value={formState.email}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-dark-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
+                                className={`w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.email
+                                    ? 'border-red-500 text-red-900 dark:text-red-400'
+                                    : 'border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500'
+                                    }`}
                                 placeholder="john@company.com"
                             />
+                            {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
                         </div>
                     </div>
 
@@ -120,7 +158,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                             value={formState.company}
                             onChange={handleChange}
                             className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-dark-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
-                            placeholder="Your Company"
+                            placeholder={dict.companyPlaceholder}
                         />
                     </div>
 
@@ -132,10 +170,12 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                             <select
                                 id="service"
                                 name="service"
-                                required
                                 value={formState.service}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
+                                className={`w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.service
+                                    ? 'border-red-500 text-red-900 dark:text-red-400'
+                                    : 'border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500'
+                                    }`}
                             >
                                 <option value="">{dict.selectService}</option>
                                 {dict.serviceOptions.map((service) => (
@@ -144,6 +184,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                     </option>
                                 ))}
                             </select>
+                            {errors.service && <p className="mt-1 text-xs text-red-500">{errors.service}</p>}
                         </div>
                         <div>
                             <label htmlFor="budget" className="block text-sm font-medium text-slate-700 dark:text-dark-300 mb-2">
@@ -173,13 +214,16 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                         <textarea
                             id="message"
                             name="message"
-                            required
                             rows={6}
                             value={formState.message}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-dark-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors resize-none"
+                            className={`w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 resize-none ${errors.message
+                                ? 'border-red-500 text-red-900 dark:text-red-400'
+                                : 'border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500'
+                                }`}
                             placeholder={dict.detailsPlaceholder}
                         />
+                        {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
                     </div>
 
                     <button

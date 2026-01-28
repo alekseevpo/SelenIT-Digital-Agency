@@ -16,17 +16,18 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
     };
 
     return (
-        <div className="flex items-center gap-2">
-            <Globe className="w-4 h-4 text-dark-400" />
-            <div className="flex gap-2">
+        <div className="flex items-center gap-1">
+            <div className="flex gap-1" role="group" aria-label="Select language">
                 {i18n.locales.map((locale) => (
                     <button
                         key={locale}
                         onClick={() => router.push(redirectedPathname(locale))}
-                        className={`text-xs font-bold uppercase transition-colors ${currentLang === locale
-                            ? 'text-primary-500'
-                            : 'text-slate-500 hover:text-slate-900 dark:text-dark-400 dark:hover:text-white'
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase transition-all duration-300 ${currentLang === locale
+                            ? 'bg-primary-500 text-white shadow-sm'
+                            : 'text-slate-500 hover:text-slate-900 dark:text-dark-400 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-white/10'
                             }`}
+                        aria-label={`Switch to ${locale === 'en' ? 'English' : locale === 'ru' ? 'Russian' : 'Spanish'}`}
+                        aria-pressed={currentLang === locale}
                     >
                         {locale}
                     </button>

@@ -57,7 +57,6 @@ html {
 
 body {
   font-family: var(--font-inter);
-  background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -112,7 +111,7 @@ body {
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-dark-800 text-white font-semibold rounded-lg border border-dark-600 transition-all duration-300 hover:border-primary-500 hover:shadow-glow active:scale-95;
+    @apply px-6 py-3 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-lg border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-primary-500 hover:shadow-glow active:scale-95;
   }
 
   .btn-outline {
@@ -171,7 +170,8 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle, var(--primary) 0%, transparent 50%);
+  opacity: 0.05;
   animation: float 20s ease-in-out infinite;
 }
 
@@ -182,17 +182,12 @@ body {
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(217, 70, 239, 0.08) 0%, transparent 50%);
+  background: radial-gradient(circle, var(--accent) 0%, transparent 50%);
+  opacity: 0.04;
   animation: float 25s ease-in-out infinite reverse;
 }
 
-/* Grid pattern overlay */
-.grid-pattern {
-  background-image:
-    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
+
 
 /* Focus styles */
 *:focus-visible {

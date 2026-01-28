@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { motion, Variants } from 'framer-motion';
 
 interface HeroProps {
     dict: {
@@ -14,36 +17,67 @@ interface HeroProps {
 }
 
 export default function Hero({ dict, lang }: HeroProps) {
-    return (
-        <section className="relative min-h-screen flex items-center animated-bg grid-pattern">
-            {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-float" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '-3s' }} />
-            </div>
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3,
+            },
+        },
+    };
 
+    const itemVariants: Variants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+        },
+    };
+
+    return (
+        <section className="relative min-h-screen flex items-center">
             <div className="container-custom px-4 sm:px-6 lg:px-8 pt-32 pb-20 relative z-10">
-                <div className="max-w-4xl mx-auto text-center">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="max-w-4xl mx-auto text-center"
+                >
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100/50 dark:bg-dark-800/50 border border-gray-200 dark:border-dark-700/50 backdrop-blur-sm mb-8 animate-fade-in shadow-sm">
+                    <motion.div
+                        variants={itemVariants}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-slate-200 dark:border-dark-700/50 backdrop-blur-sm mb-8 shadow-sm"
+                    >
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         <span className="text-sm text-slate-600 dark:text-dark-300">{dict.badge}</span>
-                    </div>
+                    </motion.div>
 
                     {/* Heading */}
-                    <h1 className="heading-1 mb-6 animate-fade-in-up text-slate-900 dark:text-white">
+                    <motion.h1
+                        variants={itemVariants}
+                        className="heading-1 mb-6 text-slate-900 dark:text-white"
+                    >
                         {dict.title1}{' '}
                         <span className="gradient-text">{dict.titleGradient}</span>{' '}
                         {dict.title2}
-                    </h1>
+                    </motion.h1>
 
                     {/* Subheading */}
-                    <p className="text-body max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                    <motion.p
+                        variants={itemVariants}
+                        className="text-body max-w-2xl mx-auto mb-10 transition-colors"
+                    >
                         {dict.subtitle}
-                    </p>
+                    </motion.p>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                    <motion.div
+                        variants={itemVariants}
+                        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                    >
                         <Link href={`/${lang}/contact`} className="btn-primary text-lg px-8 py-4">
                             {dict.ctaPrimary}
                         </Link>
@@ -53,10 +87,13 @@ export default function Hero({ dict, lang }: HeroProps) {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </Link>
-                    </div>
+                    </motion.div>
 
                     {/* Stats */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-20 pt-12 border-t border-dark-800 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                    <motion.div
+                        variants={itemVariants as any}
+                        className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-20 pt-12 border-t border-slate-200 dark:border-dark-800"
+                    >
                         {[
                             { value: '150+', label: lang === 'ru' ? 'Проектов' : lang === 'es' ? 'Proyectos' : 'Projects' },
                             { value: '50+', label: lang === 'ru' ? 'Клиентов' : lang === 'es' ? 'Clientes' : 'Clients' },
@@ -64,20 +101,33 @@ export default function Hero({ dict, lang }: HeroProps) {
                             { value: '99%', label: lang === 'ru' ? 'Удовлетворенность' : lang === 'es' ? 'Satisfacción' : 'Satisfaction' },
                         ].map((stat) => (
                             <div key={stat.label} className="text-center">
-                                <div className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-2">{stat.value}</div>
-                                <div className="text-slate-600 dark:text-dark-400 text-sm">{stat.label}</div>
+                                <motion.div
+                                    initial={{ scale: 0.5, opacity: 0 }}
+                                    whileInView={{ scale: 1, opacity: 1 }}
+                                    transition={{ duration: 0.5, delay: 0.5 }}
+                                    viewport={{ once: true }}
+                                    className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-2"
+                                >
+                                    {stat.value}
+                                </motion.div>
+                                <div className="text-slate-600 dark:text-dark-400 text-sm font-medium">{stat.label}</div>
                             </div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Scroll Indicator */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-                    <div className="w-6 h-10 rounded-full border-2 border-dark-600 flex justify-center pt-2">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2, duration: 1 }}
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+                >
+                    <div className="w-6 h-10 rounded-full border-2 border-slate-400 dark:border-dark-600 flex justify-center pt-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
                     </div>
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </section >
     );
 }
