@@ -6,7 +6,7 @@ import type { Locale } from '@/i18n-config';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import FluidBackground from '@/components/ui/FluidBackground';
+// import FluidBackground from '@/components/ui/FluidBackground';
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
@@ -61,7 +61,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <FluidBackground />
+                    {/* <FluidBackground /> */}
                     <Header lang={lang as any} />
                     <main className="min-h-screen transition-colors duration-300">
                         {children}
