@@ -26,8 +26,8 @@ interface TestimonialsProps {
     trustpilotId?: string;
 }
 
-// Trustpilot Business Unit ID - replace with your actual ID
-const TRUSTPILOT_BUSINESS_ID = 'YOUR_BUSINESS_UNIT_ID';
+// Trustpilot Business Unit ID
+const TRUSTPILOT_BUSINESS_ID = 'selenit-digital-agency.vercel.app';
 
 export default function Testimonials({ lang, dict, testimonials, trustpilotId }: TestimonialsProps) {
     const { resolvedTheme } = useTheme();
