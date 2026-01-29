@@ -1,7 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 import { Reveal } from '../ui/Reveal';
+import { TrustpilotWidget, TrustpilotCarousel } from '../ui/TrustpilotWidget';
 
 interface Testimonial {
     id: number;
@@ -18,11 +20,28 @@ interface TestimonialsProps {
         title1: string;
         titleGradient: string;
         subtitle: string;
+        trustpilotCta?: string;
     };
     testimonials: Testimonial[];
+    trustpilotId?: string;
 }
 
-export default function Testimonials({ dict, testimonials }: TestimonialsProps) {
+// Trustpilot Business Unit ID - replace with your actual ID
+const TRUSTPILOT_BUSINESS_ID = 'YOUR_BUSINESS_UNIT_ID';
+
+export default function Testimonials({ lang, dict, testimonials, trustpilotId }: TestimonialsProps) {
+    const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const businessId = trustpilotId || TRUSTPILOT_BUSINESS_ID;
+    const isConfigured = businessId !== 'YOUR_BUSINESS_UNIT_ID';
+    const locale = lang === 'ru' ? 'ru-RU' : lang === 'es' ? 'es-ES' : 'en-US';
+    const theme = mounted && resolvedTheme === 'dark' ? 'dark' : 'light';
+
     return (
         <section className="section-padding transition-colors duration-300">
             <div className="container-custom">
@@ -43,6 +62,22 @@ export default function Testimonials({ dict, testimonials }: TestimonialsProps) 
                             {dict.subtitle}
                         </p>
                     </Reveal>
+
+                    {/* Trustpilot Badge */}
+                    {isConfigured && mounted && (
+                        <Reveal width="100%" delay={0.5}>
+                            <div className="mt-8 flex justify-center">
+                                <TrustpilotWidget
+                                    businessUnitId={businessId}
+                                    locale={locale}
+                                    theme={theme}
+                                    templateId="5419b6ffb0d04a076446a9af"
+                                    height="24px"
+                                    width="280px"
+                                />
+                            </div>
+                        </Reveal>
+                    )}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
@@ -72,7 +107,34 @@ export default function Testimonials({ dict, testimonials }: TestimonialsProps) 
                         </Reveal>
                     ))}
                 </div>
+
+                {/* Trustpilot Carousel */}
+                {isConfigured && mounted && (
+                    <Reveal width="100%" delay={0.5}>
+                        <div className="mt-16 pt-12 border-t border-slate-200 dark:border-dark-800">
+                            <div className="flex items-center justify-center gap-3 mb-8">
+                                <TrustpilotLogo />
+                                <span className="text-slate-600 dark:text-slate-400 text-sm font-medium">
+                                    {dict.trustpilotCta || 'See our reviews on Trustpilot'}
+                                </span>
+                            </div>
+                            <TrustpilotCarousel
+                                businessUnitId={businessId}
+                                locale={locale}
+                                theme={theme}
+                            />
+                        </div>
+                    </Reveal>
+                )}
             </div>
         </section>
+    );
+}
+
+function TrustpilotLogo() {
+    return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#00B67A"/>
+        </svg>
     );
 }

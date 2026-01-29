@@ -102,7 +102,8 @@
             "badge": "Testimonials",
             "title1": "What Our",
             "titleGradient": "Clients Say",
-            "subtitle": "Don't just take our word for it. Hear from the brands we've helped transform."
+            "subtitle": "Don't just take our word for it. Hear from the brands we've helped transform.",
+            "trustpilotCta": "See our reviews on Trustpilot"
         },
         "technologies": {
             "badge": "Technologies",

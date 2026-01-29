@@ -193,6 +193,7 @@ export interface Dictionary {
             title1: string;
             titleGradient: string;
             subtitle: string;
+            trustpilotCta?: string;
         };
         technologies: {
             badge: string;
