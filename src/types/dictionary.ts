@@ -233,8 +233,8 @@ export interface Dictionary {
             client: string;
             year: string;
             results: string[];
-            tags: string[];
-            color: string;
+            tags?: string[];
+            color?: string;
         }[];
         cta: {
             title1: string;
