@@ -94,10 +94,9 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
                             className="group flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-50 to-slate-100 dark:from-dark-800 dark:to-dark-900 border border-slate-200 dark:border-dark-700 hover:border-[#00B67A]/50 dark:hover:border-[#00B67A]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#00B67A]/10"
                         >
                             {/* Trustpilot Logo */}
-                            <div className="flex items-center gap-3">
-                                <svg className="w-8 h-8" viewBox="0 0 126 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M33.3 13.5h-8.2l-2.5-7.8L20 13.5h-8.2l6.6 4.8-2.5 7.8 6.6-4.8 6.6 4.8-2.5-7.8 6.7-4.8z" fill="#00B67A"/>
-                                    <path d="M27.2 20.5l-.6-1.8-4.1 3 4.7-1.2z" fill="#005128"/>
+                            <div className="flex items-center gap-2">
+                                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#00B67A"/>
                                 </svg>
                                 <span className="text-xl font-bold text-[#00B67A]">Trustpilot</span>
                             </div>
