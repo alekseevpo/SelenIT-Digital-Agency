@@ -6,7 +6,9 @@
             "showreel": "Showreel",
             "about": "About",
             "contact": "Contact",
-            "getStarted": "Get Started"
+            "getStarted": "Get Started",
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Service"
         },
         "footer": {
             "rights": "All rights reserved.",
@@ -376,7 +378,7 @@
                     "name": "Pavel Alekseev",
                     "role": "Founder & CEO",
                     "bio": "15+ years in tech, previously led engineering at major tech companies.",
-                    "avatar": "/images/founder.jpg"
+                    "avatar": "/images/Pavel-Alekseev.JPG"
                 },
                 {
                     "id": "maria",
@@ -425,5 +427,69 @@
             "avatar": "MC",
             "rating": 5
         }
-    ]
+    ],
+    "privacy": {
+        "hero": {
+            "title": "Privacy Policy",
+            "lastUpdated": "Last Updated: January 29, 2026"
+        },
+        "content": [
+            {
+                "title": "1. Introduction",
+                "text": "Welcome to Selen.IT Digital Agency. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you."
+            },
+            {
+                "title": "2. Information We Collect",
+                "text": "We may collect, use, store and transfer different kinds of personal data about you which we have grouped together follows: Identity Data (includes first name, last name, username or similar identifier), Contact Data (includes email address and telephone numbers), Technical Data (includes internet protocol (IP) address, your login data, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform and other technology on the devices you use to access this website)."
+            },
+            {
+                "title": "3. How We Use Your Information",
+                "text": "We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances: Where we need to perform the contract we are about to enter into or have entered into with you. Where it is necessary for our legitimate interests (or those of a third party) and your interests and fundamental rights do not override those interests. Where we need to comply with a legal or regulatory obligation."
+            },
+            {
+                "title": "4. Data Security",
+                "text": "We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know."
+            },
+            {
+                "title": "5. Cookies",
+                "text": "Our website uses cookies to distinguish you from other users of our website. This helps us to provide you with a good experience when you browse our website and also allows us to improve our site."
+            },
+            {
+                "title": "6. Contact Us",
+                "text": "If you have any questions about this privacy policy, please contact us at: alekseevpo@gmail.com"
+            }
+        ]
+    },
+    "terms": {
+        "hero": {
+            "title": "Terms of Service",
+            "lastUpdated": "Last Updated: January 29, 2026"
+        },
+        "content": [
+            {
+                "title": "1. Acceptance of Terms",
+                "text": "By accessing this website, we assume you accept these terms and conditions. Do not continue to use Selen.IT Digital Agency if you do not agree to take all of the terms and conditions stated on this page."
+            },
+            {
+                "title": "2. Services",
+                "text": "Selen.IT Digital Agency provides digital services including but not limited to web development, UI/UX design, mobile app development, and digital marketing. All services are subject to a separate service agreement."
+            },
+            {
+                "title": "3. Intellectual Property",
+                "text": "Unless otherwise stated, Selen.IT Digital Agency and/or its licensors own the intellectual property rights for all material on Selen.IT Digital Agency. All intellectual property rights are reserved. You may access this from Selen.IT Digital Agency for your own personal use subjected to restrictions set in these terms and conditions."
+            },
+            {
+                "title": "4. User Obligations",
+                "text": "You must not: Republish material from Selen.IT Digital Agency; Sell, rent or sub-license material from Selen.IT Digital Agency; Reproduce, duplicate or copy material from Selen.IT Digital Agency; Redistribute content from Selen.IT Digital Agency."
+            },
+            {
+                "title": "5. Limitation of Liability",
+                "text": "In no event shall Selen.IT Digital Agency, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract. Selen.IT Digital Agency, including its officers, directors and employees shall not be held liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website."
+            },
+            {
+                "title": "6. Governing Law",
+                "text": "These terms and conditions are governed by and construed in accordance with the laws of Spain and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location."
+            }
+        ]
+    }
 }

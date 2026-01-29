@@ -24,8 +24,7 @@ const getFooterLinks = (lang: string) => {
             { href: `/${lang}/careers`, label: isRu ? 'Карьера' : isEs ? 'Carreras' : 'Careers' },
         ],
         social: [
-            { href: 'https://twitter.com', label: 'Twitter', icon: 'twitter' },
-            { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'linkedin' },
+
             { href: 'https://github.com', label: 'GitHub', icon: 'github' },
             { href: 'https://t.me/ppmtrue', label: 'Telegram', icon: 'telegram' },
             { href: 'https://wa.me/34624682795', label: 'WhatsApp', icon: 'whatsapp' },
@@ -37,9 +36,33 @@ export default function Footer({ lang }: FooterProps) {
     const footerLinks = getFooterLinks(lang);
 
     const navigations: Record<string, any> = {
-        en: { services: 'Services', company: 'Company', getInTouch: 'Get in Touch', rights: 'All rights reserved.', mission: 'We craft stunning digital experiences that transform businesses and delight users.' },
-        ru: { services: 'Услуги', company: 'Компания', getInTouch: 'Связаться', rights: 'Все права защищены.', mission: 'Мы создаем потрясающий цифровой опыт, который трансформирует бизнес и радует пользователей.' },
-        es: { services: 'Servicios', company: 'Compañía', getInTouch: 'Contacto', rights: 'Todos los derechos reservados.', mission: 'Creamos experiencias digitales impresionantes que transforman negocios y deleitan a los usuarios.' }
+        en: {
+            services: 'Services',
+            company: 'Company',
+            getInTouch: 'Get in Touch',
+            rights: 'All rights reserved.',
+            mission: 'We craft stunning digital experiences that transform businesses and delight users.',
+            privacy: 'Privacy Policy',
+            terms: 'Terms of Service'
+        },
+        ru: {
+            services: 'Услуги',
+            company: 'Компания',
+            getInTouch: 'Связаться',
+            rights: 'Все права защищены.',
+            mission: 'Мы создаем потрясающий цифровой опыт, который трансформирует бизнес и радует пользователей.',
+            privacy: 'Политика конфиденциальности',
+            terms: 'Условия использования'
+        },
+        es: {
+            services: 'Servicios',
+            company: 'Compañía',
+            getInTouch: 'Contacto',
+            rights: 'Todos los derechos reservados.',
+            mission: 'Creamos experiencias digitales impresionantes que transforman negocios y deleitan a los usuarios.',
+            privacy: 'Política de Privacidad',
+            terms: 'Términos de Servicio'
+        }
     };
 
     const dict = navigations[lang] || navigations.en;
@@ -80,7 +103,7 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Services */}
                     <div>
-                        <h4 className="text-white font-semibold mb-6">Services</h4>
+                        <h4 className="text-white font-semibold mb-6">{dict.services}</h4>
                         <ul className="space-y-4">
                             {footerLinks.services.map((link) => (
                                 <li key={link.href}>
@@ -97,7 +120,7 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Company */}
                     <div>
-                        <h4 className="text-white font-semibold mb-6">Company</h4>
+                        <h4 className="text-white font-semibold mb-6">{dict.company}</h4>
                         <ul className="space-y-4">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
@@ -114,7 +137,7 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Contact */}
                     <div>
-                        <h4 className="text-white font-semibold mb-6">Get in Touch</h4>
+                        <h4 className="text-white font-semibold mb-6">{dict.getInTouch}</h4>
                         <ul className="space-y-4 text-dark-400">
                             <li className="flex items-center gap-3">
                                 <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -150,11 +173,11 @@ export default function Footer({ lang }: FooterProps) {
                         © {new Date().getFullYear()} Selen.IT Digital Agency. {dict.rights}
                     </p>
                     <div className="flex gap-6 text-sm">
-                        <Link href="/privacy" className="text-dark-500 hover:text-primary-400 transition-colors">
-                            Privacy Policy
+                        <Link href={`/${lang}/privacy`} className="text-dark-500 hover:text-primary-400 transition-colors">
+                            {dict.privacy}
                         </Link>
-                        <Link href="/terms" className="text-dark-500 hover:text-primary-400 transition-colors">
-                            Terms of Service
+                        <Link href={`/${lang}/terms`} className="text-dark-500 hover:text-primary-400 transition-colors">
+                            {dict.terms}
                         </Link>
                     </div>
                 </div>

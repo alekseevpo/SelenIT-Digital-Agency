@@ -6,7 +6,9 @@
             "showreel": "Showreel",
             "about": "Nosotros",
             "contact": "Contacto",
-            "getStarted": "Empezar"
+            "getStarted": "Empezar",
+            "privacy": "Política de Privacidad",
+            "terms": "Términos de Servicio"
         },
         "footer": {
             "rights": "Todos los derechos reservados.",
@@ -376,7 +378,7 @@
                     "name": "Pavel Alekseev",
                     "role": "Fundador y CEO",
                     "bio": "Más de 15 años en tecnología, anteriormente lideró ingeniería en grandes empresas.",
-                    "avatar": "/images/founder.jpg"
+                    "avatar": "/images/Pavel-Alekseev.JPG"
                 },
                 {
                     "id": "maria",
@@ -425,5 +427,69 @@
             "avatar": "MC",
             "rating": 5
         }
-    ]
+    ],
+    "privacy": {
+        "hero": {
+            "title": "Política de Privacidad",
+            "lastUpdated": "Última Actualización: 29 de Enero de 2026"
+        },
+        "content": [
+            {
+                "title": "1. Introducción",
+                "text": "Bienvenido a Selen.IT Digital Agency. Respetamos su privacidad y nos comprometemos a proteger sus datos personales. Esta política de privacidad le informará sobre cómo cuidamos sus datos personales cuando visita nuestro sitio web (independientemente de desde dónde lo visite) y le informará sobre sus derechos de privacidad y cómo la ley lo protege."
+            },
+            {
+                "title": "2. Información que Recopilamos",
+                "text": "Podemos recopilar, usar, almacenar y transferir diferentes tipos de datos personales sobre usted, que hemos agrupado de la siguiente manera: Datos de Identidad (incluye nombre, apellido, nombre de usuario o identificador similar), Datos de Contacto (incluye dirección de correo electrónico y números de teléfono), Datos Técnicos (incluye dirección de protocolo de internet (IP), sus datos de inicio de sesión, tipo y versión del navegador, configuración de zona horaria y ubicación, tipos y versiones de complementos del navegador, sistema operativo y plataforma y otra tecnología en los dispositivos que utiliza para acceder a este sitio web)."
+            },
+            {
+                "title": "3. Cómo Usamos Su Información",
+                "text": "Solo usaremos sus datos personales cuando la ley nos lo permita. Más comúnmente, usaremos sus datos personales en las siguientes circunstancias: Donde necesitemos realizar el contrato que estamos a punto de celebrar o hemos celebrado con usted. Donde sea necesario para nuestros intereses legítimos (o los de un tercero) y sus intereses y derechos fundamentales no anulen esos intereses. Donde necesitemos cumplir con una obligación legal o regulatoria."
+            },
+            {
+                "title": "4. Seguridad de Datos",
+                "text": "Hemos implementado medidas de seguridad apropiadas para evitar que sus datos personales se pierdan accidentalmente, se usen o accedan de manera no autorizada, se alteren o divulguen. Además, limitamos el acceso a sus datos personales a aquellos empleados, agentes, contratistas y otros terceros que tengan una necesidad comercial de saber."
+            },
+            {
+                "title": "5. Cookies",
+                "text": "Nuestro sitio web utiliza cookies para distinguirlo de otros usuarios de nuestro sitio web. Esto nos ayuda a brindarle una buena experiencia cuando navega por nuestro sitio web y también nos permite mejorar nuestro sitio."
+            },
+            {
+                "title": "6. Contáctenos",
+                "text": "Si tiene alguna pregunta sobre esta política de privacidad, contáctenos en: alekseevpo@gmail.com"
+            }
+        ]
+    },
+    "terms": {
+        "hero": {
+            "title": "Términos de Servicio",
+            "lastUpdated": "Última Actualización: 29 de Enero de 2026"
+        },
+        "content": [
+            {
+                "title": "1. Aceptación de los Términos",
+                "text": "Al acceder a este sitio web, asumimos que acepta estos términos y condiciones. No continúe utilizando Selen.IT Digital Agency si no está de acuerdo con todos los términos y condiciones establecidos en esta página."
+            },
+            {
+                "title": "2. Servicios",
+                "text": "Selen.IT Digital Agency ofrece servicios digitales que incluyen, entre otros, desarrollo web, diseño UI/UX, desarrollo de aplicaciones móviles y marketing digital. Todos los servicios están sujetos a un acuerdo de servicio por separado."
+            },
+            {
+                "title": "3. Propiedad Intelectual",
+                "text": "A menos que se indique lo contrario, Selen.IT Digital Agency y/o sus licenciantes poseen los derechos de propiedad intelectual de todo el material en Selen.IT Digital Agency. Todos los derechos de propiedad intelectual están reservados. Puede acceder a esto desde Selen.IT Digital Agency para su propio uso personal sujeto a las restricciones establecidas en estos términos y condiciones."
+            },
+            {
+                "title": "4. Obligaciones del Usuario",
+                "text": "No debe: Volver a publicar material de Selen.IT Digital Agency; Vender, alquilar o sublicenciar material de Selen.IT Digital Agency; Reproducir, duplicar o copiar material de Selen.IT Digital Agency; Redistribuir contenido de Selen.IT Digital Agency."
+            },
+            {
+                "title": "5. Limitación de Responsabilidad",
+                "text": "En ningún caso Selen.IT Digital Agency, ni ninguno de sus funcionarios, directores y empleados, serán responsables de nada que surja de o esté relacionado de alguna manera con su uso de este sitio web, ya sea que dicha responsabilidad sea bajo contrato. Selen.IT Digital Agency, incluidos sus funcionarios, directores y empleados, no serán responsables de ninguna responsabilidad indirecta, consecuente o especial que surja de o esté relacionada de alguna manera con su uso de este sitio web."
+            },
+            {
+                "title": "6. Ley Aplicable",
+                "text": "Estos términos y condiciones se rigen e interpretan de acuerdo con las leyes de España y usted se somete irrevocablemente a la jurisdicción exclusiva de los tribunales en ese Estado o ubicación."
+            }
+        ]
+    }
 }
