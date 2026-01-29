@@ -382,24 +382,24 @@
                 },
                 {
                     "id": "maria",
-                    "name": "Maria Ivanova",
+                    "name": "Joel Grevo",
                     "role": "Directora Creativa",
                     "bio": "Diseñadora galardonada con una pasión por crear experiencias de usuario hermosas.",
-                    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+                    "avatar": "JG"
                 },
                 {
                     "id": "dmitry",
                     "name": "Dmitry Sokolov",
                     "role": "Desarrollador Principal",
                     "bio": "Experto full-stack especializado en React, Node.js y arquitectura en la nube.",
-                    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+                    "avatar": "DS"
                 },
                 {
                     "id": "elena",
                     "name": "Elena Kozlova",
                     "role": "Investigadora UX",
                     "bio": "Especialista en psicología del usuario que asegura que nuestros productos deleiten y conviertan.",
-                    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+                    "avatar": "EK"
                 }
             ]
         },

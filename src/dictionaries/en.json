@@ -382,24 +382,24 @@
                 },
                 {
                     "id": "maria",
-                    "name": "Maria Ivanova",
+                    "name": "Joel Grevo",
                     "role": "Creative Director",
                     "bio": "Award-winning designer with a passion for creating beautiful user experiences.",
-                    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+                    "avatar": "JG"
                 },
                 {
                     "id": "dmitry",
                     "name": "Dmitry Sokolov",
                     "role": "Lead Developer",
                     "bio": "Full-stack expert specializing in React, Node.js, and cloud architecture.",
-                    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+                    "avatar": "DS"
                 },
                 {
                     "id": "elena",
                     "name": "Elena Kozlova",
                     "role": "UX Researcher",
                     "bio": "User psychology specialist who ensures our products delight and convert.",
-                    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+                    "avatar": "EK"
                 }
             ]
         },

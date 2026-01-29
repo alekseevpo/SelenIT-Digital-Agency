@@ -375,31 +375,31 @@
             "members": [
                 {
                     "id": "alexander",
-                    "name": "Павел Алексеев",
+                    "name": "Pavel Alekseev",
                     "role": "Основатель и CEO",
                     "bio": "Более 15 лет в ИТ, ранее руководил разработкой в крупнейших технологических компаниях.",
                     "avatar": "/images/Pavel-Alekseev.JPG"
                 },
                 {
                     "id": "maria",
-                    "name": "Мария Иванова",
+                    "name": "Joel Grevo",
                     "role": "Креативный директор",
                     "bio": "Титулованный дизайнер со страстью к созданию прекрасного пользовательского опыта.",
-                    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
+                    "avatar": "JG"
                 },
                 {
                     "id": "dmitry",
-                    "name": "Дмитрий Соколов",
+                    "name": "Dmitry Sokolov",
                     "role": "Ведущий разработчик",
                     "bio": "Эксперт full-stack разработки, специализирующийся на React, Node.js и облачной архитектуре.",
-                    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+                    "avatar": "DS"
                 },
                 {
                     "id": "elena",
-                    "name": "Елена Козлова",
+                    "name": "Elena Kozlova",
                     "role": "UX Исследователь",
                     "bio": "Специалист по психологии пользователей, гарантирующий, что наши продукты радуют и приносят результат.",
-                    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+                    "avatar": "EK"
                 }
             ]
         },
