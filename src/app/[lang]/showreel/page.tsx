@@ -74,7 +74,6 @@ export default async function ShowreelPage({ params: { lang } }: PageProps) {
             {/* Filterable Portfolio Grid */}
             <ShowreelGrid
                 projects={projects}
-                categories={categories}
                 lang={lang}
                 dict={grid}
             />

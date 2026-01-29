@@ -242,7 +242,8 @@
             ]
         },
         "cta": {
-            "title": "Ready to Start Your Project?",
+            "title1": "Ready to Start Your",
+            "titleGradient": "Project?",
             "subtitle": "Let us discuss your requirements and how we can help you achieve your goals.",
             "button": "Get a Free Quote"
         }

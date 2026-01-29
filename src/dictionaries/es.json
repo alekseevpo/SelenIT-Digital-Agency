@@ -242,7 +242,8 @@
             ]
         },
         "cta": {
-            "title": "¿Listo para iniciar su proyecto?",
+            "title1": "¿Listo para iniciar su",
+            "titleGradient": "proyecto?",
             "subtitle": "Hablemos sobre sus requisitos y cómo podemos ayudarle a alcanzar sus metas.",
             "button": "Obtener Presupuesto"
         }
