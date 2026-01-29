@@ -95,13 +95,20 @@
             "titleGradient": "Destacados",
             "subtitle": "Descubra cómo ayudamos a las marcas a crecer con soluciones digitales a medida.",
             "videoId": "QT3L4tZ14-4",
-            "button": "Ver todos los proyectos"
+            "button": "Ver Todo",
+            "viewProject": "Ver Proyecto"
         },
         "testimonials": {
             "badge": "Testimonios",
             "title1": "Lo que dicen",
             "titleGradient": "nuestros clientes",
             "subtitle": "No confíe solo en nuestra palabra. Esto es lo que dicen las marcas que hemos ayudado a transformar."
+        },
+        "technologies": {
+            "badge": "Tecnologías",
+            "title": "Impulsado por",
+            "titleGradient": "Stack Moderno",
+            "subtitle": "Utilizamos las últimas tecnologías para crear soluciones rápidas, escalables y mantenibles."
         },
         "cta": {
             "title1": "¿Listo para transformar su",
@@ -312,6 +319,7 @@
             "badge": "Nosotros",
             "title1": "Somos un equipo de",
             "titleGradient": "Artesanos Digitales",
+            "titleWords": ["Artesanos Digitales", "Pensadores Creativos", "Entusiastas Tech", "Solucionadores"],
             "subtitle": "Apasionados por crear experiencias digitales excepcionales que transforman negocios y deleitan a los usuarios."
         },
         "story": {

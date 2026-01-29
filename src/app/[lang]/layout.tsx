@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
+import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 import type { Locale } from '@/i18n-config';
 
 import Header from '@/components/layout/Header';
@@ -70,12 +71,14 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    {/* <FluidBackground /> */}
-                    <Header lang={lang as any} />
-                    <main className="min-h-screen transition-colors duration-300">
-                        {children}
-                    </main>
-                    <Footer lang={lang as any} />
+                    <SmoothScrollProvider>
+                        {/* <FluidBackground /> */}
+                        <Header lang={lang as any} />
+                        <main className="min-h-screen transition-colors duration-300">
+                            {children}
+                        </main>
+                        <Footer lang={lang as any} />
+                    </SmoothScrollProvider>
                 </ThemeProvider>
             </body>
         </html>

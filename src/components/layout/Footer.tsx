@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Locale } from '@/i18n-config';
 import type { Dictionary } from '@/types/dictionary';
+import { Logo } from '../ui/Logo';
 
 interface FooterProps {
     lang: Locale;
@@ -71,13 +72,8 @@ export default function Footer({ lang }: FooterProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Brand */}
                     <div className="lg:col-span-1">
-                        <Link href={`/${lang}`} className="flex items-center gap-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center font-bold text-white text-lg">
-                                S
-                            </div>
-                            <span className="text-lg font-bold text-slate-900 dark:text-white">
-                                Selen.<span className="text-primary-400">IT</span>
-                            </span>
+                        <Link href={`/${lang}`} className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg">
+                            <Logo size={48} showText={true} />
                         </Link>
                         <p className="text-slate-600 dark:text-dark-400 mb-4 leading-relaxed text-sm">
                             {dict.mission}

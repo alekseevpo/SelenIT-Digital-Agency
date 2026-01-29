@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
+import { AnimatedTitle } from '@/components/ui/AnimatedTitle';
 
 export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
     const dict = await getDictionary(lang as Locale);
@@ -58,10 +59,11 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                         <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
-                            {hero.title1}{' '}
-                            <span className="gradient-text">{hero.titleGradient}</span>
-                        </h1>
+                        <AnimatedTitle
+                            title1={hero.title1}
+                            words={hero.titleWords}
+                            className="heading-1 mb-6 text-slate-900 dark:text-white"
+                        />
                         <p className="text-body transition-colors duration-300">
                             {hero.subtitle}
                         </p>

@@ -45,10 +45,10 @@ export default function Testimonials({ dict, testimonials }: TestimonialsProps) 
                     </Reveal>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                     {testimonials.map((testimonial, index) => (
-                        <Reveal key={testimonial.id} delay={0.1 * index} width="100%">
-                            <div className="glass-card p-8 bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 shadow-sm card-hover transition-colors duration-300 h-full flex flex-col">
+                        <Reveal key={testimonial.id} delay={0.1 * index} width="100%" className="h-full">
+                            <div className="glass-card p-8 bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 shadow-sm card-hover transition-colors duration-300 h-full flex flex-col rounded-2xl">
                                 <div className="flex gap-1 mb-6">
                                     {[...Array(5)].map((_, i) => (
                                         <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
@@ -56,11 +56,11 @@ export default function Testimonials({ dict, testimonials }: TestimonialsProps) 
                                         </svg>
                                     ))}
                                 </div>
-                                <p className="text-slate-600 dark:text-dark-300 italic mb-8 grow leading-relaxed">
+                                <p className="text-slate-600 dark:text-dark-300 italic mb-8 flex-1 leading-relaxed line-clamp-6">
                                     &quot;{testimonial.content}&quot;
                                 </p>
-                                <div className="flex items-center gap-4 pt-6 border-t border-slate-200 dark:border-dark-800">
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-lg">
+                                <div className="flex items-center gap-4 pt-6 border-t border-slate-200 dark:border-dark-800 mt-auto">
+                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-lg shrink-0">
                                         {testimonial.avatar}
                                     </div>
                                     <div>

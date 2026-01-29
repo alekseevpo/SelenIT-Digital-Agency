@@ -4,6 +4,7 @@ import type { Locale } from '@/i18n-config';
 import Hero from '@/components/sections/Hero';
 import Services from '@/components/sections/Services';
 import Showreel from '@/components/sections/Showreel';
+import Technologies from '@/components/sections/Technologies';
 import Testimonials from '@/components/sections/Testimonials';
 import CTA from '@/components/sections/CTA';
 
@@ -33,6 +34,9 @@ export default async function Home({
             <Showreel
                 lang={lang}
                 dict={dict.home.showreel}
+            />
+            <Technologies
+                dict={dict.home.technologies}
             />
             <Testimonials
                 lang={lang}

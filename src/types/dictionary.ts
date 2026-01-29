@@ -80,6 +80,7 @@ export interface AboutDict {
         badge: string;
         title1: string;
         titleGradient: string;
+        titleWords: string[];
         subtitle: string;
     };
     story: {
@@ -190,6 +191,12 @@ export interface Dictionary {
         testimonials: {
             badge: string;
             title1: string;
+            titleGradient: string;
+            subtitle: string;
+        };
+        technologies: {
+            badge: string;
+            title: string;
             titleGradient: string;
             subtitle: string;
         };

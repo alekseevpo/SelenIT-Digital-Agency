@@ -95,13 +95,20 @@
             "titleGradient": "Projects",
             "subtitle": "Discover how we help brands grow with custom digital solutions.",
             "videoId": "QT3L4tZ14-4",
-            "button": "View All Projects"
+            "button": "View All",
+            "viewProject": "View Project"
         },
         "testimonials": {
             "badge": "Testimonials",
             "title1": "What Our",
             "titleGradient": "Clients Say",
             "subtitle": "Don't just take our word for it. Hear from the brands we've helped transform."
+        },
+        "technologies": {
+            "badge": "Technologies",
+            "title": "Powered by",
+            "titleGradient": "Modern Stack",
+            "subtitle": "We use the latest technologies to build fast, scalable, and maintainable solutions."
         },
         "cta": {
             "title1": "Ready to Transform Your",
@@ -312,6 +319,7 @@
             "badge": "About Us",
             "title1": "We are a Team of",
             "titleGradient": "Digital Craftsmen",
+            "titleWords": ["Digital Craftsmen", "Creative Thinkers", "Tech Enthusiasts", "Problem Solvers"],
             "subtitle": "Passionate about creating exceptional digital experiences that transform businesses and delight users."
         },
         "story": {

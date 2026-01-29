@@ -55,11 +55,47 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Smooth theme transition */
+html.transitioning,
+html.transitioning *,
+html.transitioning *::before,
+html.transitioning *::after {
+  transition: background-color 0.5s ease,
+              border-color 0.5s ease,
+              color 0.3s ease,
+              box-shadow 0.5s ease,
+              fill 0.3s ease,
+              stroke 0.3s ease !important;
+}
+
 body {
   font-family: var(--font-inter);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  background-color: var(--bg-primary);
+  transition: background-color 0.5s ease;
 }
 
 /* Selection */
@@ -107,15 +143,15 @@ body {
   }
 
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-glow hover:scale-105 active:scale-95;
+    @apply px-8 py-3.5 bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-glow hover:scale-105 active:scale-95;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-lg border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-primary-500 hover:shadow-glow active:scale-95;
+    @apply px-8 py-3.5 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-primary-500 hover:shadow-glow active:scale-95;
   }
 
   .btn-outline {
-    @apply px-6 py-3 bg-transparent text-primary-400 font-semibold rounded-lg border border-primary-500 transition-all duration-300 hover:bg-primary-500/10 hover:shadow-glow active:scale-95;
+    @apply px-8 py-3.5 bg-transparent text-primary-400 font-semibold rounded-full border-2 border-primary-500 transition-all duration-300 hover:bg-primary-500/10 hover:shadow-glow active:scale-95;
   }
 
   .section-padding {
