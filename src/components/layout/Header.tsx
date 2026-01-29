@@ -6,13 +6,16 @@ import { usePathname } from 'next/navigation';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
 import type { Locale } from '@/i18n-config';
+import type { Dictionary } from '@/types/dictionary';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
     lang: Locale;
 }
 
-const getNavLinks = (lang: string) => [
+type NavLinkLabel = keyof Dictionary['common']['nav'];
+
+const getNavLinks = (lang: string): { href: string; label: NavLinkLabel }[] => [
     { href: `/${lang}`, label: 'home' },
     { href: `/${lang}/services`, label: 'services' },
     { href: `/${lang}/showreel`, label: 'showreel' },
@@ -25,10 +28,10 @@ export default function Header({ lang }: HeaderProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
-    const navigations: Record<string, any> = {
-        en: { home: 'Home', services: 'Services', showreel: 'Showreel', about: 'About', contact: 'Contact', getStarted: 'Get Started', menu: 'Menu' },
-        ru: { home: 'Главная', services: 'Услуги', showreel: 'Шоурил', about: 'О нас', contact: 'Контакты', getStarted: 'Начать', menu: 'Меню' },
-        es: { home: 'Inicio', services: 'Servicios', showreel: 'Showreel', about: 'Nosotros', contact: 'Contacto', getStarted: 'Empezar', menu: 'Menú' }
+    const navigations: Record<Locale, Dictionary['common']['nav'] & { menu: string }> = {
+        en: { home: 'Home', services: 'Services', showreel: 'Showreel', about: 'About', contact: 'Contact', getStarted: 'Get Started', privacy: 'Privacy', terms: 'Terms', menu: 'Menu' },
+        ru: { home: 'Главная', services: 'Услуги', showreel: 'Шоурил', about: 'О нас', contact: 'Контакты', getStarted: 'Начать', privacy: 'Приватность', terms: 'Условия', menu: 'Меню' },
+        es: { home: 'Inicio', services: 'Servicios', showreel: 'Showreel', about: 'Nosotros', contact: 'Contacto', getStarted: 'Empezar', privacy: 'Privacidad', terms: 'Términos', menu: 'Menú' }
     };
 
     const dict = navigations[lang] || navigations.en;
@@ -53,7 +56,7 @@ export default function Header({ lang }: HeaderProps) {
 
     return (
         <>
-            <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none py-4 sm:py-6">
+            <header className={`fixed top-0 left-0 right-0 z-50 pointer-events-none py-4 sm:py-6 transition-all duration-300 ${isScrolled ? 'top-2' : 'top-0'}`}>
                 <div className="container-custom flex items-center justify-between px-4 sm:px-6 lg:px-8 relative">
                     {/* Logo - Top Left */}
                     <div className="pointer-events-auto">

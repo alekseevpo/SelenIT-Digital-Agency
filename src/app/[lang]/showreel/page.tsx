@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import ShowreelGrid from '@/components/ShowreelGrid';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
+import ShowreelGrid from '@/components/ShowreelGrid';
 import YouTubeEmbed from '@/components/ui/YouTubeEmbed';
+import CTA from '@/components/sections/CTA';
 
 export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
     const dict = await getDictionary(lang as Locale);
@@ -11,6 +11,10 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
         title: dict.showreel.hero.badge,
         description: dict.showreel.hero.subtitle,
     };
+}
+
+interface PageProps {
+    params: { lang: string };
 }
 
 const projectMetadata: Record<number, { tags: string[], color: string }> = {
@@ -22,25 +26,30 @@ const projectMetadata: Record<number, { tags: string[], color: string }> = {
         tags: ['React', 'D3.js', 'Node.js', 'Redis'],
         color: 'from-blue-500 to-cyan-500',
     },
+    3: {
+        tags: ['PWA', 'React Native', 'Firebase'],
+        color: 'from-orange-500 to-red-500',
+    },
+    4: {
+        tags: ['Shopify', 'Liquid', 'Tailwind', 'Node.js'],
+        color: 'from-green-500 to-emerald-500',
+    }
 };
-
-interface PageProps {
-    params: { lang: string };
-}
 
 export default async function ShowreelPage({ params: { lang } }: PageProps) {
     const dict = await getDictionary(lang as Locale);
-    const { hero, grid, cta, projects: dictProjects, categories } = dict.showreel;
+    const { hero, grid, projects: dictProjects, cta, categories } = dict.showreel;
 
-    const projects = dictProjects.map((p: any) => ({
+    const projects = dictProjects.map((p) => ({
         ...p,
+        category: p.category,
         tags: projectMetadata[p.id]?.tags || [],
         color: projectMetadata[p.id]?.color || 'from-slate-500 to-slate-600',
     }));
 
     return (
-        <div className="bg-white dark:bg-dark-950 min-h-screen transition-colors duration-300">
-            {/* Hero Section */}
+        <div className="bg-white dark:bg-dark-950 transition-colors duration-300">
+            {/* Hero Section with Video */}
             <section className="pt-32 pb-20 relative overflow-hidden bg-white dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-4xl mx-auto text-center mb-16">
@@ -51,17 +60,18 @@ export default async function ShowreelPage({ params: { lang } }: PageProps) {
                             {hero.title1}{' '}
                             <span className="gradient-text">{hero.titleGradient}</span>
                         </h1>
-                        <p className="text-body transition-colors duration-300 max-w-2xl mx-auto">
+                        <p className="text-body transition-colors duration-300">
                             {hero.subtitle}
                         </p>
                     </div>
 
-                    <div className="max-w-5xl mx-auto">
-                        <YouTubeEmbed videoId={hero.videoId || "QT3L4tZ14-4"} title="Selen.IT Showreel" />
+                    <div className="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl relative group bg-slate-100 dark:bg-dark-900">
+                        <YouTubeEmbed videoId={hero.videoId} title="Selen.IT Showreel" />
                     </div>
                 </div>
             </section>
 
+            {/* Filterable Portfolio Grid */}
             <ShowreelGrid
                 projects={projects}
                 categories={categories}
@@ -69,23 +79,11 @@ export default async function ShowreelPage({ params: { lang } }: PageProps) {
                 dict={grid}
             />
 
-            {/* CTA Section */}
-            <section className="section-padding bg-slate-50 dark:bg-dark-900 transition-colors duration-300">
-                <div className="container-custom">
-                    <div className="glass-card p-12 text-center bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-xl">
-                        <h2 className="heading-2 mb-6 text-slate-900 dark:text-white">
-                            {cta.title1}{' '}
-                            <span className="gradient-text">{cta.titleGradient}</span>
-                        </h2>
-                        <p className="text-body max-w-2xl mx-auto mb-10 transition-colors duration-300">
-                            {cta.subtitle}
-                        </p>
-                        <Link href={`/${lang}/contact`} className="btn-primary text-lg px-8 py-4">
-                            {cta.button}
-                        </Link>
-                    </div>
-                </div>
-            </section>
+            <CTA
+                lang={lang as Locale}
+                dict={cta}
+                commonDict={dict.hero}
+            />
         </div>
     );
 }

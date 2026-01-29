@@ -43,6 +43,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         service: '',
         budget: '',
         message: '',
+        website: '', // Honeypot field
     });
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -65,6 +66,14 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Honeypot check: if 'website' is filled, ignore the submission (likely a bot)
+        if (formState.website) {
+            console.log('Spam detected');
+            setIsSubmitted(true); // Pretend it was successful
+            return;
+        }
+
         if (!validate()) return;
 
         setIsSubmitting(true);
@@ -108,6 +117,18 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                 </div>
             ) : (
                 <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                    {/* Honeypot field - hidden from users */}
+                    <div className="hidden" aria-hidden="true">
+                        <input
+                            type="text"
+                            name="website"
+                            value={formState.website}
+                            onChange={handleChange}
+                            tabIndex={-1}
+                            autoComplete="off"
+                        />
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-dark-300 mb-2">

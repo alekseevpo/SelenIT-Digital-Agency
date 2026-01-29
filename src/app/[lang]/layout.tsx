@@ -26,6 +26,15 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
         description: dict.hero.subtitle,
         keywords: ['web development', 'digital agency', 'web design', 'UI/UX', 'React', 'Next.js'],
         authors: [{ name: 'Selen.IT Digital Agency' }],
+        metadataBase: new URL('https://selen.it'),
+        alternates: {
+            canonical: `/${lang}`,
+            languages: {
+                'en-US': '/en',
+                'ru-RU': '/ru',
+                'es-ES': '/es',
+            },
+        },
         openGraph: {
             title: 'Selen.IT | Digital Agency',
             description: dict.hero.subtitle,

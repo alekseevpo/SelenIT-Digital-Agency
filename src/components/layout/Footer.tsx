@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import type { Locale } from '@/i18n-config';
+import type { Dictionary } from '@/types/dictionary';
 
 interface FooterProps {
     lang: Locale;
 }
-
 
 const getFooterLinks = (lang: string) => {
     const isRu = lang === 'ru';
@@ -21,10 +21,8 @@ const getFooterLinks = (lang: string) => {
             { href: `/${lang}/about`, label: isRu ? 'О нас' : isEs ? 'Nosotros' : 'About Us' },
             { href: `/${lang}/showreel`, label: isRu ? 'Шоурил' : isEs ? 'Showreel' : 'Showreel' },
             { href: `/${lang}/contact`, label: isRu ? 'Контакты' : isEs ? 'Contacto' : 'Contact' },
-            { href: `/${lang}/careers`, label: isRu ? 'Карьера' : isEs ? 'Carreras' : 'Careers' },
         ],
         social: [
-
             { href: 'https://github.com', label: 'GitHub', icon: 'github' },
             { href: 'https://t.me/ppmtrue', label: 'Telegram', icon: 'telegram' },
             { href: 'https://wa.me/34624682795', label: 'WhatsApp', icon: 'whatsapp' },
@@ -35,7 +33,7 @@ const getFooterLinks = (lang: string) => {
 export default function Footer({ lang }: FooterProps) {
     const footerLinks = getFooterLinks(lang);
 
-    const navigations: Record<string, any> = {
+    const navigations: Record<Locale, Dictionary['common']['footer'] & { mission: string, privacy: string, terms: string }> = {
         en: {
             services: 'Services',
             company: 'Company',
@@ -68,31 +66,31 @@ export default function Footer({ lang }: FooterProps) {
     const dict = navigations[lang] || navigations.en;
 
     return (
-        <footer className="bg-white dark:bg-dark-950 border-t border-gray-200 dark:border-dark-800 transition-colors duration-300">
-            <div className="container-custom section-padding">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <footer className="bg-white dark:bg-dark-950 border-t border-slate-200 dark:border-dark-800 transition-colors duration-300">
+            <div className="container-custom py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Brand */}
                     <div className="lg:col-span-1">
-                        <Link href={`/${lang}`} className="flex items-center gap-2 mb-6">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center font-bold text-white text-xl">
+                        <Link href={`/${lang}`} className="flex items-center gap-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg">
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center font-bold text-white text-lg">
                                 S
                             </div>
-                            <span className="text-xl font-bold text-slate-900 dark:text-white">
+                            <span className="text-lg font-bold text-slate-900 dark:text-white">
                                 Selen.<span className="text-primary-400">IT</span>
                             </span>
                         </Link>
-                        <p className="text-slate-600 dark:text-dark-400 mb-6 leading-relaxed">
+                        <p className="text-slate-600 dark:text-dark-400 mb-4 leading-relaxed text-sm">
                             {dict.mission}
                         </p>
                         {/* Social Links */}
-                        <div className="flex gap-4">
+                        <div className="flex gap-3">
                             {footerLinks.social.map((link) => (
                                 <a
                                     key={link.label}
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-lg bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500/20 transition-all duration-300"
+                                    className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-dark-800 flex items-center justify-center text-primary-600 dark:text-primary-400 hover:text-white hover:bg-primary-500 transition-all duration-300"
                                     aria-label={link.label}
                                 >
                                     <SocialIcon name={link.icon} />
@@ -103,13 +101,13 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Services */}
                     <div>
-                        <h4 className="text-white font-semibold mb-6">{dict.services}</h4>
-                        <ul className="space-y-4">
+                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{dict.services}</h4>
+                        <ul className="space-y-2 text-sm">
                             {footerLinks.services.map((link) => (
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-dark-400 hover:text-primary-400 transition-colors duration-300"
+                                        className="text-slate-600 dark:text-dark-400 hover:text-primary-500 transition-colors duration-300"
                                     >
                                         {link.label}
                                     </Link>
@@ -120,13 +118,13 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Company */}
                     <div>
-                        <h4 className="text-white font-semibold mb-6">{dict.company}</h4>
-                        <ul className="space-y-4">
+                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{dict.company}</h4>
+                        <ul className="space-y-2 text-sm">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-dark-400 hover:text-primary-400 transition-colors duration-300"
+                                        className="text-slate-600 dark:text-dark-400 hover:text-primary-500 transition-colors duration-300"
                                     >
                                         {link.label}
                                     </Link>
@@ -137,29 +135,21 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Contact */}
                     <div>
-                        <h4 className="text-white font-semibold mb-6">{dict.getInTouch}</h4>
-                        <ul className="space-y-4 text-dark-400">
-                            <li className="flex items-center gap-3">
-                                <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{dict.getInTouch}</h4>
+                        <ul className="space-y-2 text-slate-600 dark:text-dark-400 text-sm">
+                            <li className="flex items-center gap-2">
+                                <svg className="w-4 h-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <a href="mailto:alekseevpo@gmail.com" className="hover:text-primary-400 transition-colors">
+                                <a href="mailto:alekseevpo@gmail.com" className="hover:text-primary-500 transition-colors">
                                     alekseevpo@gmail.com
                                 </a>
                             </li>
-                            <li className="flex items-center gap-3">
-                                <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <li className="flex items-center gap-2">
+                                <svg className="w-4 h-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                <a href="tel:+34624682795" className="hover:text-primary-400 transition-colors">
-                                    +34 624 68 27 95
-                                </a>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                </svg>
-                                <a href="https://wa.me/34624682795" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors">
+                                <a href="https://wa.me/34624682795" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors">
                                     WhatsApp
                                 </a>
                             </li>
@@ -168,15 +158,15 @@ export default function Footer({ lang }: FooterProps) {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-16 pt-8 border-t border-gray-200 dark:border-dark-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <p className="text-slate-500 dark:text-dark-500 text-sm">
+                <div className="mt-8 pt-6 border-t border-slate-200 dark:border-dark-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <p className="text-slate-500 dark:text-dark-500 text-xs italic">
                         © {new Date().getFullYear()} Selen.IT Digital Agency. {dict.rights}
                     </p>
-                    <div className="flex gap-6 text-sm">
-                        <Link href={`/${lang}/privacy`} className="text-dark-500 hover:text-primary-400 transition-colors">
+                    <div className="flex gap-6 text-xs font-medium">
+                        <Link href={`/${lang}/privacy`} className="text-slate-500 dark:text-dark-500 hover:text-primary-500 transition-colors">
                             {dict.privacy}
                         </Link>
-                        <Link href={`/${lang}/terms`} className="text-dark-500 hover:text-primary-400 transition-colors">
+                        <Link href={`/${lang}/terms`} className="text-slate-500 dark:text-dark-500 hover:text-primary-500 transition-colors">
                             {dict.terms}
                         </Link>
                     </div>
@@ -188,18 +178,6 @@ export default function Footer({ lang }: FooterProps) {
 
 function SocialIcon({ name }: { name: string }) {
     switch (name) {
-        case 'twitter':
-            return (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-            );
-        case 'linkedin':
-            return (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-            );
         case 'github':
             return (
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -218,10 +196,16 @@ function SocialIcon({ name }: { name: string }) {
                     <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                 </svg>
             );
-        case 'dribbble':
+        case 'linkedin':
             return (
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.82zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z" />
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+            );
+        case 'twitter':
+            return (
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
             );
         default:

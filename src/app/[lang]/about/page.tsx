@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 
@@ -38,8 +39,8 @@ const valueIcons: Record<string, React.ReactNode> = {
     ),
 };
 
-const teamMetadata: Record<string, { color: string }> = {
-    alexander: { color: 'from-blue-500 to-cyan-500' },
+const teamMetadata: Record<string, { color: string; position?: string }> = {
+    alexander: { color: 'from-blue-500 to-cyan-500', position: 'object-top' },
     maria: { color: 'from-purple-500 to-pink-500' },
     dmitry: { color: 'from-green-500 to-emerald-500' },
     elena: { color: 'from-orange-500 to-amber-500' },
@@ -88,7 +89,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
 
                         {/* Stats Grid */}
                         <div className="grid grid-cols-2 gap-6">
-                            {stats.map((stat: any) => (
+                            {stats.map((stat) => (
                                 <div key={stat.label} className="glass-card p-8 text-center bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700">
                                     <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">{stat.value}</div>
                                     <div className="text-slate-500 dark:text-dark-400">{stat.label}</div>
@@ -116,7 +117,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {values.list.map((value: any) => (
+                        {values.list.map((value) => (
                             <div key={value.id} className="glass-card p-8 card-hover">
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-primary-400 mb-6">
                                     {valueIcons[value.id]}
@@ -145,14 +146,16 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {team.members.map((member: any) => (
+                        {team.members.map((member) => (
                             <div key={member.id} className="glass-card p-6 text-center card-hover group bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm">
                                 <div className={`relative w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 ${!member.avatar.includes('/') ? `bg-gradient-to-br ${teamMetadata[member.id]?.color || 'from-slate-500 to-slate-600'} flex items-center justify-center` : ''}`}>
                                     {member.avatar.includes('/') ? (
-                                        <img
+                                        <Image
                                             src={member.avatar}
                                             alt={member.name}
-                                            className="w-full h-full object-cover"
+                                            fill
+                                            className={`object-cover ${teamMetadata[member.id]?.position || 'object-center'}`}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                     ) : (
                                         <span className="text-white text-2xl font-bold">{member.avatar}</span>

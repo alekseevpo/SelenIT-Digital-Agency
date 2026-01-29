@@ -1,4 +1,5 @@
 import type { Locale } from './i18n-config';
+import type { Dictionary } from './types/dictionary';
 
 const dictionaries = {
     en: () => import('./dictionaries/en.json').then((module) => module.default),
@@ -6,7 +7,7 @@ const dictionaries = {
     es: () => import('./dictionaries/es.json').then((module) => module.default),
 };
 
-export const getDictionary = async (locale: Locale) => {
-    const loadDictionary = dictionaries[locale] || dictionaries.en;
+export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
+    const loadDictionary = (dictionaries[locale] || dictionaries.en) as () => Promise<Dictionary>;
     return loadDictionary();
 };
