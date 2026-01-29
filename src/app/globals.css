@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Colors */
   --primary: #6366f1;
@@ -22,7 +22,7 @@
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
-  --border-color: rgba(0, 0, 0, 0.1);
+  --border-color: rgba(0, 0, 0, 0.08);
   --glass-bg: rgba(255, 255, 255, 0.7);
   --card-bg: rgba(255, 255, 255, 0.5);
 
@@ -34,13 +34,13 @@
 
 .dark {
   /* Dark theme overrides */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
-  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.08);
   --glass-bg: rgba(15, 23, 42, 0.8);
   --card-bg: rgba(30, 41, 59, 0.3);
 }
@@ -53,6 +53,9 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Lenis smooth scroll */
@@ -92,10 +95,17 @@ html.transitioning *::after {
 body {
   font-family: var(--font-inter);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
   overflow-x: hidden;
   background-color: var(--bg-primary);
   transition: background-color 0.5s ease;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Better paragraph readability */
+p {
+  max-width: 70ch;
 }
 
 /* Selection */
@@ -106,7 +116,7 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -115,7 +125,8 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-tertiary);
-  border-radius: 4px;
+  border-radius: 5px;
+  border: 2px solid var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -163,21 +174,21 @@ body {
   }
 
   .heading-1 {
-    @apply text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight;
+    @apply text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight;
   }
 
   .heading-2 {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight;
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight;
   }
 
   .heading-3 {
-    @apply text-2xl sm:text-3xl font-bold leading-tight;
+    @apply text-2xl sm:text-3xl font-bold leading-[1.2] tracking-tight;
   }
 
   .text-body {
     background-color: transparent;
     color: var(--text-secondary);
-    @apply text-lg leading-relaxed;
+    @apply text-base sm:text-lg leading-relaxed;
   }
 
   .card-hover {
@@ -193,7 +204,141 @@ body {
   }
 }
 
-/* Animated background */
+/* ======================= */
+/* Technologies Scroll     */
+/* ======================= */
+.tech-scroll-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.tech-scroll {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  will-change: transform;
+}
+
+@media (min-width: 768px) {
+  .tech-scroll {
+    gap: 1.5rem;
+  }
+}
+
+.tech-scroll-left {
+  animation: scrollLeft 40s linear infinite;
+}
+
+.tech-scroll-right {
+  animation: scrollRight 40s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(calc(-100% / 3));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Pause on hover */
+.tech-scroll-container:hover .tech-scroll {
+  animation-play-state: paused;
+}
+
+.tech-card {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tech-card-inner {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Light mode */
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+@media (min-width: 768px) {
+  .tech-card-inner {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 1.5rem;
+  }
+}
+
+.dark .tech-card-inner {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.tech-card:hover .tech-card-inner {
+  transform: translateY(-4px) scale(1.05);
+
+  /* Light mode hover */
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow:
+    0 8px 24px rgba(99, 102, 241, 0.15),
+    0 4px 12px rgba(99, 102, 241, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.dark .tech-card:hover .tech-card-inner {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow:
+    0 8px 24px rgba(99, 102, 241, 0.2),
+    0 4px 12px rgba(99, 102, 241, 0.15),
+    0 0 40px rgba(99, 102, 241, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.tech-card-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tech-card:hover .tech-card-label {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--text-secondary);
+}
+
+/* ======================= */
+/* Animated background     */
+/* ======================= */
 .animated-bg {
   position: relative;
   overflow: hidden;
@@ -223,8 +368,6 @@ body {
   animation: float 25s ease-in-out infinite reverse;
 }
 
-
-
 /* Focus styles */
 *:focus-visible {
   outline: 2px solid var(--primary);
@@ -234,6 +377,49 @@ body {
 /* Responsive typography */
 @media (max-width: 640px) {
   html {
-    font-size: 14px;
+    font-size: 15px;
+  }
+
+  .text-body {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+}
+
+/* Better text contrast for readability */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-slate-900 dark:text-white;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* Gradient keyframe animation */
+@keyframes gradientX {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(2%, 2%) rotate(1deg);
+  }
+  50% {
+    transform: translate(0, 4%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-2%, 2%) rotate(-1deg);
   }
 }
