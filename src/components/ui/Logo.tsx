@@ -33,7 +33,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
             transition: {
                 duration: 0.6,
                 delay: 0.6 + i * 0.08,
-                ease: [0.215, 0.61, 0.355, 1] as const
+                ease: [0.215, 0.61, 0.355, 1]
             }
         })
     };
@@ -46,7 +46,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
             transition: {
                 duration: 0.5,
                 delay: 1.0,
-                type: "spring" as const,
+                type: "spring",
                 stiffness: 500,
                 damping: 15
             }

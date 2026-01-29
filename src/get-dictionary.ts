@@ -8,6 +8,6 @@ const dictionaries = {
 };
 
 export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
-    const loadDictionary = (dictionaries[locale] || dictionaries.en) as unknown as () => Promise<Dictionary>;
+    const loadDictionary = (dictionaries[locale] || dictionaries.en) as () => Promise<Dictionary>;
     return loadDictionary();
 };
