@@ -7,7 +7,7 @@ import type { Locale } from '@/i18n-config';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-// import FluidBackground from '@/components/ui/FluidBackground';
+import { PageTransition } from '@/components/providers/PageTransition';
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
@@ -72,10 +72,11 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <SmoothScrollProvider>
-                        {/* <FluidBackground /> */}
                         <Header lang={lang as any} />
                         <main className="min-h-screen transition-colors duration-300">
-                            {children}
+                            <PageTransition>
+                                {children}
+                            </PageTransition>
                         </main>
                         <Footer lang={lang as any} />
                     </SmoothScrollProvider>
