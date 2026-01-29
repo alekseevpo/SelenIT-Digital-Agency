@@ -3,7 +3,7 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { Reveal } from '../ui/Reveal';
-import { TrustpilotWidget, TrustpilotCarousel } from '../ui/TrustpilotWidget';
+import { ExternalLink, Star } from 'lucide-react';
 
 interface Testimonial {
     id: number;
@@ -23,24 +23,18 @@ interface TestimonialsProps {
         trustpilotCta?: string;
     };
     testimonials: Testimonial[];
-    trustpilotId?: string;
 }
 
-// Trustpilot Business Unit ID
-const TRUSTPILOT_BUSINESS_ID = 'selenit-digital-agency.vercel.app';
+// Trustpilot profile URL
+const TRUSTPILOT_URL = 'https://www.trustpilot.com/review/selenit-digital-agency.vercel.app';
 
-export default function Testimonials({ lang, dict, testimonials, trustpilotId }: TestimonialsProps) {
+export default function Testimonials({ lang, dict, testimonials }: TestimonialsProps) {
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
     }, []);
-
-    const businessId = trustpilotId || TRUSTPILOT_BUSINESS_ID;
-    const isConfigured = businessId !== 'YOUR_BUSINESS_UNIT_ID';
-    const locale = lang === 'ru' ? 'ru-RU' : lang === 'es' ? 'es-ES' : 'en-US';
-    const theme = mounted && resolvedTheme === 'dark' ? 'dark' : 'light';
 
     return (
         <section className="section-padding transition-colors duration-300">
@@ -62,22 +56,6 @@ export default function Testimonials({ lang, dict, testimonials, trustpilotId }:
                             {dict.subtitle}
                         </p>
                     </Reveal>
-
-                    {/* Trustpilot Badge */}
-                    {isConfigured && mounted && (
-                        <Reveal width="100%" delay={0.5}>
-                            <div className="mt-8 flex justify-center">
-                                <TrustpilotWidget
-                                    businessUnitId={businessId}
-                                    locale={locale}
-                                    theme={theme}
-                                    templateId="5419b6ffb0d04a076446a9af"
-                                    height="24px"
-                                    width="280px"
-                                />
-                            </div>
-                        </Reveal>
-                    )}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
@@ -86,9 +64,7 @@ export default function Testimonials({ lang, dict, testimonials, trustpilotId }:
                             <div className="glass-card p-8 bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 shadow-sm card-hover transition-colors duration-300 h-full flex flex-col rounded-2xl">
                                 <div className="flex gap-1 mb-6">
                                     {[...Array(5)].map((_, i) => (
-                                        <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                        </svg>
+                                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                                     ))}
                                 </div>
                                 <p className="text-slate-600 dark:text-dark-300 italic mb-8 flex-1 leading-relaxed line-clamp-6">
@@ -108,33 +84,42 @@ export default function Testimonials({ lang, dict, testimonials, trustpilotId }:
                     ))}
                 </div>
 
-                {/* Trustpilot Carousel */}
-                {isConfigured && mounted && (
-                    <Reveal width="100%" delay={0.5}>
-                        <div className="mt-16 pt-12 border-t border-slate-200 dark:border-dark-800">
-                            <div className="flex items-center justify-center gap-3 mb-8">
-                                <TrustpilotLogo />
-                                <span className="text-slate-600 dark:text-slate-400 text-sm font-medium">
+                {/* Trustpilot CTA */}
+                <Reveal width="100%" delay={0.5}>
+                    <div className="mt-16 pt-12 border-t border-slate-200 dark:border-dark-800">
+                        <a
+                            href={TRUSTPILOT_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-50 to-slate-100 dark:from-dark-800 dark:to-dark-900 border border-slate-200 dark:border-dark-700 hover:border-[#00B67A]/50 dark:hover:border-[#00B67A]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#00B67A]/10"
+                        >
+                            {/* Trustpilot Logo */}
+                            <div className="flex items-center gap-3">
+                                <svg className="w-8 h-8" viewBox="0 0 126 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M33.3 13.5h-8.2l-2.5-7.8L20 13.5h-8.2l6.6 4.8-2.5 7.8 6.6-4.8 6.6 4.8-2.5-7.8 6.7-4.8z" fill="#00B67A"/>
+                                    <path d="M27.2 20.5l-.6-1.8-4.1 3 4.7-1.2z" fill="#005128"/>
+                                </svg>
+                                <span className="text-xl font-bold text-[#00B67A]">Trustpilot</span>
+                            </div>
+
+                            {/* Stars */}
+                            <div className="flex items-center gap-1 px-3 py-1.5 bg-[#00B67A] rounded-md">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star key={i} className="w-4 h-4 text-white fill-white" />
+                                ))}
+                            </div>
+
+                            {/* CTA Text */}
+                            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 group-hover:text-[#00B67A] transition-colors">
+                                <span className="font-medium">
                                     {dict.trustpilotCta || 'See our reviews on Trustpilot'}
                                 </span>
+                                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </div>
-                            <TrustpilotCarousel
-                                businessUnitId={businessId}
-                                locale={locale}
-                                theme={theme}
-                            />
-                        </div>
-                    </Reveal>
-                )}
+                        </a>
+                    </div>
+                </Reveal>
             </div>
         </section>
-    );
-}
-
-function TrustpilotLogo() {
-    return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#00B67A"/>
-        </svg>
     );
 }
