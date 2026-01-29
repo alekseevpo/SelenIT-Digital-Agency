@@ -43,7 +43,7 @@ const teamMetadata: Record<string, { color: string; position?: string }> = {
     alexander: { color: 'from-blue-500 to-cyan-500', position: 'object-top rotate-90' },
     maria: { color: 'from-purple-500 to-pink-500' },
     dmitry: { color: 'from-green-500 to-emerald-500' },
-    elena: { color: 'from-orange-500 to-amber-500' },
+    daryna: { color: 'from-orange-500 to-amber-500' },
 };
 
 export default async function AboutPage({ params: { lang } }: AboutPageProps) {
