@@ -23,6 +23,8 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
                 gestureOrientation: 'vertical',
                 smoothWheel: true,
                 touchMultiplier: 2,
+                autoResize: true,
+                prevent: (node: Element) => node.classList.contains('lenis-prevent'),
             });
 
             lenisRef.current = lenis;
