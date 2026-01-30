@@ -40,7 +40,7 @@ const valueIcons: Record<string, React.ReactNode> = {
 };
 
 const teamMetadata: Record<string, { color: string; position?: string }> = {
-    alexander: { color: 'from-blue-500 to-cyan-500', position: 'object-top' },
+    alexander: { color: 'from-blue-500 to-cyan-500', position: 'object-[50%_20%]' },
     maria: { color: 'from-purple-500 to-pink-500', position: 'object-top' },
     dmitry: { color: 'from-green-500 to-emerald-500' },
     daryna: { color: 'from-orange-500 to-amber-500' },
