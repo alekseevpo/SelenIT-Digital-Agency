@@ -167,12 +167,12 @@ export default function Header({ lang }: HeaderProps) {
                             className={`
                                 px-1.5 py-1.5 rounded-full flex items-center gap-0.5
                                 backdrop-blur-2xl
-                                bg-white/10 dark:bg-white/5
+                                bg-cream-50/10 dark:bg-cream-50/5
                                 border border-white/20 dark:border-white/10
                                 shadow-[0_8px_32px_rgba(0,0,0,0.08)]
                                 dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]
                                 transition-all duration-500
-                                ${isScrolled ? 'bg-white/20 dark:bg-black/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]' : ''}
+                                ${isScrolled ? 'bg-cream-50/20 dark:bg-black/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]' : ''}
                             `}
                         >
                             {navLinks.map((link) => {
@@ -186,14 +186,14 @@ export default function Header({ lang }: HeaderProps) {
                                             transition-all duration-300 relative
                                             ${isActive
                                                 ? 'text-white'
-                                                : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/30 dark:hover:bg-white/10'
+                                                : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-cream-50/30 dark:hover:bg-cream-50/10'
                                             }
                                         `}
                                     >
                                         {isActive && (
                                             <motion.div
                                                 layoutId="activeTab"
-                                                className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full -z-10 shadow-lg shadow-primary-500/30"
+                                                className="absolute inset-0 bg-gradient-to-r from-orange-500 to-green-500 dark:from-primary-500 dark:to-accent-500 rounded-full -z-10 shadow-lg shadow-orange-500/30 dark:shadow-primary-500/30"
                                                 transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                                             />
                                         )}
@@ -211,28 +211,28 @@ export default function Header({ lang }: HeaderProps) {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="hidden md:flex items-center gap-2 pointer-events-auto"
                     >
-                        <div className="backdrop-blur-2xl bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full flex items-center gap-1 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+                        <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full flex items-center gap-1 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
                             <LanguageSwitcher currentLang={lang} />
                         </div>
-                        <div className="backdrop-blur-2xl bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+                        <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
                             <ThemeToggle />
                         </div>
                     </motion.div>
 
                     {/* Mobile Controls - Top Right */}
                     <div className="md:hidden flex items-center gap-2 pointer-events-auto">
-                        <div className="backdrop-blur-2xl bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full">
+                        <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full">
                             <ThemeToggle />
                         </div>
                         <motion.button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="backdrop-blur-2xl bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 w-12 h-12 rounded-full flex items-center justify-center transition-all active:scale-90 hover:bg-white/20 dark:hover:bg-white/10"
+                            className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 w-12 h-12 rounded-full flex items-center justify-center transition-all active:scale-90 hover:bg-cream-50/20 dark:hover:bg-cream-50/10"
                             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                             whileTap={{ scale: 0.9 }}
                         >
                             <div className="w-5 h-5 relative">
                                 <motion.span
-                                    className="absolute left-0 w-5 h-0.5 bg-slate-800 dark:bg-white rounded-full"
+                                    className="absolute left-0 w-5 h-0.5 bg-slate-800 dark:bg-cream-50 rounded-full"
                                     animate={{
                                         top: isMobileMenuOpen ? '10px' : '4px',
                                         rotate: isMobileMenuOpen ? 45 : 0,
@@ -240,7 +240,7 @@ export default function Header({ lang }: HeaderProps) {
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
                                 />
                                 <motion.span
-                                    className="absolute left-0 top-[10px] w-5 h-0.5 bg-slate-800 dark:bg-white rounded-full"
+                                    className="absolute left-0 top-[10px] w-5 h-0.5 bg-slate-800 dark:bg-cream-50 rounded-full"
                                     animate={{
                                         opacity: isMobileMenuOpen ? 0 : 1,
                                         scaleX: isMobileMenuOpen ? 0 : 1,
@@ -248,7 +248,7 @@ export default function Header({ lang }: HeaderProps) {
                                     transition={{ duration: 0.2 }}
                                 />
                                 <motion.span
-                                    className="absolute left-0 w-5 h-0.5 bg-slate-800 dark:bg-white rounded-full"
+                                    className="absolute left-0 w-5 h-0.5 bg-slate-800 dark:bg-cream-50 rounded-full"
                                     animate={{
                                         top: isMobileMenuOpen ? '10px' : '16px',
                                         rotate: isMobileMenuOpen ? -45 : 0,
@@ -277,12 +277,12 @@ export default function Header({ lang }: HeaderProps) {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="w-full max-w-sm rounded-3xl p-5 relative overflow-hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/50 dark:border-white/10 shadow-2xl shadow-black/10 dark:shadow-black/30"
+                            className="w-full max-w-sm rounded-3xl p-5 relative overflow-hidden bg-cream-50/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/50 dark:border-white/10 shadow-2xl shadow-black/10 dark:shadow-black/30"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Decorative gradient */}
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-primary-500/10 to-accent-500/10 rounded-full blur-3xl pointer-events-none" />
-                            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-accent-500/10 to-primary-500/10 rounded-full blur-3xl pointer-events-none" />
+                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-500/10 to-green-500/10 dark:from-primary-500/10 dark:to-accent-500/10 rounded-full blur-3xl pointer-events-none" />
+                            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-green-500/10 to-orange-500/10 dark:from-accent-500/10 dark:to-primary-500/10 rounded-full blur-3xl pointer-events-none" />
 
                             <div className="relative z-10">
                                 {/* Header */}
@@ -293,7 +293,7 @@ export default function Header({ lang }: HeaderProps) {
                                     <h2 className="text-base font-bold text-slate-900 dark:text-white">{dict.menu}</h2>
                                     <motion.button
                                         onClick={closeMenu}
-                                        className="w-9 h-9 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/10 rounded-full transition-colors"
+                                        className="w-9 h-9 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-cream-50/10 rounded-full transition-colors"
                                         whileHover={{ rotate: 90 }}
                                         whileTap={{ scale: 0.9 }}
                                         transition={{ duration: 0.2 }}
@@ -319,8 +319,8 @@ export default function Header({ lang }: HeaderProps) {
                                                         w-full flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-semibold
                                                         transition-all duration-200
                                                         ${isActive
-                                                            ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-500/20'
-                                                            : 'bg-slate-100/80 dark:bg-white/5 hover:bg-slate-200/80 dark:hover:bg-white/10 text-slate-700 dark:text-slate-200'
+                                                            ? 'bg-gradient-to-r from-orange-500 to-green-500 dark:from-primary-500 dark:to-accent-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-primary-500/20'
+                                                            : 'bg-cream-200/80 dark:bg-cream-50/5 hover:bg-cream-200 dark:hover:bg-cream-50/10 text-slate-700 dark:text-slate-200'
                                                         }
                                                     `}
                                                     onClick={closeMenu}

@@ -43,12 +43,12 @@ export default async function ContactPage({ params: { lang } }: PageProps) {
     ];
 
     return (
-        <div className="bg-white dark:bg-dark-950 min-h-screen transition-colors duration-300">
+        <div className="bg-cream-50 dark:bg-dark-950 min-h-screen transition-colors duration-300">
             {/* Hero Section */}
-            <section className="pt-32 pb-20 relative overflow-hidden bg-white dark:bg-dark-950 transition-colors duration-300">
+            <section className="pt-32 pb-20 relative overflow-hidden bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
-                        <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
                         <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
@@ -63,7 +63,7 @@ export default async function ContactPage({ params: { lang } }: PageProps) {
             </section>
 
             {/* Contact Section */}
-            <section className="section-padding bg-slate-50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100 dark:bg-dark-900 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                         {/* Contact Info */}
@@ -82,9 +82,9 @@ export default async function ContactPage({ params: { lang } }: PageProps) {
                                         href={item.href}
                                         target={item.title === 'Telegram' || item.title === 'WhatsApp' ? '_blank' : undefined}
                                         rel={item.title === 'Telegram' || item.title === 'WhatsApp' ? 'noopener noreferrer' : undefined}
-                                        className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 hover:border-primary-500 dark:hover:border-primary-500 hover:shadow-md transition-all group w-full"
+                                        className="flex items-center gap-4 p-4 rounded-xl bg-cream-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 hover:border-orange-500 dark:hover:border-primary-500 hover:shadow-md transition-all group w-full"
                                     >
-                                        <div className="w-12 h-12 rounded-lg bg-slate-50 dark:bg-dark-700 flex items-center justify-center text-primary-500 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                                        <div className="w-12 h-12 rounded-lg bg-cream-100 dark:bg-dark-700 flex items-center justify-center text-orange-500 dark:text-primary-500 group-hover:bg-orange-500 dark:group-hover:bg-primary-500 group-hover:text-white transition-colors">
                                             {item.icon}
                                         </div>
                                         <div>
@@ -98,7 +98,7 @@ export default async function ContactPage({ params: { lang } }: PageProps) {
                             </div>
 
                             {/* Office Hours */}
-                            <div className="glass-card p-6 bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm mt-8">
+                            <div className="glass-card p-6 bg-cream-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm mt-8">
                                 <h3 className="font-semibold text-slate-900 dark:text-white mb-4">{info.hoursTitle}</h3>
                                 <div className="space-y-2 text-sm text-slate-600 dark:text-dark-400">
                                     <div className="flex justify-between">

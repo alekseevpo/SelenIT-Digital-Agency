@@ -78,10 +78,10 @@ export default function Hero({ dict, lang }: HeroProps) {
                         variants={itemVariants}
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
-                        <Link href={`/${lang}/contact`} className="btn-primary text-lg px-8 py-4">
+                        <Link href={`/${lang}/contact`} className="btn-primary text-lg px-8 py-4 min-w-[220px] text-center">
                             {dict.ctaPrimary}
                         </Link>
-                        <Link href={`/${lang}/showreel`} className="btn-secondary text-lg px-8 py-4 flex items-center gap-2">
+                        <Link href={`/${lang}/showreel`} className="btn-secondary text-lg px-8 py-4 min-w-[220px] flex items-center justify-center gap-2">
                             {dict.ctaSecondary}
                             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -124,7 +124,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                     className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
                 >
                     <div className="w-6 h-10 rounded-full border-2 border-slate-400 dark:border-dark-600 flex justify-center pt-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-orange-500 dark:bg-primary-500 animate-pulse" />
                     </div>
                 </motion.div>
             </div>

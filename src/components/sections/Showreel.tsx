@@ -37,7 +37,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                     <div className="max-w-2xl">
                         <Reveal>
-                            <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                            <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                                 {dict.badge}
                             </span>
                         </Reveal>
@@ -56,7 +56,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                     <Reveal delay={0.3} className="shrink-0">
                         <Link
                             href={`/${lang}/showreel`}
-                            className="hidden md:inline-flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-primary-500 hover:shadow-lg hover:shadow-primary-500/10 active:scale-95"
+                            className="hidden md:inline-flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-orange-500 dark:hover:border-primary-500 hover:shadow-lg hover:shadow-orange-500/10 dark:hover:shadow-primary-500/10 active:scale-95"
                         >
                             {dict.button}
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,10 +77,10 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {featuredProjects.map((project, index) => (
                         <Reveal key={project.id} delay={0.1 * index}>
-                            <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 aspect-[16/10] flex flex-col justify-end p-6 md:p-8">
+                            <div className="group relative overflow-hidden rounded-2xl bg-cream-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 aspect-[16/10] flex flex-col justify-end p-6 md:p-8">
                                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
                                 <div className="relative z-10">
-                                    <span className="text-primary-400 text-xs font-semibold uppercase tracking-wider mb-2 block">
+                                    <span className="text-orange-500 dark:text-primary-400 text-xs font-semibold uppercase tracking-wider mb-2 block">
                                         {project.category}
                                     </span>
                                     <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-3">
@@ -88,7 +88,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                     </h3>
                                     <Link
                                         href={`/${lang}/showreel`}
-                                        className="inline-flex items-center text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-primary-500 dark:hover:text-primary-400 transition-colors group/link"
+                                        className="inline-flex items-center text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-orange-500 dark:hover:text-primary-400 transition-colors group/link"
                                     >
                                         Подробнее
                                         <svg className="w-4 h-4 ml-1.5 transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -106,7 +106,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                     <Reveal>
                         <Link
                             href={`/${lang}/showreel`}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-primary-500 active:scale-95"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-orange-500 dark:hover:border-primary-500 active:scale-95"
                         >
                             {dict.button}
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

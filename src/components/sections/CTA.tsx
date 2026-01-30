@@ -29,7 +29,7 @@ export default function CTA({ lang, dict, commonDict }: CTAProps) {
                 <Reveal width="100%">
                     <h2 className="heading-2 text-white mb-6">
                         {dict.title1}{' '}
-                        <span className="text-primary-400">{dict.titleGradient}</span>
+                        <span className="text-orange-400 dark:text-primary-400">{dict.titleGradient}</span>
                     </h2>
                 </Reveal>
                 <Reveal width="100%" delay={0.3}>

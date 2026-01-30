@@ -41,7 +41,7 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
             <div className="container-custom">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <Reveal width="100%">
-                        <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {dict.badge}
                         </span>
                     </Reveal>
@@ -61,7 +61,7 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                     {testimonials.map((testimonial, index) => (
                         <Reveal key={testimonial.id} delay={0.1 * index} width="100%" className="h-full">
-                            <div className="glass-card p-8 bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 shadow-sm card-hover transition-colors duration-300 h-full flex flex-col rounded-2xl">
+                            <div className="glass-card p-8 bg-cream-100 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 shadow-sm card-hover transition-colors duration-300 h-full flex flex-col rounded-2xl">
                                 <div className="flex gap-1 mb-6">
                                     {[...Array(5)].map((_, i) => (
                                         <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />

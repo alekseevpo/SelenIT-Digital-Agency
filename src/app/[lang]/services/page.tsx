@@ -55,12 +55,12 @@ export default async function ServicesPage({ params: { lang } }: ServicesPagePro
     const { hero, list: servicesList, process, cta } = dict.services;
 
     return (
-        <div className="bg-white dark:bg-dark-950 transition-colors duration-300">
+        <div className="bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
             {/* Hero Section */}
-            <section className="pt-32 pb-20 relative overflow-hidden bg-white dark:bg-dark-950 transition-colors duration-300">
+            <section className="pt-32 pb-20 relative overflow-hidden bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <Reveal width="100%">
-                        <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
                     </Reveal>
@@ -86,7 +86,7 @@ export default async function ServicesPage({ params: { lang } }: ServicesPagePro
                             <Reveal key={service.id} delay={0.2 * index} width="100%">
                                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                                     <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-primary-500 mb-8">
+                                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-green-500/20 dark:from-primary-500/20 dark:to-accent-500/20 flex items-center justify-center text-orange-500 dark:text-primary-500 mb-8">
                                             {serviceIcons[service.id]}
                                         </div>
                                         <h3 className="heading-3 mb-6 text-slate-900 dark:text-white">{service.title}</h3>
@@ -96,7 +96,7 @@ export default async function ServicesPage({ params: { lang } }: ServicesPagePro
                                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             {service.features.map((feature) => (
                                                 <li key={feature} className="flex items-center gap-3 text-slate-700 dark:text-dark-300">
-                                                    <div className="w-5 h-5 rounded-full bg-primary-500/10 flex items-center justify-center text-primary-500">
+                                                    <div className="w-5 h-5 rounded-full bg-orange-500/10 dark:bg-primary-500/10 flex items-center justify-center text-orange-500 dark:text-primary-500">
                                                         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                                         </svg>
@@ -119,11 +119,11 @@ export default async function ServicesPage({ params: { lang } }: ServicesPagePro
             </section>
 
             {/* Process Section */}
-            <section className="section-padding bg-slate-50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100 dark:bg-dark-900 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <Reveal width="100%">
-                            <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                            <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                                 {process.badge}
                             </span>
                         </Reveal>
@@ -143,8 +143,8 @@ export default async function ServicesPage({ params: { lang } }: ServicesPagePro
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {process.steps.map((item) => (
                             <Reveal key={item.step} delay={0.1 * parseInt(item.step)}>
-                                <div className="glass-card p-10 bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 h-full relative group hover:shadow-lg transition-all">
-                                    <div className="text-7xl font-bold text-slate-900/5 dark:text-white/5 absolute top-6 right-8 group-hover:text-primary-500/10 transition-colors">
+                                <div className="glass-card p-10 bg-cream-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 h-full relative group hover:shadow-lg transition-all">
+                                    <div className="text-7xl font-bold text-slate-900/5 dark:text-white/5 absolute top-6 right-8 group-hover:text-orange-500/10 dark:group-hover:text-primary-500/10 transition-colors">
                                         {item.step}
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 relative z-10">{item.title}</h3>

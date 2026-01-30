@@ -53,7 +53,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
                             transition-all duration-300
                             ${isActive
                                 ? 'text-white'
-                                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/30 dark:hover:bg-white/10'
+                                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-cream-50/30 dark:hover:bg-cream-50/10'
                             }
                             disabled:cursor-wait
                         `}
@@ -63,7 +63,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
                         {isActive && (
                             <motion.div
                                 layoutId="activeLang"
-                                className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full -z-10 shadow-lg shadow-primary-500/30"
+                                className="absolute inset-0 bg-gradient-to-r from-orange-500 to-green-500 dark:from-primary-500 dark:to-accent-500 rounded-full -z-10 shadow-lg shadow-orange-500/30 dark:shadow-primary-500/30"
                                 transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                             />
                         )}
@@ -77,7 +77,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="ml-1 w-4 h-4 rounded-full border-2 border-primary-500 border-t-transparent animate-spin"
+                    className="ml-1 w-4 h-4 rounded-full border-2 border-orange-500 dark:border-primary-500 border-t-transparent animate-spin"
                 />
             )}
         </div>

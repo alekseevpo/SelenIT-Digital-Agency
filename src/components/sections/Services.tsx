@@ -47,7 +47,7 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <Reveal width="100%">
-                        <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {dict.badge}
                         </span>
                     </Reveal>
@@ -68,9 +68,9 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {displayServices.map((service, index) => (
                         <Reveal key={service.id} delay={0.2 * index}>
-                            <div className="glass-card p-8 card-hover group h-full bg-slate-50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 shadow-sm">
+                            <div className="glass-card p-8 card-hover group h-full bg-cream-100 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 shadow-sm">
                                 {/* Icon */}
-                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-primary-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500/20 to-green-500/20 dark:from-primary-500/20 dark:to-accent-500/20 flex items-center justify-center text-orange-500 dark:text-primary-400 mb-6 group-hover:scale-110 transition-transform duration-300">
                                     {serviceIcons[service.id]}
                                 </div>
 
@@ -88,7 +88,7 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                                 <ul className="space-y-2">
                                     {service.features.slice(0, 3).map((feature) => (
                                         <li key={feature} className="flex items-center gap-2 text-sm text-slate-500 dark:text-dark-300">
-                                            <svg className="w-4 h-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg className="w-4 h-4 text-green-500 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                             </svg>
                                             {feature}

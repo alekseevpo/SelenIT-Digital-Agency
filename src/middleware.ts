@@ -11,6 +11,14 @@ function getLocale(request: NextRequest): string | undefined {
     const locales = i18n.locales as unknown as string[];
     let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
+    // Filter out wildcards and invalid locale strings
+    languages = languages.filter((lang) => lang !== '*' && /^[a-zA-Z]{2,3}(-[a-zA-Z]{2,3})?$/.test(lang));
+
+    // If no valid languages, return default
+    if (languages.length === 0) {
+        return i18n.defaultLocale;
+    }
+
     const locale = matchLocale(languages, locales, i18n.defaultLocale);
     return locale;
 }

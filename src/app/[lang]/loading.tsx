@@ -1,6 +1,6 @@
 export default function Loading() {
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white/80 dark:bg-dark-950/80 backdrop-blur-sm transition-colors duration-300">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-cream-50/80 dark:bg-dark-950/80 backdrop-blur-sm transition-colors duration-300">
             <div className="flex flex-col items-center gap-4">
                 {/* Animated Logo Spinner */}
                 <div className="relative w-16 h-16">

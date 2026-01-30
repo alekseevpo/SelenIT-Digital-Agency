@@ -18,7 +18,7 @@ export default async function TermsPage({ params: { lang } }: PageProps) {
     const { hero, content } = dict.terms;
 
     return (
-        <div className="bg-white dark:bg-dark-950 min-h-screen py-24">
+        <div className="bg-cream-50 dark:bg-dark-950 min-h-screen py-24">
             <div className="container-custom px-4 sm:px-6 lg:px-8">
                 <div className="max-w-3xl mx-auto">
                     <h1 className="heading-2 mb-4 text-slate-900 dark:text-white">{hero.title}</h1>

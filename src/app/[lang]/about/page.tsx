@@ -52,10 +52,10 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
 
     return (
         <>
-            <section className="pt-32 pb-20 relative overflow-hidden bg-white dark:bg-dark-950 transition-colors duration-300">
+            <section className="pt-32 pb-20 relative overflow-hidden bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
-                        <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
                         <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
@@ -69,11 +69,11 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                 </div>
             </section>
 
-            <section className="section-padding bg-slate-50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100 dark:bg-dark-900 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                            <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                                 {story.badge}
                             </span>
                             <h2 className="heading-2 mb-6 text-slate-900 dark:text-white">
@@ -90,7 +90,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                         {/* Stats Grid */}
                         <div className="grid grid-cols-2 gap-6">
                             {stats.map((stat) => (
-                                <div key={stat.label} className="glass-card p-8 text-center bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700">
+                                <div key={stat.label} className="glass-card p-8 text-center bg-cream-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700">
                                     <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">{stat.value}</div>
                                     <div className="text-slate-500 dark:text-dark-400">{stat.label}</div>
                                 </div>
@@ -104,7 +104,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
             <section className="section-padding">
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {values.badge}
                         </span>
                         <h2 className="heading-2 mb-6">
@@ -119,7 +119,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {values.list.map((value) => (
                             <div key={value.id} className="glass-card p-8 card-hover">
-                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-primary-400 mb-6">
+                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500/20 to-green-500/20 dark:from-primary-500/20 dark:to-accent-500/20 flex items-center justify-center text-orange-500 dark:text-primary-400 mb-6">
                                     {valueIcons[value.id]}
                                 </div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{value.title}</h3>
@@ -130,10 +130,10 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                 </div>
             </section>
 
-            <section className="section-padding bg-slate-50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100 dark:bg-dark-900 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {team.badge}
                         </span>
                         <h2 className="heading-2 mb-6 text-slate-900 dark:text-white">
@@ -147,7 +147,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {team.members.map((member) => (
-                            <div key={member.id} className="glass-card p-6 text-center card-hover group bg-white dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm">
+                            <div key={member.id} className="glass-card p-6 text-center card-hover group bg-cream-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm">
                                 <div className={`relative w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 ${!member.avatar.includes('/') ? `bg-gradient-to-br ${teamMetadata[member.id]?.color || 'from-slate-500 to-slate-600'} flex items-center justify-center` : ''}`}>
                                     {member.avatar.includes('/') ? (
                                         <Image
@@ -162,7 +162,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                                     )}
                                 </div>
                                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{member.name}</h3>
-                                <p className="text-primary-500 font-medium text-sm mb-4">{member.role}</p>
+                                <p className="text-orange-500 dark:text-primary-500 font-medium text-sm mb-4">{member.role}</p>
                                 <p className="text-slate-600 dark:text-dark-400 text-sm">{member.bio}</p>
                             </div>
                         ))}
@@ -173,7 +173,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
             {/* CTA Section */}
             <section className="section-padding">
                 <div className="container-custom">
-                    <div className="glass-card p-12 text-center bg-gradient-to-r from-primary-500/10 to-accent-500/10">
+                    <div className="glass-card p-12 text-center bg-gradient-to-r from-orange-500/10 to-green-500/10 dark:from-primary-500/10 dark:to-accent-500/10">
                         <h2 className="heading-2 mb-6">
                             {cta.title1}{' '}
                             <span className="gradient-text">{cta.titleGradient}</span>

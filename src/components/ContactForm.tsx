@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface ContactFormProps {
     lang: string;
@@ -33,7 +33,19 @@ interface FormErrors {
     email?: string;
     service?: string;
     message?: string;
+    recaptcha?: string;
 }
+
+declare global {
+    interface Window {
+        grecaptcha: {
+            ready: (callback: () => void) => void;
+            execute: (siteKey: string, options: { action: string }) => Promise<string>;
+        };
+    }
+}
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdTllosAAAAAMPpiP2SBA8aXW0JRKc5Legha5Jp';
 
 export default function ContactForm({ lang, dict }: ContactFormProps) {
     const [formState, setFormState] = useState({
@@ -48,6 +60,42 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [submitError, setSubmitError] = useState<string | null>(null);
+    const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+
+    // Load reCAPTCHA script
+    useEffect(() => {
+        if (typeof window !== 'undefined' && !document.getElementById('recaptcha-script')) {
+            const script = document.createElement('script');
+            script.id = 'recaptcha-script';
+            script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+            script.async = true;
+            script.defer = true;
+            script.onload = () => {
+                window.grecaptcha.ready(() => {
+                    setRecaptchaLoaded(true);
+                });
+            };
+            document.head.appendChild(script);
+        } else if (typeof window !== 'undefined' && window.grecaptcha) {
+            window.grecaptcha.ready(() => {
+                setRecaptchaLoaded(true);
+            });
+        }
+    }, []);
+
+    const getRecaptchaToken = useCallback(async (): Promise<string | null> => {
+        if (!recaptchaLoaded || !window.grecaptcha) {
+            return null;
+        }
+        try {
+            const token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact_form' });
+            return token;
+        } catch (error) {
+            console.error('reCAPTCHA error:', error);
+            return null;
+        }
+    }, [recaptchaLoaded]);
 
     const validate = (): boolean => {
         const newErrors: FormErrors = {};
@@ -66,6 +114,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setSubmitError(null);
 
         // Honeypot check: if 'website' is filled, ignore the submission (likely a bot)
         if (formState.website) {
@@ -77,22 +126,70 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         if (!validate()) return;
 
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+
+        try {
+            // Get reCAPTCHA token
+            const recaptchaToken = await getRecaptchaToken();
+            if (!recaptchaToken) {
+                setSubmitError(lang === 'ru' ? 'Ошибка проверки reCAPTCHA' : lang === 'es' ? 'Error de verificación reCAPTCHA' : 'reCAPTCHA verification failed');
+                setIsSubmitting(false);
+                return;
+            }
+
+            // Submit to API
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formState.name,
+                    email: formState.email,
+                    company: formState.company,
+                    message: `Service: ${formState.service}\nBudget: ${formState.budget || 'Not specified'}\n\n${formState.message}`,
+                    recaptchaToken,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to send message');
+            }
+
+            setIsSubmitted(true);
+            setFormState({
+                name: '',
+                email: '',
+                company: '',
+                service: '',
+                budget: '',
+                message: '',
+                website: '',
+            });
+        } catch (error) {
+            console.error('Submit error:', error);
+            setSubmitError(
+                lang === 'ru' ? 'Ошибка отправки. Попробуйте позже.' :
+                    lang === 'es' ? 'Error al enviar. Intente más tarde.' :
+                        'Failed to send. Please try again later.'
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormState((prev) => ({
             ...prev,
-            [name === 'name' ? 'name' : name === 'message' ? 'message' : name]: value,
+            [name]: value,
         }));
         // Real-time validation clear
         if (errors[name as keyof FormErrors]) {
             setErrors(prev => ({ ...prev, [name]: undefined }));
         }
+        setSubmitError(null);
     };
 
     return (
@@ -140,7 +237,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 name="name"
                                 value={formState.name}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.name
+                                className={`w-full px-4 py-3 rounded-lg bg-cream-100 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.name
                                     ? 'border-red-500 text-red-900 dark:text-red-400'
                                     : 'border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500'
                                     }`}
@@ -158,7 +255,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 name="email"
                                 value={formState.email}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.email
+                                className={`w-full px-4 py-3 rounded-lg bg-cream-100 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.email
                                     ? 'border-red-500 text-red-900 dark:text-red-400'
                                     : 'border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500'
                                     }`}
@@ -178,7 +275,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                             name="company"
                             value={formState.company}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-dark-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
+                            className="w-full px-4 py-3 rounded-lg bg-cream-100 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-dark-500 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
                             placeholder={dict.companyPlaceholder}
                         />
                     </div>
@@ -193,7 +290,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 name="service"
                                 value={formState.service}
                                 onChange={handleChange}
-                                className={`w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.service
+                                className={`w-full px-4 py-3 rounded-lg bg-cream-100 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 ${errors.service
                                     ? 'border-red-500 text-red-900 dark:text-red-400'
                                     : 'border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500'
                                     }`}
@@ -216,7 +313,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 name="budget"
                                 value={formState.budget}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
+                                className="w-full px-4 py-3 rounded-lg bg-cream-100 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
                             >
                                 <option value="">{dict.selectBudget}</option>
                                 {dict.budgetOptions.map((budget) => (
@@ -238,7 +335,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                             rows={6}
                             value={formState.message}
                             onChange={handleChange}
-                            className={`w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 resize-none ${errors.message
+                            className={`w-full px-4 py-3 rounded-lg bg-cream-100 dark:bg-dark-800 border transition-colors outline-none focus:ring-2 focus:ring-primary-500/30 resize-none ${errors.message
                                 ? 'border-red-500 text-red-900 dark:text-red-400'
                                 : 'border-slate-200 dark:border-dark-700 text-slate-900 dark:text-white focus:border-primary-500'
                                 }`}
@@ -247,9 +344,15 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                         {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
                     </div>
 
+                    {submitError && (
+                        <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                            <p className="text-sm text-red-600 dark:text-red-400">{submitError}</p>
+                        </div>
+                    )}
+
                     <button
                         type="submit"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !recaptchaLoaded}
                         className="btn-primary w-full text-lg py-4 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary-500/20"
                     >
                         {isSubmitting ? (
@@ -269,6 +372,21 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                             </>
                         )}
                     </button>
+
+                    {/* reCAPTCHA notice */}
+                    <p className="text-xs text-slate-500 dark:text-dark-500 text-center">
+                        {lang === 'ru' ? 'Защищено reCAPTCHA.' :
+                            lang === 'es' ? 'Protegido por reCAPTCHA.' :
+                                'Protected by reCAPTCHA.'}
+                        {' '}
+                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-500 dark:hover:text-primary-500">
+                            {lang === 'ru' ? 'Конфиденциальность' : lang === 'es' ? 'Privacidad' : 'Privacy'}
+                        </a>
+                        {' & '}
+                        <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-orange-500 dark:hover:text-primary-500">
+                            {lang === 'ru' ? 'Условия' : lang === 'es' ? 'Términos' : 'Terms'}
+                        </a>
+                    </p>
                 </form>
             )}
         </div>

@@ -2,6 +2,7 @@
 
 import { motion, useAnimationControls } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 interface LogoProps {
     className?: string;
@@ -10,9 +11,48 @@ interface LogoProps {
     animated?: boolean;
 }
 
+// Цвета для светлой темы (оранжево-зелёный)
+const lightColors = {
+    start: '#f97316',
+    startAnim: '#f97316;#fb923c;#f97316',
+    mid: '#84cc16',
+    midAnim: '#84cc16;#a3e635;#84cc16',
+    end: '#22c55e',
+    endAnim: '#22c55e;#4ade80;#22c55e',
+    particle1: '#22c55e',
+    particle2: '#f97316',
+    textGradient: 'linear-gradient(90deg, #f97316, #84cc16, #22c55e, #84cc16, #f97316)',
+    hoverColor: '#f97316',
+    hoverColor2: '#22c55e',
+};
+
+// Цвета для тёмной темы (фиолетовый)
+const darkColors = {
+    start: '#6366f1',
+    startAnim: '#6366f1;#a855f7;#6366f1',
+    mid: '#8b5cf6',
+    midAnim: '#8b5cf6;#d946ef;#8b5cf6',
+    end: '#d946ef',
+    endAnim: '#d946ef;#6366f1;#d946ef',
+    particle1: '#d946ef',
+    particle2: '#6366f1',
+    textGradient: 'linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef, #8b5cf6, #6366f1)',
+    hoverColor: '#8b5cf6',
+    hoverColor2: '#8b5cf6',
+};
+
 export function Logo({ className = '', size = 44, showText = true, animated = true }: LogoProps) {
     const [isHovered, setIsHovered] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const controls = useAnimationControls();
+    const { resolvedTheme } = useTheme();
+
+    // Используем тёмные цвета по умолчанию (для SSR), затем переключаем после монтирования
+    const colors = mounted ? (resolvedTheme === 'dark' ? darkColors : lightColors) : darkColors;
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         if (animated) {
@@ -74,28 +114,28 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                     style={{ overflow: 'visible' }}
                 >
                     <defs>
-                        {/* Main gradient */}
+                        {/* Main gradient - theme dependent */}
                         <linearGradient id="logoGradientMain" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#6366f1">
+                            <stop offset="0%" stopColor={colors.start}>
                                 <animate
                                     attributeName="stop-color"
-                                    values="#6366f1;#a855f7;#6366f1"
+                                    values={colors.startAnim}
                                     dur="4s"
                                     repeatCount="indefinite"
                                 />
                             </stop>
-                            <stop offset="50%" stopColor="#8b5cf6">
+                            <stop offset="50%" stopColor={colors.mid}>
                                 <animate
                                     attributeName="stop-color"
-                                    values="#8b5cf6;#d946ef;#8b5cf6"
+                                    values={colors.midAnim}
                                     dur="4s"
                                     repeatCount="indefinite"
                                 />
                             </stop>
-                            <stop offset="100%" stopColor="#d946ef">
+                            <stop offset="100%" stopColor={colors.end}>
                                 <animate
                                     attributeName="stop-color"
-                                    values="#d946ef;#6366f1;#d946ef"
+                                    values={colors.endAnim}
                                     dur="4s"
                                     repeatCount="indefinite"
                                 />
@@ -123,7 +163,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         fill="none"
-                        transform="translate(-2, -4) scale(0.92)"
+                        transform="translate(2, 0) scale(0.70)"
                         opacity={0.4}
                         filter="url(#logoGlow)"
                         initial={animated ? { pathLength: 0 } : { pathLength: 1 }}
@@ -138,7 +178,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         fill="none"
-                        transform="translate(-2, -4) scale(0.92)"
+                        transform="translate(2, 0) scale(0.70)"
                         initial={animated ? { pathLength: 0, opacity: 0 } : { pathLength: 1, opacity: 1 }}
                         animate={controls}
                     />
@@ -147,7 +187,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                     <motion.circle
                         cx="44"
                         cy="10"
-                        r="4.5"
+                        r="6"
                         fill="url(#logoGradientMain)"
                         filter={isHovered ? "url(#logoGlowStrong)" : "url(#logoGlow)"}
                         variants={dotVariants}
@@ -161,7 +201,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                             cx="44"
                             cy="10"
                             r="1.5"
-                            fill="#d946ef"
+                            fill={colors.particle1}
                             initial={{ opacity: 0 }}
                             animate={{
                                 opacity: [0, 1, 1, 0],
@@ -183,7 +223,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                             cx="44"
                             cy="10"
                             r="1"
-                            fill="#6366f1"
+                            fill={colors.particle2}
                             initial={{ opacity: 0 }}
                             animate={{
                                 opacity: [0, 0.8, 0.8, 0],
@@ -219,7 +259,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                                     custom={i}
                                     whileHover={{
                                         y: -3,
-                                        color: '#8b5cf6',
+                                        color: colors.hoverColor,
                                         transition: { duration: 0.2 }
                                     }}
                                 >
@@ -244,7 +284,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                             <motion.span
                                 className="text-2xl font-bold text-transparent bg-clip-text relative z-10"
                                 style={{
-                                    backgroundImage: 'linear-gradient(90deg, #6366f1, #8b5cf6, #d946ef, #8b5cf6, #6366f1)',
+                                    backgroundImage: colors.textGradient,
                                     backgroundSize: '200% auto',
                                 }}
                                 animate={{
@@ -284,7 +324,7 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                                         delay: 1.6 + i * 0.03
                                     }}
                                     whileHover={{
-                                        color: '#8b5cf6',
+                                        color: colors.hoverColor2,
                                         transition: { duration: 0.1 }
                                     }}
                                 >
@@ -301,6 +341,15 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
 
 export function LogoMark({ size = 44, className = '', animated = true }: { size?: number; className?: string; animated?: boolean }) {
     const controls = useAnimationControls();
+    const [mounted, setMounted] = useState(false);
+    const { resolvedTheme } = useTheme();
+
+    // Используем тёмные цвета по умолчанию (для SSR), затем переключаем после монтирования
+    const colors = mounted ? (resolvedTheme === 'dark' ? darkColors : lightColors) : darkColors;
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         if (animated) {
@@ -327,26 +376,26 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
         >
             <defs>
                 <linearGradient id="logoGradientMark2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#6366f1">
+                    <stop offset="0%" stopColor={colors.start}>
                         <animate
                             attributeName="stop-color"
-                            values="#6366f1;#a855f7;#6366f1"
+                            values={colors.startAnim}
                             dur="4s"
                             repeatCount="indefinite"
                         />
                     </stop>
-                    <stop offset="50%" stopColor="#8b5cf6">
+                    <stop offset="50%" stopColor={colors.mid}>
                         <animate
                             attributeName="stop-color"
-                            values="#8b5cf6;#d946ef;#8b5cf6"
+                            values={colors.midAnim}
                             dur="4s"
                             repeatCount="indefinite"
                         />
                     </stop>
-                    <stop offset="100%" stopColor="#d946ef">
+                    <stop offset="100%" stopColor={colors.end}>
                         <animate
                             attributeName="stop-color"
-                            values="#d946ef;#6366f1;#d946ef"
+                            values={colors.endAnim}
                             dur="4s"
                             repeatCount="indefinite"
                         />
@@ -366,7 +415,7 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 fill="none"
-                transform="translate(-2, -4) scale(0.92)"
+                transform="translate(2, 0) scale(0.70)"
                 opacity={0.4}
                 filter="url(#glowMark2)"
                 initial={animated ? { pathLength: 0 } : { pathLength: 1 }}
@@ -381,7 +430,7 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 fill="none"
-                transform="translate(-2, -4) scale(0.92)"
+                transform="translate(2, 0) scale(0.70)"
                 initial={animated ? { pathLength: 0, opacity: 0 } : { pathLength: 1, opacity: 1 }}
                 animate={controls}
             />
@@ -389,7 +438,7 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
             <motion.circle
                 cx="44"
                 cy="10"
-                r="4.5"
+                r="6"
                 fill="url(#logoGradientMark2)"
                 filter="url(#glowMark2)"
                 initial={animated ? { scale: 0 } : { scale: 1 }}
@@ -409,7 +458,7 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
                         cx="44"
                         cy="10"
                         r="1.5"
-                        fill="#d946ef"
+                        fill={colors.particle1}
                         animate={{
                             opacity: [0, 1, 1, 0],
                             x: [0, 8, 0, -8, 0],
@@ -426,7 +475,7 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
                         cx="44"
                         cy="10"
                         r="1"
-                        fill="#6366f1"
+                        fill={colors.particle2}
                         animate={{
                             opacity: [0, 0.8, 0.8, 0],
                             x: [0, -6, 0, 6, 0],

@@ -99,11 +99,11 @@ const TechIcon = ({ name, color }: { name: string; color: string }) => {
 
 export default function Technologies({ dict }: TechnologiesProps) {
     return (
-        <section className="py-16 md:py-24 overflow-hidden bg-slate-50/50 dark:bg-dark-900/30 transition-colors duration-300">
+        <section className="py-16 md:py-24 overflow-x-clip overflow-y-visible bg-cream-100/50 dark:bg-dark-900/30 transition-colors duration-300">
             <div className="container-custom mb-10 md:mb-14 px-4">
                 <div className="text-center max-w-3xl mx-auto">
                     <Reveal>
-                        <span className="text-primary-500 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3 md:mb-4 block">
+                        <span className="text-orange-500 dark:text-primary-500 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3 md:mb-4 block">
                             {dict.badge}
                         </span>
                     </Reveal>
@@ -121,36 +121,11 @@ export default function Technologies({ dict }: TechnologiesProps) {
                 </div>
             </div>
 
-            {/* First row - scroll left */}
-            <div className="relative mb-6 md:mb-8">
+            {/* Tech row - scroll right */}
+            <div className="relative py-4">
                 {/* Gradient masks */}
-                <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-slate-50/90 dark:from-dark-900/90 via-slate-50/50 dark:via-dark-900/50 to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-slate-50/90 dark:from-dark-900/90 via-slate-50/50 dark:via-dark-900/50 to-transparent z-10 pointer-events-none" />
-
-                <div className="tech-scroll-container">
-                    <div className="tech-scroll tech-scroll-left">
-                        {[...technologies, ...technologies, ...technologies].map((tech, index) => (
-                            <div
-                                key={`row1-${tech.name}-${index}`}
-                                className="tech-card group"
-                            >
-                                <div className="tech-card-inner">
-                                    <TechIcon name={tech.name} color={tech.color} />
-                                </div>
-                                <span className="tech-card-label">
-                                    {tech.name}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Second row - scroll right */}
-            <div className="relative">
-                {/* Gradient masks */}
-                <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-slate-50/90 dark:from-dark-900/90 via-slate-50/50 dark:via-dark-900/50 to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-slate-50/90 dark:from-dark-900/90 via-slate-50/50 dark:via-dark-900/50 to-transparent z-10 pointer-events-none" />
+                <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-cream-100/90 dark:from-dark-900/90 via-cream-100/50 dark:via-dark-900/50 to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-cream-100/90 dark:from-dark-900/90 via-cream-100/50 dark:via-dark-900/50 to-transparent z-10 pointer-events-none" />
 
                 <div className="tech-scroll-container">
                     <div className="tech-scroll tech-scroll-right">
