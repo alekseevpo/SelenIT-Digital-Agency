@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/providers/theme-provider';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 import type { Locale } from '@/i18n-config';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -83,6 +84,7 @@ export default function RootLayout({
                     </SmoothScrollProvider>
                 </ThemeProvider>
                 <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
