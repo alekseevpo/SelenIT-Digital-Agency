@@ -11,9 +11,9 @@ const config: Config = {
         extend: {
             colors: {
                 cream: {
-                    50: '#FEFCF3',
-                    100: '#FAF8F0',
-                    200: '#F5F3EB',
+                    50: '#FDF8F0',
+                    100: '#F9F3E8',
+                    200: '#F5EEE0',
                 },
                 primary: {
                     50: '#f0f4ff',

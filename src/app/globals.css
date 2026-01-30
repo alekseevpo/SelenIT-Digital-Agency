@@ -16,15 +16,15 @@
   --accent-dark: #c026d3;
 
   /* Theme variables - Light (Cream) */
-  --bg-primary: #FEFCF3;
-  --bg-secondary: #FAF8F0;
-  --bg-tertiary: #F5F3EB;
+  --bg-primary: #FDF8F0;
+  --bg-secondary: #F9F3E8;
+  --bg-tertiary: #F5EEE0;
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
   --border-color: rgba(0, 0, 0, 0.08);
-  --glass-bg: rgba(254, 252, 243, 0.8);
-  --card-bg: rgba(254, 252, 243, 0.6);
+  --glass-bg: rgba(253, 248, 240, 0.85);
+  --card-bg: rgba(249, 243, 232, 0.7);
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #d946ef 100%);
@@ -299,7 +299,7 @@ p {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Light mode (cream) */
-  background: linear-gradient(145deg, #FEFCF3, #F5F3EB);
+  background: linear-gradient(145deg, #FDF8F0, #F5EEE0);
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.04),
