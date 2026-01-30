@@ -202,7 +202,7 @@ export default function Footer({ lang }: FooterProps) {
                     </div>
 
                     {/* Services */}
-                    <div>
+                    <div className="text-center">
                         <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{dict.services}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.services.map((link) => (
@@ -219,7 +219,7 @@ export default function Footer({ lang }: FooterProps) {
                     </div>
 
                     {/* Company */}
-                    <div>
+                    <div className="text-center">
                         <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{dict.company}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.company.map((link) => (
