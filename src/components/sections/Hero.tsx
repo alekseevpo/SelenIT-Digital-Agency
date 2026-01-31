@@ -19,24 +19,27 @@ interface HeroProps {
 
 // Counter sub-component for animated statistics
 function Counter({ value, suffix, duration = 2 }: { value: number; suffix: string; duration?: number }) {
-    const [count, setCount] = useState(0);
-    const ref = useRef(null);
+    const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
 
     useEffect(() => {
-        if (isInView) {
+        if (isInView && ref.current) {
             const controls = animate(0, value, {
                 duration: duration,
                 ease: "easeOut",
-                onUpdate: (latest) => setCount(Math.floor(latest))
+                onUpdate: (latest) => {
+                    if (ref.current) {
+                        ref.current.textContent = Math.floor(latest) + suffix;
+                    }
+                }
             });
             return () => controls.stop();
         }
-    }, [isInView, value, duration]);
+    }, [isInView, value, duration, suffix]);
 
     return (
         <span ref={ref} className="tabular-nums">
-            {count}{suffix}
+            0{suffix}
         </span>
     );
 }
