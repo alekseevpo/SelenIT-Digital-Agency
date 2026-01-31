@@ -97,7 +97,7 @@
             "learnMore": "Learn More"
         },
         "showreel": {
-            "badge": "Portfolio",
+            "badge": "Showreel",
             "title1": "Featured",
             "titleGradient": "Projects",
             "subtitle": "Discover how we help brands grow with custom digital solutions.",
@@ -330,7 +330,12 @@
             "badge": "About Us",
             "title1": "We are a Team of",
             "titleGradient": "Digital Craftsmen",
-            "titleWords": ["Digital Craftsmen", "Creative Thinkers", "Tech Enthusiasts", "Problem Solvers"],
+            "titleWords": [
+                "Digital Craftsmen",
+                "Creative Thinkers",
+                "Tech Enthusiasts",
+                "Problem Solvers"
+            ],
             "subtitle": "Passionate about creating exceptional digital experiences that transform businesses and delight users."
         },
         "story": {

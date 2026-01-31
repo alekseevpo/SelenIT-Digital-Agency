@@ -30,7 +30,7 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
             default: `Selen.IT | Digital Agency - Web Development & Design`,
         },
         description: dict.hero.subtitle,
-        keywords: ['web development', 'digital agency', 'web design', 'UI/UX', 'React', 'Next.js'],
+        keywords: ['web development', 'digital agency', 'web design', 'UI/UX', 'React', 'Next.js', 'software engineering'],
         authors: [{ name: 'Selen.IT Digital Agency' }],
         metadataBase: new URL('https://selen.it'),
         alternates: {
@@ -45,17 +45,40 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
             title: 'Selen.IT | Digital Agency',
             description: dict.hero.subtitle,
             type: 'website',
+            url: `https://selen.it/${lang}`,
             locale: lang === 'ru' ? 'ru_RU' : lang === 'es' ? 'es_ES' : 'en_US',
             siteName: 'Selen.IT Digital Agency',
+            images: [
+                {
+                    url: '/og-image.png',
+                    width: 1200,
+                    height: 630,
+                    alt: 'Selen.IT Digital Agency Preview',
+                },
+            ],
         },
         twitter: {
             card: 'summary_large_image',
             title: 'Selen.IT | Digital Agency',
             description: dict.hero.subtitle,
+            images: ['/og-image.png'],
+            creator: '@selen_it',
         },
         robots: {
             index: true,
             follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
+        },
+        icons: {
+            icon: '/favicon.ico',
+            shortcut: '/favicon-16x16.png',
+            apple: '/apple-touch-icon.png',
         },
     };
 }

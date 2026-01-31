@@ -414,7 +414,7 @@ export default async function CaseStudyPage({
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {caseStudy.results.map((result, index) => (
                             <Reveal key={index}>
-                                <div className="p-6 rounded-2xl bg-cream-50 dark:bg-dark-800 text-center">
+                                <div className="p-6 rounded-2xl bg-cream-50 dark:bg-dark-800 text-center h-full min-h-[160px] flex flex-col justify-center">
                                     <div className="text-4xl font-bold gradient-text mb-2">
                                         {result.value}
                                     </div>

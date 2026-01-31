@@ -44,7 +44,7 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                             {/* Video or Image Placeholder */}
                             <div className="aspect-video relative">
                                 {project.videoId ? (
-                                    <YouTubeEmbed videoId={project.videoId} title={project.title} />
+                                    <YouTubeEmbed videoId={project.videoId} title={project.title} lang={lang} />
                                 ) : (
                                     <div className={`w-full h-full bg-gradient-to-br ${project.color} relative`}>
                                         <div className="absolute inset-0 bg-dark-900/40 group-hover:bg-dark-900/20 transition-all duration-500" />

@@ -96,7 +96,7 @@ export default function Header({ lang }: HeaderProps) {
 
     const navigations: Record<Locale, Dictionary['common']['nav'] & { menu: string }> = {
         en: { home: 'Home', services: 'Services', showreel: 'Showreel', about: 'About', contact: 'Contact', getStarted: 'Get Started', privacy: 'Privacy', terms: 'Terms', menu: 'Menu' },
-        ru: { home: 'Главная', services: 'Услуги', showreel: 'Шоурил', about: 'О нас', contact: 'Контакты', getStarted: 'Начать', privacy: 'Приватность', terms: 'Условия', menu: 'Меню' },
+        ru: { home: 'Главная', services: 'Услуги', showreel: 'Showreel', about: 'О нас', contact: 'Контакты', getStarted: 'Начать', privacy: 'Приватность', terms: 'Условия', menu: 'Меню' },
         es: { home: 'Inicio', services: 'Servicios', showreel: 'Showreel', about: 'Nosotros', contact: 'Contacto', getStarted: 'Empezar', privacy: 'Privacidad', terms: 'Términos', menu: 'Menú' }
     };
 

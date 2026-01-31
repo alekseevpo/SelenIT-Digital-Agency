@@ -1,4 +1,8 @@
+'use client';
+
 import Link from 'next/link';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { Reveal } from '../ui/Reveal';
 import YouTubeEmbed from '../ui/YouTubeEmbed';
 
@@ -13,6 +17,12 @@ interface ShowreelProps {
         button: string;
     };
 }
+
+const showreelTitle = {
+    en: 'SHOWREEL',
+    ru: 'SHOWREEL',
+    es: 'SHOWREEL',
+};
 
 const featuredProjects = [
     {
@@ -30,8 +40,17 @@ const featuredProjects = [
 ];
 
 export default function Showreel({ lang, dict }: ShowreelProps) {
+    const sectionRef = useRef<HTMLElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "center center"]
+    });
+
+    const xTransform = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.5, 1]);
+
     return (
-        <section className="section-padding transition-colors duration-300">
+        <section ref={sectionRef} className="section-padding transition-colors duration-300 overflow-hidden">
             <div className="container-custom">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
@@ -66,10 +85,23 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                     </Reveal>
                 </div>
 
+                {/* Animated Showreel Title */}
+                <motion.div
+                    className="relative h-24 md:h-40 lg:h-56 mb-8 flex items-center justify-center"
+                    style={{ x: xTransform, opacity }}
+                >
+                    <h2
+                        className="text-6xl md:text-8xl lg:text-[10rem] font-serif font-bold tracking-tight text-slate-900 dark:text-white select-none"
+                        style={{ fontFamily: "'Times New Roman', 'Georgia', serif" }}
+                    >
+                        {showreelTitle[lang as keyof typeof showreelTitle] || showreelTitle.en}
+                    </h2>
+                </motion.div>
+
                 {/* Video */}
                 <Reveal delay={0.3}>
                     <div className="mb-12">
-                        <YouTubeEmbed videoId={dict.videoId || "QT3L4tZ14-4"} title="Selen.IT Agency Showreel" />
+                        <YouTubeEmbed videoId={dict.videoId || "QT3L4tZ14-4"} title="Selen.IT Agency Showreel" lang={lang} />
                     </div>
                 </Reveal>
 
@@ -90,7 +122,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                         href={`/${lang}/showreel`}
                                         className="inline-flex items-center text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-orange-500 dark:hover:text-primary-400 transition-colors group/link"
                                     >
-                                        Подробнее
+                                        {lang === 'ru' ? 'Подробнее' : lang === 'es' ? 'Ver más' : 'Learn more'}
                                         <svg className="w-4 h-4 ml-1.5 transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>

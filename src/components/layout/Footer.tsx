@@ -20,7 +20,7 @@ const getFooterLinks = (lang: string) => {
         ],
         company: [
             { href: `/${lang}/about`, label: isRu ? 'О нас' : isEs ? 'Nosotros' : 'About Us' },
-            { href: `/${lang}/showreel`, label: isRu ? 'Шоурил' : isEs ? 'Showreel' : 'Showreel' },
+            { href: `/${lang}/showreel`, label: 'Showreel' },
             { href: `/${lang}/contact`, label: isRu ? 'Контакты' : isEs ? 'Contacto' : 'Contact' },
         ],
         social: [

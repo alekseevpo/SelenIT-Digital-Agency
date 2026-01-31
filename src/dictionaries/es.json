@@ -97,7 +97,7 @@
             "learnMore": "Saber más"
         },
         "showreel": {
-            "badge": "Portafolio",
+            "badge": "Showreel",
             "title1": "Proyectos",
             "titleGradient": "Destacados",
             "subtitle": "Descubra cómo ayudamos a las marcas a crecer con soluciones digitales a medida.",
@@ -265,7 +265,7 @@
     },
     "showreel": {
         "hero": {
-            "badge": "Nuestro Portafolio",
+            "badge": "Showreel",
             "title1": "Trabajo que",
             "titleGradient": "habla por sí mismo",
             "subtitle": "Explore nuestra colección de proyectos exitosos en diversos sectores.",
@@ -313,7 +313,7 @@
         ],
         "cta": {
             "title1": "¿Listo para unirse a nuestro",
-            "titleGradient": "portafolio?",
+            "titleGradient": "Showreel?",
             "subtitle": "Su proyecto podría ser nuestra próxima historia de éxito. Hagamos algo grande juntos.",
             "button": "Iniciar Proyecto"
         },
@@ -330,7 +330,12 @@
             "badge": "Nosotros",
             "title1": "Somos un equipo de",
             "titleGradient": "Artesanos Digitales",
-            "titleWords": ["Artesanos Digitales", "Pensadores Creativos", "Entusiastas Tech", "Solucionadores"],
+            "titleWords": [
+                "Artesanos Digitales",
+                "Pensadores Creativos",
+                "Entusiastas Tech",
+                "Solucionadores"
+            ],
             "subtitle": "Apasionados por crear experiencias digitales excepcionales que transforman negocios y deleitan a los usuarios."
         },
         "story": {

@@ -66,7 +66,7 @@ export default async function ShowreelPage({ params: { lang } }: PageProps) {
                     </div>
 
                     <div className="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl relative group bg-slate-100 dark:bg-dark-900">
-                        <YouTubeEmbed videoId={hero.videoId} title="Selen.IT Showreel" />
+                        <YouTubeEmbed videoId={hero.videoId} title="Selen.IT Showreel" lang={lang} />
                     </div>
                 </div>
             </section>
