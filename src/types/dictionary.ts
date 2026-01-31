@@ -14,6 +14,10 @@ export interface FooterLinks {
     services: string;
     company: string;
     getInTouch: string;
+    mission: string;
+    privacy: string;
+    terms: string;
+    address: string;
 }
 
 export interface CommonDict {
@@ -158,10 +162,16 @@ export interface Dictionary {
             closed: string;
         };
         form: {
+            tabs: {
+                message: string;
+                callback: string;
+            };
             title: string;
             subtitle: string;
             fullName: string;
             email: string;
+            phone: string;
+            phonePlaceholder: string;
             company: string;
             companyPlaceholder: string;
             service: string;
@@ -175,6 +185,8 @@ export interface Dictionary {
             success: string;
             successTitle: string;
             successSubtitle: string;
+            callbackSuccessTitle: string;
+            callbackSuccessSubtitle: string;
             sendAnother: string;
             selectService: string;
             selectBudget: string;

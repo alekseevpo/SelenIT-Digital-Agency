@@ -109,7 +109,7 @@ export default async function RootLayout({
                                     {children}
                                 </PageTransition>
                             </main>
-                            <Footer lang={lang as any} />
+                            <Footer lang={lang as any} dict={dict} />
                         </SmoothScrollProvider>
                         <CookieConsentWrapper lang={lang} dictionary={dict.cookies} />
                         <AnalyticsWrapper />

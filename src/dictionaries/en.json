@@ -21,7 +21,11 @@
             "rights": "All rights reserved.",
             "services": "Services",
             "company": "Company",
-            "getInTouch": "Get in Touch"
+            "getInTouch": "Get in Touch",
+            "mission": "We craft stunning digital experiences that transform businesses and delight users.",
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Service",
+            "address": "Madrid, Getafe"
         }
     },
     "contact": {
@@ -44,10 +48,16 @@
             "closed": "Closed"
         },
         "form": {
+            "tabs": {
+                "message": "Send Message",
+                "callback": "Request Full Callback"
+            },
             "title": "Write to Us",
             "subtitle": "Fill out the form below",
             "fullName": "Full Name",
             "email": "Email Address",
+            "phone": "Phone Number",
+            "phonePlaceholder": "+1 (555) 000-0000",
             "company": "Company Name",
             "companyPlaceholder": "Your Company",
             "service": "Service Interested In",
@@ -69,12 +79,14 @@
             ],
             "details": "Project Details",
             "detailsPlaceholder": "Tell us about your project, goals, and timeline...",
-            "submit": "Send Message",
+            "submit": "Submit Request",
             "sending": "Sending...",
             "success": "Success",
             "successTitle": "Thank You!",
-            "successSubtitle": "Your message has been sent successfully.",
-            "sendAnother": "Send Another Message",
+            "successSubtitle": "Your message has been sent successfully. We'll get back to you soon.",
+            "callbackSuccessTitle": "Request Received!",
+            "callbackSuccessSubtitle": "We will call you back as soon as possible to discuss your project.",
+            "sendAnother": "Send Another Request",
             "selectService": "Select a service",
             "selectBudget": "Select budget range"
         }

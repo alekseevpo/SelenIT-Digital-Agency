@@ -3,6 +3,7 @@
 import { motion, useAnimationControls } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { LogoIcon } from '../icons';
 
 interface LogoProps {
     className?: string;
@@ -105,140 +106,57 @@ export function Logo({ className = '', size = 44, showText = true, animated = tr
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-                <motion.svg
-                    width={size}
-                    height={size}
-                    viewBox="0 0 52 56"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{ overflow: 'visible' }}
-                >
-                    <defs>
-                        {/* Main gradient - theme dependent */}
-                        <linearGradient id="logoGradientMain" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor={colors.start}>
-                                <animate
-                                    attributeName="stop-color"
-                                    values={colors.startAnim}
-                                    dur="4s"
-                                    repeatCount="indefinite"
-                                />
-                            </stop>
-                            <stop offset="50%" stopColor={colors.mid}>
-                                <animate
-                                    attributeName="stop-color"
-                                    values={colors.midAnim}
-                                    dur="4s"
-                                    repeatCount="indefinite"
-                                />
-                            </stop>
-                            <stop offset="100%" stopColor={colors.end}>
-                                <animate
-                                    attributeName="stop-color"
-                                    values={colors.endAnim}
-                                    dur="4s"
-                                    repeatCount="indefinite"
-                                />
-                            </stop>
-                        </linearGradient>
+                <LogoIcon
+                    size={size}
+                    colors={colors}
+                    animated={animated}
+                    isHovered={isHovered}
+                    controls={controls}
+                />
 
-                        {/* Glow filter */}
-                        <filter id="logoGlow" x="-100%" y="-100%" width="300%" height="300%">
-                            <feGaussianBlur stdDeviation="3" result="blur" />
-                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                        </filter>
-
-                        {/* Strong glow for hover */}
-                        <filter id="logoGlowStrong" x="-100%" y="-100%" width="300%" height="300%">
-                            <feGaussianBlur stdDeviation="4" result="blur" />
-                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                        </filter>
-                    </defs>
-
-                    {/* Background glow path (blur layer) */}
-                    <motion.path
-                        d="M38 14C38 14 34 8 26 8C17 8 12 14 12 20C12 26 16 29 26 32C36 35 40 38 40 46C40 54 33 58 26 58C17 58 12 52 12 52"
-                        stroke="url(#logoGradientMain)"
-                        strokeWidth="8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        fill="none"
-                        transform="translate(2, 0) scale(0.70)"
-                        opacity={0.4}
-                        filter="url(#logoGlow)"
-                        initial={animated ? { pathLength: 0 } : { pathLength: 1 }}
-                        animate={controls}
-                    />
-
-                    {/* Main S path */}
-                    <motion.path
-                        d="M38 14C38 14 34 8 26 8C17 8 12 14 12 20C12 26 16 29 26 32C36 35 40 38 40 46C40 54 33 58 26 58C17 58 12 52 12 52"
-                        stroke="url(#logoGradientMain)"
-                        strokeWidth="5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        fill="none"
-                        transform="translate(2, 0) scale(0.70)"
-                        initial={animated ? { pathLength: 0, opacity: 0 } : { pathLength: 1, opacity: 1 }}
-                        animate={controls}
-                    />
-
-                    {/* Decorative dot with orbit effect */}
+                {/* Orbiting particle 1 */}
+                {animated && (
                     <motion.circle
                         cx="44"
                         cy="10"
-                        r="6"
-                        fill="url(#logoGradientMain)"
-                        filter={isHovered ? "url(#logoGlowStrong)" : "url(#logoGlow)"}
-                        variants={dotVariants}
-                        initial={animated ? "hidden" : "visible"}
-                        animate="visible"
+                        r="1.5"
+                        fill={colors.particle1}
+                        initial={{ opacity: 0 }}
+                        animate={{
+                            opacity: [0, 1, 1, 0],
+                            x: [0, 8, 0, -8, 0],
+                            y: [0, -8, 0, 8, 0],
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: 1.5,
+                            ease: "linear"
+                        }}
                     />
+                )}
 
-                    {/* Orbiting particle 1 */}
-                    {animated && (
-                        <motion.circle
-                            cx="44"
-                            cy="10"
-                            r="1.5"
-                            fill={colors.particle1}
-                            initial={{ opacity: 0 }}
-                            animate={{
-                                opacity: [0, 1, 1, 0],
-                                x: [0, 8, 0, -8, 0],
-                                y: [0, -8, 0, 8, 0],
-                            }}
-                            transition={{
-                                duration: 3,
-                                repeat: Infinity,
-                                delay: 1.5,
-                                ease: "linear"
-                            }}
-                        />
-                    )}
-
-                    {/* Orbiting particle 2 */}
-                    {animated && (
-                        <motion.circle
-                            cx="44"
-                            cy="10"
-                            r="1"
-                            fill={colors.particle2}
-                            initial={{ opacity: 0 }}
-                            animate={{
-                                opacity: [0, 0.8, 0.8, 0],
-                                x: [0, -6, 0, 6, 0],
-                                y: [0, 6, 0, -6, 0],
-                            }}
-                            transition={{
-                                duration: 2.5,
-                                repeat: Infinity,
-                                delay: 2,
-                                ease: "linear"
-                            }}
-                        />
-                    )}
-                </motion.svg>
+                {/* Orbiting particle 2 */}
+                {animated && (
+                    <motion.circle
+                        cx="44"
+                        cy="10"
+                        r="1"
+                        fill={colors.particle2}
+                        initial={{ opacity: 0 }}
+                        animate={{
+                            opacity: [0, 0.8, 0.8, 0],
+                            x: [0, -6, 0, 6, 0],
+                            y: [0, 6, 0, -6, 0],
+                        }}
+                        transition={{
+                            duration: 2.5,
+                            repeat: Infinity,
+                            delay: 2,
+                            ease: "linear"
+                        }}
+                    />
+                )}
             </motion.div>
 
             {/* Logo Text */}
@@ -362,95 +280,13 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
     }, [animated, controls]);
 
     return (
-        <motion.svg
-            width={size}
-            height={size}
-            viewBox="0 0 52 56"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className={className}
-            style={{ overflow: 'visible' }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        >
-            <defs>
-                <linearGradient id="logoGradientMark2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor={colors.start}>
-                        <animate
-                            attributeName="stop-color"
-                            values={colors.startAnim}
-                            dur="4s"
-                            repeatCount="indefinite"
-                        />
-                    </stop>
-                    <stop offset="50%" stopColor={colors.mid}>
-                        <animate
-                            attributeName="stop-color"
-                            values={colors.midAnim}
-                            dur="4s"
-                            repeatCount="indefinite"
-                        />
-                    </stop>
-                    <stop offset="100%" stopColor={colors.end}>
-                        <animate
-                            attributeName="stop-color"
-                            values={colors.endAnim}
-                            dur="4s"
-                            repeatCount="indefinite"
-                        />
-                    </stop>
-                </linearGradient>
-                <filter id="glowMark2" x="-100%" y="-100%" width="300%" height="300%">
-                    <feGaussianBlur stdDeviation="3" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-            </defs>
-
-            {/* Glow layer */}
-            <motion.path
-                d="M38 14C38 14 34 8 26 8C17 8 12 14 12 20C12 26 16 29 26 32C36 35 40 38 40 46C40 54 33 58 26 58C17 58 12 52 12 52"
-                stroke="url(#logoGradientMark2)"
-                strokeWidth="8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-                transform="translate(2, 0) scale(0.70)"
-                opacity={0.4}
-                filter="url(#glowMark2)"
-                initial={animated ? { pathLength: 0 } : { pathLength: 1 }}
-                animate={controls}
+        <div className={`relative ${className}`}>
+            <LogoIcon
+                size={size}
+                colors={colors}
+                animated={animated}
+                controls={controls}
             />
-
-            {/* Main path */}
-            <motion.path
-                d="M38 14C38 14 34 8 26 8C17 8 12 14 12 20C12 26 16 29 26 32C36 35 40 38 40 46C40 54 33 58 26 58C17 58 12 52 12 52"
-                stroke="url(#logoGradientMark2)"
-                strokeWidth="5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-                transform="translate(2, 0) scale(0.70)"
-                initial={animated ? { pathLength: 0, opacity: 0 } : { pathLength: 1, opacity: 1 }}
-                animate={controls}
-            />
-
-            <motion.circle
-                cx="44"
-                cy="10"
-                r="6"
-                fill="url(#logoGradientMark2)"
-                filter="url(#glowMark2)"
-                initial={animated ? { scale: 0 } : { scale: 1 }}
-                animate={{ scale: 1 }}
-                transition={{
-                    delay: 1.0,
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 15
-                }}
-            />
-
             {/* Orbiting particles */}
             {animated && (
                 <>
@@ -470,6 +306,7 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
                             delay: 1.5,
                             ease: "linear"
                         }}
+                        style={{ position: 'absolute', left: 0, top: 0 }}
                     />
                     <motion.circle
                         cx="44"
@@ -487,9 +324,10 @@ export function LogoMark({ size = 44, className = '', animated = true }: { size?
                             delay: 2,
                             ease: "linear"
                         }}
+                        style={{ position: 'absolute', left: 0, top: 0 }}
                     />
                 </>
             )}
-        </motion.svg>
+        </div>
     );
 }

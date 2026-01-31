@@ -21,7 +21,11 @@
             "rights": "Todos los derechos reservados.",
             "services": "Servicios",
             "company": "Compañía",
-            "getInTouch": "Contactar"
+            "getInTouch": "Contactar",
+            "mission": "Creamos experiencias digitales impresionantes que transforman negocios y deleitan a los usuarios.",
+            "privacy": "Política de Privacidad",
+            "terms": "Términos de Servicio",
+            "address": "Madrid, Getafe"
         }
     },
     "contact": {
@@ -44,13 +48,19 @@
             "closed": "Cerrado"
         },
         "form": {
+            "tabs": {
+                "message": "Enviarnos un mensaje",
+                "callback": "Llamada de vuelta"
+            },
             "title": "Escríbanos",
             "subtitle": "Complete el formulario a continuación",
-            "fullName": "Nombre Completo",
-            "email": "Dirección de Email",
-            "company": "Nombre de la Empresa",
-            "companyPlaceholder": "Su Empresa",
-            "service": "Servicio de Interés",
+            "fullName": "Nombre completo",
+            "email": "Dirección de email",
+            "phone": "Número de teléfono",
+            "phonePlaceholder": "+34 600 000 000",
+            "company": "Nombre de la empresa",
+            "companyPlaceholder": "Su empresa",
+            "service": "Servicio de interés",
             "serviceOptions": [
                 "Desarrollo Web",
                 "Diseño UI/UX",
@@ -59,7 +69,7 @@
                 "Soporte y Mantenimiento",
                 "Otro"
             ],
-            "budget": "Presupuesto del Proyecto",
+            "budget": "Presupuesto del proyecto",
             "budgetOptions": [
                 "Menos de $5,000",
                 "$5,000 - $15,000",
@@ -67,14 +77,16 @@
                 "$50,000 - $100,000",
                 "$100,000+"
             ],
-            "details": "Detalles del Proyecto",
+            "details": "Detalles del proyecto",
             "detailsPlaceholder": "Cuéntenos sobre su proyecto, metas y cronograma...",
-            "submit": "Enviar Mensaje",
+            "submit": "Enviar solicitud",
             "sending": "Enviando...",
             "success": "Éxito",
             "successTitle": "¡Gracias!",
-            "successSubtitle": "Su mensaje ha sido enviado con éxito.",
-            "sendAnother": "Enviar otro mensaje",
+            "successSubtitle": "Su mensaje ha sido enviado con éxito. Nos pondremos en contacto pronto.",
+            "callbackSuccessTitle": "¡Solicitud recibida!",
+            "callbackSuccessSubtitle": "Le devolveremos la llamada lo antes posible para discutir su proyecto.",
+            "sendAnother": "Enviar otra solicitud",
             "selectService": "Seleccione un servicio",
             "selectBudget": "Seleccione rango de presupuesto"
         }

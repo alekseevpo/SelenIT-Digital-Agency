@@ -5,23 +5,19 @@ import { Logo } from '../ui/Logo';
 
 interface FooterProps {
     lang: Locale;
+    dict: Dictionary;
 }
 
-const getFooterLinks = (lang: string) => {
-    const isRu = lang === 'ru';
-    const isEs = lang === 'es';
-
+const getFooterLinks = (lang: string, dict: Dictionary) => {
     return {
-        services: [
-            { href: `/${lang}/services#web-development`, label: isRu ? 'Веб-разработка' : isEs ? 'Desarrollo Web' : 'Web Development' },
-            { href: `/${lang}/services#ui-ux-design`, label: isRu ? 'UI/UX Дизайн' : isEs ? 'Diseño UI/UX' : 'UI/UX Design' },
-            { href: `/${lang}/services#ecommerce`, label: isRu ? 'E-Commerce' : isEs ? 'E-Commerce' : 'E-Commerce' },
-            { href: `/${lang}/services#maintenance`, label: isRu ? 'Поддержка' : isEs ? 'Soporte' : 'Support & Maintenance' },
-        ],
+        services: dict.services.list.slice(0, 4).map(service => ({
+            href: `/${lang}/services#${service.id}`,
+            label: service.title
+        })),
         company: [
-            { href: `/${lang}/about`, label: isRu ? 'О нас' : isEs ? 'Nosotros' : 'About Us' },
-            { href: `/${lang}/showreel`, label: 'Showreel' },
-            { href: `/${lang}/contact`, label: isRu ? 'Контакты' : isEs ? 'Contacto' : 'Contact' },
+            { href: `/${lang}/about`, label: dict.common.nav.about },
+            { href: `/${lang}/showreel`, label: dict.common.nav.showreel },
+            { href: `/${lang}/contact`, label: dict.common.nav.contact },
         ],
         social: [
             { href: 'https://github.com', label: 'GitHub', icon: 'github' },
@@ -31,40 +27,9 @@ const getFooterLinks = (lang: string) => {
     };
 };
 
-export default function Footer({ lang }: FooterProps) {
-    const footerLinks = getFooterLinks(lang);
-
-    const navigations: Record<Locale, Dictionary['common']['footer'] & { mission: string, privacy: string, terms: string }> = {
-        en: {
-            services: 'Services',
-            company: 'Company',
-            getInTouch: 'Get in Touch',
-            rights: 'All rights reserved.',
-            mission: 'We craft stunning digital experiences that transform businesses and delight users.',
-            privacy: 'Privacy Policy',
-            terms: 'Terms of Service'
-        },
-        ru: {
-            services: 'Услуги',
-            company: 'Компания',
-            getInTouch: 'Связаться',
-            rights: 'Все права защищены.',
-            mission: 'Мы создаем потрясающий цифровой опыт, который трансформирует бизнес и радует пользователей.',
-            privacy: 'Политика конфиденциальности',
-            terms: 'Условия использования'
-        },
-        es: {
-            services: 'Servicios',
-            company: 'Compañía',
-            getInTouch: 'Contacto',
-            rights: 'Todos los derechos reservados.',
-            mission: 'Creamos experiencias digitales impresionantes que transforman negocios y deleitan a los usuarios.',
-            privacy: 'Política de Privacidad',
-            terms: 'Términos de Servicio'
-        }
-    };
-
-    const dict = navigations[lang] || navigations.en;
+export default function Footer({ lang, dict }: FooterProps) {
+    const footerLinks = getFooterLinks(lang, dict);
+    const footerDict = dict.common.footer;
 
     return (
         <footer className="bg-cream-50 dark:bg-dark-950 border-t border-slate-200 dark:border-dark-800 transition-colors duration-300">
@@ -76,7 +41,7 @@ export default function Footer({ lang }: FooterProps) {
                         <Logo size={48} showText={true} />
                     </Link>
                     <p className="text-slate-600 dark:text-dark-400 mb-5 leading-relaxed text-sm max-w-xs">
-                        {dict.mission}
+                        {footerDict.mission}
                     </p>
                     {/* Social Links - Mobile */}
                     <div className="flex gap-3">
@@ -100,7 +65,7 @@ export default function Footer({ lang }: FooterProps) {
                     {/* Services */}
                     <div>
                         <h4 className="text-slate-900 dark:text-white font-semibold mb-3 uppercase tracking-wider text-xs">
-                            {dict.services}
+                            {footerDict.services}
                         </h4>
                         <ul className="space-y-2.5 text-sm">
                             {footerLinks.services.map((link) => (
@@ -119,7 +84,7 @@ export default function Footer({ lang }: FooterProps) {
                     {/* Company */}
                     <div>
                         <h4 className="text-slate-900 dark:text-white font-semibold mb-3 uppercase tracking-wider text-xs">
-                            {dict.company}
+                            {footerDict.company}
                         </h4>
                         <ul className="space-y-2.5 text-sm">
                             {footerLinks.company.map((link) => (
@@ -139,7 +104,7 @@ export default function Footer({ lang }: FooterProps) {
                 {/* Mobile: Contact Section */}
                 <div className="md:hidden mb-8 p-4 rounded-2xl bg-cream-100 dark:bg-dark-900/50 border border-slate-100 dark:border-dark-800">
                     <h4 className="text-slate-900 dark:text-white font-semibold mb-3 uppercase tracking-wider text-xs text-center">
-                        {dict.getInTouch}
+                        {footerDict.getInTouch}
                     </h4>
                     <div className="flex flex-col gap-3">
                         <a
@@ -168,7 +133,7 @@ export default function Footer({ lang }: FooterProps) {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                Madrid
+                                {footerDict.address}
                             </div>
                         </div>
                     </div>
@@ -182,7 +147,7 @@ export default function Footer({ lang }: FooterProps) {
                             <Logo size={48} showText={true} />
                         </Link>
                         <p className="text-slate-600 dark:text-dark-400 mb-4 leading-relaxed text-sm">
-                            {dict.mission}
+                            {footerDict.mission}
                         </p>
                         {/* Social Links */}
                         <div className="flex gap-3">
@@ -203,7 +168,7 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Services */}
                     <div className="text-center">
-                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{dict.services}</h4>
+                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{footerDict.services}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.services.map((link) => (
                                 <li key={link.href}>
@@ -220,7 +185,7 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Company */}
                     <div className="text-center">
-                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{dict.company}</h4>
+                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{footerDict.company}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
@@ -237,7 +202,7 @@ export default function Footer({ lang }: FooterProps) {
 
                     {/* Contact */}
                     <div>
-                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{dict.getInTouch}</h4>
+                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{footerDict.getInTouch}</h4>
                         <ul className="space-y-2 text-slate-600 dark:text-dark-400 text-sm">
                             <li className="flex items-center gap-2">
                                 <svg className="w-4 h-4 text-orange-500 dark:text-primary-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -260,7 +225,7 @@ export default function Footer({ lang }: FooterProps) {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                <span>Madrid, Getafe</span>
+                                <span>{footerDict.address}</span>
                             </li>
                         </ul>
                     </div>
@@ -270,15 +235,15 @@ export default function Footer({ lang }: FooterProps) {
                 <div className="mt-8 pt-6 border-t border-slate-200 dark:border-dark-800">
                     <div className="flex flex-col items-center gap-3 md:flex-row md:justify-between">
                         <p className="text-slate-500 dark:text-dark-500 text-xs text-center md:text-left">
-                            © {new Date().getFullYear()} Selen.IT Digital Agency. {dict.rights}
+                            © {new Date().getFullYear()} Selen.IT Digital Agency. {footerDict.rights}
                         </p>
                         <div className="flex gap-4 text-xs font-medium">
                             <Link href={`/${lang}/privacy`} className="text-slate-500 dark:text-dark-500 hover:text-orange-500 dark:hover:text-primary-500 transition-colors">
-                                {dict.privacy}
+                                {footerDict.privacy}
                             </Link>
                             <span className="text-slate-300 dark:text-dark-700">•</span>
                             <Link href={`/${lang}/terms`} className="text-slate-500 dark:text-dark-500 hover:text-orange-500 dark:hover:text-primary-500 transition-colors">
-                                {dict.terms}
+                                {footerDict.terms}
                             </Link>
                         </div>
                     </div>
