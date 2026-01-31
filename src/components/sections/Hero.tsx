@@ -141,53 +141,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                     </motion.div>
                 </motion.div>
 
-                {/* Rocket Scroll Indicator */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2, duration: 1 }}
-                    className="absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer group/rocket scale-90 sm:scale-110"
-                    onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-                >
-                    <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 dark:text-dark-600 group-hover/rocket:text-primary-500 transition-colors mb-4">
-                        Explore
-                    </div>
-                    <motion.div
-                        animate={{
-                            y: [0, -15, 0],
-                        }}
-                        transition={{
-                            duration: 4,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        className="relative"
-                    >
-                        {/* Rocket Glow / Launch Effect */}
-                        <div className="absolute inset-x-0 bottom-8 bg-primary-500/30 blur-3xl h-20 w-20 mx-auto rounded-full animate-pulse opacity-0 group-hover/rocket:opacity-100 transition-opacity" />
-
-                        <motion.img
-                            src="/images/rocket_3d.png"
-                            alt="Rocket"
-                            className="w-40 h-40 object-contain group-hover/rocket:scale-105 transition-all duration-700"
-                            initial={{ rotate: 0 }}
-                            whileHover={{
-                                rotate: [0, -2, 2, -2, 0],
-                                transition: { duration: 0.8, repeat: Infinity }
-                            }}
-                        />
-
-                        {/* Exhaust Glow */}
-                        <motion.div
-                            animate={{
-                                scale: [1, 1.8, 1],
-                                opacity: [0.3, 0.7, 0.3]
-                            }}
-                            transition={{ duration: 0.7, repeat: Infinity }}
-                            className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-16 h-4 bg-gradient-to-t from-primary-500/50 via-orange-500/30 to-transparent rounded-full blur-[8px]"
-                        />
-                    </motion.div>
-                </motion.div>
+                {/* Scroll Indicator Removed */}
             </div>
         </section >
     );
