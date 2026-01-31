@@ -68,7 +68,7 @@ export default function Hero({ dict, lang }: HeroProps) {
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden">
             {/* Background decorative elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden hidden md:block">
                 <div className="absolute top-1/4 -right-1/4 w-[500px] h-[500px] bg-primary-500/10 blur-[120px] rounded-full" />
                 <div className="absolute bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-secondary-500/10 blur-[120px] rounded-full" />
             </div>
