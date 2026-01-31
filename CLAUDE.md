@@ -1,82 +1,192 @@
 # CLAUDE.md
 
-This file provides guidance for Claude Code when working with this repository.
+Инструкции для Claude Code при работе с этим репозиторием.
 
-## Project Overview
+## Обзор проекта
 
-SelenIT Digital Agency - A multilingual marketing website built with Next.js 14, React 18, TypeScript, and Tailwind CSS. The site showcases digital agency services with support for English, Russian, and Spanish.
+**SelenIT Digital Agency** — мультиязычный маркетинговый сайт цифрового агентства. Поддерживает три языка: английский, русский и испанский.
 
-## Tech Stack
+## Технологический стек
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS with custom theme (dark mode via `next-themes`)
-- **Animations**: Framer Motion, Lenis (smooth scrolling)
-- **Icons**: Lucide React
+| Категория | Технология |
+|-----------|------------|
+| Фреймворк | Next.js 14 (App Router) |
+| Язык | TypeScript |
+| Стилизация | Tailwind CSS + next-themes (тёмная тема) |
+| Анимации | Framer Motion, Lenis (плавный скролл) |
+| Иконки | Lucide React |
+| Email | Resend |
+| Аналитика | Vercel Analytics, Speed Insights |
 
-## Commands
+## Команды
 
 ```bash
-npm run dev      # Start dev server on port 5001
-npm run build    # Production build
-npm run start    # Start production server
-npm run lint     # Run ESLint
+npm run dev      # Запуск dev-сервера на порту 5001
+npm run build    # Продакшен сборка
+npm run start    # Запуск продакшен сервера
+npm run lint     # Запуск ESLint
 ```
 
-## Project Structure
+## Структура проекта
 
 ```
 src/
-├── app/[lang]/           # Locale-based routing (en, ru, es)
-│   ├── page.tsx          # Homepage
-│   ├── about/            # About page
-│   ├── contact/          # Contact page
-│   ├── services/         # Services page
-│   ├── showreel/         # Portfolio/showreel page
-│   ├── privacy/          # Privacy policy
-│   └── terms/            # Terms of service
+├── app/
+│   ├── [lang]/                 # Роутинг по локалям (en, ru, es)
+│   │   ├── page.tsx            # Главная страница
+│   │   ├── about/              # О нас
+│   │   ├── contact/            # Контакты
+│   │   ├── services/           # Услуги
+│   │   ├── showreel/           # Портфолио
+│   │   ├── privacy/            # Политика конфиденциальности
+│   │   ├── terms/              # Условия использования
+│   │   ├── [...not-found]/     # Catch-all для 404
+│   │   ├── layout.tsx          # Корневой layout
+│   │   ├── loading.tsx         # Состояние загрузки
+│   │   ├── error.tsx           # Обработка ошибок
+│   │   └── not-found.tsx       # Страница 404
+│   ├── api/contact/            # API endpoint для формы контактов
+│   ├── robots.ts               # Генерация robots.txt
+│   ├── sitemap.ts              # Генерация sitemap.xml
+│   └── globals.css             # Глобальные стили
+│
 ├── components/
-│   ├── layout/           # Header, Footer
-│   ├── sections/         # Hero, Services, CTA, Testimonials, Technologies
-│   ├── providers/        # ThemeProvider, SmoothScrollProvider
-│   └── ui/               # Reusable UI components (Logo, TypeWriter, Reveal, etc.)
-├── dictionaries/         # i18n JSON files (en.json, ru.json, es.json)
-├── types/                # TypeScript type definitions
-├── i18n-config.ts        # Locale configuration
-├── get-dictionary.ts     # Dictionary loader
-└── middleware.ts         # i18n routing middleware
+│   ├── layout/
+│   │   ├── Header.tsx          # Шапка сайта с навигацией
+│   │   └── Footer.tsx          # Подвал сайта
+│   │
+│   ├── sections/               # Секции страниц
+│   │   ├── Hero.tsx            # Главный баннер
+│   │   ├── Services.tsx        # Секция услуг
+│   │   ├── Technologies.tsx    # Технологии
+│   │   ├── Testimonials.tsx    # Отзывы
+│   │   ├── Showreel.tsx        # Превью портфолио
+│   │   └── CTA.tsx             # Call-to-action блок
+│   │
+│   ├── providers/              # React провайдеры
+│   │   ├── theme-provider.tsx  # Провайдер темы
+│   │   ├── SmoothScrollProvider.tsx  # Lenis плавный скролл
+│   │   ├── PageTransition.tsx  # Анимации переходов
+│   │   ├── CookieConsentProvider.tsx # Провайдер согласия на cookies
+│   │   ├── CookieConsentWrapper.tsx  # Обёртка для cookies
+│   │   └── AnalyticsWrapper.tsx      # Обёртка аналитики
+│   │
+│   ├── ui/                     # UI компоненты
+│   │   ├── Logo.tsx            # Логотип
+│   │   ├── ThemeToggle.tsx     # Переключатель темы
+│   │   ├── LanguageSwitcher.tsx # Переключатель языка
+│   │   ├── Reveal.tsx          # Анимация появления при скролле
+│   │   ├── AnimatedTitle.tsx   # Анимированные заголовки
+│   │   ├── TypeWriter.tsx      # Эффект печатной машинки
+│   │   ├── FluidBackground.tsx # Анимированный фон
+│   │   ├── YouTubeEmbed.tsx    # Встраивание YouTube видео
+│   │   └── CookieConsent.tsx   # Баннер согласия на cookies
+│   │
+│   ├── ContactForm.tsx         # Форма обратной связи
+│   └── ShowreelGrid.tsx        # Сетка портфолио
+│
+├── dictionaries/               # Файлы переводов
+│   ├── en.json                 # Английский
+│   ├── ru.json                 # Русский
+│   └── es.json                 # Испанский
+│
+├── types/
+│   └── dictionary.ts           # Типы для словарей i18n
+│
+├── i18n-config.ts              # Конфигурация локалей
+├── get-dictionary.ts           # Загрузчик словарей
+└── middleware.ts               # Middleware для i18n роутинга
 ```
 
-## Internationalization (i18n)
+## Интернационализация (i18n)
 
-- **Locales**: `en` (default), `ru`, `es`
-- **Config**: `src/i18n-config.ts`
-- **Dictionaries**: `src/dictionaries/*.json`
-- **Types**: `src/types/dictionary.ts` - strongly typed dictionary interface
+### Локали
+- `en` — английский (по умолчанию)
+- `ru` — русский
+- `es` — испанский
 
-All text content is stored in dictionary JSON files. When adding new text:
-1. Add the content to all three dictionary files (en.json, ru.json, es.json)
-2. Update the `Dictionary` type in `src/types/dictionary.ts` if adding new keys
+### Как добавить новый текст
+1. Добавить контент во все три файла словарей (`en.json`, `ru.json`, `es.json`)
+2. Обновить тип `Dictionary` в `src/types/dictionary.ts`
 
-## Styling Conventions
+### Использование в компонентах
+```tsx
+// В серверных компонентах страниц
+import { getDictionary } from '@/get-dictionary';
 
-- **Dark mode**: Class-based (`darkMode: 'class'` in Tailwind config)
-- **Custom colors**: `primary`, `accent`, `dark` color palettes defined in `tailwind.config.ts`
-- **Custom animations**: `fade-in`, `fade-in-up`, `slide-in-left`, `float`, `pulse-glow`, etc.
-- **Global styles**: `src/app/globals.css`
+export default async function Page({ params: { lang } }) {
+  const dict = await getDictionary(lang);
+  return <h1>{dict.home.title}</h1>;
+}
+```
 
-## Key Patterns
+## Стилизация
 
-- **Page components**: Receive `params.lang` for locale, call `getDictionary(lang)` to fetch translations
-- **Animation wrapper**: Use `<Reveal>` component for scroll-triggered animations
-- **Smooth scroll**: Provided by `SmoothScrollProvider` using Lenis
-- **Theme toggle**: `ThemeToggle` component with `next-themes`
+### Темы
+- Тёмная тема через класс (`darkMode: 'class'` в Tailwind)
+- Переключение через `ThemeToggle` компонент
 
-## Security Headers
+### Кастомные цвета (tailwind.config.ts)
+- `primary` — основной цвет бренда
+- `accent` — акцентный цвет
+- `dark` — цвета для тёмной темы
 
-Configured in `next.config.js`:
-- X-Content-Type-Options: nosniff
-- X-Frame-Options: DENY
-- X-XSS-Protection enabled
-- Strict Referrer-Policy
-- Restricted Permissions-Policy
+### Кастомные анимации
+- `fade-in`, `fade-in-up` — появление
+- `slide-in-left` — выезд слева
+- `float` — плавающий эффект
+- `pulse-glow` — пульсирующее свечение
+
+## Ключевые паттерны
+
+### Анимация появления при скролле
+```tsx
+import Reveal from '@/components/ui/Reveal';
+
+<Reveal>
+  <div>Контент появится при скролле</div>
+</Reveal>
+```
+
+### Плавный скролл
+Обеспечивается `SmoothScrollProvider` с библиотекой Lenis.
+
+### Переходы между страницами
+Используется `PageTransition` компонент с Framer Motion.
+
+## API Endpoints
+
+### POST /api/contact
+Обработка формы обратной связи через Resend.
+
+**Body:**
+```json
+{
+  "name": "string",
+  "email": "string",
+  "message": "string"
+}
+```
+
+## Переменные окружения
+
+```env
+RESEND_API_KEY=          # API ключ Resend для отправки email
+```
+
+## Безопасность
+
+Заголовки безопасности в `next.config.js`:
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `X-XSS-Protection: 1; mode=block`
+- Strict `Referrer-Policy`
+- Ограниченная `Permissions-Policy`
+
+## Рекомендации по разработке
+
+1. **Всегда** обновляй все три файла словарей при добавлении текста
+2. Используй компонент `<Reveal>` для анимаций появления
+3. Серверные компоненты по умолчанию — добавляй `'use client'` только при необходимости
+4. Следуй существующей структуре папок при добавлении компонентов
+5. Используй Tailwind классы, избегай inline стилей

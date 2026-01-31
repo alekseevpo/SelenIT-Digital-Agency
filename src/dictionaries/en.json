@@ -1,4 +1,11 @@
 {
+    "cookies": {
+        "title": "Cookie Settings",
+        "message": "We use cookies to improve your experience and analyze site traffic.",
+        "accept": "Accept",
+        "decline": "Decline",
+        "learnMore": "Learn more"
+    },
     "common": {
         "nav": {
             "home": "Home",
@@ -269,7 +276,8 @@
             "projectPreview": "Project Preview",
             "client": "Client",
             "year": "Year",
-            "results": "Results"
+            "results": "Results",
+            "viewCase": "View Case Study"
         },
         "projects": [
             {
@@ -280,6 +288,7 @@
                 "description": "A premium online fashion store with advanced filtering and seamless checkout experience.",
                 "client": "Luxe Brands Inc.",
                 "year": "2024",
+                "slug": "luxe-fashion",
                 "results": [
                     "+200% conversion",
                     "+150% order value",
@@ -294,6 +303,7 @@
                 "description": "Real-time financial analytics platform with interactive charts and AI insights.",
                 "client": "FinanceHub Corp.",
                 "year": "2024",
+                "slug": "fintech-dashboard",
                 "results": [
                     "50K+ users",
                     "99.9% uptime",

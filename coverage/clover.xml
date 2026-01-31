@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1769867605512" clover="3.2.0">
+  <project timestamp="1769867605512" name="All files">
+    <metrics statements="385" coveredstatements="224" conditionals="307" coveredconditionals="169" methods="115" coveredmethods="50" elements="807" coveredelements="443" complexity="0" loc="385" ncloc="385" packages="5" files="25" classes="25"/>
+    <package name="components">
+      <metrics statements="80" coveredstatements="72" conditionals="96" coveredconditionals="86" methods="18" coveredmethods="12"/>
+      <file name="ContactForm.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ContactForm.tsx">
+        <metrics statements="75" coveredstatements="72" conditionals="95" coveredconditionals="86" methods="14" coveredmethods="12"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="48" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="50" count="21" type="stmt"/>
+        <line num="51" count="452" type="stmt"/>
+        <line num="60" count="452" type="stmt"/>
+        <line num="61" count="452" type="stmt"/>
+        <line num="62" count="452" type="stmt"/>
+        <line num="63" count="452" type="stmt"/>
+        <line num="64" count="452" type="stmt"/>
+        <line num="67" count="452" type="stmt"/>
+        <line num="68" count="21" type="cond" truecount="4" falsecount="0"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="80" count="20" type="cond" truecount="3" falsecount="1"/>
+        <line num="81" count="20" type="stmt"/>
+        <line num="82" count="20" type="stmt"/>
+        <line num="87" count="452" type="stmt"/>
+        <line num="88" count="7" type="cond" truecount="3" falsecount="1"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="91" count="7" type="stmt"/>
+        <line num="92" count="7" type="stmt"/>
+        <line num="93" count="6" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="100" count="452" type="stmt"/>
+        <line num="101" count="15" type="stmt"/>
+        <line num="102" count="15" type="cond" truecount="6" falsecount="0"/>
+        <line num="103" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="104" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="105" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="106" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="108" count="15" type="cond" truecount="6" falsecount="0"/>
+        <line num="109" count="15" type="cond" truecount="6" falsecount="0"/>
+        <line num="111" count="15" type="stmt"/>
+        <line num="112" count="15" type="stmt"/>
+        <line num="115" count="452" type="stmt"/>
+        <line num="116" count="16" type="stmt"/>
+        <line num="117" count="16" type="stmt"/>
+        <line num="120" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="121" count="1" type="stmt"/>
+        <line num="122" count="1" type="stmt"/>
+        <line num="123" count="1" type="stmt"/>
+        <line num="126" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="128" count="7" type="stmt"/>
+        <line num="130" count="7" type="stmt"/>
+        <line num="132" count="7" type="stmt"/>
+        <line num="133" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="134" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="135" count="1" type="stmt"/>
+        <line num="136" count="1" type="stmt"/>
+        <line num="140" count="6" type="stmt"/>
+        <line num="154" count="6" type="stmt"/>
+        <line num="156" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="157" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="160" count="5" type="stmt"/>
+        <line num="161" count="5" type="stmt"/>
+        <line num="171" count="1" type="stmt"/>
+        <line num="172" count="1" type="stmt"/>
+        <line num="178" count="7" type="stmt"/>
+        <line num="182" count="452" type="stmt"/>
+        <line num="183" count="388" type="stmt"/>
+        <line num="184" count="388" type="stmt"/>
+        <line num="189" count="388" type="cond" truecount="2" falsecount="0"/>
+        <line num="190" count="1" type="stmt"/>
+        <line num="192" count="388" type="stmt"/>
+        <line num="209" count="1" type="stmt"/>
+        <line num="300" count="1341" type="stmt"/>
+        <line num="320" count="1341" type="stmt"/>
+      </file>
+      <file name="ShowreelGrid.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ShowreelGrid.tsx">
+        <metrics statements="5" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.layout">
+      <metrics statements="72" coveredstatements="53" conditionals="70" coveredconditionals="33" methods="21" coveredmethods="12"/>
+      <file name="Footer.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/layout/Footer.tsx">
+        <metrics statements="18" coveredstatements="0" conditionals="31" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="67" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="126" count="0" type="stmt"/>
+        <line num="190" count="0" type="stmt"/>
+        <line num="209" count="0" type="stmt"/>
+        <line num="226" count="0" type="stmt"/>
+        <line num="292" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="324" count="0" type="stmt"/>
+      </file>
+      <file name="Header.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/layout/Header.tsx">
+        <metrics statements="54" coveredstatements="53" conditionals="39" coveredconditionals="33" methods="12" coveredmethods="12"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="19" count="34" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="92" count="22" type="stmt"/>
+        <line num="93" count="34" type="stmt"/>
+        <line num="94" count="34" type="stmt"/>
+        <line num="95" count="34" type="stmt"/>
+        <line num="97" count="34" type="stmt"/>
+        <line num="103" count="34" type="cond" truecount="1" falsecount="1"/>
+        <line num="104" count="34" type="stmt"/>
+        <line num="106" count="34" type="stmt"/>
+        <line num="107" count="22" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="110" count="22" type="stmt"/>
+        <line num="111" count="22" type="stmt"/>
+        <line num="115" count="34" type="stmt"/>
+        <line num="116" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="118" count="7" type="stmt"/>
+        <line num="119" count="7" type="stmt"/>
+        <line num="120" count="7" type="stmt"/>
+        <line num="121" count="7" type="stmt"/>
+        <line num="122" count="7" type="stmt"/>
+        <line num="123" count="7" type="stmt"/>
+        <line num="126" count="26" type="stmt"/>
+        <line num="127" count="26" type="stmt"/>
+        <line num="128" count="26" type="stmt"/>
+        <line num="129" count="26" type="stmt"/>
+        <line num="130" count="26" type="stmt"/>
+        <line num="131" count="26" type="stmt"/>
+        <line num="132" count="26" type="cond" truecount="1" falsecount="1"/>
+        <line num="133" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="137" count="33" type="stmt"/>
+        <line num="138" count="33" type="stmt"/>
+        <line num="139" count="33" type="stmt"/>
+        <line num="140" count="33" type="stmt"/>
+        <line num="141" count="33" type="stmt"/>
+        <line num="142" count="33" type="stmt"/>
+        <line num="146" count="34" type="stmt"/>
+        <line num="147" count="2" type="stmt"/>
+        <line num="179" count="170" type="stmt"/>
+        <line num="180" count="170" type="stmt"/>
+        <line num="228" count="9" type="stmt"/>
+        <line num="281" count="1" type="stmt"/>
+        <line num="310" count="35" type="stmt"/>
+        <line num="311" count="35" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.providers">
+      <metrics statements="59" coveredstatements="20" conditionals="12" coveredconditionals="6" methods="17" coveredmethods="4"/>
+      <file name="AnalyticsWrapper.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/providers/AnalyticsWrapper.tsx">
+        <metrics statements="7" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+      <file name="CookieConsentProvider.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/providers/CookieConsentProvider.tsx">
+        <metrics statements="20" coveredstatements="20" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="36" type="stmt"/>
+        <line num="18" count="78" type="stmt"/>
+        <line num="19" count="78" type="stmt"/>
+        <line num="21" count="78" type="stmt"/>
+        <line num="22" count="36" type="stmt"/>
+        <line num="23" count="36" type="cond" truecount="4" falsecount="0"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="26" count="36" type="stmt"/>
+        <line num="29" count="78" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="34" count="78" type="stmt"/>
+        <line num="43" count="39" type="stmt"/>
+        <line num="44" count="39" type="stmt"/>
+        <line num="45" count="38" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="4" type="stmt"/>
+        <line num="48" count="34" type="stmt"/>
+      </file>
+      <file name="CookieConsentWrapper.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/providers/CookieConsentWrapper.tsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+      <file name="PageTransition.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/providers/PageTransition.tsx">
+        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+      </file>
+      <file name="SmoothScrollProvider.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/providers/SmoothScrollProvider.tsx">
+        <metrics statements="23" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+      </file>
+      <file name="theme-provider.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/providers/theme-provider.tsx">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.sections">
+      <metrics statements="41" coveredstatements="0" conditionals="21" coveredconditionals="0" methods="16" coveredmethods="0"/>
+      <file name="CTA.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/sections/CTA.tsx">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+      <file name="Hero.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/sections/Hero.tsx">
+        <metrics statements="6" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+      </file>
+      <file name="Services.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/sections/Services.tsx">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+      </file>
+      <file name="Showreel.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/sections/Showreel.tsx">
+        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+      </file>
+      <file name="Technologies.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/sections/Technologies.tsx">
+        <metrics statements="7" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+      </file>
+      <file name="Testimonials.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/sections/Testimonials.tsx">
+        <metrics statements="13" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.ui">
+      <metrics statements="133" coveredstatements="79" conditionals="108" coveredconditionals="44" methods="43" coveredmethods="22"/>
+      <file name="AnimatedTitle.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/AnimatedTitle.tsx">
+        <metrics statements="2" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="1"/>
+      </file>
+      <file name="CookieConsent.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/CookieConsent.tsx">
+        <metrics statements="9" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+      </file>
+      <file name="FluidBackground.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/FluidBackground.tsx">
+        <metrics statements="12" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+      </file>
+      <file name="LanguageSwitcher.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/LanguageSwitcher.tsx">
+        <metrics statements="21" coveredstatements="21" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="20" count="60" type="stmt"/>
+        <line num="21" count="74" type="stmt"/>
+        <line num="22" count="74" type="stmt"/>
+        <line num="23" count="74" type="stmt"/>
+        <line num="25" count="74" type="stmt"/>
+        <line num="26" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="32" count="74" type="stmt"/>
+        <line num="33" count="7" type="stmt"/>
+        <line num="34" count="7" type="stmt"/>
+        <line num="45" count="222" type="stmt"/>
+        <line num="46" count="222" type="stmt"/>
+        <line num="49" count="7" type="stmt"/>
+      </file>
+      <file name="Logo.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/Logo.tsx">
+        <metrics statements="33" coveredstatements="20" conditionals="47" coveredconditionals="19" methods="11" coveredmethods="5"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="44" count="34" type="cond" truecount="2" falsecount="2"/>
+        <line num="45" count="56" type="stmt"/>
+        <line num="46" count="56" type="stmt"/>
+        <line num="47" count="56" type="stmt"/>
+        <line num="48" count="56" type="stmt"/>
+        <line num="51" count="56" type="cond" truecount="3" falsecount="1"/>
+        <line num="53" count="56" type="stmt"/>
+        <line num="54" count="22" type="stmt"/>
+        <line num="57" count="56" type="stmt"/>
+        <line num="58" count="56" type="cond" truecount="1" falsecount="1"/>
+        <line num="59" count="56" type="stmt"/>
+        <line num="67" count="56" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="81" count="56" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="252" count="280" type="stmt"/>
+        <line num="317" count="784" type="stmt"/>
+        <line num="342" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="343" count="0" type="stmt"/>
+        <line num="344" count="0" type="stmt"/>
+        <line num="345" count="0" type="stmt"/>
+        <line num="348" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="350" count="0" type="stmt"/>
+        <line num="351" count="0" type="stmt"/>
+        <line num="354" count="0" type="stmt"/>
+        <line num="355" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="356" count="0" type="stmt"/>
+      </file>
+      <file name="Reveal.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/Reveal.tsx">
+        <metrics statements="11" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="122" count="0" type="stmt"/>
+      </file>
+      <file name="ThemeToggle.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/ThemeToggle.tsx">
+        <metrics statements="18" coveredstatements="12" conditionals="12" coveredconditionals="5" methods="6" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="68" type="stmt"/>
+        <line num="8" count="112" type="stmt"/>
+        <line num="9" count="112" type="stmt"/>
+        <line num="10" count="112" type="stmt"/>
+        <line num="12" count="112" type="stmt"/>
+        <line num="13" count="44" type="stmt"/>
+        <line num="16" count="112" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="29" count="112" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="68" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+      </file>
+      <file name="TypeWriter.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/TypeWriter.tsx">
+        <metrics statements="26" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="9" coveredmethods="9"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="14" count="14" type="stmt"/>
+        <line num="21" count="81" type="stmt"/>
+        <line num="22" count="81" type="stmt"/>
+        <line num="23" count="81" type="stmt"/>
+        <line num="24" count="81" type="stmt"/>
+        <line num="26" count="81" type="stmt"/>
+        <line num="27" count="81" type="stmt"/>
+        <line num="29" count="81" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="14" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="32" count="6" type="stmt"/>
+        <line num="34" count="14" type="stmt"/>
+        <line num="37" count="67" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="15" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="5" type="stmt"/>
+        <line num="40" count="5" type="stmt"/>
+        <line num="42" count="10" type="stmt"/>
+        <line num="43" count="9" type="stmt"/>
+        <line num="45" count="10" type="stmt"/>
+        <line num="48" count="52" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="14" type="stmt"/>
+        <line num="51" count="38" type="stmt"/>
+        <line num="52" count="33" type="stmt"/>
+        <line num="54" count="38" type="stmt"/>
+      </file>
+      <file name="YouTubeEmbed.tsx" path="/Users/ppmtrue/Documents/GitHub/SelenIT-Digital-Agency/src/components/ui/YouTubeEmbed.tsx">
+        <metrics statements="1" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+  </project>
+</coverage>

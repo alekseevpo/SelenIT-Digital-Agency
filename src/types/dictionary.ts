@@ -127,8 +127,17 @@ export interface AboutDict {
     };
 }
 
+export interface CookiesDict {
+    title: string;
+    message: string;
+    accept: string;
+    decline: string;
+    learnMore: string;
+}
+
 export interface Dictionary {
     common: CommonDict;
+    cookies: CookiesDict;
     contact: {
         hero: {
             badge: string;
@@ -223,6 +232,7 @@ export interface Dictionary {
             client: string;
             year: string;
             results: string;
+            viewCase?: string;
         };
         projects: {
             id: number;
@@ -235,6 +245,7 @@ export interface Dictionary {
             results: string[];
             tags?: string[];
             color?: string;
+            slug?: string;
         }[];
         cta: {
             title1: string;

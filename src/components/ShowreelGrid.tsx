@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import YouTubeEmbed from './ui/YouTubeEmbed';
+import { ArrowRight } from 'lucide-react';
 
 interface Project {
     id: number;
@@ -14,6 +16,7 @@ interface Project {
     tags: string[];
     color: string;
     results: string[];
+    slug?: string;
 }
 
 interface ShowreelGridProps {
@@ -24,6 +27,7 @@ interface ShowreelGridProps {
         filterAll: string;
         projectPreview: string;
         client: string;
+        viewCase?: string;
     };
 }
 
@@ -83,6 +87,17 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                                         </span>
                                     ))}
                                 </div>
+
+                                {/* View Case Study Link */}
+                                {project.slug && (
+                                    <Link
+                                        href={`/${lang}/case/${project.slug}`}
+                                        className="inline-flex items-center gap-2 mt-6 text-orange-500 dark:text-primary-500 hover:text-orange-600 dark:hover:text-primary-400 font-medium transition-colors group"
+                                    >
+                                        {dict.viewCase || 'View Case Study'}
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
+                                )}
                             </div>
                         </div>
                     ))}

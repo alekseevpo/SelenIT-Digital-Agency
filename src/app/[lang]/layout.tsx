@@ -3,13 +3,16 @@ import { Inter } from 'next/font/google';
 import '../globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
+import { CookieConsentProvider } from '@/components/providers/CookieConsentProvider';
+import { CookieConsentWrapper } from '@/components/providers/CookieConsentWrapper';
+import { AnalyticsWrapper } from '@/components/providers/AnalyticsWrapper';
 import type { Locale } from '@/i18n-config';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { PageTransition } from '@/components/providers/PageTransition';
+import BackToTop from '@/components/ui/BackToTop';
+import ChatWidget from '@/components/ui/ChatWidget';
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
@@ -57,13 +60,15 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
     };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
     params: { lang },
 }: {
     children: React.ReactNode;
     params: { lang: string };
 }) {
+    const dict = await getDictionary(lang as Locale);
+
     return (
         <html lang={lang} suppressHydrationWarning>
             <body className="antialiased transition-colors duration-300">
@@ -73,18 +78,22 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <SmoothScrollProvider>
-                        <Header lang={lang as any} />
-                        <main className="min-h-screen transition-colors duration-300">
-                            <PageTransition>
-                                {children}
-                            </PageTransition>
-                        </main>
-                        <Footer lang={lang as any} />
-                    </SmoothScrollProvider>
+                    <CookieConsentProvider>
+                        <SmoothScrollProvider>
+                            <Header lang={lang as any} />
+                            <main className="min-h-screen transition-colors duration-300">
+                                <PageTransition>
+                                    {children}
+                                </PageTransition>
+                            </main>
+                            <Footer lang={lang as any} />
+                        </SmoothScrollProvider>
+                        <CookieConsentWrapper lang={lang} dictionary={dict.cookies} />
+                        <AnalyticsWrapper />
+                        <BackToTop />
+                        <ChatWidget />
+                    </CookieConsentProvider>
                 </ThemeProvider>
-                <Analytics />
-                <SpeedInsights />
             </body>
         </html>
     );
