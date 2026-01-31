@@ -91,7 +91,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                     style={{ x: xTransform, opacity }}
                 >
                     <h2
-                        className="text-6xl md:text-8xl lg:text-[10rem] font-serif font-bold tracking-tight text-slate-900 dark:text-white select-none"
+                        className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] font-serif font-bold tracking-tight text-slate-900 dark:text-white select-none"
                         style={{ fontFamily: "'Times New Roman', 'Georgia', serif" }}
                     >
                         {showreelTitle[lang as keyof typeof showreelTitle] || showreelTitle.en}

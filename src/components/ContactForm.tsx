@@ -271,7 +271,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                         <button
                             type="button"
                             onClick={() => setActiveTab('message')}
-                            className={`relative flex-1 py-2.5 text-sm font-bold rounded-xl transition-all duration-300 z-10 ${activeTab === 'message'
+                            className={`relative flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 z-10 ${activeTab === 'message'
                                 ? 'text-primary-600 dark:text-primary-400'
                                 : 'text-slate-500 dark:text-dark-500 hover:text-slate-700 dark:hover:text-dark-300'
                                 }`}
@@ -281,7 +281,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                         <button
                             type="button"
                             onClick={() => setActiveTab('callback')}
-                            className={`relative flex-1 py-2.5 text-sm font-bold rounded-xl transition-all duration-300 z-10 ${activeTab === 'callback'
+                            className={`relative flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 z-10 ${activeTab === 'callback'
                                 ? 'text-primary-600 dark:text-primary-400'
                                 : 'text-slate-500 dark:text-dark-500 hover:text-slate-700 dark:hover:text-dark-300'
                                 }`}
