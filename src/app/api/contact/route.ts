@@ -43,20 +43,24 @@ export async function POST(request: NextRequest) {
         const { name, email, company, message, recaptchaToken } = body;
 
         // Validate required fields
-        if (!name || !email || !message || !recaptchaToken) {
+        if (!name || !email || !message) {
             return NextResponse.json(
                 { error: 'Missing required fields' },
                 { status: 400 }
             );
         }
 
-        // Verify reCAPTCHA
-        const isHuman = await verifyRecaptcha(recaptchaToken);
-        if (!isHuman) {
-            return NextResponse.json(
-                { error: 'reCAPTCHA verification failed' },
-                { status: 400 }
-            );
+        // Verify reCAPTCHA if token is provided
+        if (recaptchaToken) {
+            const isHuman = await verifyRecaptcha(recaptchaToken);
+            if (!isHuman) {
+                return NextResponse.json(
+                    { error: 'reCAPTCHA verification failed' },
+                    { status: 400 }
+                );
+            }
+        } else {
+            console.log('Skipping reCAPTCHA verification: no token provided (likely blocked by ad-blocker)');
         }
 
         // Initialize Resend (must be inside function, not at module level for build)

@@ -130,10 +130,10 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         try {
             // Get reCAPTCHA token
             const recaptchaToken = await getRecaptchaToken();
+
+            // Log warning but proceed if reCAPTCHA is blocked by ad-blocker
             if (!recaptchaToken) {
-                setSubmitError(lang === 'ru' ? 'Ошибка проверки reCAPTCHA' : lang === 'es' ? 'Error de verificación reCAPTCHA' : 'reCAPTCHA verification failed');
-                setIsSubmitting(false);
-                return;
+                console.warn('reCAPTCHA not loaded or blocked. Proceeding with honeypot protection only.');
             }
 
             // Submit to API
@@ -352,7 +352,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
                     <button
                         type="submit"
-                        disabled={isSubmitting || !recaptchaLoaded}
+                        disabled={isSubmitting}
                         className="btn-primary w-full text-lg py-4 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary-500/20"
                     >
                         {isSubmitting ? (
