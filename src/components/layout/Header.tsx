@@ -230,27 +230,27 @@ export default function Header({ lang }: HeaderProps) {
                             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                             whileTap={{ scale: 0.9 }}
                         >
-                            <div className="w-5 h-5 relative">
-                                <motion.span
-                                    className="absolute left-0 w-5 h-0.5 bg-slate-800 dark:bg-cream-50 rounded-full"
+                            <div className="w-5 h-5 relative flex flex-col justify-between">
+                                <motion.div
+                                    className="w-5 h-0.5 rounded-full bg-slate-800 dark:bg-white"
                                     animate={{
-                                        top: isMobileMenuOpen ? '10px' : '4px',
+                                        y: isMobileMenuOpen ? 8 : 0,
                                         rotate: isMobileMenuOpen ? 45 : 0,
                                     }}
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
                                 />
-                                <motion.span
-                                    className="absolute left-0 top-[10px] w-5 h-0.5 bg-slate-800 dark:bg-cream-50 rounded-full"
+                                <motion.div
+                                    className="w-5 h-0.5 rounded-full bg-slate-800 dark:bg-white"
                                     animate={{
                                         opacity: isMobileMenuOpen ? 0 : 1,
                                         scaleX: isMobileMenuOpen ? 0 : 1,
                                     }}
                                     transition={{ duration: 0.2 }}
                                 />
-                                <motion.span
-                                    className="absolute left-0 w-5 h-0.5 bg-slate-800 dark:bg-cream-50 rounded-full"
+                                <motion.div
+                                    className="w-5 h-0.5 rounded-full bg-slate-800 dark:bg-white"
                                     animate={{
-                                        top: isMobileMenuOpen ? '10px' : '16px',
+                                        y: isMobileMenuOpen ? -8 : 0,
                                         rotate: isMobileMenuOpen ? -45 : 0,
                                     }}
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
