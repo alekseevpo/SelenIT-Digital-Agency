@@ -323,7 +323,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                         name="name"
                                         value={formState.name}
                                         onChange={handleChange}
-                                        className={`w-full px-5 py-3.5 rounded-2xl bg-white dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.name
+                                        className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.name
                                             ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
                                             : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
                                             }`}
@@ -347,7 +347,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                             name="email"
                                             value={formState.email}
                                             onChange={handleChange}
-                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.email
+                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.email
                                                 ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
                                                 : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
                                                 }`}
@@ -369,7 +369,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                             name="phone"
                                             value={formState.phone}
                                             onChange={handleChange}
-                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.phone
+                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.phone
                                                 ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
                                                 : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
                                                 }`}
@@ -392,7 +392,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                         name="company"
                                         value={formState.company}
                                         onChange={handleChange}
-                                        className="w-full px-5 py-3.5 rounded-2xl bg-white dark:bg-dark-900/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-dark-600 focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm backdrop-blur-md"
+                                        className="w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-dark-600 focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm backdrop-blur-md"
                                         placeholder={dict.companyPlaceholder}
                                     />
                                 </div>
@@ -407,7 +407,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                             name="service"
                                             value={formState.service}
                                             onChange={handleChange}
-                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white dark:bg-dark-900/40 border transition-all outline-none appearance-none focus:ring-4 focus:ring-primary-500/10 cursor-pointer ${errors.service
+                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border transition-all outline-none appearance-none focus:ring-4 focus:ring-primary-500/10 cursor-pointer ${errors.service
                                                 ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
                                                 : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm backdrop-blur-md'
                                                 }`}
@@ -447,7 +447,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                                 name="budget"
                                                 value={formState.budget}
                                                 onChange={handleChange}
-                                                className="w-full px-5 py-3.5 rounded-2xl bg-white dark:bg-dark-900/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white appearance-none focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm backdrop-blur-md cursor-pointer"
+                                                className="w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white appearance-none focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm backdrop-blur-md cursor-pointer"
                                             >
                                                 <option value="" className="bg-white dark:bg-dark-900">{dict.selectBudget}</option>
                                                 {dict.budgetOptions.map((budget) => (
@@ -475,7 +475,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                         rows={activeTab === 'message' ? 5 : 4}
                                         value={formState.message}
                                         onChange={handleChange}
-                                        className={`w-full px-5 py-4 rounded-2xl bg-white dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none resize-none focus:ring-4 focus:ring-primary-500/10 ${errors.message
+                                        className={`w-full px-5 py-4 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none resize-none focus:ring-4 focus:ring-primary-500/10 ${errors.message
                                             ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
                                             : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
                                             }`}
@@ -508,7 +508,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 whileTap={{ scale: 0.99 }}
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-gradient-to-r from-[#f97316] to-[#22c55e] dark:from-[#6366f1] dark:to-[#d946ef] text-white font-black py-5 px-8 rounded-2xl shadow-xl shadow-primary-500/20 transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed text-lg overflow-hidden group/btn-submit relative"
+                                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-pink-500 dark:from-primary-500 dark:to-accent-500 text-white font-black py-4 px-10 rounded-full shadow-xl shadow-orange-500/20 transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed text-base overflow-hidden group/btn-submit relative mx-auto"
                             >
                                 {/* Shimmer Effect */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite] pointer-events-none" />

@@ -403,7 +403,7 @@ export default async function CaseStudyPage({
             </section>
 
             {/* Key Results */}
-            <section className="section-padding bg-white dark:bg-dark-900">
+            <section className="section-padding bg-white/50 dark:bg-dark-900 backdrop-blur-sm">
                 <div className="container-custom">
                     <Reveal>
                         <h2 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">
@@ -414,7 +414,7 @@ export default async function CaseStudyPage({
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {caseStudy.results.map((result, index) => (
                             <Reveal key={index}>
-                                <div className="p-6 rounded-2xl bg-cream-50 dark:bg-dark-800 text-center h-full min-h-[160px] flex flex-col justify-center">
+                                <div className="p-6 rounded-2xl bg-cream-50/50 dark:bg-dark-800 text-center h-full min-h-[160px] flex flex-col justify-center border border-white/20 dark:border-white/5 shadow-sm">
                                     <div className="text-4xl font-bold gradient-text mb-2">
                                         {result.value}
                                     </div>
@@ -522,7 +522,7 @@ export default async function CaseStudyPage({
                     <Reveal>
                         <Link
                             href={`/${lang}/contact`}
-                            className="inline-block px-8 py-4 bg-white text-orange-500 dark:text-primary-600 font-semibold rounded-full hover:bg-slate-100 transition-colors"
+                            className="inline-block px-8 py-4 bg-white/80 dark:bg-dark-800 text-orange-500 dark:text-primary-600 font-semibold rounded-full hover:bg-white dark:hover:bg-dark-700 transition-colors backdrop-blur-md shadow-lg"
                         >
                             {ui.ctaButton}
                         </Link>
@@ -532,12 +532,12 @@ export default async function CaseStudyPage({
 
             {/* Next Case */}
             {nextCaseStudy && (
-                <section className="section-padding bg-white dark:bg-dark-900">
+                <section className="section-padding bg-white/50 dark:bg-dark-900 backdrop-blur-sm">
                     <div className="container-custom">
                         <Reveal>
                             <Link
                                 href={`/${lang}/case/${nextCaseStudy.slug}`}
-                                className="group flex items-center justify-between p-8 rounded-2xl bg-cream-50 dark:bg-dark-800 hover:bg-cream-100 dark:hover:bg-dark-700 transition-colors"
+                                className="group flex items-center justify-between p-8 rounded-2xl bg-cream-50/50 dark:bg-dark-800 hover:bg-cream-100/50 dark:hover:bg-dark-700 transition-colors border border-white/20 dark:border-white/5"
                             >
                                 <div>
                                     <p className="text-slate-600 dark:text-dark-400 text-sm mb-2">

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Rethink_Sans, Hedvig_Letters_Serif } from 'next/font/google';
 import '../globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
@@ -14,9 +14,17 @@ import { PageTransition } from '@/components/providers/PageTransition';
 import BackToTop from '@/components/ui/BackToTop';
 import ChatWidget from '@/components/ui/ChatWidget';
 
-const inter = Inter({
-    subsets: ['latin', 'cyrillic'],
-    variable: '--font-inter',
+const rethinkSans = Rethink_Sans({
+    subsets: ['latin'],
+    variable: '--font-rethink',
+    display: 'swap',
+});
+
+const hedvigLettersSerif = Hedvig_Letters_Serif({
+    subsets: ['latin'],
+    weight: ['400'], // Hedvig Letters Serif usually has limited weights
+    variable: '--font-hedvig',
+    display: 'swap',
 });
 
 import { getDictionary } from '@/get-dictionary';
@@ -94,7 +102,7 @@ export default async function RootLayout({
 
     return (
         <html lang={lang} suppressHydrationWarning>
-            <body className="antialiased transition-colors duration-300">
+            <body className={`${rethinkSans.variable} ${hedvigLettersSerif.variable} font-sans antialiased transition-colors duration-300`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"

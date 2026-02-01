@@ -52,7 +52,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
 
     return (
         <>
-            <section className="pt-32 pb-20 relative overflow-hidden bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
+            <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
                         <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
@@ -69,7 +69,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                 </div>
             </section>
 
-            <section className="section-padding bg-cream-100 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100/50 dark:bg-dark-900 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
@@ -90,7 +90,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                         {/* Stats Grid */}
                         <div className="grid grid-cols-2 gap-6">
                             {stats.map((stat) => (
-                                <div key={stat.label} className="glass-card p-8 text-center bg-cream-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700">
+                                <div key={stat.label} className="glass-card p-8 text-center bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700">
                                     <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">{stat.value}</div>
                                     <div className="text-slate-500 dark:text-dark-400">{stat.label}</div>
                                 </div>
@@ -130,7 +130,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                 </div>
             </section>
 
-            <section className="section-padding bg-cream-100 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100/50 dark:bg-dark-900 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
@@ -147,7 +147,7 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {team.members.map((member) => (
-                            <div key={member.id} className="glass-card p-6 text-center card-hover group bg-cream-50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm">
+                            <div key={member.id} className="glass-card p-6 text-center card-hover group bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm">
                                 <div className={`relative w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 ${!member.avatar.includes('/') ? `bg-gradient-to-br ${teamMetadata[member.id]?.color || 'from-slate-500 to-slate-600'} flex items-center justify-center` : ''}`}>
                                     {member.avatar.includes('/') ? (
                                         <Image

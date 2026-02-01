@@ -16,15 +16,15 @@ interface LogoProps {
 const lightColors = {
     start: '#f97316',
     startAnim: '#f97316;#fb923c;#f97316',
-    mid: '#84cc16',
-    midAnim: '#84cc16;#a3e635;#84cc16',
-    end: '#22c55e',
-    endAnim: '#22c55e;#4ade80;#22c55e',
-    particle1: '#22c55e',
+    mid: '#ec4899',
+    midAnim: '#ec4899;#f472b6;#ec4899',
+    end: '#d946ef',
+    endAnim: '#d946ef;#e879f9;#d946ef',
+    particle1: '#d946ef',
     particle2: '#f97316',
-    textGradient: 'linear-gradient(90deg, #f97316, #84cc16, #22c55e, #84cc16, #f97316)',
+    textGradient: 'linear-gradient(90deg, #f97316, #ec4899, #d946ef, #ec4899, #f97316)',
     hoverColor: '#f97316',
-    hoverColor2: '#22c55e',
+    hoverColor2: '#d946ef',
 };
 
 // Цвета для тёмной темы (фиолетовый)

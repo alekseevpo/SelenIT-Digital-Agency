@@ -63,7 +63,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
                         {isActive && (
                             <motion.div
                                 layoutId="activeLang"
-                                className="absolute inset-0 bg-gradient-to-r from-orange-500 to-green-500 dark:from-primary-500 dark:to-accent-500 rounded-full -z-10 shadow-lg shadow-orange-500/30 dark:shadow-primary-500/30"
+                                className="absolute inset-0 bg-gradient-to-r from-orange-500 to-pink-500 dark:from-primary-500 dark:to-accent-500 rounded-full -z-10 shadow-lg shadow-orange-500/30 dark:shadow-primary-500/30"
                                 transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                             />
                         )}

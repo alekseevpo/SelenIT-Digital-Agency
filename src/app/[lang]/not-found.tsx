@@ -135,7 +135,7 @@ export default function NotFound() {
                         >
                             <Link
                                 href={link.href}
-                                className="flex flex-col items-center gap-2 p-4 rounded-xl bg-white dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-orange-500 dark:hover:border-primary-500 transition-colors duration-200 group"
+                                className="flex flex-col items-center gap-2 p-4 rounded-xl bg-white/50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800 hover:border-orange-500 dark:hover:border-primary-500 transition-colors duration-200 group backdrop-blur-sm shadow-sm"
                             >
                                 <link.icon className="w-6 h-6 text-slate-600 dark:text-dark-400 group-hover:text-orange-500 dark:group-hover:text-primary-500 transition-colors" />
                                 <span className="text-sm font-medium text-slate-700 dark:text-dark-300 group-hover:text-orange-500 dark:group-hover:text-primary-500 transition-colors">

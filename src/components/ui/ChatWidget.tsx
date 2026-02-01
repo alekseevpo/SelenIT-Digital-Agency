@@ -62,7 +62,7 @@ export default function ChatWidget() {
                 whileHover={{ scale: 1.1, boxShadow: '0 0 20px rgba(249, 115, 22, 0.4)' }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl bg-gradient-to-r from-orange-500 to-green-500 dark:from-primary-500 dark:to-accent-dark transition-all duration-300 relative group"
+                className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl bg-gradient-to-r from-orange-500 to-pink-500 dark:from-primary-500 dark:to-accent-500 transition-all duration-300 relative group"
                 aria-label={isOpen ? 'Close chat menu' : 'Open chat menu'}
             >
                 <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

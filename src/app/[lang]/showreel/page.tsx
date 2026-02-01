@@ -48,9 +48,9 @@ export default async function ShowreelPage({ params: { lang } }: PageProps) {
     }));
 
     return (
-        <div className="bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
+        <div className="bg-transparent dark:bg-dark-950 transition-colors duration-300">
             {/* Hero Section with Video */}
-            <section className="pt-32 pb-20 relative overflow-hidden bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
+            <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-4xl mx-auto text-center mb-16">
                         <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
@@ -65,7 +65,7 @@ export default async function ShowreelPage({ params: { lang } }: PageProps) {
                         </p>
                     </div>
 
-                    <div className="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl relative group bg-slate-100 dark:bg-dark-900">
+                    <div className="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl relative group bg-slate-100/50 dark:bg-dark-900">
                         <YouTubeEmbed videoId={hero.videoId} title="Selen.IT Showreel" lang={lang} />
                     </div>
                 </div>

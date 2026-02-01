@@ -11,9 +11,9 @@ const config: Config = {
         extend: {
             colors: {
                 cream: {
-                    50: '#FDF8F0',
-                    100: '#F9F3E8',
-                    200: '#F5EEE0',
+                    50: 'rgba(253, 248, 240, 0)', // Fully transparent to show body texture
+                    100: 'rgba(249, 243, 232, 0.6)', // Semi-transparent
+                    200: 'rgba(245, 238, 224, 0.6)', // Semi-transparent
                 },
                 primary: {
                     50: '#f0f4ff',
@@ -56,7 +56,8 @@ const config: Config = {
                 },
             },
             fontFamily: {
-                sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+                sans: ['var(--font-rethink)', 'system-ui', 'sans-serif'],
+                serif: ['var(--font-hedvig)', 'Georgia', 'serif'],
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

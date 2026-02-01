@@ -135,7 +135,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                             { target: 99, suffix: '%', label: lang === 'ru' ? 'Удовлетворенность' : lang === 'es' ? 'Satisfacción' : 'Satisfaction' },
                         ].map((stat) => (
                             <div key={stat.label} className="text-center group/stat">
-                                <div className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-2 group-hover/stat:text-primary-500 transition-colors duration-300">
+                                <div className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-2 transition-colors duration-300">
                                     <Counter value={stat.target} suffix={stat.suffix} />
                                 </div>
                                 <div className="text-slate-500 dark:text-dark-500 text-xs font-bold uppercase tracking-widest">{stat.label}</div>

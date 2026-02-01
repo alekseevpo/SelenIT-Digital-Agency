@@ -1,5 +1,28 @@
 # Selen.IT Digital Agency - Development Log
 
+## 2026-02-01
+
+### 11:15 - Typography System Update
+- Применены глобальные стили шрифтов ко всему сайту
+- Заголовки (h1-h6) используют Hedvig Letters Serif
+- Основной текст (p, span, a, button, etc.) использует Rethink Sans
+- Обновлён `globals.css` с явными font-family для всех элементов
+
+### 11:20 - Showreel Section Refinement
+- Поднято выезжающее слово "SHOWREEL" выше (уменьшен контейнер, добавлен negative margin)
+- Уменьшено расстояние между буквами (letter-spacing: -0.04em)
+- Улучшена консистентность шрифтов через CSS переменную --font-hedvig
+
+### 11:30 - Project Audit
+- Проведён полный аудит проекта
+- Создан файл AUDIT.md с детальным отчётом
+- Build: ✅ Успешно (87.4 kB shared JS)
+- ESLint: ✅ Без ошибок
+- Tests: ⚠️ 71/92 passed (устаревшие mocks в ContactForm.test.tsx)
+- Выявлены security vulnerabilities в dependencies (Next.js, ESLint)
+
+---
+
 ## 2026-01-27
 
 ### 16:30 - Project Initialization

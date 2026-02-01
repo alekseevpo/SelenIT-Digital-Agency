@@ -33,13 +33,13 @@ interface ShowreelGridProps {
 
 export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGridProps, 'categories'>) {
     return (
-        <section className="section-padding bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
+        <section className="section-padding bg-transparent dark:bg-dark-950 transition-colors duration-300">
             <div className="container-custom">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {projects.map((project) => (
                         <div
                             key={project.id}
-                            className="glass-card overflow-hidden group card-hover bg-cream-100 dark:bg-dark-900 border border-slate-200 dark:border-dark-800"
+                            className="glass-card overflow-hidden group card-hover bg-cream-100/50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800"
                         >
                             {/* Video or Image Placeholder */}
                             <div className="aspect-video relative">

@@ -183,7 +183,7 @@ export default function Header({ lang }: HeaderProps) {
                                         href={link.href}
                                         className={`
                                             px-5 py-2.5 rounded-full text-sm font-medium
-                                            transition-all duration-300 relative
+                                            transition-all duration-300 relative focus:outline-none
                                             ${isActive
                                                 ? 'text-white'
                                                 : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-cream-50/30 dark:hover:bg-cream-50/10'
@@ -193,7 +193,7 @@ export default function Header({ lang }: HeaderProps) {
                                         {isActive && (
                                             <motion.div
                                                 layoutId="activeTab"
-                                                className="absolute inset-0 bg-gradient-to-r from-orange-500 to-green-500 dark:from-primary-500 dark:to-accent-500 rounded-full -z-10 shadow-lg shadow-orange-500/30 dark:shadow-primary-500/30"
+                                                className="absolute inset-0 bg-gradient-to-r from-orange-500 to-pink-500 dark:from-primary-500 dark:to-accent-500 rounded-full -z-10 shadow-lg shadow-orange-500/30 dark:shadow-primary-500/30"
                                                 transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                                             />
                                         )}
@@ -226,7 +226,7 @@ export default function Header({ lang }: HeaderProps) {
                         </div>
                         <motion.button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 w-12 h-12 rounded-full flex items-center justify-center transition-all active:scale-90 hover:bg-cream-50/20 dark:hover:bg-cream-50/10"
+                            className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 w-12 h-12 rounded-full flex items-center justify-center transition-all active:scale-90 hover:bg-cream-50/20 dark:hover:bg-cream-50/10 focus:outline-none"
                             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                             whileTap={{ scale: 0.9 }}
                         >
@@ -319,7 +319,7 @@ export default function Header({ lang }: HeaderProps) {
                                                         w-full flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-semibold
                                                         transition-all duration-200
                                                         ${isActive
-                                                            ? 'bg-gradient-to-r from-orange-500 to-green-500 dark:from-primary-500 dark:to-accent-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-primary-500/20'
+                                                            ? 'bg-gradient-to-r from-orange-500 to-pink-500 dark:from-primary-500 dark:to-accent-500 text-white shadow-lg shadow-orange-500/20 dark:shadow-primary-500/20'
                                                             : 'bg-cream-200/80 dark:bg-cream-50/5 hover:bg-cream-200 dark:hover:bg-cream-50/10 text-slate-700 dark:text-slate-200'
                                                         }
                                                     `}

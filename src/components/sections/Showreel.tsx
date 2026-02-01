@@ -75,7 +75,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                     <Reveal delay={0.3} className="shrink-0">
                         <Link
                             href={`/${lang}/showreel`}
-                            className="hidden md:inline-flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-orange-500 dark:hover:border-primary-500 hover:shadow-lg hover:shadow-orange-500/10 dark:hover:shadow-primary-500/10 active:scale-95"
+                            className="hidden md:inline-flex items-center gap-2 px-6 py-3 bg-slate-100/50 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-orange-500 dark:hover:border-primary-500 hover:shadow-lg hover:shadow-orange-500/10 dark:hover:shadow-primary-500/10 active:scale-95 backdrop-blur-sm"
                         >
                             {dict.button}
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -87,12 +87,15 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
 
                 {/* Animated Showreel Title */}
                 <motion.div
-                    className="relative h-24 md:h-40 lg:h-56 mb-8 flex items-center justify-center"
+                    className="relative h-20 md:h-32 lg:h-44 mb-4 flex items-start justify-center -mt-4 md:-mt-6"
                     style={{ x: xTransform, opacity }}
                 >
                     <h2
-                        className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] font-serif font-bold tracking-tight text-slate-900 dark:text-white select-none"
-                        style={{ fontFamily: "'Times New Roman', 'Georgia', serif" }}
+                        className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] font-bold text-slate-900 dark:text-white select-none"
+                        style={{
+                            fontFamily: "var(--font-hedvig), Georgia, 'Times New Roman', serif",
+                            letterSpacing: '-0.04em'
+                        }}
                     >
                         {showreelTitle[lang as keyof typeof showreelTitle] || showreelTitle.en}
                     </h2>
@@ -138,7 +141,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                     <Reveal>
                         <Link
                             href={`/${lang}/showreel`}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-orange-500 dark:hover:border-primary-500 active:scale-95"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100/50 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-orange-500 dark:hover:border-primary-500 active:scale-95 backdrop-blur-sm"
                         >
                             {dict.button}
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
