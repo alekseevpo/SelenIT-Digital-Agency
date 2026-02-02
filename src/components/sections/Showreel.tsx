@@ -2,9 +2,8 @@
 
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Reveal } from '../ui/Reveal';
-import YouTubeEmbed from '../ui/YouTubeEmbed';
 
 interface ShowreelProps {
     lang: string;
@@ -41,6 +40,8 @@ const featuredProjects = [
 
 export default function Showreel({ lang, dict }: ShowreelProps) {
     const sectionRef = useRef<HTMLElement>(null);
+    const [showPlayButton, setShowPlayButton] = useState(true);
+
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ["start end", "center center"]
@@ -48,6 +49,16 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
 
     const xTransform = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
     const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.5, 1]);
+
+    const handlePlayClick = () => {
+        setShowPlayButton(false);
+        setTimeout(() => {
+            const video = document.getElementById('showreel-video') as HTMLVideoElement;
+            if (video) {
+                video.play();
+            }
+        }, 100);
+    };
 
     return (
         <section ref={sectionRef} className="section-padding transition-colors duration-300 overflow-hidden">
@@ -104,7 +115,50 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                 {/* Video */}
                 <Reveal delay={0.3}>
                     <div className="mb-12">
-                        <YouTubeEmbed videoId={dict.videoId || "QT3L4tZ14-4"} title="Selen.IT Agency Showreel" lang={lang} />
+                        <div className="relative rounded-2xl overflow-hidden bg-slate-900 shadow-2xl">
+                            <video
+                                id="showreel-video"
+                                className="w-full aspect-video"
+                                controls
+                                playsInline
+                                poster="/showreel-poster.jpg"
+                                preload="auto"
+                            >
+                                <source src="/showreel2025.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+
+                            {/* Play Button Overlay */}
+                            {showPlayButton && (
+                                <div
+                                    onClick={handlePlayClick}
+                                    className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer group/play"
+                                    style={{ backgroundColor: 'rgba(0,0,0,0.4)' }}
+                                >
+                                    {/* Outer glow ring */}
+                                    <div className="absolute w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-r from-orange-500/30 to-pink-500/30 blur-xl group-hover/play:scale-125 transition-transform duration-500" />
+
+                                    {/* Play button */}
+                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center shadow-2xl shadow-orange-500/30 group-hover/play:scale-110 group-hover/play:shadow-orange-500/50 transition-all duration-300">
+                                        {/* Inner white circle */}
+                                        <div className="absolute inset-1 rounded-full bg-white/95 flex items-center justify-center">
+                                            <svg
+                                                className="w-6 h-6 md:w-8 md:h-8 text-orange-500"
+                                                fill="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    {/* Text label */}
+                                    <span className="absolute bottom-1/4 text-white/80 text-sm font-medium tracking-wide opacity-0 group-hover/play:opacity-100 transition-opacity duration-300">
+                                        {lang === 'ru' ? 'Смотреть' : lang === 'es' ? 'Ver video' : 'Watch video'}
+                                    </span>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </Reveal>
 
