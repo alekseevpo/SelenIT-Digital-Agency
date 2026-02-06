@@ -65,7 +65,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                                 {hero.title1} {hero.titleGradient}
                             </span>
                         </h1>
-                        <p className="text-body transition-colors duration-300">
+                        <p className="text-body transition-colors duration-300 mb-[30px]">
                             {hero.subtitle}
                         </p>
                     </div>

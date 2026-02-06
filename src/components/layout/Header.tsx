@@ -190,7 +190,7 @@ export default function Header({ lang }: HeaderProps) {
 
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-50 pointer-events-none py-4 sm:py-6 transition-all duration-500`}>
+            <header className={`fixed top-0 left-0 right-0 z-50 pointer-events-none py-1 sm:py-3 transition-all duration-500`}>
                 <div className="max-w-full flex items-center justify-between px-4 sm:px-10 lg:px-12 relative">
                     {/* Logo - Top Left */}
                     <div className={`pointer-events-auto transition-all duration-500 ${isScrolled ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
@@ -273,9 +273,9 @@ export default function Header({ lang }: HeaderProps) {
                                                         animate={{ opacity: 1, y: 0 }}
                                                         exit={{ opacity: 0, y: -10 }}
                                                         transition={{ duration: 0.2, ease: "easeOut" }}
-                                                        className="fixed top-[47px] left-0 right-0 mx-auto -translate-x-[150px] pt-2 w-[750px] z-50"
+                                                        className="fixed top-[50px] left-0 right-0 mx-auto w-[900px] z-50"
                                                     >
-                                                        <div className="grid grid-cols-5 gap-3 p-4 rounded-2xl backdrop-blur-2xl bg-cream-50/95 dark:bg-dark-900/95 border border-white/20 dark:border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.15)]">
+                                                        <div className="grid grid-cols-5 gap-2 px-0 py-4 rounded-2xl backdrop-blur-2xl bg-cream-50/95 dark:bg-dark-900/95 border border-white/20 dark:border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.15)] -ml-[392px]">
                                                             {servicesSubLinks.map((subLink, index) => (
                                                                 <motion.div
                                                                     key={subLink.href}
@@ -287,7 +287,7 @@ export default function Header({ lang }: HeaderProps) {
                                                                         href={subLink.href}
                                                                         className="block p-5 rounded-xl text-center"
                                                                     >
-                                                                        <h4 className="text-4xl font-frantz font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide">
+                                                                        <h4 className="text-4xl font-frantz font-black text-red-600 dark:text-red-500 mb-2 uppercase tracking-wide">
                                                                             {subLink.label}
                                                                         </h4>
                                                                         <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
