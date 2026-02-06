@@ -15,9 +15,9 @@ A modern, high-performance website for a digital agency built with Next.js 14, T
 
 ## Pages
 
-- **Home** - Hero, Services, Portfolio, Testimonials, CTA
+- **Home** - Hero, Services, Showreel, Testimonials, CTA
 - **Services** - Detailed service offerings with process timeline
-- **Portfolio** - Project showcase with filtering
+- **Showreel** - Project showcase with filtering
 - **About** - Company story, values, and team
 - **Contact** - Contact form with validation
 
@@ -34,11 +34,11 @@ A modern, high-performance website for a digital agency built with Next.js 14, T
 # Install dependencies
 npm install
 
-# Start development server
+# Start development server (port 5001)
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:5001](http://localhost:5001) in your browser.
 
 ### Build
 
@@ -55,17 +55,15 @@ npm start
 ```
 src/
 ├── app/                    # App Router pages
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Homepage
-│   ├── globals.css         # Global styles
-│   ├── about/              # About page
-│   ├── contact/            # Contact page
-│   ├── portfolio/          # Portfolio page
-│   └── services/           # Services page
+│   ├── [lang]/             # i18n routing (en, ru, es)
+│   ├── api/contact/        # Contact API endpoint
+│   └── globals.css         # Global styles
 ├── components/
 │   ├── layout/             # Header, Footer
-│   └── sections/           # Page sections
-└── lib/                    # Utilities
+│   ├── sections/           # Page sections
+│   └── ui/                 # Reusable UI components
+├── dictionaries/           # i18n translations
+└── types/                  # TypeScript types
 ```
 
 ## Technologies
@@ -74,6 +72,12 @@ src/
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+
+## Environment Variables
+
+```env
+RESEND_API_KEY=          # API key for Resend email delivery
+```
 
 ## License
 

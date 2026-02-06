@@ -30,10 +30,16 @@ function setup(jsx: ReactElement) {
 
 // Mock dictionary for ContactForm
 export const mockContactFormDict = {
+    tabs: {
+        message: 'Send a message',
+        callback: 'Request a callback',
+    },
     title: 'Contact Us',
     subtitle: 'Get in touch',
     fullName: 'Full Name',
     email: 'Email',
+    phone: 'Phone',
+    phonePlaceholder: 'Your phone number',
     company: 'Company',
     companyPlaceholder: 'Your company name',
     service: 'Service',
@@ -47,6 +53,8 @@ export const mockContactFormDict = {
     success: 'Message sent!',
     successTitle: 'Thank you!',
     successSubtitle: 'We will get back to you soon.',
+    callbackSuccessTitle: 'Request received!',
+    callbackSuccessSubtitle: 'We will call you back shortly.',
     sendAnother: 'Send another message',
     selectService: 'Select a service',
     selectBudget: 'Select a budget',

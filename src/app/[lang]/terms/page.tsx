@@ -3,17 +3,19 @@ import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 
 interface PageProps {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
-export async function generateMetadata({ params: { lang } }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     return {
         title: dict.terms.hero.title,
     };
 }
 
-export default async function TermsPage({ params: { lang } }: PageProps) {
+export default async function TermsPage({ params }: PageProps) {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, content } = dict.terms;
 

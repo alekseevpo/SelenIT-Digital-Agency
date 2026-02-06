@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Rethink_Sans, Hedvig_Letters_Serif } from 'next/font/google';
+import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import '../globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
@@ -14,22 +15,28 @@ import { PageTransition } from '@/components/providers/PageTransition';
 import BackToTop from '@/components/ui/BackToTop';
 import ChatWidget from '@/components/ui/ChatWidget';
 
-const rethinkSans = Rethink_Sans({
-    subsets: ['latin'],
-    variable: '--font-rethink',
+const inter = Inter({
+    subsets: ['latin', 'cyrillic'],
+    variable: '--font-inter',
     display: 'swap',
 });
 
-const hedvigLettersSerif = Hedvig_Letters_Serif({
-    subsets: ['latin'],
-    weight: ['400'], // Hedvig Letters Serif usually has limited weights
-    variable: '--font-hedvig',
+const ttFrantz = localFont({
+    src: [
+        {
+            path: '../../../public/fonts/TT-Frantz-Trial-Variable-BF6694e95051de0.ttf',
+            weight: '100 900',
+            style: 'normal',
+        },
+    ],
+    variable: '--font-frantz',
     display: 'swap',
 });
 
 import { getDictionary } from '@/get-dictionary';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
 
     return {
@@ -93,16 +100,17 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
 
 export default async function RootLayout({
     children,
-    params: { lang },
+    params,
 }: {
     children: React.ReactNode;
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }) {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
 
     return (
         <html lang={lang} suppressHydrationWarning>
-            <body className={`${rethinkSans.variable} ${hedvigLettersSerif.variable} font-sans antialiased transition-colors duration-300`}>
+            <body className={`${inter.variable} ${ttFrantz.variable} font-sans antialiased transition-colors duration-300`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"

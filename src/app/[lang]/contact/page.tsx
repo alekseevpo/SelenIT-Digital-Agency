@@ -4,10 +4,11 @@ import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 
 interface PageProps {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
-export async function generateMetadata({ params: { lang } }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     return {
         title: `${dict.contact.hero.badge} | Selen.IT Digital Agency`,
@@ -15,7 +16,8 @@ export async function generateMetadata({ params: { lang } }: PageProps): Promise
     };
 }
 
-export default async function ContactPage({ params: { lang } }: PageProps) {
+export default async function ContactPage({ params }: PageProps) {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, info, form } = dict.contact;
 
@@ -48,10 +50,10 @@ export default async function ContactPage({ params: { lang } }: PageProps) {
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
-                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="invisible font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
+                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white tracking-normal">
                             {hero.title1}{' '}
                             <span className="gradient-text">{hero.titleGradient}</span>
                         </h1>
@@ -69,7 +71,18 @@ export default async function ContactPage({ params: { lang } }: PageProps) {
                         {/* Contact Info */}
                         <div className="lg:col-span-1 space-y-8">
                             <div>
-                                <h2 className="heading-3 mb-6 text-slate-900 dark:text-white">{info.title}</h2>
+                                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-slate-900 dark:text-white leading-[0.9] tracking-tight">
+                                    {info.title.split(' ').map((word, i, arr) => {
+                                        const cleanWord = word.replace(/[.,]/g, '').toLowerCase();
+                                        const highlightWords = ['contacts', 'контакты', 'contactos'];
+                                        const isHighlight = highlightWords.some(hw => cleanWord === hw);
+                                        return (
+                                            <span key={i} className={isHighlight ? "text-red-600" : ""}>
+                                                {word}{i < arr.length - 1 ? ' ' : ''}
+                                            </span>
+                                        );
+                                    })}
+                                </h2>
                                 <p className="text-slate-600 dark:text-dark-400 mb-8">
                                     {info.subtitle}
                                 </p>
@@ -82,9 +95,9 @@ export default async function ContactPage({ params: { lang } }: PageProps) {
                                         href={item.href}
                                         target={item.title === 'Telegram' || item.title === 'WhatsApp' ? '_blank' : undefined}
                                         rel={item.title === 'Telegram' || item.title === 'WhatsApp' ? 'noopener noreferrer' : undefined}
-                                        className="flex items-center gap-4 p-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 hover:border-orange-500 dark:hover:border-primary-500 hover:shadow-md transition-all group w-full"
+                                        className="flex items-center gap-4 p-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 hover:border-red-600 dark:hover:border-red-500 hover:shadow-md transition-all group w-full"
                                     >
-                                        <div className="w-12 h-12 rounded-lg bg-cream-100 dark:bg-dark-700 flex items-center justify-center text-orange-500 dark:text-primary-500 group-hover:bg-orange-500 dark:group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                                        <div className="w-12 h-12 rounded-lg bg-cream-100 dark:bg-dark-700 flex items-center justify-center text-red-600 dark:text-red-500 group-hover:bg-red-600 dark:group-hover:bg-red-500 group-hover:text-white transition-colors">
                                             {item.icon}
                                         </div>
                                         <div>
@@ -98,20 +111,20 @@ export default async function ContactPage({ params: { lang } }: PageProps) {
                             </div>
 
                             {/* Office Hours */}
-                            <div className="glass-card p-6 bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm mt-8">
-                                <h3 className="font-semibold text-slate-900 dark:text-white mb-4">{info.hoursTitle}</h3>
-                                <div className="space-y-2 text-sm text-slate-600 dark:text-dark-400">
-                                    <div className="flex justify-between">
-                                        <span>{info.mondayFriday}</span>
-                                        <span className="text-slate-900 dark:text-white">9:00 AM - 6:00 PM</span>
+                            <div className="glass-card p-10 bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm mt-12">
+                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 uppercase tracking-widest">{info.hoursTitle}</h3>
+                                <div className="space-y-6 text-lg text-slate-600 dark:text-dark-400">
+                                    <div className="flex justify-between border-b border-slate-200/50 dark:border-dark-700/50 pb-3">
+                                        <span className="font-medium">{info.mondayFriday}</span>
+                                        <span className="text-slate-900 dark:text-white font-bold">9:00 AM — 6:00 PM</span>
+                                    </div>
+                                    <div className="flex justify-between border-b border-slate-200/50 dark:border-dark-700/50 pb-3">
+                                        <span className="font-medium">{info.saturday}</span>
+                                        <span className="text-slate-900 dark:text-white font-bold">10:00 AM — 4:00 PM</span>
                                     </div>
                                     <div className="flex justify-between">
-                                        <span>{info.saturday}</span>
-                                        <span className="text-slate-900 dark:text-white">10:00 AM - 4:00 PM</span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span>{info.sunday}</span>
-                                        <span className="text-slate-900 dark:text-white">{info.closed}</span>
+                                        <span className="font-medium">{info.sunday}</span>
+                                        <span className="text-red-600 dark:text-red-500 font-black uppercase tracking-[0.2em] text-sm flex items-center">{info.closed}</span>
                                     </div>
                                 </div>
                             </div>

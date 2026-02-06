@@ -36,7 +36,7 @@
             "subtitle": "¿Listo para transformar su presencia digital? Nos encantaría saber de usted."
         },
         "info": {
-            "title": "Ponerse en Contacto",
+            "title": "Nuestros contactos",
             "subtitle": "¿Tiene un proyecto en mente? Hablemos sobre cómo podemos ayudarle a alcanzar sus metas.",
             "email": "Email",
             "phone": "Teléfono",
@@ -62,11 +62,10 @@
             "companyPlaceholder": "Su empresa",
             "service": "Servicio de interés",
             "serviceOptions": [
-                "Desarrollo Web",
-                "Diseño UI/UX",
-                "E-Commerce",
-                "Aplicaciones Web",
-                "Soporte y Mantenimiento",
+                "Branding",
+                "Sitios Web",
+                "SEO",
+                "Soporte Individual",
                 "Otro"
             ],
             "budget": "Presupuesto del proyecto",
@@ -79,7 +78,7 @@
             ],
             "details": "Detalles del proyecto",
             "detailsPlaceholder": "Cuéntenos sobre su proyecto, metas y cronograma...",
-            "submit": "Enviar solicitud",
+            "submit": "Enviar",
             "sending": "Enviando...",
             "success": "Éxito",
             "successTitle": "¡Gracias!",
@@ -96,7 +95,7 @@
         "title1": "Creamos",
         "titleGradient": "Experiencias Digitales",
         "title2": "Que Impulsan Resultados",
-        "subtitle": "Transforme su visión en una realidad impresionante. Creamos sitios web de alto rendimiento, interfaces intuitivas y soluciones digitales escalables que elevan su marca.",
+        "subtitle": "¡Tu diseño no tiene por qué ser terrible!\nConvirtiendo tu visión en una realidad asombrosa.\nCreando marcas, logotipos, estrategias de marketing, claras para sus clientes y audiencia\nEscribimos sitios web modernos de alto rendimiento, interfaces y soluciones digitales escalables.",
         "ctaPrimary": "Iniciar Proyecto",
         "ctaSecondary": "Ver Nuestro Trabajo"
     },
@@ -146,87 +145,59 @@
         },
         "list": [
             {
-                "id": "web-development",
+                "id": "branding",
+                "videoId": "QT3L4tZ14-4",
+                "title": "Branding",
+                "description": "Creación de un estilo visual único y una estrategia de posicionamiento para su marca.",
+                "features": [
+                    "Diseño de Logotipo",
+                    "Identidad Corporativa",
+                    "Brandbook",
+                    "Posicionamiento",
+                    "Identidad Visual",
+                    "Estrategia de Marca"
+                ]
+            },
+            {
+                "id": "websites",
                 "videoId": "QT3L4tZ14-4",
                 "title": "Desarrollo Web",
-                "description": "Construimos sitios web rápidos, seguros y escalables utilizando tecnologías modernas.",
+                "description": "Desarrollo de sitios web modernos, rápidos y adaptables de cualquier complejidad. Diseñamos interfaces intuitivas que reflejan su marca и conectan con su audiencia.",
                 "features": [
-                    "Desarrollo web personalizado",
-                    "Aplicaciones React y Next.js",
-                    "Desarrollo e integración de API",
-                    "Diseño y optimización de bases de datos",
-                    "Despliegue y hosting en la nube",
-                    "Optimización de rendimiento"
+                    "Sitios Corporativos",
+                    "Landing Pages",
+                    "Portales Multicanal",
+                    "Diseño Adaptable",
+                    "Alto Rendimiento",
+                    "Integración de Sistemas"
                 ]
             },
             {
-                "id": "ui-ux-design",
+                "id": "seo",
                 "videoId": "QT3L4tZ14-4",
-                "title": "Diseño UI/UX",
-                "description": "Interfaces hermosas e intuitivas que cautivan a los usuarios.",
+                "title": "SEO (optimización de motores de búsqueda)",
+                "description": "Promoción de su negocio en buscadores y redes sociales para atraer tráfico.",
                 "features": [
-                    "Investigación de usuarios",
-                    "Arquitectura de información",
-                    "Prototipado",
-                    "Diseño visual y branding",
-                    "Diseño de interacción",
-                    "Pruebas de usabilidad"
+                    "Optimización SEO",
+                    "Promoción SMM",
+                    "Publicidad Contextual",
+                    "Auditoría Técnica",
+                    "Analítica de Tráfico",
+                    "Estrategia de Contenido"
                 ]
             },
             {
-                "id": "ecommerce",
-                "videoId": "EVPItl_YJ3A",
-                "title": "Soluciones E-Commerce",
-                "description": "Tiendas online potentes que convierten visitantes en clientes.",
-                "features": [
-                    "Plataformas de comercio personalizadas",
-                    "Integración de pasarelas de pago",
-                    "Gestión de inventario",
-                    "Sistemas de procesamiento de pedidos",
-                    "Cuentas y portales de clientes",
-                    "Analítica e informes"
-                ]
-            },
-            {
-                "id": "web-applications",
+                "id": "support",
                 "videoId": "QT3L4tZ14-4",
-                "title": "Aplicaciones Web",
-                "description": "Aplicaciones complejas para resolver problemas de negocio y escalar con su crecimiento.",
+                "title": "Soporte Individual",
+                "description": "Acompañamiento personal de su proyecto y mantenimiento técnico tras el lanzamiento.",
                 "features": [
-                    "Desarrollo de plataformas SaaS",
-                    "Paneles de administración",
-                    "Funciones en tiempo real y chat",
-                    "Integraciones con terceros",
-                    "Automatización de flujos de trabajo",
-                    "Arquitectura multi-tenant"
-                ]
-            },
-            {
-                "id": "mobile-first",
-                "videoId": "bioIp3vay6I",
-                "title": "Desarrollo Mobile-First",
-                "description": "Apps web progresivas que funcionan perfectamente en cualquier dispositivo.",
-                "features": [
-                    "Progressive Web Apps (PWA)",
-                    "Diseño web responsive",
-                    "Compatibilidad multiplataforma",
-                    "Funcionalidad offline",
-                    "Notificaciones push",
-                    "Experiencia tipo app nativa"
-                ]
-            },
-            {
-                "id": "maintenance",
-                "videoId": "QT3L4tZ14-4",
-                "title": "Soporte y Mantenimiento",
-                "description": "Mantenga sus productos digitales funcionando sin problemas.",
-                "features": [
-                    "Monitoreo 24/7",
-                    "Actualizaciones de seguridad",
-                    "Optimización de rendimiento",
-                    "Corrección de errores",
-                    "Actualización de contenido",
-                    "Consultoría técnica"
+                    "Implementación de sistemas de monitoreo",
+                    "Consultas",
+                    "Actualizaciones de Contenido",
+                    "Soporte Técnico",
+                    "Análisis de Rendimiento",
+                    "Escalado"
                 ]
             }
         ],
@@ -269,10 +240,10 @@
             ]
         },
         "cta": {
-            "title1": "¿Listo para iniciar su",
-            "titleGradient": "proyecto?",
+            "title1": "¿Listo para",
+            "titleGradient": "conversar?",
             "subtitle": "Hablemos sobre sus requisitos y cómo podemos ayudarle a alcanzar sus metas.",
-            "button": "Obtener Presupuesto"
+            "button": "Descargar Brief"
         }
     },
     "showreel": {
@@ -425,11 +396,11 @@
                     "avatar": "/images/joel-grevo.jpeg"
                 },
                 {
-                    "id": "dmitry",
-                    "name": "Dmitry Sokolov",
+                    "id": "otto",
+                    "name": "Otto Harahonych",
                     "role": "Desarrollador Principal",
                     "bio": "Experto full-stack especializado en React, Node.js y arquitectura en la nube.",
-                    "avatar": "DS"
+                    "avatar": "OH"
                 },
                 {
                     "id": "daryna",

@@ -5,7 +5,8 @@ import ShowreelGrid from '@/components/ShowreelGrid';
 import YouTubeEmbed from '@/components/ui/YouTubeEmbed';
 import CTA from '@/components/sections/CTA';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     return {
         title: dict.showreel.hero.badge,
@@ -14,7 +15,7 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
 }
 
 interface PageProps {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
 const projectMetadata: Record<number, { tags: string[], color: string }> = {
@@ -36,7 +37,8 @@ const projectMetadata: Record<number, { tags: string[], color: string }> = {
     }
 };
 
-export default async function ShowreelPage({ params: { lang } }: PageProps) {
+export default async function ShowreelPage({ params }: PageProps) {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, grid, projects: dictProjects, cta, categories } = dict.showreel;
 
@@ -53,12 +55,13 @@ export default async function ShowreelPage({ params: { lang } }: PageProps) {
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-4xl mx-auto text-center mb-16">
-                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
-                            {hero.title1}{' '}
-                            <span className="gradient-text">{hero.titleGradient}</span>
+                        <h1 className="heading-hero mb-6">
+                            <span className="text-slate-900 dark:text-white">
+                                {hero.title1} {hero.titleGradient}
+                            </span>
                         </h1>
                         <p className="text-body transition-colors duration-300">
                             {hero.subtitle}

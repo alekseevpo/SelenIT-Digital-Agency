@@ -217,7 +217,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
     };
 
     return (
-        <div className="glass-card p-6 lg:p-10 shadow-2xl border border-white/20 dark:border-white/5 relative overflow-hidden group/card transition-all duration-500">
+        <div className="glass-card p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500">
             {/* Subtle background glow for the card */}
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary-500/5 blur-[100px] rounded-full pointer-events-none group-hover/card:bg-primary-500/10 transition-colors duration-700" />
 
@@ -315,7 +315,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 {/* Common: Name */}
                                 <div className="group/input">
                                     <label htmlFor="name" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
-                                        {dict.fullName} <span className="text-primary-500">*</span>
+                                        {dict.fullName} <span className="text-red-500">*</span>
                                     </label>
                                     <input
                                         type="text"
@@ -339,7 +339,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 {activeTab === 'message' ? (
                                     <div className="group/input">
                                         <label htmlFor="email" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
-                                            {dict.email} <span className="text-primary-500">*</span>
+                                            {dict.email} <span className="text-red-500">*</span>
                                         </label>
                                         <input
                                             type="email"
@@ -361,7 +361,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 ) : (
                                     <div className="group/input">
                                         <label htmlFor="phone" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
-                                            {dict.phone} <span className="text-primary-500">*</span>
+                                            {dict.phone} <span className="text-red-500">*</span>
                                         </label>
                                         <input
                                             type="tel"
@@ -399,7 +399,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
                                 <div className="group/input">
                                     <label htmlFor="service" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
-                                        {dict.service} {activeTab === 'message' && <span className="text-primary-500">*</span>}
+                                        {dict.service} {activeTab === 'message' && <span className="text-red-500">*</span>}
                                     </label>
                                     <div className="relative">
                                         <select
@@ -467,7 +467,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
                                 <div className="col-span-1 md:col-span-2 group/input">
                                     <label htmlFor="message" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
-                                        {activeTab === 'message' ? dict.details : (lang === 'ru' ? 'ДОПОЛНИТЕЛЬНЫЕ ПРИМЕЧАНИЯ' : 'ADDITIONAL NOTES')} {activeTab === 'message' && <span className="text-primary-500">*</span>}
+                                        {activeTab === 'message' ? dict.details : (lang === 'ru' ? 'ДОПОЛНИТЕЛЬНЫЕ ПРИМЕЧАНИЯ' : 'ADDITIONAL NOTES')} {activeTab === 'message' && <span className="text-red-500">*</span>}
                                     </label>
                                     <textarea
                                         id="message"
@@ -508,7 +508,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 whileTap={{ scale: 0.99 }}
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-pink-500 dark:from-primary-500 dark:to-accent-500 text-white font-black py-4 px-10 rounded-full shadow-xl shadow-orange-500/20 transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed text-base overflow-hidden group/btn-submit relative mx-auto"
+                                className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-800 text-white font-black py-4 px-10 rounded-full shadow-xl shadow-red-600/20 transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed text-base overflow-hidden group/btn-submit relative mx-auto"
                             >
                                 {/* Shimmer Effect */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite] pointer-events-none" />

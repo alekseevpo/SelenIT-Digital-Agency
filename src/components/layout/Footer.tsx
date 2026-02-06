@@ -38,7 +38,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                 {/* Mobile: Centered Brand Section */}
                 <div className="flex flex-col items-center text-center md:hidden mb-8">
                     <Link href={`/${lang}`} className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg">
-                        <Logo size={48} showText={true} />
+                        <Logo size={64} showText={true} />
                     </Link>
                     <p className="text-slate-600 dark:text-dark-400 mb-5 leading-relaxed text-sm max-w-xs">
                         {footerDict.mission}
@@ -51,7 +51,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-orange-600 dark:text-primary-400 hover:text-white hover:bg-gradient-to-r hover:from-orange-500 hover:to-green-500 dark:hover:from-primary-500 dark:hover:to-accent-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
+                                className="w-10 h-10 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
                                 aria-label={link.label}
                             >
                                 <SocialIcon name={link.icon} />
@@ -63,8 +63,8 @@ export default function Footer({ lang, dict }: FooterProps) {
                 {/* Mobile: Links Grid (2 columns) */}
                 <div className="grid grid-cols-2 gap-6 md:hidden mb-8">
                     {/* Services */}
-                    <div>
-                        <h4 className="text-slate-900 dark:text-white font-semibold mb-3 uppercase tracking-wider text-xs">
+                    <div className="text-left">
+                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
                             {footerDict.services}
                         </h4>
                         <ul className="space-y-2.5 text-sm">
@@ -72,7 +72,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-slate-600 dark:text-dark-400 hover:text-orange-500 dark:hover:text-primary-500 transition-colors duration-300"
+                                        className="text-slate-600 dark:text-dark-400 hover:text-red-600 dark:hover:text-red-500 transition-colors duration-300"
                                     >
                                         {link.label}
                                     </Link>
@@ -82,8 +82,8 @@ export default function Footer({ lang, dict }: FooterProps) {
                     </div>
 
                     {/* Company */}
-                    <div>
-                        <h4 className="text-slate-900 dark:text-white font-semibold mb-3 uppercase tracking-wider text-xs">
+                    <div className="text-left">
+                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
                             {footerDict.company}
                         </h4>
                         <ul className="space-y-2.5 text-sm">
@@ -91,7 +91,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-slate-600 dark:text-dark-400 hover:text-orange-500 dark:hover:text-primary-500 transition-colors duration-300"
+                                        className="text-slate-600 dark:text-dark-400 hover:text-red-600 dark:hover:text-red-500 transition-colors duration-300"
                                     >
                                         {link.label}
                                     </Link>
@@ -102,16 +102,16 @@ export default function Footer({ lang, dict }: FooterProps) {
                 </div>
 
                 {/* Mobile: Contact Section */}
-                <div className="md:hidden mb-8 p-4 rounded-2xl bg-cream-100/50 dark:bg-dark-900/50 border border-slate-100/50 dark:border-dark-800 backdrop-blur-sm">
-                    <h4 className="text-slate-900 dark:text-white font-semibold mb-3 uppercase tracking-wider text-xs text-center">
+                <div className="md:hidden mb-12 p-6 rounded-[3rem] bg-cream-100/50 dark:bg-dark-900/50 border border-slate-100/50 dark:border-dark-800 backdrop-blur-sm text-left">
+                    <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
                         {footerDict.getInTouch}
                     </h4>
                     <div className="flex flex-col gap-3">
                         <a
                             href="mailto:alekseevpo@gmail.com"
-                            className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 text-slate-600 dark:text-dark-400 hover:text-orange-500 dark:hover:text-primary-500 transition-all duration-300 text-sm shadow-sm"
+                            className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 text-slate-600 dark:text-dark-400 hover:text-red-600 dark:hover:text-red-500 transition-all duration-300 text-sm shadow-sm"
                         >
-                            <svg className="w-4 h-4 text-orange-500 dark:text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-4 h-4 text-red-600 dark:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                             alekseevpo@gmail.com
@@ -129,7 +129,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                 WhatsApp
                             </a>
                             <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 text-slate-600 dark:text-dark-400 text-sm shadow-sm">
-                                <svg className="w-4 h-4 text-orange-500 dark:text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-4 h-4 text-red-600 dark:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
@@ -144,7 +144,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                     {/* Brand */}
                     <div className="lg:col-span-1">
                         <Link href={`/${lang}`} className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg">
-                            <Logo size={48} showText={true} />
+                            <Logo size={64} showText={true} />
                         </Link>
                         <p className="text-slate-600 dark:text-dark-400 mb-4 leading-relaxed text-sm">
                             {footerDict.mission}
@@ -157,7 +157,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-9 h-9 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-orange-600 dark:text-primary-400 hover:text-white hover:bg-gradient-to-r hover:from-orange-500 hover:to-green-500 dark:hover:from-primary-500 dark:hover:to-accent-500 transition-all duration-300 backdrop-blur-sm"
+                                    className="w-9 h-9 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 backdrop-blur-sm"
                                     aria-label={link.label}
                                 >
                                     <SocialIcon name={link.icon} />
@@ -167,14 +167,14 @@ export default function Footer({ lang, dict }: FooterProps) {
                     </div>
 
                     {/* Services */}
-                    <div className="text-center">
-                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{footerDict.services}</h4>
+                    <div className="text-left">
+                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.services}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.services.map((link) => (
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-slate-600 dark:text-dark-400 hover:text-orange-500 dark:hover:text-primary-500 transition-colors duration-300"
+                                        className="text-slate-600 dark:text-dark-400 hover:text-red-600 dark:hover:text-red-500 transition-colors duration-300"
                                     >
                                         {link.label}
                                     </Link>
@@ -184,14 +184,14 @@ export default function Footer({ lang, dict }: FooterProps) {
                     </div>
 
                     {/* Company */}
-                    <div className="text-center">
-                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{footerDict.company}</h4>
+                    <div className="text-left">
+                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.company}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-slate-600 dark:text-dark-400 hover:text-orange-500 dark:hover:text-primary-500 transition-colors duration-300"
+                                        className="text-slate-600 dark:text-dark-400 hover:text-red-600 dark:hover:text-red-500 transition-colors duration-300"
                                     >
                                         {link.label}
                                     </Link>
@@ -201,27 +201,27 @@ export default function Footer({ lang, dict }: FooterProps) {
                     </div>
 
                     {/* Contact */}
-                    <div>
-                        <h4 className="text-slate-900 dark:text-white font-semibold mb-4 uppercase tracking-wider text-xs">{footerDict.getInTouch}</h4>
-                        <ul className="space-y-2 text-slate-600 dark:text-dark-400 text-sm">
+                    <div className="text-left">
+                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.getInTouch}</h4>
+                        <ul className="space-y-4 text-slate-600 dark:text-dark-400 text-sm">
                             <li className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-orange-500 dark:text-primary-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <a href="mailto:alekseevpo@gmail.com" className="hover:text-orange-500 dark:hover:text-primary-500 transition-colors truncate">
+                                <a href="mailto:alekseevpo@gmail.com" className="hover:text-red-600 dark:hover:text-red-500 transition-colors truncate">
                                     alekseevpo@gmail.com
                                 </a>
                             </li>
                             <li className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-orange-500 dark:text-primary-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                <a href="https://wa.me/34624682795" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500 dark:hover:text-primary-500 transition-colors">
+                                <a href="https://wa.me/34624682795" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
                                     WhatsApp
                                 </a>
                             </li>
                             <li className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-orange-500 dark:text-primary-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
@@ -238,11 +238,11 @@ export default function Footer({ lang, dict }: FooterProps) {
                             © {new Date().getFullYear()} Selen.IT Digital Agency. {footerDict.rights}
                         </p>
                         <div className="flex gap-4 text-xs font-medium">
-                            <Link href={`/${lang}/privacy`} className="text-slate-500 dark:text-dark-500 hover:text-orange-500 dark:hover:text-primary-500 transition-colors">
+                            <Link href={`/${lang}/privacy`} className="text-slate-500 dark:text-dark-500 hover:text-red-600 dark:hover:text-red-500 transition-colors">
                                 {footerDict.privacy}
                             </Link>
                             <span className="text-slate-300 dark:text-dark-700">•</span>
-                            <Link href={`/${lang}/terms`} className="text-slate-500 dark:text-dark-500 hover:text-orange-500 dark:hover:text-primary-500 transition-colors">
+                            <Link href={`/${lang}/terms`} className="text-slate-500 dark:text-dark-500 hover:text-red-600 dark:hover:text-red-500 transition-colors">
                                 {footerDict.terms}
                             </Link>
                         </div>

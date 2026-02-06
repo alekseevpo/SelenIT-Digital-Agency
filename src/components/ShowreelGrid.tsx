@@ -39,7 +39,7 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                     {projects.map((project) => (
                         <div
                             key={project.id}
-                            className="glass-card overflow-hidden group card-hover bg-cream-100/50 dark:bg-dark-900 border border-slate-200 dark:border-dark-800"
+                            className="glass-card overflow-hidden group card-hover shadow-sm"
                         >
                             {/* Video or Image Placeholder */}
                             <div className="aspect-video relative">
@@ -58,13 +58,13 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                             {/* Content */}
                             <div className="p-8">
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className="px-3 py-1 rounded-full bg-orange-500/20 dark:bg-primary-500/20 text-orange-500 dark:text-primary-400 text-xs font-medium">
+                                    <span className="px-3 py-1 rounded-full bg-red-600/20 dark:bg-red-500/20 text-red-600 dark:text-red-500 text-xs font-medium">
                                         {project.category}
                                     </span>
                                     <span className="text-slate-500 dark:text-dark-500 text-sm">{project.year}</span>
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-orange-500 dark:group-hover:text-primary-500 transition-colors">
+                                <h3 className="text-3xl md:text-4xl font-frantz font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide leading-none group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors" style={{ transform: 'scaleY(1.2)' }}>
                                     {project.title}
                                 </h3>
                                 <p className="text-slate-500 dark:text-dark-400 text-sm mb-2">{dict.client}: {project.client}</p>
@@ -82,7 +82,7 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                                 {/* Results */}
                                 <div className="flex flex-wrap gap-4 pt-6 border-t border-slate-200 dark:border-dark-700">
                                     {project.results.map((result) => (
-                                        <span key={result} className="text-sm text-orange-500 dark:text-primary-500 font-medium">
+                                        <span key={result} className="text-sm text-red-600 dark:text-red-500 font-medium">
                                             {result}
                                         </span>
                                     ))}
@@ -92,7 +92,7 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                                 {project.slug && (
                                     <Link
                                         href={`/${lang}/case/${project.slug}`}
-                                        className="inline-flex items-center gap-2 mt-6 text-orange-500 dark:text-primary-500 hover:text-orange-600 dark:hover:text-primary-400 font-medium transition-colors group"
+                                        className="inline-flex items-center gap-2 mt-6 text-red-600 dark:text-red-500 hover:text-red-700 dark:hover:text-red-400 font-medium transition-colors group"
                                     >
                                         {dict.viewCase || 'View Case Study'}
                                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

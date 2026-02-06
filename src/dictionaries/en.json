@@ -36,7 +36,7 @@
             "subtitle": "Ready to transform your digital presence? We would love to hear from you."
         },
         "info": {
-            "title": "Get in Touch",
+            "title": "Our Contacts",
             "subtitle": "Have a project in mind? Let us talk about how we can help you achieve your goals.",
             "email": "Email",
             "phone": "Phone",
@@ -62,11 +62,10 @@
             "companyPlaceholder": "Your Company",
             "service": "Service Interested In",
             "serviceOptions": [
-                "Web Development",
-                "UI/UX Design",
-                "E-Commerce",
-                "Web Application",
-                "Support & Maintenance",
+                "Branding",
+                "Websites",
+                "SEO",
+                "Individual Support",
                 "Other"
             ],
             "budget": "Project Budget",
@@ -79,7 +78,7 @@
             ],
             "details": "Project Details",
             "detailsPlaceholder": "Tell us about your project, goals, and timeline...",
-            "submit": "Submit Request",
+            "submit": "Submit",
             "sending": "Sending...",
             "success": "Success",
             "successTitle": "Thank You!",
@@ -96,7 +95,7 @@
         "title1": "We Build",
         "titleGradient": "Digital Experiences",
         "title2": "That Drive Results",
-        "subtitle": "Transform your vision into a stunning reality. We craft high-performance websites, intuitive interfaces, and scalable digital solutions that elevate your brand.",
+        "subtitle": "Your design doesn't have to be terrible!\nTurning your vision into stunning reality.\nCreating brands, logos, marketing strategies, clear to your customers and audience\nWe write modern high-performance websites, interfaces and scalable digital solutions.",
         "ctaPrimary": "Start Your Project",
         "ctaSecondary": "View Our Work"
     },
@@ -146,87 +145,59 @@
         },
         "list": [
             {
-                "id": "web-development",
+                "id": "branding",
+                "videoId": "QT3L4tZ14-4",
+                "title": "Branding",
+                "description": "Creating a unique visual style and positioning strategy for your brand.",
+                "features": [
+                    "Logo Design",
+                    "Corporate Identity",
+                    "Brandbook",
+                    "Positioning",
+                    "Visual Identity",
+                    "Brand Strategy"
+                ]
+            },
+            {
+                "id": "websites",
                 "videoId": "QT3L4tZ14-4",
                 "title": "Web Development",
-                "description": "We build fast, secure, and scalable websites using modern technologies and best practices.",
+                "description": "Development of modern, fast, and responsive websites of any complexity. We design intuitive interfaces that reflect your brand and resonate with your audience.",
                 "features": [
-                    "Custom website development",
-                    "React & Next.js applications",
-                    "API development & integration",
-                    "Database design & optimization",
-                    "Cloud deployment & hosting",
-                    "Performance optimization"
+                    "Corporate Websites",
+                    "Landing Pages",
+                    "Multi-page Portals",
+                    "Responsive Design",
+                    "High Performance",
+                    "System Integration"
                 ]
             },
             {
-                "id": "ui-ux-design",
+                "id": "seo",
                 "videoId": "QT3L4tZ14-4",
-                "title": "UI/UX Design",
-                "description": "Beautiful, intuitive interfaces that engage users and deliver exceptional experiences.",
+                "title": "SEO (search engine optimization)",
+                "description": "Promotion of your business in search engines and social networks to drive traffic.",
                 "features": [
-                    "User research & analysis",
-                    "Information architecture",
-                    "Wireframing & prototyping",
-                    "Visual design & branding",
-                    "Interaction design",
-                    "Usability testing"
+                    "Search Engine Optimization",
+                    "SMM Promotion",
+                    "Contextual Advertising",
+                    "Technical Audit",
+                    "Traffic Analytics",
+                    "Content Strategy"
                 ]
             },
             {
-                "id": "ecommerce",
-                "videoId": "EVPItl_YJ3A",
-                "title": "E-Commerce Solutions",
-                "description": "Powerful online stores that convert visitors into customers with seamless shopping experiences.",
-                "features": [
-                    "Custom e-commerce platforms",
-                    "Payment gateway integration",
-                    "Inventory management",
-                    "Order fulfillment systems",
-                    "Customer portal & accounts",
-                    "Analytics & reporting"
-                ]
-            },
-            {
-                "id": "web-applications",
+                "id": "support",
                 "videoId": "QT3L4tZ14-4",
-                "title": "Web Applications",
-                "description": "Complex, feature-rich applications that solve real business problems and scale with your growth.",
+                "title": "Individual Support",
+                "description": "Personal accompaniment of your project and technical maintenance after launch.",
                 "features": [
-                    "SaaS platform development",
-                    "Dashboard & admin panels",
-                    "Real-time features & chat",
-                    "Third-party integrations",
-                    "Workflow automation",
-                    "Multi-tenant architecture"
-                ]
-            },
-            {
-                "id": "mobile-first",
-                "videoId": "bioIp3vay6I",
-                "title": "Mobile-First Development",
-                "description": "Progressive web apps and responsive solutions that work perfectly on any device.",
-                "features": [
-                    "Progressive Web Apps (PWA)",
-                    "Responsive web design",
-                    "Cross-platform compatibility",
-                    "Offline functionality",
-                    "Push notifications",
-                    "App-like experience"
-                ]
-            },
-            {
-                "id": "maintenance",
-                "videoId": "QT3L4tZ14-4",
-                "title": "Support & Maintenance",
-                "description": "Keep your digital products running smoothly with our comprehensive support packages.",
-                "features": [
-                    "24/7 monitoring & alerts",
-                    "Regular security updates",
-                    "Performance optimization",
-                    "Bug fixes & patches",
-                    "Content updates",
-                    "Technical consultation"
+                    "Monitoring System Implementation",
+                    "Consultations",
+                    "Content Updates",
+                    "Technical Support",
+                    "Performance Analysis",
+                    "Scaling"
                 ]
             }
         ],
@@ -269,10 +240,10 @@
             ]
         },
         "cta": {
-            "title1": "Ready to Start Your",
-            "titleGradient": "Project?",
+            "title1": "Ready to",
+            "titleGradient": "Discuss?",
             "subtitle": "Let us discuss your requirements and how we can help you achieve your goals.",
-            "button": "Get a Free Quote"
+            "button": "Download Brief"
         }
     },
     "showreel": {
@@ -425,11 +396,11 @@
                     "avatar": "/images/joel-grevo.jpeg"
                 },
                 {
-                    "id": "dmitry",
-                    "name": "Dmitry Sokolov",
+                    "id": "otto",
+                    "name": "Otto Harahonych",
                     "role": "Lead Developer",
                     "bio": "Full-stack expert specializing in React, Node.js, and cloud architecture.",
-                    "avatar": "DS"
+                    "avatar": "OH"
                 },
                 {
                     "id": "daryna",

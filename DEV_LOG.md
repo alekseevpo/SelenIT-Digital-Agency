@@ -1,5 +1,18 @@
 # Selen.IT Digital Agency - Development Log
 
+## 2026-02-04
+
+### 00:40 - Dependency Audit & Stabilization
+- Обновлены зависимости до Next.js 15.5.x
+- Приведены типы PageProps к требованиям Next.js 15 (params как Promise)
+- Исправлены тестовые моки ContactForm и актуализированы сценарии reCAPTCHA
+- Исправлены типы Framer Motion variants в Logo
+- Запущены build/lint/tests: ✅ build, ✅ lint, ✅ tests (92/92)
+- Выполнен npm audit: 2 high severity (next, glob)
+- Временно зафиксирован Next.js на 15.5.7 для соответствия SWC (без warning)
+
+---
+
 ## 2026-02-01
 
 ### 11:15 - Typography System Update

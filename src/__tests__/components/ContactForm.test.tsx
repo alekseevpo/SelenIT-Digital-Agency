@@ -356,8 +356,12 @@ describe('ContactForm', () => {
             });
         });
 
-        it('shows error when reCAPTCHA fails', async () => {
+        it('falls back to honeypot when reCAPTCHA fails', async () => {
             const user = userEvent.setup();
+            mockFetch.mockResolvedValue({
+                ok: true,
+                json: () => Promise.resolve({ success: true }),
+            });
             (window.grecaptcha.execute as jest.Mock).mockRejectedValueOnce(new Error('reCAPTCHA failed'));
 
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
@@ -372,7 +376,7 @@ describe('ContactForm', () => {
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
 
             await waitFor(() => {
-                expect(screen.getByText(/reCAPTCHA verification failed/i)).toBeInTheDocument();
+                expect(mockFetch).toHaveBeenCalled();
             });
         });
     });

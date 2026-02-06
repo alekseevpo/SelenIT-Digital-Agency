@@ -1,0 +1,59 @@
+{
+  "memories": [
+    {
+      "name": "Next.js 14 App Router Structure",
+      "description": "Правильная структура файлов в App Router",
+      "content": "В Next.js 14 используй файлы page.tsx, layout.tsx, loading.tsx, error.tsx внутри директорий /app. Каждая директория представляет route."
+    },
+    {
+      "name": "TypeScript Strict Typing",
+      "description": "Строгая типизация в TypeScript",
+      "content": "Всегда указывай типы для пропсов компонентов, возвращаемых значений функций и состояний. Избегай использование типа 'any'. Используй interface для описания сложных объектов."
+    },
+    {
+      "name": "Tailwind CSS Best Practices", 
+      "description": "Рекомендации по использованию Tailwind",
+      "content": "Соблюдай официальный порядок классов Tailwind, используй next-themes для переключения тем, избегай произвольных значений ([17px]) где возможно."
+    },
+    {
+      "name": "Framer Motion Animations",
+      "description": "Работа с анимациями через Framer Motion",
+      "content": "Используй motion.div и другие motion компоненты, применяй variants для сложных анимаций, указывай initial, animate, exit пропсы для управления состояниями."
+    },
+    {
+      "name": "Dark Theme with next-themes",
+      "description": "Реализация темной темы",
+      "content": "Используй useTheme() хук из next-themes, настраивай системные преференсы, обеспечивай плавные переходы между темами без мерцания."
+    },
+    {
+      "name": "Smooth Scrolling with Lenis",
+      "description": "Настройка плавного скролла",
+      "content": "Инициализируй Lenis в useEffect, не забудь cleanup функцию для очистки, настраивай duration и easing под нужный эффект."
+    },
+    {
+      "name": "Lucide React Icons Usage",
+      "description": "Использование иконок Lucide React",
+      "content": "Импортируй иконки напрямую: import { Home, User } from 'lucide-react'. Размер и цвет настраивается через className или пропсы."
+    },
+    {
+      "name": "Email Integration via Resend",
+      "description": "Отправка email через Resend",
+      "content": "Используй Resend SDK для отправки писем, React Email для создания шаблонов, обрабатывай async/await ошибки и loading состояния."
+    },
+    {
+      "name": "Vercel Analytics Setup",
+      "description": "Подключение аналитики Vercel",
+      "content": "Добавляй <Analytics /> и <SpeedInsights /> компоненты в root layout для автоматического сбора метрик производительности и поведения пользователей."
+    },
+    {
+      "name": "Performance Optimization Rules",
+      "description": "Правила оптимизации производительности",
+      "content": "Используй dynamic imports с lazy loading, оптимизируй изображения через next/image, применяй useMemo/useCallback где необходимо, минимизируй размер бандла."
+    },
+    {
+      "name": "Component Architecture Principles",
+      "description": "Принципы архитектуры компонентов",
+      "content": "Разделяй UI компоненты и компоненты с логикой, используй композицию вместо наследования, правильно типизируй children пропсы, создавай переиспользуемые хуки."
+    }
+  ]
+}

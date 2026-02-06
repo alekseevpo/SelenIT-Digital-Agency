@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     return {
         title: dict.about.hero.badge,
@@ -13,7 +14,7 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
 }
 
 interface AboutPageProps {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
 const valueIcons: Record<string, React.ReactNode> = {
@@ -42,11 +43,12 @@ const valueIcons: Record<string, React.ReactNode> = {
 const teamMetadata: Record<string, { color: string; position?: string }> = {
     alexander: { color: 'from-blue-500 to-cyan-500', position: 'object-[50%_35%]' },
     maria: { color: 'from-purple-500 to-pink-500', position: 'object-top' },
-    dmitry: { color: 'from-green-500 to-emerald-500' },
+    otto: { color: 'from-green-500 to-emerald-500' },
     daryna: { color: 'from-orange-500 to-amber-500' },
 };
 
-export default async function AboutPage({ params: { lang } }: AboutPageProps) {
+export default async function AboutPage({ params }: AboutPageProps) {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, story, stats, values, team, cta } = dict.about;
 
@@ -55,12 +57,13 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
-                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
-                            {hero.title1}{' '}
-                            <span className="gradient-text">{hero.titleGradient}</span>
+                        <h1 className="heading-hero mb-6">
+                            <span className="text-slate-900 dark:text-white">
+                                {hero.title1} {hero.titleGradient}
+                            </span>
                         </h1>
                         <p className="text-body transition-colors duration-300">
                             {hero.subtitle}
@@ -73,12 +76,13 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                            <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
                                 {story.badge}
                             </span>
-                            <h2 className="heading-2 mb-6 text-slate-900 dark:text-white">
-                                {story.title1}{' '}
-                                <span className="gradient-text">{story.titleGradient}</span>
+                            <h2 className="heading-hero mb-6">
+                                <span className="text-slate-900 dark:text-white">
+                                    {story.title1} {story.titleGradient}
+                                </span>
                             </h2>
                             <div className="space-y-4 text-slate-600 dark:text-dark-400 transition-colors duration-300">
                                 <p>{story.p1}</p>
@@ -104,12 +108,13 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
             <section className="section-padding">
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {values.badge}
                         </span>
-                        <h2 className="heading-2 mb-6">
-                            {values.title1}{' '}
-                            <span className="gradient-text">{values.titleGradient}</span>
+                        <h2 className="heading-hero mb-6">
+                            <span className="text-slate-900 dark:text-white">
+                                {values.title1} {values.titleGradient}
+                            </span>
                         </h2>
                         <p className="text-body">
                             {values.subtitle}
@@ -119,10 +124,10 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {values.list.map((value) => (
                             <div key={value.id} className="glass-card p-8 card-hover">
-                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500/20 to-green-500/20 dark:from-primary-500/20 dark:to-accent-500/20 flex items-center justify-center text-orange-500 dark:text-primary-400 mb-6">
+                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-600/20 to-red-500/20 dark:from-red-500/20 dark:to-red-600/20 flex items-center justify-center text-red-600 dark:text-red-500 mb-6">
                                     {valueIcons[value.id]}
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{value.title}</h3>
+                                <h3 className="text-slate-900 dark:text-white font-frantz font-black mb-6 uppercase tracking-wide text-3xl md:text-4xl leading-none inline-block w-full origin-left" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{value.title}</h3>
                                 <p className="text-slate-600 dark:text-dark-400">{value.description}</p>
                             </div>
                         ))}
@@ -130,15 +135,21 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                 </div>
             </section>
 
-            <section className="section-padding bg-cream-100/50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="pt-10 pb-20 bg-cream-100/50 dark:bg-dark-900 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
-                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {team.badge}
                         </span>
-                        <h2 className="heading-2 mb-6 text-slate-900 dark:text-white">
-                            {team.title1}{' '}
-                            <span className="gradient-text">{team.titleGradient}</span>
+                        <h2 className="heading-hero mb-12">
+                            <span className="text-slate-900 dark:text-white">
+                                {team.title1} {team.titleGradient.split('.IT').map((part, i, arr) => (
+                                    <span key={i}>
+                                        {part}
+                                        {i < arr.length - 1 && <span className="text-red-600">.IT</span>}
+                                    </span>
+                                ))}
+                            </span>
                         </h2>
                         <p className="text-body transition-colors duration-300">
                             {team.subtitle}
@@ -161,8 +172,14 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
                                         <span className="text-white text-2xl font-bold">{member.avatar}</span>
                                     )}
                                 </div>
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{member.name}</h3>
-                                <p className="text-orange-500 dark:text-primary-500 font-medium text-sm mb-4">{member.role}</p>
+                                <h3 className="text-slate-900 dark:text-white font-frantz font-black mb-4 uppercase tracking-wide text-3xl md:text-5xl leading-none inline-block w-full" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
+                                    {member.name.split(' ').map((part, i) => (
+                                        <span key={i} className={i === 1 ? 'text-red-600' : ''}>
+                                            {part}{i === 0 ? ' ' : ''}
+                                        </span>
+                                    ))}
+                                </h3>
+                                <p className="text-red-600 dark:text-red-500 font-medium text-sm mb-4">{member.role}</p>
                                 <p className="text-slate-600 dark:text-dark-400 text-sm">{member.bio}</p>
                             </div>
                         ))}
@@ -173,16 +190,27 @@ export default async function AboutPage({ params: { lang } }: AboutPageProps) {
             {/* CTA Section */}
             <section className="section-padding">
                 <div className="container-custom">
-                    <div className="glass-card p-12 text-center bg-gradient-to-r from-orange-500/10 to-green-500/10 dark:from-primary-500/10 dark:to-accent-500/10">
-                        <h2 className="heading-2 mb-6">
-                            {cta.title1}{' '}
-                            <span className="gradient-text">{cta.titleGradient}</span>
+                    <div className="glass-card p-12 text-center bg-gradient-to-r from-red-600/10 to-slate-500/10 dark:from-red-500/10 dark:to-slate-600/10">
+                        <h2 className="heading-hero mb-6">
+                            <span className="text-slate-900 dark:text-white">
+                                {cta.title1} {cta.titleGradient}
+                            </span>
                         </h2>
                         <p className="text-body max-w-2xl mx-auto mb-10">
                             {cta.subtitle}
                         </p>
-                        <Link href={`/${lang}/contact`} className="btn-primary text-lg px-8 py-4">
-                            {cta.button}
+                        <Link
+                            href={`/${lang}/contact`}
+                            className="btn-primary text-lg px-8 py-4 group inline-flex items-center justify-center overflow-hidden relative"
+                        >
+                            <span className="relative z-10 transform group-hover:-translate-x-5 transition-transform duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] uppercase tracking-wider font-bold">
+                                {cta.button}
+                            </span>
+                            <span className="absolute right-6 translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)]">
+                                <svg className="w-7 h-7 rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                    <path d="M10 2l11 10-11 10M21 12H3" />
+                                </svg>
+                            </span>
                         </Link>
                     </div>
                 </div>

@@ -8,7 +8,8 @@ import Technologies from '@/components/sections/Technologies';
 import Testimonials from '@/components/sections/Testimonials';
 import CTA from '@/components/sections/CTA';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     return {
         title: `Selen.IT | Digital Agency`,
@@ -17,10 +18,11 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
 }
 
 export default async function Home({
-    params: { lang },
+    params,
 }: {
-    params: { lang: Locale };
+    params: Promise<{ lang: Locale }>;
 }) {
+    const { lang } = await params;
     const dict = await getDictionary(lang);
 
     return (

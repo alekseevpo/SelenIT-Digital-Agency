@@ -4,7 +4,8 @@ import { Locale } from '@/i18n-config';
 import { Reveal } from '@/components/ui/Reveal';
 import CTA from '@/components/sections/CTA';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     return {
         title: dict.services.hero.badge,
@@ -13,7 +14,7 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
 }
 
 interface ServicesPageProps {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
 }
 
 const serviceIcons: Record<string, React.ReactNode> = {
@@ -50,24 +51,26 @@ const serviceIcons: Record<string, React.ReactNode> = {
     ),
 };
 
-export default async function ServicesPage({ params: { lang } }: ServicesPageProps) {
+export default async function ServicesPage({ params }: ServicesPageProps) {
+    const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, list: servicesList, process, cta } = dict.services;
 
     return (
         <div className="bg-transparent dark:bg-dark-950 transition-colors duration-300">
             {/* Hero Section */}
-            <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
+            <section className="pt-32 pb-10 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <Reveal width="100%">
-                        <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
                     </Reveal>
                     <Reveal width="100%" delay={0.35}>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
-                            {hero.title1}{' '}
-                            <span className="gradient-text">{hero.titleGradient}</span>
+                        <h1 className="heading-hero mb-6">
+                            <span className="text-slate-900 dark:text-white">
+                                {hero.title1} {hero.titleGradient}
+                            </span>
                         </h1>
                     </Reveal>
                     <Reveal width="100%" delay={0.45}>
@@ -79,28 +82,24 @@ export default async function ServicesPage({ params: { lang } }: ServicesPagePro
             </section>
 
             {/* Services Detailed List */}
-            <section className="section-padding">
+            <section className="py-10 lg:py-20 px-4 sm:px-6 lg:px-8">
                 <div className="container-custom">
                     <div className="grid grid-cols-1 gap-12 sm:gap-24">
                         {servicesList.map((service, index) => (
                             <Reveal key={service.id} delay={0.2 * index} width="100%">
                                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                                     <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-green-500/20 dark:from-primary-500/20 dark:to-accent-500/20 flex items-center justify-center text-orange-500 dark:text-primary-500 mb-8">
-                                            {serviceIcons[service.id]}
-                                        </div>
-                                        <h3 className="heading-3 mb-6 text-slate-900 dark:text-white">{service.title}</h3>
+
+                                        <h3 className="font-frantz font-black uppercase tracking-wider text-5xl md:text-6xl mb-8 text-slate-900 dark:text-white leading-none origin-left inline-block" style={{ transform: 'scaleY(1.5) scaleX(1.1)' }}>
+                                            {service.title}
+                                        </h3>
                                         <p className="text-lg text-slate-600 dark:text-dark-400 mb-8 transition-colors duration-300">
                                             {service.description}
                                         </p>
                                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             {service.features.map((feature) => (
-                                                <li key={feature} className="flex items-center gap-3 text-slate-700 dark:text-dark-300">
-                                                    <div className="w-5 h-5 rounded-full bg-orange-500/10 dark:bg-primary-500/10 flex items-center justify-center text-orange-500 dark:text-primary-500">
-                                                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                                                        </svg>
-                                                    </div>
+                                                <li key={feature} className="flex items-center gap-3 text-slate-700 dark:text-dark-300 group/feature">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 flex-shrink-0 group-hover/feature:scale-150 transition-transform duration-300" />
                                                     {feature}
                                                 </li>
                                             ))}
@@ -123,14 +122,15 @@ export default async function ServicesPage({ params: { lang } }: ServicesPagePro
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <Reveal width="100%">
-                            <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                            <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
                                 {process.badge}
                             </span>
                         </Reveal>
                         <Reveal width="100%" delay={0.35}>
-                            <h2 className="heading-2 mb-6 text-slate-900 dark:text-white">
-                                {process.title1}{' '}
-                                <span className="gradient-text">{process.titleGradient}</span>
+                            <h2 className="heading-hero mb-6">
+                                <span className="text-slate-900 dark:text-white">
+                                    {process.title1} {process.titleGradient}
+                                </span>
                             </h2>
                         </Reveal>
                         <Reveal width="100%" delay={0.45}>
@@ -144,10 +144,12 @@ export default async function ServicesPage({ params: { lang } }: ServicesPagePro
                         {process.steps.map((item) => (
                             <Reveal key={item.step} delay={0.1 * parseInt(item.step)}>
                                 <div className="glass-card p-10 bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 h-full relative group hover:shadow-lg transition-all">
-                                    <div className="text-7xl font-bold text-slate-900/5 dark:text-white/5 absolute top-6 right-8 group-hover:text-orange-500/10 dark:group-hover:text-primary-500/10 transition-colors">
+                                    <div className="text-7xl font-bold text-slate-900/5 dark:text-white/5 absolute top-6 right-8 group-hover:text-red-600/10 dark:group-hover:text-red-500/10 transition-colors">
                                         {item.step}
                                     </div>
-                                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 relative z-10">{item.title}</h3>
+                                    <h3 className="text-4xl sm:text-5xl font-frantz font-black text-slate-900 dark:text-white mb-6 relative z-10 uppercase tracking-normal leading-[0.9] origin-left" style={{ transform: 'scaleY(1.4) scaleX(1.05)' }}>
+                                        {item.title}
+                                    </h3>
                                     <p className="text-slate-600 dark:text-dark-400 relative z-10 transition-colors duration-300">
                                         {item.description}
                                     </p>

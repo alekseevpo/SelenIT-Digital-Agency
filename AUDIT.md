@@ -1,6 +1,6 @@
 # Selen.IT Digital Agency - Аудит проекта
 
-**Дата аудита:** 2026-02-01
+**Дата аудита:** 2026-02-04
 **Версия проекта:** 0.1.0
 
 ---
@@ -9,7 +9,7 @@
 
 | Параметр | Значение |
 |----------|----------|
-| Фреймворк | Next.js 14.2.35 |
+| Фреймворк | Next.js 15.5.7 |
 | Язык | TypeScript 5.x |
 | Стилизация | Tailwind CSS 3.4.19 |
 | React | 18.3.1 |
@@ -22,27 +22,28 @@
 
 ## Статус сборки
 
-### Production Build: ✅ УСПЕШНО
+### Production Build: ✅ УСПЕШНО (последняя проверка: 2026-02-04)
 
 ```
-Route (app)                              Size     First Load JS
-┌ ○ /_not-found                          873 B          88.2 kB
-├ ƒ /[lang]                              14.1 kB         164 kB
-├ ƒ /[lang]/about                        186 B           101 kB
-├ ● /[lang]/case/[slug]                  1.08 kB         139 kB
-├ ƒ /[lang]/contact                      6.6 kB          136 kB
-├ ƒ /[lang]/services                     1.08 kB         139 kB
-├ ƒ /[lang]/showreel                     3.28 kB         141 kB
-└ + First Load JS shared by all          87.4 kB
+Route (app)                                 Size  First Load JS
+┌ ○ /_not-found                            998 B         103 kB
+├ ƒ /[lang]                              19.9 kB         171 kB
+├ ƒ /[lang]/about                          174 B         111 kB
+├ ● /[lang]/case/[slug]                  1.07 kB         147 kB
+├ ƒ /[lang]/contact                      6.49 kB         149 kB
+├ ƒ /[lang]/services                     1.07 kB         147 kB
+├ ƒ /[lang]/showreel                     3.24 kB         149 kB
+├ ƒ /[lang]/terms                          142 B         102 kB
+├ ƒ /[lang]/privacy                        142 B         102 kB
+└ + First Load JS shared by all           102 kB
 ```
 
-**Предупреждения при сборке:**
-- ⚠️ Failed to find font override values for font `Rethink Sans`
-- ⚠️ Failed to find font override values for font `Hedvig Letters Serif`
+**Предупреждения при сборке (2026-02-04):**
+- Нет
 
 ---
 
-## ESLint: ✅ БЕЗ ОШИБОК
+## ESLint: ✅ БЕЗ ОШИБОК (последняя проверка: 2026-02-04)
 
 ```
 ✔ No ESLint warnings or errors
@@ -50,25 +51,17 @@ Route (app)                              Size     First Load JS
 
 ---
 
-## Тесты: ⚠️ 71/92 PASSED
+## Тесты: ✅ 92/92 PASSED (последняя проверка: 2026-02-04)
 
 | Статус | Количество |
 |--------|------------|
-| Passed | 71 |
-| Failed | 21 |
+| Passed | 92 |
+| Failed | 0 |
 | Total | 92 |
-
-**Причина падений:**
-- Тесты `ContactForm.test.tsx` устарели после добавления новых полей в словарь (tabs, phone, phonePlaceholder, callbackSuccessTitle, callbackSuccessSubtitle)
-- Требуется обновление mock-данных в тестах
 
 ---
 
-## TypeScript: ⚠️ ОШИБКИ В ТЕСТАХ
-
-Ошибки типов только в тестовых файлах (`src/__tests__/`):
-- `ContactForm.test.tsx` — отсутствуют новые обязательные поля в mock dictionary
-- Не влияет на production код
+## TypeScript: ✅ БЕЗ ОШИБОК (последняя проверка: 2026-02-04)
 
 ---
 
@@ -78,11 +71,12 @@ Route (app)                              Size     First Load JS
 
 | Severity | Package | Issue |
 |----------|---------|-------|
-| **High** | next 10.0.0-15.5.9 | DoS via Image Optimizer |
+| **High** | next 10.0.0-15.6.0-canary.60 | DoS / RSC / Image Optimizer / PPR issues (см. GHSA advisories) |
 | **High** | glob 10.2.0-10.4.5 | Command injection via CLI |
-| **Moderate** | eslint <9.26.0 | Stack Overflow при сериализации |
 
-**Рекомендация:** Обновить Next.js до версии 15.5.10+ или 16.x для устранения уязвимостей
+**Рекомендация:** Обновить Next.js до версии 15.5.10+ для устранения уязвимостей.
+
+> Примечание: npm audit запускался 2026-02-04. Обнаружено 2 high severity (next, glob).
 
 ---
 
@@ -90,7 +84,7 @@ Route (app)                              Size     First Load JS
 
 | Package | Current | Latest | Breaking |
 |---------|---------|--------|----------|
-| next | 14.2.35 | 16.1.6 | Yes |
+| next | 15.5.7 | 16.1.6 | Yes |
 | react | 18.3.1 | 19.2.4 | Yes |
 | react-dom | 18.3.1 | 19.2.4 | Yes |
 | eslint | 8.57.1 | 9.39.2 | Yes |
@@ -144,25 +138,27 @@ src/
 
 ## Шрифты: ✅
 
-- **Sans-serif:** Rethink Sans (Google Fonts)
+- **Sans-serif:** Inter (Google Fonts)
 - **Serif:** Hedvig Letters Serif (Google Fonts)
-- Применены глобально через CSS переменные `--font-rethink` и `--font-hedvig`
+- **Display:** TT Frantz (Local Font)
+- Все шрифты оптимизированы через `next/font` для исключения CLS и лишних запросов.
+- Удален неиспользуемый импорт Rethink Sans.
 
 ---
 
 ## Рекомендации по улучшению
 
 ### Критические (High Priority):
-1. **Обновить тесты ContactForm** — добавить недостающие поля в mock dictionary
-2. **Рассмотреть обновление Next.js** до 15.x+ для устранения security vulnerabilities
+1. **Обновить Next.js** до 15.5.10+ для устранения security vulnerabilities
 
 ### Средние (Medium Priority):
-3. Настроить fallback шрифты для Rethink Sans и Hedvig Letters Serif
-4. Добавить Content-Security-Policy header
-5. Рассмотреть миграцию на React 19 + Next.js 16
+2. Настроить fallback шрифты для Rethink Sans и Hedvig Letters Serif
+3. Добавить Content-Security-Policy header
+4. Рассмотреть миграцию на React 19 + Next.js 16
+5. **Синхронизировать документацию** — README должен отражать Showreel (не Portfolio), порт 5001 и i18n структуру
 
 ### Низкие (Low Priority):
-6. Оптимизировать размер изображений в public/
+6. Оптимизирован размер ассетов: удален `showreel-2025.mov` (92MB), настроен `preload="metadata"` для видео.
 7. Добавить Lighthouse CI в pipeline
 8. Настроить pre-commit hooks (husky + lint-staged)
 
@@ -171,9 +167,9 @@ src/
 ## Производительность
 
 ### Bundle Analysis:
-- First Load JS shared: **87.4 kB** (хорошо)
-- Главная страница: **164 kB** (приемлемо)
-- Middleware: **35.5 kB**
+- First Load JS shared: **102 kB** (нормально)
+- Главная страница: **171 kB** (приемлемо)
+- Middleware: **43 kB**
 
 ### Оптимизации уже применены:
 - ✅ Отключен blur на мобильных для лучшего FPS
@@ -186,7 +182,7 @@ src/
 ## Вывод
 
 Проект в **хорошем состоянии** для production. Основные проблемы:
-1. Устаревшие тесты (не влияют на работу приложения)
-2. Security vulnerabilities в dependencies (рекомендуется обновление)
+1. Security vulnerabilities в dependencies (рекомендуется обновление Next.js)
+2. Документация требует синхронизации с текущей структурой
 
 **Оценка готовности:** 8/10

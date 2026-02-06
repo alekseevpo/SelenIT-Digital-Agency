@@ -101,18 +101,15 @@ const TechIcon = ({ name, color }: { name: string; color: string }) => {
 
 export default function Technologies({ dict }: TechnologiesProps) {
     return (
-        <section className="py-16 md:py-24 overflow-x-clip overflow-y-visible bg-cream-100/50 dark:bg-dark-900/30 transition-colors duration-300">
+        <section className="py-16 md:py-24 overflow-x-clip overflow-y-visible transition-colors duration-300">
             <div className="container-custom mb-10 md:mb-14 px-4">
-                <div className="text-center max-w-3xl mx-auto">
-                    <Reveal>
-                        <span className="text-orange-500 dark:text-primary-500 font-semibold text-xs md:text-sm uppercase tracking-wider mb-3 md:mb-4 block">
-                            {dict.badge}
-                        </span>
-                    </Reveal>
-                    <Reveal delay={0.1}>
-                        <h2 className="heading-2 mb-4 md:mb-6 text-slate-900 dark:text-white">
-                            {dict.title}{' '}
-                            <span className="gradient-text">{dict.titleGradient}</span>
+                <div className="text-center max-w-4xl mx-auto">
+
+                    <Reveal width="100%" delay={0.3}>
+                        <h2 className="heading-hero mb-6">
+                            <span className="text-slate-900 dark:text-white">
+                                {dict.title} {dict.titleGradient}
+                            </span>
                         </h2>
                     </Reveal>
                     <Reveal delay={0.2}>
@@ -125,10 +122,6 @@ export default function Technologies({ dict }: TechnologiesProps) {
 
             {/* Tech row - scroll right */}
             <div className="relative py-4">
-                {/* Gradient masks */}
-                <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-cream-100/90 dark:from-dark-900/90 via-cream-100/50 dark:via-dark-900/50 to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-cream-100/90 dark:from-dark-900/90 via-cream-100/50 dark:via-dark-900/50 to-transparent z-10 pointer-events-none" />
-
                 <div className="tech-scroll-container">
                     <div className="tech-scroll tech-scroll-right">
                         {[...technologies, ...technologies, ...technologies].map((tech, index) => (

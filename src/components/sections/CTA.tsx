@@ -17,22 +17,19 @@ interface CTAProps {
 export default function CTA({ lang, dict, commonDict }: CTAProps) {
     return (
         <section className="section-padding bg-cream-100 dark:bg-black relative overflow-hidden transition-all duration-300">
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-green-500/10 dark:from-primary-900/20 dark:via-transparent dark:to-accent-900/20 pointer-events-none" />
-            <div className="absolute inset-0 grid-pattern opacity-[0.03] pointer-events-none" />
-            <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-orange-500/10 dark:bg-primary-600/10 rounded-full blur-[100px] animate-pulse-slow" />
-                <div className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] bg-green-500/10 dark:bg-accent-600/10 rounded-full blur-[100px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
-            </div>
+
 
             <div className="container-custom relative z-10 text-center">
-                <Reveal width="100%">
-                    <h2 className="heading-2 text-slate-900 dark:text-white mb-6">
-                        {dict.title1}{' '}
-                        <span className="text-orange-500 dark:text-primary-400">{dict.titleGradient}</span>
-                    </h2>
-                </Reveal>
-                <Reveal width="100%" delay={0.3}>
+                <div className="max-w-4xl mx-auto">
+                    <Reveal width="100%" delay={0.3}>
+                        <h2 className="heading-2 heading-hero mb-6">
+                            <span className="text-slate-900 dark:text-white">
+                                {dict.title1} {dict.titleGradient}
+                            </span>
+                        </h2>
+                    </Reveal>
+                </div>
+                <Reveal width="100%" delay={0.4}>
                     <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
                         {dict.subtitle}
                     </p>

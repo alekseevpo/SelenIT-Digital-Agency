@@ -272,10 +272,11 @@ const uiText = {
 };
 
 export async function generateMetadata({
-    params: { lang, slug },
+    params,
 }: {
-    params: { lang: string; slug: string };
+    params: Promise<{ lang: string; slug: string }>;
 }): Promise<Metadata> {
+    const { lang, slug } = await params;
     const caseStudy = caseStudies[lang]?.[slug] || caseStudies.en?.[slug];
 
     if (!caseStudy) {
@@ -303,10 +304,11 @@ export async function generateStaticParams() {
 }
 
 export default async function CaseStudyPage({
-    params: { lang, slug },
+    params,
 }: {
-    params: { lang: string; slug: string };
+    params: Promise<{ lang: string; slug: string }>;
 }) {
+    const { lang, slug } = await params;
     const caseStudy = caseStudies[lang]?.[slug] || caseStudies.en?.[slug];
     const ui = uiText[lang as keyof typeof uiText] || uiText.en;
 

@@ -1,5 +1,4 @@
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor, fireEvent, act } from '@testing-library/react';
 import Header from '@/components/layout/Header';
 import { usePathname } from 'next/navigation';
 
@@ -98,33 +97,37 @@ describe('Header', () => {
         });
 
         it('opens mobile menu when button is clicked', async () => {
-            const user = userEvent.setup();
             render(<Header lang="en" />);
 
             const menuButton = screen.getByRole('button', { name: /open menu/i });
-            await user.click(menuButton);
-
-            // Menu should be visible with navigation items
-            await waitFor(() => {
-                expect(screen.getByRole('button', { name: /close menu/i })).toBeInTheDocument();
+            act(() => {
+                fireEvent.click(menuButton);
             });
+
+            await waitFor(() => {
+                expect(document.body.style.overflow).toBe('hidden');
+            });
+
+            expect(menuButton).toHaveAttribute('aria-label', 'Close menu');
         });
 
-        it('closes mobile menu when close button is clicked', async () => {
-            const user = userEvent.setup();
+        it('closes mobile menu when menu button is clicked again', async () => {
             render(<Header lang="en" />);
 
             // Open menu
             const menuButton = screen.getByRole('button', { name: /open menu/i });
-            await user.click(menuButton);
+            act(() => {
+                fireEvent.click(menuButton);
+            });
 
             await waitFor(() => {
-                expect(screen.getByRole('button', { name: /close menu/i })).toBeInTheDocument();
+                expect(document.body.style.overflow).toBe('hidden');
             });
 
             // Close menu
-            const closeButton = screen.getByRole('button', { name: /close menu/i });
-            await user.click(closeButton);
+            act(() => {
+                fireEvent.click(menuButton);
+            });
 
             await waitFor(() => {
                 expect(screen.getByRole('button', { name: /open menu/i })).toBeInTheDocument();
@@ -132,20 +135,25 @@ describe('Header', () => {
         });
 
         it('closes mobile menu when overlay is clicked', async () => {
-            const user = userEvent.setup();
             render(<Header lang="en" />);
 
+            const menuButton = screen.getByRole('button', { name: /open menu/i });
+
             // Open menu
-            await user.click(screen.getByRole('button', { name: /open menu/i }));
+            act(() => {
+                fireEvent.click(menuButton);
+            });
 
             await waitFor(() => {
-                expect(screen.getByRole('button', { name: /close menu/i })).toBeInTheDocument();
+                expect(document.body.style.overflow).toBe('hidden');
             });
 
             // Find and click the overlay (the outer div with onClick={closeMenu})
             const overlay = document.querySelector('[class*="fixed inset-0"]');
             if (overlay) {
-                fireEvent.click(overlay);
+                act(() => {
+                    fireEvent.click(overlay);
+                });
             }
 
             await waitFor(() => {
@@ -154,20 +162,23 @@ describe('Header', () => {
         });
 
         it('closes mobile menu when a navigation link is clicked', async () => {
-            const user = userEvent.setup();
             render(<Header lang="en" />);
 
             // Open menu
-            await user.click(screen.getByRole('button', { name: /open menu/i }));
+            act(() => {
+                fireEvent.click(screen.getByRole('button', { name: /open menu/i }));
+            });
 
             await waitFor(() => {
-                expect(screen.getByRole('button', { name: /close menu/i })).toBeInTheDocument();
+                expect(document.body.style.overflow).toBe('hidden');
             });
 
             // Click a navigation link in mobile menu (the one inside the mobile menu)
             const mobileMenuLinks = document.querySelectorAll('ul a');
             if (mobileMenuLinks.length > 0) {
-                fireEvent.click(mobileMenuLinks[0]);
+                act(() => {
+                    fireEvent.click(mobileMenuLinks[0]);
+                });
             }
 
             await waitFor(() => {
@@ -178,11 +189,12 @@ describe('Header', () => {
 
     describe('Scroll behavior', () => {
         it('blocks body scroll when mobile menu is open', async () => {
-            const user = userEvent.setup();
             render(<Header lang="en" />);
 
             // Open menu
-            await user.click(screen.getByRole('button', { name: /open menu/i }));
+            act(() => {
+                fireEvent.click(screen.getByRole('button', { name: /open menu/i }));
+            });
 
             await waitFor(() => {
                 expect(document.body.style.overflow).toBe('hidden');
@@ -190,19 +202,23 @@ describe('Header', () => {
         });
 
         it('restores body scroll when mobile menu is closed', async () => {
-            const user = userEvent.setup();
             render(<Header lang="en" />);
 
+            const menuButton = screen.getByRole('button', { name: /open menu/i });
+
             // Open menu
-            await user.click(screen.getByRole('button', { name: /open menu/i }));
+            act(() => {
+                fireEvent.click(menuButton);
+            });
 
             await waitFor(() => {
                 expect(document.body.style.overflow).toBe('hidden');
             });
 
             // Close menu
-            const closeButton = screen.getByRole('button', { name: /close menu/i });
-            await user.click(closeButton);
+            act(() => {
+                fireEvent.click(menuButton);
+            });
 
             await waitFor(() => {
                 expect(document.body.style.overflow).toBe('');
@@ -272,14 +288,18 @@ describe('Header', () => {
         });
 
         it('mobile menu button has correct aria-label when open', async () => {
-            const user = userEvent.setup();
             render(<Header lang="en" />);
 
-            await user.click(screen.getByRole('button', { name: /open menu/i }));
+            const menuButton = screen.getByRole('button', { name: /open menu/i });
+            act(() => {
+                fireEvent.click(menuButton);
+            });
 
             await waitFor(() => {
-                expect(screen.getByRole('button', { name: /close menu/i })).toBeInTheDocument();
+                expect(document.body.style.overflow).toBe('hidden');
             });
+
+            expect(menuButton).toHaveAttribute('aria-label', 'Close menu');
         });
 
         it('language switcher has role="group" with aria-label', () => {
