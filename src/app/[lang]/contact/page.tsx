@@ -16,6 +16,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
 }
 
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'alekseevpo@gmail.com';
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+34 624 68 27 95';
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER.replace(/[\s+\-]/g, '')}`;
+
 export default async function ContactPage({ params }: PageProps) {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
@@ -37,7 +41,7 @@ export default async function ContactPage({ params }: PageProps) {
             ),
             title: info.email,
             value: emailText,
-            href: 'mailto:alekseevpo@gmail.com',
+            href: `mailto:${CONTACT_EMAIL}`,
         },
         {
             icon: (
@@ -46,8 +50,8 @@ export default async function ContactPage({ params }: PageProps) {
                 </svg>
             ),
             title: "WhatsApp",
-            value: '+34 624 68 27 95',
-            href: 'https://wa.me/34624682795',
+            value: WHATSAPP_NUMBER,
+            href: WHATSAPP_LINK,
         }
     ];
 

@@ -131,6 +131,8 @@ Create a `.env.local` file in the project root:
 RESEND_API_KEY=                        # Resend API key for email delivery
 NEXT_PUBLIC_RECAPTCHA_SITE_KEY=        # Google reCAPTCHA v3 site key
 RECAPTCHA_SECRET_KEY=                  # Google reCAPTCHA v3 secret key
+NEXT_PUBLIC_CONTACT_EMAIL=             # Contact email (default: alekseevpo@gmail.com)
+NEXT_PUBLIC_WHATSAPP_NUMBER=           # WhatsApp number (default: +34 624 68 27 95)
 ```
 
 ## License

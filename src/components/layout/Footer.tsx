@@ -3,6 +3,9 @@ import type { Locale } from '@/i18n-config';
 import type { Dictionary } from '@/types/dictionary';
 import { Logo } from '../ui/Logo';
 
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'alekseevpo@gmail.com';
+const WHATSAPP_LINK = `https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+34 624 68 27 95').replace(/[\s+\-]/g, '')}`;
+
 interface FooterProps {
     lang: Locale;
     dict: Dictionary;
@@ -22,7 +25,7 @@ const getFooterLinks = (lang: string, dict: Dictionary) => {
         social: [
             { href: 'https://github.com', label: 'GitHub', icon: 'github' },
             { href: 'https://t.me/ppmtrue', label: 'Telegram', icon: 'telegram' },
-            { href: 'https://wa.me/34624682795', label: 'WhatsApp', icon: 'whatsapp' },
+            { href: WHATSAPP_LINK, label: 'WhatsApp', icon: 'whatsapp' },
         ],
     };
 };
@@ -115,7 +118,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                     </h4>
                     <div className="flex flex-col gap-3">
                         <a
-                            href="mailto:alekseevpo@gmail.com"
+                            href={`mailto:${CONTACT_EMAIL}`}
                             className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 text-slate-600 dark:text-dark-400 hover:text-red-600 dark:hover:text-red-500 transition-all duration-300 text-sm shadow-sm"
                         >
                             <svg className="w-4 h-4 text-red-600 dark:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,7 +128,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                         </a>
                         <div className="grid grid-cols-2 gap-3">
                             <a
-                                href="https://wa.me/34624682795"
+                                href={WHATSAPP_LINK}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 text-slate-600 dark:text-dark-400 hover:text-green-500 transition-all duration-300 text-sm shadow-sm"
@@ -215,7 +218,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                 <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <a href="mailto:alekseevpo@gmail.com" className="hover:text-red-600 dark:hover:text-red-500 transition-colors truncate">
+                                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-red-600 dark:hover:text-red-500 transition-colors truncate">
                                     {emailText}
                                 </a>
                             </li>
@@ -223,7 +226,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                 <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                <a href="https://wa.me/34624682795" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
+                                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
                                     WhatsApp
                                 </a>
                             </li>

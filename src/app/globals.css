@@ -126,6 +126,14 @@ p {
   margin-bottom: 2rem;
 }
 
+.font-frantz-stretch {
+  font-family: var(--font-frantz);
+  font-variation-settings: 'wght' 900;
+  display: inline-block;
+  transform: scaleX(1.15);
+  transform-origin: left;
+}
+
 .heading-hero-span {
   font-family: inherit;
   font-variation-settings: inherit;
