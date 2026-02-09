@@ -74,7 +74,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                 <div className="grid grid-cols-2 gap-6 md:hidden mb-8">
                     {/* Services */}
                     <div className="text-left">
-                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] font-frantz-stretch">
                             {footerDict.services}
                         </h4>
                         <ul className="space-y-2.5 text-sm">
@@ -93,7 +93,7 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Company */}
                     <div className="text-left">
-                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] font-frantz-stretch">
                             {footerDict.company}
                         </h4>
                         <ul className="space-y-2.5 text-sm">
@@ -113,7 +113,7 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                 {/* Mobile: Contact Section */}
                 <div className="md:hidden mb-12 p-6 rounded-[3rem] bg-cream-100/50 dark:bg-dark-950/50 border border-slate-100/50 dark:border-dark-800 backdrop-blur-sm text-left">
-                    <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
+                    <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] font-frantz-stretch">
                         {footerDict.getInTouch}
                     </h4>
                     <div className="flex flex-col gap-3">
@@ -178,7 +178,7 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Services */}
                     <div className="text-left">
-                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.services}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">{footerDict.services}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.services.map((link) => (
                                 <li key={link.href}>
@@ -195,7 +195,7 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Company */}
                     <div className="text-left">
-                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.company}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">{footerDict.company}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
@@ -212,7 +212,7 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Contact */}
                     <div className="text-left">
-                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.getInTouch}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">{footerDict.getInTouch}</h4>
                         <ul className="space-y-4 text-slate-600 dark:text-dark-400 text-sm">
                             <li className="flex items-center gap-2">
                                 <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

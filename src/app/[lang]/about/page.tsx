@@ -135,7 +135,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-600/20 to-red-500/20 dark:from-red-500/20 dark:to-red-600/20 flex items-center justify-center text-red-600 dark:text-red-500 mb-6">
                                     {valueIcons[value.id]}
                                 </div>
-                                <h3 className="text-slate-900 dark:text-white font-frantz font-black mb-6 uppercase tracking-wide text-3xl md:text-4xl leading-none inline-block w-full origin-left" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{value.title}</h3>
+                                <h3 className="text-slate-900 dark:text-white font-frantz font-black mb-6 uppercase tracking-wide text-3xl md:text-4xl leading-none w-full font-frantz-stretch">{value.title}</h3>
                                 <p className="text-slate-600 dark:text-dark-400">{value.description}</p>
                             </div>
                         ))}
@@ -180,7 +180,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                                         <span className="text-white text-2xl font-bold">{member.avatar}</span>
                                     )}
                                 </div>
-                                <h3 className="text-slate-900 dark:text-white font-frantz font-black mb-4 uppercase tracking-wide text-3xl md:text-5xl leading-none inline-block w-full" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
+                                <h3 className="text-slate-900 dark:text-white font-frantz font-black mb-4 uppercase tracking-wide text-3xl md:text-5xl leading-none w-full font-frantz-stretch">
                                     {member.name.split(' ').map((part, i) => (
                                         <span key={i} className={i === 1 ? 'text-red-600' : ''}>
                                             {part}{i === 0 ? ' ' : ''}

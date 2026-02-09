@@ -14,6 +14,7 @@ import Footer from '@/components/layout/Footer';
 import { PageTransition } from '@/components/providers/PageTransition';
 import BackToTop from '@/components/ui/BackToTop';
 import ChatWidget from '@/components/ui/ChatWidget';
+import { OrganizationJsonLd, WebSiteJsonLd, LocalBusinessJsonLd } from '@/components/seo/JsonLd';
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
@@ -34,6 +35,11 @@ const ttFrantz = localFont({
 });
 
 import { getDictionary } from '@/get-dictionary';
+import { i18n } from '@/i18n-config';
+
+export async function generateStaticParams() {
+    return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
@@ -110,6 +116,11 @@ export default async function RootLayout({
 
     return (
         <html lang={lang} suppressHydrationWarning>
+            <head>
+                <OrganizationJsonLd url="https://selen.it" lang={lang} />
+                <WebSiteJsonLd url="https://selen.it" lang={lang} />
+                <LocalBusinessJsonLd url="https://selen.it" />
+            </head>
             <body className={`${inter.variable} ${ttFrantz.variable} font-sans antialiased transition-colors duration-300`}>
                 <ThemeProvider
                     attribute="class"

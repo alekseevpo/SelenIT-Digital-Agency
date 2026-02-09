@@ -11,7 +11,7 @@ const config: Config = {
         extend: {
             colors: {
                 cream: {
-                    50: 'rgba(253, 248, 240, 0)', // Fully transparent to show body texture - force rebuild
+                    50: 'rgba(253, 248, 240, 0.3)', // Semi-transparent cream
                     100: 'rgba(249, 243, 232, 0.6)', // Semi-transparent
                     200: 'rgba(245, 238, 224, 0.6)', // Semi-transparent
                 },

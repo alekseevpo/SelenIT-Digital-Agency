@@ -106,10 +106,10 @@ body {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
-/* Better paragraph readability */
-p {
+/* Better paragraph readability — scoped to text-body only */
+.text-body,
+article p {
   max-width: 70ch;
-  line-height: 1.4;
 }
 
 .heading-hero {
