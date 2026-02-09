@@ -63,26 +63,7 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                     <Reveal width="100%" delay={0.3}>
                         <h2 className="heading-hero mb-6">
                             <span className="text-slate-900 dark:text-white">
-<<<<<<< Updated upstream
                                 {dict.title1} {dict.titleGradient}
-=======
-                                {(() => {
-                                    const title1 = dict.title1;
-                                    const titleGradient = dict.titleGradient;
-                                    const isRedWord = titleGradient.toLowerCase() === 'успеха' || titleGradient.toLowerCase() === 'triunfar online';
-                                    return (
-                                        <>
-                                            {title1}{' '}
-                                            <motion.span
-                                                className={isRedWord ? 'text-red-600 dark:text-red-500' : ''}
-                                                style={{ x: slideInRight, display: 'inline-block' }}
-                                            >
-                                                {titleGradient}
-                                            </motion.span>
-                                        </>
-                                    );
-                                })()}
->>>>>>> Stashed changes
                             </span>
                         </h2>
                     </Reveal>

@@ -120,26 +120,10 @@ export default function Hero({ dict, lang }: HeroProps) {
                                         'diseño', 'terrible!', 'visión', 'realidad'
                                     ];
 
-<<<<<<< Updated upstream
-                                    return text.split('\n').map((line, lineIndex) => (
-                                        <span key={lineIndex} className="block mb-2 last:mb-0">
-                                            {line.split(' ').map((word, wordIndex) => {
-                                                const cleanWord = word.replace(/[¡!.,?]/g, '').toLowerCase();
-                                                const isBold = boldWords.some(bw => bw.replace(/[¡!.,?]/g, '').toLowerCase() === cleanWord);
-                                                return (
-                                                    <span key={wordIndex}>
-                                                        {isBold ? (
-                                                            <strong className="font-bold text-slate-900 dark:text-white/100">{word}</strong>
-                                                        ) : (
-                                                            word
-                                                        )}
-                                                        {' '}
-                                                    </span>
-                                                );
-                                            })}
-                                        </span>
-                                    ));
-=======
+                                    const lines = text.split('\n');
+                                    const firstLine = lines[0] || '';
+                                    const remainingLines = lines.slice(1).join('\n');
+
                                     return (
                                         <>
                                             {/* First line as separate heading */}
@@ -212,7 +196,6 @@ export default function Hero({ dict, lang }: HeroProps) {
                                             </motion.div>
                                         </>
                                     );
->>>>>>> Stashed changes
                                 })()}
                             </motion.div>
                         </div>

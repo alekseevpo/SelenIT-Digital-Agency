@@ -1,32 +1,47 @@
 # Selen.IT Digital Agency
 
-A modern, high-performance website for a digital agency built with Next.js 14, TypeScript, and Tailwind CSS.
+A modern, high-performance multilingual website for a digital agency built with Next.js 15, TypeScript, and Tailwind CSS.
 
 ## Features
 
-- ⚡ **Next.js 14** with App Router
-- 🎨 **Tailwind CSS** with custom design system
-- 📱 **Fully Responsive** design
-- 🌙 **Dark Mode** premium theme
-- ✨ **Smooth Animations** and micro-interactions
-- 🔍 **SEO Optimized** with metadata
-- 💅 **Glassmorphism** effects
-- 🚀 **Performance Optimized**
+- **Next.js 15** with App Router and Server Components
+- **TypeScript** with strict mode
+- **Tailwind CSS 3.4** with custom design system (cream/dark themes)
+- **Framer Motion** for scroll-driven animations and micro-interactions
+- **Lenis** for smooth scrolling
+- **i18n** — full support for 3 languages (English, Russian, Spanish)
+- **Dark Mode** with glassmorphism effects and smooth theme transitions
+- **SEO** — dynamic metadata, OpenGraph, Twitter Cards, sitemap, robots.txt
+- **Security** — reCAPTCHA v3, honeypot fields, security headers
+- **Analytics** — Vercel Analytics and Speed Insights
+- **Email** — contact form with Resend API
+- **Testing** — Jest + React Testing Library (92 tests)
 
 ## Pages
 
-- **Home** - Hero, Services, Showreel, Testimonials, CTA
-- **Services** - Detailed service offerings with process timeline
-- **Showreel** - Project showcase with filtering
-- **About** - Company story, values, and team
-- **Contact** - Contact form with validation
+| Route | Description |
+|-------|-------------|
+| `/[lang]` | Home — Hero, Services, Showreel, Technologies, Testimonials, CTA |
+| `/[lang]/services` | Service overview with process timeline |
+| `/[lang]/services/branding` | Branding service detail |
+| `/[lang]/services/websites` | Web development service detail |
+| `/[lang]/services/seo` | SEO service detail |
+| `/[lang]/services/custom` | Support service detail |
+| `/[lang]/services/solutions` | Integrated solutions detail |
+| `/[lang]/showreel` | Project showcase with YouTube embed and filterable grid |
+| `/[lang]/about` | Company story, values, stats, and team |
+| `/[lang]/contact` | Contact form with reCAPTCHA and callback request |
+| `/[lang]/case/[slug]` | Individual case study pages |
+| `/[lang]/privacy` | Privacy policy |
+| `/[lang]/terms` | Terms of service |
+| `/api/contact` | Contact form API endpoint |
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- npm or yarn
+- **Node.js** >=22 <23
+- **npm**
 
 ### Installation
 
@@ -40,43 +55,82 @@ npm run dev
 
 Open [http://localhost:5001](http://localhost:5001) in your browser.
 
-### Build
+### Build & Production
 
 ```bash
-# Create production build
-npm run build
+npm run build    # Create production build
+npm start        # Start production server
+```
 
-# Start production server
-npm start
+### Testing
+
+```bash
+npm test              # Run all tests
+npm run test:watch    # Watch mode
+npm run test:coverage # Coverage report
+```
+
+### Linting
+
+```bash
+npm run lint     # Run ESLint
 ```
 
 ## Project Structure
 
 ```
 src/
-├── app/                    # App Router pages
-│   ├── [lang]/             # i18n routing (en, ru, es)
-│   ├── api/contact/        # Contact API endpoint
-│   └── globals.css         # Global styles
+├── app/
+│   ├── [lang]/                 # i18n dynamic routing (en, ru, es)
+│   │   ├── page.tsx            # Home page
+│   │   ├── about/page.tsx      # About page
+│   │   ├── contact/page.tsx    # Contact page
+│   │   ├── services/           # Services pages (+ subpages)
+│   │   ├── showreel/page.tsx   # Showreel page
+│   │   ├── case/[slug]/        # Case study pages (SSG)
+│   │   ├── privacy/page.tsx    # Privacy policy
+│   │   ├── terms/page.tsx      # Terms of service
+│   │   └── layout.tsx          # Root layout with providers
+│   ├── api/contact/            # Contact form API route
+│   └── globals.css             # Global styles & design system
 ├── components/
-│   ├── layout/             # Header, Footer
-│   ├── sections/           # Page sections
-│   └── ui/                 # Reusable UI components
-├── dictionaries/           # i18n translations
-└── types/                  # TypeScript types
+│   ├── layout/                 # Header, Footer
+│   ├── sections/               # Hero, Services, Showreel, Technologies, Testimonials, CTA
+│   ├── providers/              # ThemeProvider, SmoothScroll, CookieConsent, Analytics, PageTransition
+│   ├── ui/                     # Reveal, BackToTop, ChatWidget, Logo, ThemeToggle, LanguageSwitcher, YouTubeEmbed
+│   └── icons/                  # SVG technology icons (12 files)
+├── dictionaries/               # ru.json, en.json, es.json (~500 lines each)
+├── __tests__/                  # Jest test suites
+├── types/                      # TypeScript type definitions
+├── lib/                        # Utility functions
+├── middleware.ts                # i18n locale detection middleware
+├── i18n-config.ts              # Locale configuration
+└── get-dictionary.ts           # Dictionary loader with lazy imports
 ```
 
-## Technologies
+## Tech Stack
 
-- [Next.js](https://nextjs.org/)
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
+| Category | Technology |
+|----------|-----------|
+| Framework | [Next.js 15](https://nextjs.org/) (App Router) |
+| Language | [TypeScript 5](https://www.typescriptlang.org/) |
+| Styling | [Tailwind CSS 3.4](https://tailwindcss.com/) |
+| UI | [React 18](https://react.dev/) |
+| Animations | [Framer Motion 12](https://www.framer.com/motion/) |
+| Smooth Scroll | [Lenis](https://lenis.darkroom.engineering/) |
+| Icons | [Lucide React](https://lucide.dev/) |
+| Email | [Resend](https://resend.com/) |
+| Analytics | [Vercel Analytics](https://vercel.com/analytics) |
+| Testing | [Jest 30](https://jestjs.io/) + [Testing Library](https://testing-library.com/) |
 
 ## Environment Variables
 
+Create a `.env.local` file in the project root:
+
 ```env
-RESEND_API_KEY=          # API key for Resend email delivery
+RESEND_API_KEY=                        # Resend API key for email delivery
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=        # Google reCAPTCHA v3 site key
+RECAPTCHA_SECRET_KEY=                  # Google reCAPTCHA v3 secret key
 ```
 
 ## License
