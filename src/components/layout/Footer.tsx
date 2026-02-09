@@ -31,8 +31,15 @@ export default function Footer({ lang, dict }: FooterProps) {
     const footerLinks = getFooterLinks(lang, dict);
     const footerDict = dict.common.footer;
 
+    const emailActionText = {
+        en: 'Email us',
+        ru: 'Написать в почту',
+        es: 'Escribir al correo'
+    };
+    const emailText = emailActionText[lang as keyof typeof emailActionText] || emailActionText.en;
+
     return (
-        <footer className="bg-transparent dark:bg-dark-950 border-t border-slate-200 dark:border-dark-800 transition-colors duration-300">
+        <footer className="bg-transparent dark:bg-black border-t border-slate-200 dark:border-dark-800 transition-colors duration-300">
             <div className="container-custom py-10 md:py-12 px-4 sm:px-6 lg:px-8">
 
                 {/* Mobile: Centered Brand Section */}
@@ -51,7 +58,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
+                                className="w-10 h-10 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
                                 aria-label={link.label}
                             >
                                 <SocialIcon name={link.icon} />
@@ -64,7 +71,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                 <div className="grid grid-cols-2 gap-6 md:hidden mb-8">
                     {/* Services */}
                     <div className="text-left">
-                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
                             {footerDict.services}
                         </h4>
                         <ul className="space-y-2.5 text-sm">
@@ -83,7 +90,7 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Company */}
                     <div className="text-left">
-                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
                             {footerDict.company}
                         </h4>
                         <ul className="space-y-2.5 text-sm">
@@ -102,8 +109,8 @@ export default function Footer({ lang, dict }: FooterProps) {
                 </div>
 
                 {/* Mobile: Contact Section */}
-                <div className="md:hidden mb-12 p-6 rounded-[3rem] bg-cream-100/50 dark:bg-dark-900/50 border border-slate-100/50 dark:border-dark-800 backdrop-blur-sm text-left">
-                    <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
+                <div className="md:hidden mb-12 p-6 rounded-[3rem] bg-cream-100/50 dark:bg-dark-950/50 border border-slate-100/50 dark:border-dark-800 backdrop-blur-sm text-left">
+                    <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>
                         {footerDict.getInTouch}
                     </h4>
                     <div className="flex flex-col gap-3">
@@ -114,7 +121,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                             <svg className="w-4 h-4 text-red-600 dark:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            alekseevpo@gmail.com
+                            {emailText}
                         </a>
                         <div className="grid grid-cols-2 gap-3">
                             <a
@@ -157,7 +164,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-9 h-9 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 backdrop-blur-sm"
+                                    className="w-9 h-9 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 backdrop-blur-sm"
                                     aria-label={link.label}
                                 >
                                     <SocialIcon name={link.icon} />
@@ -168,7 +175,7 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Services */}
                     <div className="text-left">
-                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.services}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.services}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.services.map((link) => (
                                 <li key={link.href}>
@@ -185,7 +192,7 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Company */}
                     <div className="text-left">
-                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.company}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.company}</h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
@@ -202,14 +209,14 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Contact */}
                     <div className="text-left">
-                        <h4 className="text-slate-900 dark:text-white font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.getInTouch}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] origin-left inline-block" style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}>{footerDict.getInTouch}</h4>
                         <ul className="space-y-4 text-slate-600 dark:text-dark-400 text-sm">
                             <li className="flex items-center gap-2">
                                 <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                                 <a href="mailto:alekseevpo@gmail.com" className="hover:text-red-600 dark:hover:text-red-500 transition-colors truncate">
-                                    alekseevpo@gmail.com
+                                    {emailText}
                                 </a>
                             </li>
                             <li className="flex items-center gap-2">

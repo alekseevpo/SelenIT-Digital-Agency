@@ -47,8 +47,8 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
         offset: ["start end", "center center"]
     });
 
-    const xTransform = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.5, 1]);
+    const slideInRight = useTransform(scrollYProgress, [0, 0.6], ["50vw", "0%"]);
+    const fadeIn = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
 
     const handlePlayClick = () => {
         setShowPlayButton(false);
@@ -65,19 +65,49 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
             <div className="container-custom">
 
                 {/* Animated Showreel Title */}
-                <div className="relative py-8 md:py-12 mb-8 flex items-center justify-center">
+                <div className="relative py-2 md:py-4 mb-0 flex items-center justify-center">
                     <div className="max-w-4xl mx-auto text-center">
                         <Reveal width="100%" delay={0.3}>
                             <h2
+<<<<<<< Updated upstream
                                 className="heading-2 heading-hero mb-6"
+=======
+                                className="heading-2 heading-hero mb-0 tracking-[0.2em]"
+>>>>>>> Stashed changes
                                 style={{
                                     display: 'inline-block',
-                                    transform: 'scaleY(1.7) scaleX(0.9)',
+                                    transform: 'scaleY(1.7) scaleX(1.05)',
                                     transformOrigin: 'center'
                                 }}
                             >
                                 <span className="text-slate-900 dark:text-white">
+<<<<<<< Updated upstream
                                     {showreelTitle[lang as keyof typeof showreelTitle] || showreelTitle.en}
+=======
+                                    {(() => {
+                                        const title = showreelTitle[lang as keyof typeof showreelTitle] || showreelTitle.en;
+                                        const words = title.split(' ');
+                                        return words.map((word, wordIndex) => {
+                                            const isRedWord = word.toLowerCase() === 'шоурилс' || word.toLowerCase() === 'showreel';
+
+                                            return (
+                                                <span key={wordIndex}>
+                                                    {isRedWord ? (
+                                                        <motion.span
+                                                            className="text-red-600 dark:text-red-500"
+                                                            style={{ x: slideInRight, opacity: fadeIn, display: 'inline-block' }}
+                                                        >
+                                                            {word}
+                                                        </motion.span>
+                                                    ) : (
+                                                        word
+                                                    )}
+                                                    {wordIndex < words.length - 1 ? ' ' : ''}
+                                                </span>
+                                            );
+                                        });
+                                    })()}
+>>>>>>> Stashed changes
                                 </span>
                             </h2>
                         </Reveal>
@@ -86,19 +116,41 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
 
                 {/* Subtitle */}
                 <Reveal delay={0.2}>
+<<<<<<< Updated upstream
                     <p className="text-body text-center max-w-2xl mx-auto mb-16 md:mb-20">
+=======
+                    <p className="text-body text-center max-w-2xl mx-auto mb-8 md:mb-12 -mt-4 md:-mt-6">
+>>>>>>> Stashed changes
                         {lang === 'ru'
-                            ? 'Узнайте, как мы помогаем брендам расти с помощью кастомных цифровых решений.'
+                            ? 'Узнайте, как мы помогаем брендам расти с помощью кастомных цифровых решений. В коротком шоурил добавлены эпизоды за 7 лет. Нами разработанные рекламные материалы, буклеты, фреймы и веб-сайты для компаний мирового уровня.'
                             : lang === 'es'
                                 ? 'Descubra cómo ayudamos a las marcas a crecer con soluciones digitales personalizadas.'
                                 : 'Discover how we help brands grow with custom digital solutions.'}
                     </p>
                 </Reveal>
 
+                {/* Company Logos */}
+                <Reveal delay={0.4}>
+                    <div className="mb-12 md:mb-16">
+                        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-60 hover:opacity-100 transition-opacity duration-300">
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">Reseaons</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">STICKER</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">ReMember</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">AURA</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">CoinBase</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">Keller Williams</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">COACHELLA</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">EPIC games</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">Publix</span>
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:scale-110 transition-all duration-300 cursor-pointer">Walmart</span>
+                        </div>
+                    </div>
+                </Reveal>
+
                 {/* Video */}
                 <Reveal delay={0.3}>
                     <div className="mt-12 md:mt-16 mb-12">
-                        <div className="relative rounded-2xl overflow-hidden bg-slate-900 shadow-2xl">
+                        <div className="relative rounded-2xl overflow-hidden bg-dark-950 shadow-2xl border border-slate-200 dark:border-white/10">
                             <video
                                 id="showreel-video"
                                 className="w-full aspect-video"

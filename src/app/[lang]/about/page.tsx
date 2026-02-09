@@ -62,7 +62,15 @@ export default async function AboutPage({ params }: AboutPageProps) {
                         </span>
                         <h1 className="heading-hero mb-6">
                             <span className="text-slate-900 dark:text-white">
-                                {hero.title1} {hero.titleGradient}
+                                {(() => {
+                                    const title1 = hero.title1;
+                                    const titleGradient = hero.titleGradient;
+                                    return (
+                                        <>
+                                            <span className="text-red-600 dark:text-red-500">{title1}</span> {titleGradient}
+                                        </>
+                                    );
+                                })()}
                             </span>
                         </h1>
                         <p className="text-body transition-colors duration-300 mb-[30px]">
@@ -72,7 +80,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 </div>
             </section>
 
-            <section className="section-padding bg-cream-100/50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100/50 dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
@@ -84,7 +92,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                                     {story.title1} {story.titleGradient}
                                 </span>
                             </h2>
-                            <div className="space-y-4 text-slate-600 dark:text-dark-400 transition-colors duration-300">
+                            <div className="space-y-4 text-slate-600 dark:text-dark-400 transition-colors duration-300 mt-8 -ml-8 lg:-ml-12">
                                 <p>{story.p1}</p>
                                 <p>{story.p2}</p>
                                 <p>{story.p3}</p>
@@ -135,7 +143,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 </div>
             </section>
 
-            <section className="pt-10 pb-20 bg-cream-100/50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="pt-10 pb-20 bg-cream-100/50 dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">

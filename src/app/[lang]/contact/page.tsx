@@ -21,6 +21,13 @@ export default async function ContactPage({ params }: PageProps) {
     const dict = await getDictionary(lang as Locale);
     const { hero, info, form } = dict.contact;
 
+    const emailActionText = {
+        en: 'Email us',
+        ru: 'Написать в почту',
+        es: 'Escribir al correo'
+    };
+    const emailText = emailActionText[lang as keyof typeof emailActionText] || emailActionText.en;
+
     const contactInfo = [
         {
             icon: (
@@ -29,7 +36,7 @@ export default async function ContactPage({ params }: PageProps) {
                 </svg>
             ),
             title: info.email,
-            value: 'alekseevpo@gmail.com',
+            value: emailText,
             href: 'mailto:alekseevpo@gmail.com',
         },
         {
@@ -53,7 +60,7 @@ export default async function ContactPage({ params }: PageProps) {
                         <span className="invisible font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white tracking-normal">
+                        <h1 className="heading-hero mb-6 text-slate-900 dark:text-white tracking-normal">
                             {hero.title1}{' '}
                             <span className="gradient-text">{hero.titleGradient}</span>
                         </h1>
@@ -65,7 +72,7 @@ export default async function ContactPage({ params }: PageProps) {
             </section>
 
             {/* Contact Section */}
-            <section className="section-padding bg-cream-100/50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100/50 dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                         {/* Contact Info */}
@@ -112,15 +119,28 @@ export default async function ContactPage({ params }: PageProps) {
 
                             {/* Office Hours */}
                             <div className="glass-card p-10 bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm mt-12">
-                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 uppercase tracking-widest">{info.hoursTitle}</h3>
-                                <div className="space-y-6 text-lg text-slate-600 dark:text-dark-400">
+                                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-slate-900 dark:text-white leading-[0.9] tracking-normal uppercase">
+                                    {(() => {
+                                        const title = info.hoursTitle;
+                                        const words = title.split(' ');
+                                        return words.map((word, index) => {
+                                            const isHours = word.toLowerCase() === 'часы' || word.toLowerCase() === 'hours' || word.toLowerCase() === 'horas';
+                                            return (
+                                                <span key={index} className={isHours ? 'text-red-600 dark:text-red-500' : ''}>
+                                                    {word}{index < words.length - 1 ? ' ' : ''}
+                                                </span>
+                                            );
+                                        });
+                                    })()}
+                                </h2>
+                                <div className="space-y-6 text-sm text-slate-600 dark:text-dark-400">
                                     <div className="flex justify-between border-b border-slate-200/50 dark:border-dark-700/50 pb-3">
                                         <span className="font-medium">{info.mondayFriday}</span>
-                                        <span className="text-slate-900 dark:text-white font-bold">9:00 AM — 6:00 PM</span>
+                                        <span className="text-red-600 dark:text-red-500">9:00 AM — 6:00 PM</span>
                                     </div>
                                     <div className="flex justify-between border-b border-slate-200/50 dark:border-dark-700/50 pb-3">
                                         <span className="font-medium">{info.saturday}</span>
-                                        <span className="text-slate-900 dark:text-white font-bold">10:00 AM — 4:00 PM</span>
+                                        <span className="text-red-600 dark:text-red-500">10:00 AM — 4:00 PM</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="font-medium">{info.sunday}</span>

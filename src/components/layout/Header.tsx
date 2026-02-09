@@ -39,25 +39,26 @@ const overlayVariants = {
 
 const menuVariants = {
     hidden: {
-        x: '-100%',
-        opacity: 0.6,
+        x: '100%',
+        opacity: 1,
     },
     visible: {
         x: 0,
         opacity: 1,
         transition: {
             type: 'spring' as const,
-            stiffness: 380,
-            damping: 38,
+            stiffness: 300,
+            damping: 30,
             staggerChildren: 0.04,
             delayChildren: 0.08,
         },
     },
     exit: {
-        x: '-100%',
-        opacity: 0.6,
+        x: '100%',
+        opacity: 1,
         transition: {
-            duration: 0.22,
+            duration: 0.3,
+            ease: "easeInOut" as const
         },
     },
 };
@@ -340,19 +341,21 @@ export default function Header({ lang }: HeaderProps) {
                     </nav>
 
                     {/* Desktop Utility Controls - Top Right */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className={`hidden md:flex items-center gap-2 pointer-events-auto transition-all duration-500 ${isScrolled ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
-                    >
-                        <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 p-1.5 rounded-full flex items-center gap-1 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                            <LanguageSwitcher currentLang={lang} />
-                        </div>
-                        <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                            <ThemeToggle />
-                        </div>
-                    </motion.div>
+                    <div className={`hidden md:flex items-center gap-2 pointer-events-auto transition-all duration-500 ${isScrolled ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="flex items-center gap-2"
+                        >
+                            <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 p-1.5 rounded-full flex items-center gap-1 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+                                <LanguageSwitcher currentLang={lang} />
+                            </div>
+                            <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+                                <ThemeToggle />
+                            </div>
+                        </motion.div>
+                    </div>
 
                     {/* Mobile Controls - Top Right */}
                     <div className={`md:hidden flex items-center gap-2 pointer-events-auto transition-all duration-500 ${isScrolled ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
@@ -404,22 +407,17 @@ export default function Header({ lang }: HeaderProps) {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="fixed inset-0 z-[60] flex items-stretch justify-start bg-black/10 dark:bg-black/40 backdrop-blur-sm md:hidden"
-                        onClick={closeMenu}
+                        className="fixed inset-0 z-[60] md:hidden"
                     >
                         <motion.div
                             variants={menuVariants}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="h-full w-[86vw] max-w-sm p-5 relative overflow-hidden bg-cream-50/98 dark:bg-slate-900/98 backdrop-blur-md border-r border-slate-200/60 dark:border-white/10 shadow-2xl shadow-black/10 dark:shadow-black/30"
+                            className="absolute inset-0 w-full h-full bg-cream-50 dark:bg-dark-950 overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            {/* Decorative gradient */}
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-500/10 to-green-500/10 dark:from-primary-500/10 dark:to-accent-500/10 rounded-full blur-3xl pointer-events-none" />
-                            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-green-500/10 to-orange-500/10 dark:from-accent-500/10 dark:to-primary-500/10 rounded-full blur-3xl pointer-events-none" />
-
-                            <div className="relative z-10 h-full flex flex-col">
+                            <div className="relative z-10 h-full flex flex-col p-5">
                                 {/* Header */}
                                 <motion.div
                                     className="flex justify-between items-center mb-5"
@@ -428,7 +426,7 @@ export default function Header({ lang }: HeaderProps) {
                                     <h2 className="text-base font-bold text-slate-900 dark:text-white">{dict.menu}</h2>
                                     <motion.button
                                         onClick={closeMenu}
-                                        className="w-9 h-9 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-cream-50/10 rounded-full transition-colors"
+                                        className="w-12 h-12 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/10 rounded-full transition-colors -mr-3"
                                         aria-label="Close menu"
                                         whileHover={{ rotate: 90 }}
                                         whileTap={{ scale: 0.9 }}
@@ -440,34 +438,35 @@ export default function Header({ lang }: HeaderProps) {
                                     </motion.button>
                                 </motion.div>
 
-                                {/* Navigation Links */}
-                                <ul className="flex flex-col gap-1.5 flex-1 overflow-auto pr-1">
+                                {/* Navigation Grid */}
+                                <div className="grid grid-cols-2 gap-3 flex-1 overflow-y-auto content-start py-2">
                                     {navLinks.map((link) => {
                                         const isActive = pathname === link.href;
                                         const isServices = link.label === 'services';
+
                                         return (
-                                            <motion.li
+                                            <motion.div
                                                 key={link.href}
                                                 variants={itemVariants}
+                                                className={`
+                                                    rounded-3xl relative overflow-hidden transition-all duration-300
+                                                    ${isServices && isServicesOpen ? 'col-span-2 row-span-2 aspect-auto' : 'col-span-1 aspect-square'}
+                                                    ${isActive
+                                                        ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
+                                                        : 'bg-cream-100 dark:bg-white/5 text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-white/10 border border-slate-200/50 dark:border-white/5'}
+                                                `}
                                             >
-                                                <div>
-                                                    <div
-                                                        className={`
-                                                            w-full flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-semibold
-                                                            transition-all duration-200
-                                                            ${isActive
-                                                                ? 'border-2 border-red-600 dark:border-red-500 text-red-600 dark:text-red-500 bg-red-600/5 shadow-sm'
-                                                                : 'bg-cream-200/80 dark:bg-cream-50/5 hover:bg-cream-200 dark:hover:bg-cream-50/10 text-slate-700 dark:text-slate-200 border-2 border-transparent'
-                                                            }
-                                                        `}
-                                                    >
+                                                <div
+                                                    className={`h-full flex flex-col items-center justify-center p-4 transition-all ${isServices && isServicesOpen ? 'justify-start pt-6' : ''}`}
+                                                >
+                                                    {!isServices ? (
                                                         <Link
                                                             href={link.href}
-                                                            className="flex items-center gap-3 flex-1 min-w-0"
+                                                            className="flex flex-col items-center justify-center w-full h-full gap-3"
                                                             onClick={closeMenu}
                                                         >
                                                             <svg
-                                                                className={`w-5 h-5 ${isActive ? 'text-red-600 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`}
+                                                                className={`w-8 h-8 ${isActive ? 'text-white' : 'text-slate-400 dark:text-slate-400'}`}
                                                                 fill="none"
                                                                 viewBox="0 0 24 24"
                                                                 stroke="currentColor"
@@ -475,84 +474,66 @@ export default function Header({ lang }: HeaderProps) {
                                                             >
                                                                 <path strokeLinecap="round" strokeLinejoin="round" d={link.icon} />
                                                             </svg>
-                                                            <span className="truncate">{dict[link.label]}</span>
+                                                            <span className="font-bold text-sm tracking-wide">{dict[link.label]}</span>
                                                         </Link>
-
-                                                        {isServices ? (
+                                                    ) : (
+                                                        <div className="w-full flex flex-col items-center">
                                                             <button
                                                                 type="button"
-                                                                className={`ml-1 w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${isActive ? 'hover:bg-white/10' : 'hover:bg-black/5 dark:hover:bg-white/10'}`}
-                                                                aria-label="Toggle services"
-                                                                aria-expanded={isServicesOpen}
-                                                                onClick={() => setIsServicesOpen((v) => !v)}
+                                                                className="flex flex-col items-center gap-3 w-full"
+                                                                onClick={() => setIsServicesOpen(!isServicesOpen)}
                                                             >
-                                                                <motion.svg
-                                                                    className={`w-4 h-4 ${isActive ? 'text-red-600 dark:text-red-500' : 'text-slate-500 dark:text-slate-400'}`}
+                                                                <svg
+                                                                    className={`w-8 h-8 ${isActive ? 'text-white' : 'text-slate-400 dark:text-slate-400'} transition-transform duration-300 ${isServicesOpen ? 'scale-90 opacity-80' : ''}`}
                                                                     fill="none"
                                                                     viewBox="0 0 24 24"
                                                                     stroke="currentColor"
-                                                                    strokeWidth={2}
-                                                                    animate={{ rotate: isServicesOpen ? 180 : 0 }}
-                                                                    transition={{ duration: 0.2 }}
+                                                                    strokeWidth={1.5}
                                                                 >
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                                                </motion.svg>
-                                                            </button>
-                                                        ) : isActive ? (
-                                                            <motion.div
-                                                                className="ml-auto"
-                                                                initial={{ scale: 0 }}
-                                                                animate={{ scale: 1 }}
-                                                                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                                                            >
-                                                                <svg className="w-4 h-4 text-red-600 dark:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d={link.icon} />
                                                                 </svg>
-                                                            </motion.div>
-                                                        ) : null}
-                                                    </div>
+                                                                <div className="flex items-center gap-1">
+                                                                    <span className="font-bold text-sm tracking-wide">{dict[link.label]}</span>
+                                                                    <motion.svg
+                                                                        className={`w-4 h-4 opacity-60`}
+                                                                        fill="none"
+                                                                        viewBox="0 0 24 24"
+                                                                        stroke="currentColor"
+                                                                        animate={{ rotate: isServicesOpen ? 180 : 0 }}
+                                                                    >
+                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                                    </motion.svg>
+                                                                </div>
+                                                            </button>
 
-                                                    {isServices && (
-                                                        <AnimatePresence initial={false}>
-                                                            {isServicesOpen && (
-                                                                <motion.div
-                                                                    initial={{ height: 0, opacity: 0 }}
-                                                                    animate={{ height: 'auto', opacity: 1 }}
-                                                                    exit={{ height: 0, opacity: 0 }}
-                                                                    transition={{ duration: 0.2 }}
-                                                                    className="overflow-hidden"
-                                                                >
-                                                                    <div className="mt-2 pl-4">
-                                                                        <div className="rounded-2xl bg-cream-200/60 dark:bg-cream-50/5 border border-slate-200/40 dark:border-white/10 p-2">
-                                                                            {servicesSubLinks.map((sub) => {
-                                                                                const isSubActive = pathname === sub.href;
-                                                                                return (
-                                                                                    <Link
-                                                                                        key={sub.href}
-                                                                                        href={sub.href}
-                                                                                        onClick={closeMenu}
-                                                                                        className={
-                                                                                            `block px-3 py-2 rounded-xl text-sm font-semibold transition-colors ` +
-                                                                                            (isSubActive
-                                                                                                ? 'bg-red-600/10 text-red-600'
-                                                                                                : 'text-slate-700 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/10')
-                                                                                        }
-                                                                                    >
-                                                                                        {sub.label}
-                                                                                    </Link>
-                                                                                );
-                                                                            })}
-                                                                        </div>
-                                                                    </div>
-                                                                </motion.div>
-                                                            )}
-                                                        </AnimatePresence>
+                                                            <AnimatePresence>
+                                                                {isServicesOpen && (
+                                                                    <motion.div
+                                                                        initial={{ opacity: 0, height: 0 }}
+                                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                                        exit={{ opacity: 0, height: 0 }}
+                                                                        className="w-full mt-4 grid grid-cols-1 gap-2"
+                                                                    >
+                                                                        {servicesSubLinks.map((sub) => (
+                                                                            <Link
+                                                                                key={sub.href}
+                                                                                href={sub.href}
+                                                                                onClick={closeMenu}
+                                                                                className="block px-4 py-3 rounded-xl bg-white/10 dark:bg-black/20 text-center text-sm font-medium hover:bg-white/20 transition-colors"
+                                                                            >
+                                                                                {sub.label}
+                                                                            </Link>
+                                                                        ))}
+                                                                    </motion.div>
+                                                                )}
+                                                            </AnimatePresence>
+                                                        </div>
                                                     )}
                                                 </div>
-                                            </motion.li>
+                                            </motion.div>
                                         );
                                     })}
-                                </ul>
+                                </div>
 
                                 {/* Footer */}
                                 <motion.div

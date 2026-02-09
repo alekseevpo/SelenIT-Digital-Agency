@@ -57,9 +57,9 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
     const { hero, list: servicesList, process, cta } = dict.services;
 
     return (
-        <div className="bg-transparent dark:bg-dark-950 transition-colors duration-300">
+        <div className="bg-transparent dark:bg-black transition-colors duration-300">
             {/* Hero Section */}
-            <section className="pt-32 pb-10 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
+            <section className="pt-32 pb-10 relative overflow-hidden bg-transparent dark:bg-black transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <Reveal width="100%">
                         <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
@@ -105,7 +105,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
                                             ))}
                                         </ul>
                                     </div>
-                                    <div className={`relative aspect-video rounded-3xl overflow-hidden bg-slate-100/50 dark:bg-dark-900 shadow-2xl ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                                    <div className={`relative aspect-video rounded-3xl overflow-hidden bg-slate-100/50 dark:bg-black shadow-2xl ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <div className="text-slate-400 font-medium">Project Preview Placeholder</div>
                                         </div>
@@ -118,7 +118,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
             </section>
 
             {/* Process Section */}
-            <section className="section-padding bg-cream-100/50 dark:bg-dark-900 transition-colors duration-300">
+            <section className="section-padding bg-cream-100/50 dark:bg-black transition-colors duration-300">
                 <div className="container-custom">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <Reveal width="100%">

@@ -1,9 +1,10 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Reveal } from '../ui/Reveal';
 import { ExternalLink, Star } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface Testimonial {
     id: number;
@@ -31,25 +32,37 @@ const TRUSTPILOT_URL = 'https://www.trustpilot.com/review/selenit-digital-agency
 export default function Testimonials({ lang, dict, testimonials }: TestimonialsProps) {
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "center center"]
+    });
+    const slideInRight = useTransform(scrollYProgress, [0, 0.6], ["50vw", "0%"]);
+    const fadeIn = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
 
     useEffect(() => {
         setMounted(true);
     }, []);
 
     return (
-        <section className="section-padding transition-colors duration-300">
+        <section ref={sectionRef} className="section-padding transition-colors duration-300">
             <div className="container-custom">
                 <div className="text-center max-w-4xl mx-auto mb-16">
 
                     <Reveal width="100%" delay={0.3}>
                         <h2 className="heading-hero mb-6">
                             <span className="text-slate-900 dark:text-white">
-                                {dict.title1} {dict.titleGradient}
+                                {dict.title1} <motion.span
+                                    className="text-red-600 dark:text-red-500"
+                                    style={{ x: slideInRight, opacity: fadeIn, display: 'inline-block' }}
+                                >
+                                    {dict.titleGradient}
+                                </motion.span>
                             </span>
                         </h2>
                     </Reveal>
                     <Reveal width="100%" delay={0.4}>
-                        <p className="text-body transition-colors duration-300">
+                        <p className="text-body transition-colors duration-300 mx-auto">
                             {dict.subtitle}
                         </p>
                     </Reveal>

@@ -25,7 +25,7 @@
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-  --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --gradient-dark: linear-gradient(135deg, #262626 0%, #000000 100%);
   --gradient-glow: radial-gradient(ellipse at center, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
   --card-gradient-dark: linear-gradient(135deg, #000000 0%, #262626 100%);
 }
@@ -37,8 +37,10 @@
 .dark {
   /* Dark theme overrides */
   --bg-primary: #000000;
-  --bg-secondary: #0a0a0a;
-  --bg-tertiary: #111111;
+  --bg-secondary: #262626;
+  /* Neutral 800 */
+  --bg-tertiary: #171717;
+  /* Neutral 900 */
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;

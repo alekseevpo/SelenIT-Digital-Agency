@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { Reveal } from '../ui/Reveal';
 import {
@@ -100,20 +102,33 @@ const TechIcon = ({ name, color }: { name: string; color: string }) => {
 };
 
 export default function Technologies({ dict }: TechnologiesProps) {
+    const sectionRef = useRef<HTMLElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "center center"]
+    });
+    const slideInRight = useTransform(scrollYProgress, [0, 0.6], ["50vw", "0%"]);
+    const fadeIn = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
+
     return (
-        <section className="py-16 md:py-24 overflow-x-clip overflow-y-visible transition-colors duration-300">
+        <section ref={sectionRef} className="py-16 md:py-24 overflow-x-clip overflow-y-visible transition-colors duration-300">
             <div className="container-custom mb-10 md:mb-14 px-4">
                 <div className="text-center max-w-4xl mx-auto">
 
                     <Reveal width="100%" delay={0.3}>
                         <h2 className="heading-hero mb-6">
                             <span className="text-slate-900 dark:text-white">
-                                {dict.title} {dict.titleGradient}
+                                {dict.title} <motion.span
+                                    className="text-red-600 dark:text-red-500"
+                                    style={{ x: slideInRight, opacity: fadeIn, display: 'inline-block' }}
+                                >
+                                    {dict.titleGradient}
+                                </motion.span>
                             </span>
                         </h2>
                     </Reveal>
                     <Reveal delay={0.2}>
-                        <p className="text-body transition-colors duration-300">
+                        <p className="text-body transition-colors duration-300 mx-auto">
                             {dict.subtitle}
                         </p>
                     </Reveal>

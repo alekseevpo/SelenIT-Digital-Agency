@@ -52,8 +52,8 @@ export default async function WebsitesPage({ params }: PageProps) {
     const c = content[(lang as Locale) in content ? (lang as Locale) : 'en'];
 
     return (
-        <div className="bg-transparent dark:bg-dark-950 transition-colors duration-300">
-            <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
+        <div className="bg-transparent dark:bg-black transition-colors duration-300">
+            <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-black transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <Reveal width="100%">
                         <span className="text-orange-500 dark:text-primary-400 font-semibold text-sm uppercase tracking-wider mb-4 block">
@@ -75,7 +75,7 @@ export default async function WebsitesPage({ params }: PageProps) {
             <section className="section-padding">
                 <div className="container-custom px-4 sm:px-6 lg:px-8">
                     <div className="max-w-3xl mx-auto">
-                        <div className="glass-card p-10 bg-cream-50/40 dark:bg-dark-900 border border-slate-200 dark:border-dark-700">
+                        <div className="glass-card p-10 bg-cream-50/40 dark:bg-neutral-900 border border-slate-200 dark:border-dark-700">
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {c.bullets.map((item) => (
                                     <li key={item} className="flex items-center gap-3 text-slate-700 dark:text-dark-300">

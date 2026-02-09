@@ -118,6 +118,7 @@ export default async function RootLayout({
                     disableTransitionOnChange
                 >
                     <CookieConsentProvider>
+<<<<<<< Updated upstream
                         <SmoothScrollProvider>
                             <Header lang={lang as any} />
                             <main className="min-h-screen transition-colors duration-300">
@@ -132,6 +133,20 @@ export default async function RootLayout({
                         <BackToTop />
                         <ChatWidget />
                     </CookieConsentProvider>
+=======
+                        <Header lang={lang as any} />
+                        <main className="min-h-screen transition-colors duration-300">
+                            <PageTransition>
+                                {children}
+                            </PageTransition>
+                        </main>
+                        <Footer lang={lang as any} dict={dict} />
+                        <CookieConsentWrapper lang={lang} dictionary={dict.cookies} />
+                        <AnalyticsWrapper />
+                    </CookieConsentProvider>
+                    <BackToTop />
+                    <ChatWidget />
+>>>>>>> Stashed changes
                 </ThemeProvider>
             </body>
         </html>

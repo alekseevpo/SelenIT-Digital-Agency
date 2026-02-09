@@ -31,6 +31,12 @@ export function Logo({ className = '', size = 32, showText = true, animated = tr
             >
                 .IT
             </span>
+            <span
+                className="font-frantz font-black text-slate-500 tracking-tight leading-none inline-block pointer-events-none ml-1.5"
+                style={{ fontVariationSettings: "'wght' 900" }}
+            >
+                Agency
+            </span>
             <motion.div
                 className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full"
                 initial={{ width: 0 }}

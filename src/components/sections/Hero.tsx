@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Heart } from 'lucide-react';
 import { motion, Variants, useInView, animate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
@@ -74,14 +75,14 @@ export default function Hero({ dict, lang }: HeroProps) {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="max-w-7xl text-left lg:-translate-y-8"
+                    className="max-w-7xl mx-auto text-left lg:-translate-y-8"
                 >
                     <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
                         <div className="lg:col-span-6">
                             {/* Heading */}
                             <motion.h1
                                 variants={itemVariants}
-                                className="heading-1 heading-hero text-6xl sm:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 lg:mb-0 text-slate-900 dark:text-white leading-[0.85]"
+                                className="heading-1 heading-hero text-6xl sm:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 lg:mb-0 text-slate-900 dark:text-white leading-[0.85] -ml-8 lg:-ml-12"
                             >
                                 {dict.title1}
                                 <br />
@@ -107,7 +108,7 @@ export default function Hero({ dict, lang }: HeroProps) {
 
                         <div className="lg:col-span-6 lg:-translate-y-12">
                             {/* Subheading */}
-                            <motion.p
+                            <motion.div
                                 variants={itemVariants}
                                 className="text-body text-base lg:text-sm mb-12 lg:mb-4 leading-relaxed transition-colors opacity-90 whitespace-pre-line border-l border-slate-200 dark:border-dark-800 pl-6"
                             >
@@ -119,6 +120,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                                         'diseño', 'terrible!', 'visión', 'realidad'
                                     ];
 
+<<<<<<< Updated upstream
                                     return text.split('\n').map((line, lineIndex) => (
                                         <span key={lineIndex} className="block mb-2 last:mb-0">
                                             {line.split(' ').map((word, wordIndex) => {
@@ -137,13 +139,87 @@ export default function Hero({ dict, lang }: HeroProps) {
                                             })}
                                         </span>
                                     ));
+=======
+                                    return (
+                                        <>
+                                            {/* First line as separate heading */}
+                                            <motion.h2
+                                                variants={itemVariants}
+                                                className="heading-2 mb-6 text-slate-900 dark:text-white tracking-wide mt-0"
+                                            >
+                                                {firstLine.split(' ').map((word, wordIndex) => {
+                                                    const cleanWord = word.replace(/[¡!.,?]/g, '').toLowerCase();
+                                                    const isBold = boldWords.some(bw => bw.replace(/[¡!.,?]/g, '').toLowerCase() === cleanWord);
+                                                    const isRedWord = cleanWord === 'ужасным' || cleanWord === 'terrible';
+                                                    return (
+                                                        <span key={wordIndex}>
+                                                            {isBold ? (
+                                                                <strong className={`font-bold ${isRedWord ? 'text-red-600 dark:text-red-500' : ''}`}>{word}</strong>
+                                                            ) : (
+                                                                word
+                                                            )}
+                                                            {' '}
+                                                        </span>
+                                                    );
+                                                })}
+                                            </motion.h2>
+
+                                            {/* Remaining lines as paragraph */}
+                                            <motion.div
+                                                variants={itemVariants}
+                                                className="text-body text-base lg:text-sm mb-12 lg:mb-4 leading-relaxed transition-colors opacity-90 whitespace-pre-line"
+                                            >
+                                                {remainingLines.split('\n').map((line, lineIndex, linesArr) => (
+                                                    <span key={lineIndex} className="block mb-2 last:mb-0">
+                                                        {line.split(' ').map((word, wordIndex, wordsArr) => {
+                                                            const cleanWord = word.replace(/[¡!.,?]/g, '').toLowerCase();
+                                                            const isBold = boldWords.some(bw => bw.replace(/[¡!.,?]/g, '').toLowerCase() === cleanWord);
+
+                                                            const isLastLine = lineIndex === linesArr.length - 1;
+                                                            const isLastWord = wordIndex === wordsArr.length - 1;
+                                                            const showHeart = isLastLine && isLastWord && word.endsWith('.');
+                                                            const displayWord = showHeart ? word.slice(0, -1) : word;
+
+                                                            return (
+                                                                <span key={wordIndex} className="inline-flex items-center align-baseline flex-wrap">
+                                                                    {isBold ? (
+                                                                        <strong className="font-bold text-slate-900 dark:text-white/100 text-lg lg:text-xl">{displayWord}</strong>
+                                                                    ) : (
+                                                                        displayWord
+                                                                    )}
+                                                                    {showHeart && (
+                                                                        <motion.div
+                                                                            variants={undefined}
+                                                                            initial={{ scale: 1 }}
+                                                                            animate={{ scale: [1, 1.25, 1, 1.25, 1, 1] }}
+                                                                            transition={{
+                                                                                repeat: Infinity,
+                                                                                duration: 2,
+                                                                                ease: "easeInOut",
+                                                                                times: [0, 0.15, 0.3, 0.45, 0.6, 1]
+                                                                            }}
+                                                                            className="inline-block ml-1 align-middle"
+                                                                        >
+                                                                            <Heart className="w-4 h-4 text-red-600 fill-red-600" />
+                                                                        </motion.div>
+                                                                    )}
+                                                                    <span className="whitespace-pre"> </span>
+                                                                </span>
+                                                            );
+                                                        })}
+                                                    </span>
+                                                ))}
+                                            </motion.div>
+                                        </>
+                                    );
+>>>>>>> Stashed changes
                                 })()}
-                            </motion.p>
+                            </motion.div>
                         </div>
                     </div>
 
                     {/* CTA Buttons - Centered Row */}
-                    <div className="w-full flex justify-center lg:translate-x-12 mt-24 mb-16">
+                    <div className="w-full flex justify-center mt-24 mb-16">
                         <motion.div variants={itemVariants}>
                             <Link href={`/${lang}/contact`} className="btn-primary text-xl px-12 py-5 w-full sm:w-[320px] text-center transform hover:scale-105 transition-all">
                                 {dict.ctaPrimary}
