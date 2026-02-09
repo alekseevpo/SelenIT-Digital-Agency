@@ -239,6 +239,30 @@
                 }
             ]
         },
+        "solutions": {
+            "title": "Soluciones Digitales Integrales",
+            "description": "Ciclo completo de servicios digitales — desde la estrategia y el diseño hasta el desarrollo, lanzamiento y soporte. Nos encargamos de todo el proceso para que usted pueda concentrarse en su negocio.",
+            "whatWeOffer": "Lo que ofrecemos",
+            "strategy": "Estrategia y consultoría",
+            "strategyDesc": "Análisis de mercado, investigación de competidores y audiencia. Desarrollamos una estrategia digital que genera resultados.",
+            "development": "Diseño y desarrollo",
+            "developmentDesc": "Creación de sitios web modernos, aplicaciones y productos digitales con enfoque en UX y rendimiento.",
+            "optimization": "SEO y marketing",
+            "optimizationDesc": "Optimización para motores de búsqueda, marketing de contenidos y promoción en redes sociales para atraer tráfico cualificado.",
+            "support": "Soporte y crecimiento",
+            "supportDesc": "Mantenimiento técnico, monitoreo, actualizaciones y escalabilidad de su proyecto después del lanzamiento.",
+            "process": "Nuestro proceso",
+            "analysis": "Análisis",
+            "analysisDesc": "Estudio profundo de su negocio, objetivos y requisitos para formar un brief claro del proyecto.",
+            "planning": "Planificación",
+            "planningDesc": "Desarrollo de una hoja de ruta del proyecto con hitos, plazos e indicadores clave de éxito.",
+            "implementation": "Implementación",
+            "implementationDesc": "Desarrollo iterativo con demostraciones regulares y retroalimentación en cada etapa.",
+            "monitoring": "Monitoreo",
+            "monitoringDesc": "Seguimiento de métricas, pruebas A/B y optimización continua para obtener los máximos resultados.",
+            "readyToStart": "¿Listo para empezar?",
+            "ctaDescription": "Cuéntenos sobre su proyecto — prepararemos una propuesta personalizada."
+        },
         "cta": {
             "title1": "¿Listo para",
             "titleGradient": "conversar?",

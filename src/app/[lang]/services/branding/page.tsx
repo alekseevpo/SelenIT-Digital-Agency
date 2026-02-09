@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
-import { Reveal } from '@/components/ui/Reveal';
 import CTA from '@/components/sections/CTA';
 
 const content = {
@@ -55,20 +54,14 @@ export default async function BrandingPage({ params }: PageProps) {
         <div className="bg-transparent dark:bg-black transition-colors duration-300">
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-black transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                    <Reveal width="100%">
-                        <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-2 block">
-                            {c.badge}
-                        </span>
-                    </Reveal>
-                    <Reveal width="100%" delay={0.35}>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
-                            {c.title1}{' '}
-                            <span className="gradient-text">{c.titleGradient}</span> {c.title2}
-                        </h1>
-                    </Reveal>
-                    <Reveal width="100%" delay={0.45}>
-                        <p className="text-body max-w-2xl mx-auto transition-colors duration-300">{c.subtitle}</p>
-                    </Reveal>
+                    <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-2 block">
+                        {c.badge}
+                    </span>
+                    <h1 className="heading-1 mb-4 text-slate-900 dark:text-white">
+                        {c.title1}{' '}
+                        <span className="gradient-text">{c.titleGradient}</span> {c.title2}
+                    </h1>
+                    <p className="text-body max-w-2xl mx-auto transition-colors duration-300">{c.subtitle}</p>
                 </div>
             </section>
 
@@ -76,7 +69,6 @@ export default async function BrandingPage({ params }: PageProps) {
             <section className="section-padding">
                 <div className="container-custom px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto">
-                        <Reveal width="100%" delay={0.6}>
                             <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
                                 <p className="mb-6 text-body leading-relaxed">
                                     В мире, где средний пользователь видит до 10 000 рекламных сообщений в день, «просто логотипа» уже недостаточно. Чтобы клиент выбрал вас, а не конкурента с ценой на 5% ниже, ваш бренд должен обладать чем-то большим, чем симпатичная картинка. Он должен обладать <strong>характером, ценностями и ДНК</strong>.
@@ -147,7 +139,6 @@ export default async function BrandingPage({ params }: PageProps) {
                                     </p>
                                 </div>
                             </div>
-                        </Reveal>
                     </div>
                 </div>
             </section>

@@ -115,9 +115,9 @@ export default function Hero({ dict, lang }: HeroProps) {
                                 {(() => {
                                     const text = dict.subtitle;
                                     const boldWords = [
-                                        'design', 'terrible!', 'vision', 'reality',
-                                        'дизайн', 'ужасным!', 'видение', 'реальность',
-                                        'diseño', 'terrible!', 'visión', 'realidad'
+                                        'design', 'terrible!', 'reality',
+                                        'дизайн', 'ужасным!', 'реальность',
+                                        'diseño', 'terrible!', 'realidad'
                                     ];
 
                                     const lines = text.split('\n');

@@ -239,6 +239,30 @@
                 }
             ]
         },
+        "solutions": {
+            "title": "Integrated Digital Solutions",
+            "description": "Full-cycle digital services — from strategy and design to development, launch, and support. We handle the entire process so you can focus on your business.",
+            "whatWeOffer": "What We Offer",
+            "strategy": "Strategy & Consulting",
+            "strategyDesc": "Market analysis, competitor research, and audience insights. We develop a digital strategy that delivers results.",
+            "development": "Design & Development",
+            "developmentDesc": "Building modern websites, applications, and digital products with a focus on UX and performance.",
+            "optimization": "SEO & Marketing",
+            "optimizationDesc": "Search engine optimization, content marketing, and social media promotion to drive targeted traffic.",
+            "support": "Support & Growth",
+            "supportDesc": "Technical maintenance, monitoring, updates, and scaling of your project after launch.",
+            "process": "Our Process",
+            "analysis": "Analysis",
+            "analysisDesc": "Deep dive into your business, goals, and requirements to form a clear project brief.",
+            "planning": "Planning",
+            "planningDesc": "Developing a project roadmap with milestones, timelines, and key success metrics.",
+            "implementation": "Implementation",
+            "implementationDesc": "Iterative development with regular demos and feedback at every stage.",
+            "monitoring": "Monitoring",
+            "monitoringDesc": "Tracking metrics, A/B testing, and continuous optimization for maximum results.",
+            "readyToStart": "Ready to Start?",
+            "ctaDescription": "Tell us about your project — we'll prepare a tailored proposal."
+        },
         "cta": {
             "title1": "Ready to",
             "titleGradient": "Discuss?",
