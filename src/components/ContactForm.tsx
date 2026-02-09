@@ -55,7 +55,7 @@ declare global {
     }
 }
 
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdTllosAAAAAMPpiP2SBA8aXW0JRKc5Legha5Jp';
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
 
 export default function ContactForm({ lang, dict }: ContactFormProps) {
     const [activeTab, setActiveTab] = useState<'message' | 'callback'>('message');

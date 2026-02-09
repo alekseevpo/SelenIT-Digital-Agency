@@ -218,9 +218,9 @@ describe('LanguageSwitcher', () => {
             const enButton = screen.getByText('EN').closest('button');
             const ruButton = screen.getByText('RU').closest('button');
 
-            // Active button should have text-white class (via gradient background)
-            expect(enButton?.className).toContain('text-white');
-            // Inactive buttons should have different text color classes
+            // Active button should have text-red-600 class
+            expect(enButton?.className).toContain('text-red-600');
+            // Inactive buttons should have text-slate class
             expect(ruButton?.className).toContain('text-slate');
         });
     });

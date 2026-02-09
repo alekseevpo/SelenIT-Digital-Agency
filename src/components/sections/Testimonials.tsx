@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useEffect, useState, useRef } from 'react';
+import { useRef } from 'react';
 import { Reveal } from '../ui/Reveal';
 import { ExternalLink, Star } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -31,7 +31,6 @@ const TRUSTPILOT_URL = 'https://www.trustpilot.com/review/selenit-digital-agency
 
 export default function Testimonials({ lang, dict, testimonials }: TestimonialsProps) {
     const { resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -39,10 +38,6 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
     });
     const slideInRight = useTransform(scrollYProgress, [0, 0.6], ["50vw", "0%"]);
     const fadeIn = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     return (
         <section ref={sectionRef} className="section-padding transition-colors duration-300">

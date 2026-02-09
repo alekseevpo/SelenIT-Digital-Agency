@@ -2,6 +2,26 @@ import { render, screen, waitFor, fireEvent, act } from '@testing-library/react'
 import Header from '@/components/layout/Header';
 import { usePathname } from 'next/navigation';
 
+// Mock framer-motion
+jest.mock('framer-motion', () => ({
+    motion: {
+        div: 'div',
+        button: 'button',
+        span: 'span',
+        h2: 'h2',
+        svg: 'svg',
+        a: 'a',
+    },
+    AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+    useInView: jest.fn(() => true),
+    useScroll: jest.fn(() => ({ scrollY: { get: jest.fn() } })),
+    useTransform: jest.fn(),
+    useSpring: jest.fn(),
+    useMotionValue: jest.fn(() => ({ get: jest.fn() })),
+    animate: jest.fn(),
+    Variants: {},
+}));
+
 // Mock next/navigation
 jest.mock('next/navigation', () => ({
     usePathname: jest.fn(),
@@ -26,13 +46,12 @@ describe('Header', () => {
         it('renders logo with link to home', () => {
             render(<Header lang="en" />);
 
-            // The logo is a link to home with the SVG logo
+            // The logo is a link to home
             const logoLink = document.querySelector('a[href="/en"]');
             expect(logoLink).toBeInTheDocument();
 
-            // Check for SVG logo element
-            const svg = logoLink?.querySelector('svg');
-            expect(svg).toBeInTheDocument();
+            // Check for text-based logo content
+            expect(logoLink?.textContent).toContain('Selen');
         });
 
         it('renders all navigation links on desktop', () => {
@@ -134,7 +153,7 @@ describe('Header', () => {
             });
         });
 
-        it('closes mobile menu when overlay is clicked', async () => {
+        it('closes mobile menu when close button is clicked', async () => {
             render(<Header lang="en" />);
 
             const menuButton = screen.getByRole('button', { name: /open menu/i });
@@ -148,16 +167,15 @@ describe('Header', () => {
                 expect(document.body.style.overflow).toBe('hidden');
             });
 
-            // Find and click the overlay (the outer div with onClick={closeMenu})
-            const overlay = document.querySelector('[class*="fixed inset-0"]');
-            if (overlay) {
-                act(() => {
-                    fireEvent.click(overlay);
-                });
-            }
+            // There are two close buttons (hamburger toggle + X button inside menu)
+            const closeButtons = screen.getAllByRole('button', { name: /close menu/i });
+            // Click the last one (the X button inside the mobile menu overlay)
+            act(() => {
+                fireEvent.click(closeButtons[closeButtons.length - 1]);
+            });
 
             await waitFor(() => {
-                expect(screen.getByRole('button', { name: /open menu/i })).toBeInTheDocument();
+                expect(document.body.style.overflow).toBe('');
             });
         });
 
@@ -173,16 +191,17 @@ describe('Header', () => {
                 expect(document.body.style.overflow).toBe('hidden');
             });
 
-            // Click a navigation link in mobile menu (the one inside the mobile menu)
-            const mobileMenuLinks = document.querySelectorAll('ul a');
-            if (mobileMenuLinks.length > 0) {
+            // Click a navigation link in mobile menu
+            const allLinks = document.querySelectorAll('a[href="/en"]');
+            // The last matching link is inside the mobile menu
+            if (allLinks.length > 0) {
                 act(() => {
-                    fireEvent.click(mobileMenuLinks[0]);
+                    fireEvent.click(allLinks[allLinks.length - 1]);
                 });
             }
 
             await waitFor(() => {
-                expect(screen.getByRole('button', { name: /open menu/i })).toBeInTheDocument();
+                expect(document.body.style.overflow).toBe('');
             });
         });
     });

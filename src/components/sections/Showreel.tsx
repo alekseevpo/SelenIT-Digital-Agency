@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Reveal } from '../ui/Reveal';
 
@@ -41,14 +41,6 @@ const featuredProjects = [
 export default function Showreel({ lang, dict }: ShowreelProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const [showPlayButton, setShowPlayButton] = useState(true);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "center center"],
-  });
-
-  const slideInRight = useTransform(scrollYProgress, [0, 0.6], ["50vw", "0%"]);
-  const fadeIn = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
 
   const handlePlayClick = () => {
     setShowPlayButton(false);

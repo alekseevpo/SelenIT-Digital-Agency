@@ -119,13 +119,13 @@ export default async function RootLayout({
                 >
                     <CookieConsentProvider>
                         <SmoothScrollProvider>
-                            <Header lang={lang as any} />
+                            <Header lang={lang as Locale} />
                             <main className="min-h-screen transition-colors duration-300">
                                 <PageTransition>
                                     {children}
                                 </PageTransition>
                             </main>
-                            <Footer lang={lang as any} dict={dict} />
+                            <Footer lang={lang as Locale} dict={dict} />
                         </SmoothScrollProvider>
                         <CookieConsentWrapper lang={lang} dictionary={dict.cookies} />
                         <AnalyticsWrapper />

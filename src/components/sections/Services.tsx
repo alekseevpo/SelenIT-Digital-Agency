@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Reveal } from '../ui/Reveal';
 
 interface ServicesProps {
@@ -46,17 +45,9 @@ const serviceIcons: Record<string, React.ReactNode> = {
 
 export default function Services({ lang, dict, servicesList }: ServicesProps) {
     const displayServices = servicesList.slice(0, 4);
-    const sectionRef = useRef<HTMLElement>(null);
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "center center"]
-    });
-
-    const slideInRight = useTransform(scrollYProgress, [0, 0.8], ["30%", "0%"]);
 
     return (
-        <section ref={sectionRef} id="services" className="section-padding relative overflow-hidden transition-colors duration-300">
+        <section id="services" className="section-padding relative overflow-hidden transition-colors duration-300">
             <div className="container-custom relative z-10">
                 {/* Section Header */}
                 <div className="text-center max-w-4xl mx-auto mb-16">
