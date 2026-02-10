@@ -1,6 +1,7 @@
 import { render, screen, waitFor, fireEvent, act } from '@testing-library/react';
 import Header from '@/components/layout/Header';
 import { usePathname } from 'next/navigation';
+import type { Dictionary } from '@/types/dictionary';
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
@@ -32,6 +33,85 @@ jest.mock('next/navigation', () => ({
     })),
 }));
 
+const navLabels = {
+    en: {
+        home: 'Home',
+        services: 'Services',
+        showreel: 'Showreel',
+        about: 'About',
+        contact: 'Contact',
+        getStarted: 'Get Started',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Service',
+    },
+    ru: {
+        home: 'Главная',
+        services: 'Услуги',
+        showreel: 'Шоурил',
+        about: 'О нас',
+        contact: 'Контакты',
+        getStarted: 'Начать',
+        privacy: 'Политика конфиденциальности',
+        terms: 'Условия обслуживания',
+    },
+    es: {
+        home: 'Inicio',
+        services: 'Servicios',
+        showreel: 'Showreel',
+        about: 'Nosotros',
+        contact: 'Contacto',
+        getStarted: 'Empezar',
+        privacy: 'Política de privacidad',
+        terms: 'Términos del servicio',
+    },
+} as const;
+
+const headerLabels = {
+    en: {
+        menu: 'Menu',
+        openMenu: 'Open menu',
+        closeMenu: 'Close menu',
+        language: 'Language',
+    },
+    ru: {
+        menu: 'Меню',
+        openMenu: 'Открыть меню',
+        closeMenu: 'Закрыть меню',
+        language: 'Язык',
+    },
+    es: {
+        menu: 'Menú',
+        openMenu: 'Abrir menú',
+        closeMenu: 'Cerrar menú',
+        language: 'Idioma',
+    },
+} as const;
+
+const servicesMenuLinks = {
+    branding: { label: 'Branding', description: 'Branding' },
+    websites: { label: 'Websites', description: 'Websites' },
+    seo: { label: 'SEO', description: 'SEO' },
+    custom: { label: 'Support', description: 'Support' },
+    solutions: { label: 'Solutions', description: 'Solutions' },
+};
+
+const buildMockDictionary = (lang: keyof typeof navLabels): Dictionary =>
+    ({
+        common: {
+            nav: navLabels[lang],
+            header: headerLabels[lang],
+        },
+        services: {
+            menuLinks: servicesMenuLinks,
+        },
+    }) as Dictionary;
+
+const mockDictionaries = {
+    en: buildMockDictionary('en'),
+    ru: buildMockDictionary('ru'),
+    es: buildMockDictionary('es'),
+};
+
 describe('Header', () => {
     beforeEach(() => {
         jest.clearAllMocks();
@@ -44,7 +124,7 @@ describe('Header', () => {
 
     describe('Rendering', () => {
         it('renders logo with link to home', () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             // The logo is a link to home
             const logoLink = document.querySelector('a[href="/en"]');
@@ -55,7 +135,7 @@ describe('Header', () => {
         });
 
         it('renders all navigation links on desktop', () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
             expect(screen.getByRole('link', { name: /services/i })).toBeInTheDocument();
@@ -65,41 +145,48 @@ describe('Header', () => {
         });
 
         it('renders correct links for English locale', () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             expect(screen.getByRole('link', { name: /home/i })).toHaveAttribute('href', '/en');
-            expect(screen.getByRole('link', { name: /services/i })).toHaveAttribute('href', '/en/services');
-            expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute('href', '/en/contact');
+            expect(screen.getByRole('link', { name: /services/i })).toHaveAttribute(
+                'href',
+                '/en/services',
+            );
+            expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute(
+                'href',
+                '/en/contact',
+            );
         });
 
         it('renders correct links for Russian locale', () => {
-            render(<Header lang="ru" />);
+            render(<Header lang="ru" dict={mockDictionaries.ru} />);
 
             const homeLink = screen.getAllByRole('link', { name: /главная/i })[0];
             expect(homeLink).toHaveAttribute('href', '/ru');
         });
 
         it('renders correct links for Spanish locale', () => {
-            render(<Header lang="es" />);
+            render(<Header lang="es" dict={mockDictionaries.es} />);
 
             const homeLink = screen.getAllByRole('link', { name: /inicio/i })[0];
             expect(homeLink).toHaveAttribute('href', '/es');
         });
 
         it('renders theme toggle', () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             const themeButtons = screen.getAllByRole('button');
-            const themeToggle = themeButtons.find(btn =>
-                btn.getAttribute('aria-label')?.includes('theme') ||
-                btn.getAttribute('aria-label')?.includes('Dark') ||
-                btn.getAttribute('aria-label')?.includes('Light')
+            const themeToggle = themeButtons.find(
+                (btn) =>
+                    btn.getAttribute('aria-label')?.includes('theme') ||
+                    btn.getAttribute('aria-label')?.includes('Dark') ||
+                    btn.getAttribute('aria-label')?.includes('Light'),
             );
             expect(themeToggle || themeButtons.length > 0).toBeTruthy();
         });
 
         it('renders language switcher', () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             expect(screen.getAllByText('EN').length).toBeGreaterThan(0);
             expect(screen.getAllByText('RU').length).toBeGreaterThan(0);
@@ -109,14 +196,14 @@ describe('Header', () => {
 
     describe('Mobile menu', () => {
         it('renders mobile menu button', () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             const menuButton = screen.getByRole('button', { name: /open menu/i });
             expect(menuButton).toBeInTheDocument();
         });
 
         it('opens mobile menu when button is clicked', async () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             const menuButton = screen.getByRole('button', { name: /open menu/i });
             act(() => {
@@ -131,7 +218,7 @@ describe('Header', () => {
         });
 
         it('closes mobile menu when menu button is clicked again', async () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             // Open menu
             const menuButton = screen.getByRole('button', { name: /open menu/i });
@@ -154,7 +241,7 @@ describe('Header', () => {
         });
 
         it('closes mobile menu when close button is clicked', async () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             const menuButton = screen.getByRole('button', { name: /open menu/i });
 
@@ -180,7 +267,7 @@ describe('Header', () => {
         });
 
         it('closes mobile menu when a navigation link is clicked', async () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             // Open menu
             act(() => {
@@ -208,7 +295,7 @@ describe('Header', () => {
 
     describe('Scroll behavior', () => {
         it('blocks body scroll when mobile menu is open', async () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             // Open menu
             act(() => {
@@ -221,7 +308,7 @@ describe('Header', () => {
         });
 
         it('restores body scroll when mobile menu is closed', async () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             const menuButton = screen.getByRole('button', { name: /open menu/i });
 
@@ -245,7 +332,7 @@ describe('Header', () => {
         });
 
         it('changes background on scroll', async () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             // Simulate scroll
             Object.defineProperty(window, 'scrollY', { value: 50, writable: true });
@@ -263,7 +350,7 @@ describe('Header', () => {
     describe('Active navigation', () => {
         it('highlights active navigation link', () => {
             (usePathname as jest.Mock).mockReturnValue('/en/services');
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             // The active link should have different styling
             const servicesLinks = screen.getAllByRole('link', { name: /services/i });
@@ -272,7 +359,7 @@ describe('Header', () => {
 
         it('highlights home when on home page', () => {
             (usePathname as jest.Mock).mockReturnValue('/en');
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             const homeLinks = screen.getAllByRole('link', { name: /home/i });
             expect(homeLinks.length).toBeGreaterThan(0);
@@ -281,7 +368,7 @@ describe('Header', () => {
 
     describe('Localization', () => {
         it('displays Russian navigation labels', () => {
-            render(<Header lang="ru" />);
+            render(<Header lang="ru" dict={mockDictionaries.ru} />);
 
             expect(screen.getAllByText(/главная/i).length).toBeGreaterThan(0);
             expect(screen.getAllByText(/услуги/i).length).toBeGreaterThan(0);
@@ -290,7 +377,7 @@ describe('Header', () => {
         });
 
         it('displays Spanish navigation labels', () => {
-            render(<Header lang="es" />);
+            render(<Header lang="es" dict={mockDictionaries.es} />);
 
             expect(screen.getAllByText(/inicio/i).length).toBeGreaterThan(0);
             expect(screen.getAllByText(/servicios/i).length).toBeGreaterThan(0);
@@ -301,13 +388,13 @@ describe('Header', () => {
 
     describe('Accessibility', () => {
         it('mobile menu button has correct aria-label when closed', () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             expect(screen.getByRole('button', { name: /open menu/i })).toBeInTheDocument();
         });
 
         it('mobile menu button has correct aria-label when open', async () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
             const menuButton = screen.getByRole('button', { name: /open menu/i });
             act(() => {
@@ -322,9 +409,11 @@ describe('Header', () => {
         });
 
         it('language switcher has role="group" with aria-label', () => {
-            render(<Header lang="en" />);
+            render(<Header lang="en" dict={mockDictionaries.en} />);
 
-            const langGroup = document.querySelector('[role="group"][aria-label="Select language"]');
+            const langGroup = document.querySelector(
+                '[role="group"][aria-label="Select language"]',
+            );
             expect(langGroup).toBeInTheDocument();
         });
     });

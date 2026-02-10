@@ -14,12 +14,26 @@ interface HeroProps {
         subtitle: string;
         ctaPrimary: string;
         ctaSecondary: string;
+        stats: {
+            projects: string;
+            clients: string;
+            years: string;
+            satisfaction: string;
+        };
     };
     lang: string;
 }
 
 // Counter sub-component for animated statistics
-function Counter({ value, suffix, duration = 2 }: { value: number; suffix: string; duration?: number }) {
+function Counter({
+    value,
+    suffix,
+    duration = 2,
+}: {
+    value: number;
+    suffix: string;
+    duration?: number;
+}) {
     const ref = useRef<HTMLSpanElement>(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -27,12 +41,12 @@ function Counter({ value, suffix, duration = 2 }: { value: number; suffix: strin
         if (isInView && ref.current) {
             const controls = animate(0, value, {
                 duration: duration,
-                ease: "easeOut",
+                ease: 'easeOut',
                 onUpdate: (latest) => {
                     if (ref.current) {
                         ref.current.textContent = Math.floor(latest) + suffix;
                     }
-                }
+                },
             });
             return () => controls.stop();
         }
@@ -68,8 +82,6 @@ export default function Hero({ dict, lang }: HeroProps) {
 
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden">
-
-
             <div className="w-full px-4 sm:px-10 lg:px-12 pt-16 sm:pt-20 pb-24 relative z-10">
                 <motion.div
                     variants={containerVariants}
@@ -91,10 +103,16 @@ export default function Hero({ dict, lang }: HeroProps) {
                                     const highlightWords = ['Experiences', 'Experiencias', 'опыт'];
                                     return text.split(' ').map((word, i, arr) => {
                                         const cleanWord = word.replace(/[.,]/g, '');
-                                        const isHighlight = highlightWords.some(hw => cleanWord.toLowerCase() === hw.toLowerCase());
+                                        const isHighlight = highlightWords.some(
+                                            (hw) => cleanWord.toLowerCase() === hw.toLowerCase(),
+                                        );
                                         return (
-                                            <span key={i} className={isHighlight ? "text-red-600" : ""}>
-                                                {word}{i < arr.length - 1 ? ' ' : ''}
+                                            <span
+                                                key={i}
+                                                className={isHighlight ? 'text-red-600' : ''}
+                                            >
+                                                {word}
+                                                {i < arr.length - 1 ? ' ' : ''}
                                             </span>
                                         );
                                     });
@@ -115,9 +133,15 @@ export default function Hero({ dict, lang }: HeroProps) {
                                 {(() => {
                                     const text = dict.subtitle;
                                     const boldWords = [
-                                        'design', 'terrible!', 'reality',
-                                        'дизайн', 'ужасным!', 'реальность',
-                                        'diseño', 'terrible!', 'realidad'
+                                        'design',
+                                        'terrible!',
+                                        'reality',
+                                        'дизайн',
+                                        'ужасным!',
+                                        'реальность',
+                                        'diseño',
+                                        'terrible!',
+                                        'realidad',
                                     ];
 
                                     const lines = text.split('\n');
@@ -132,17 +156,29 @@ export default function Hero({ dict, lang }: HeroProps) {
                                                 className="heading-2 mb-6 text-slate-900 dark:text-white tracking-wide mt-0"
                                             >
                                                 {firstLine.split(' ').map((word, wordIndex) => {
-                                                    const cleanWord = word.replace(/[¡!.,?]/g, '').toLowerCase();
-                                                    const isBold = boldWords.some(bw => bw.replace(/[¡!.,?]/g, '').toLowerCase() === cleanWord);
-                                                    const isRedWord = cleanWord === 'ужасным' || cleanWord === 'terrible';
+                                                    const cleanWord = word
+                                                        .replace(/[¡!.,?]/g, '')
+                                                        .toLowerCase();
+                                                    const isBold = boldWords.some(
+                                                        (bw) =>
+                                                            bw
+                                                                .replace(/[¡!.,?]/g, '')
+                                                                .toLowerCase() === cleanWord,
+                                                    );
+                                                    const isRedWord =
+                                                        cleanWord === 'ужасным' ||
+                                                        cleanWord === 'terrible';
                                                     return (
                                                         <span key={wordIndex}>
                                                             {isBold ? (
-                                                                <strong className={`font-bold ${isRedWord ? 'text-red-600 dark:text-red-500' : ''}`}>{word}</strong>
+                                                                <strong
+                                                                    className={`font-bold ${isRedWord ? 'text-red-600 dark:text-red-500' : ''}`}
+                                                                >
+                                                                    {word}
+                                                                </strong>
                                                             ) : (
                                                                 word
-                                                            )}
-                                                            {' '}
+                                                            )}{' '}
                                                         </span>
                                                     );
                                                 })}
@@ -153,46 +189,106 @@ export default function Hero({ dict, lang }: HeroProps) {
                                                 variants={itemVariants}
                                                 className="text-body text-base lg:text-sm mb-12 lg:mb-4 leading-relaxed transition-colors opacity-90 whitespace-pre-line"
                                             >
-                                                {remainingLines.split('\n').map((line, lineIndex, linesArr) => (
-                                                    <span key={lineIndex} className="block mb-2 last:mb-0">
-                                                        {line.split(' ').map((word, wordIndex, wordsArr) => {
-                                                            const cleanWord = word.replace(/[¡!.,?]/g, '').toLowerCase();
-                                                            const isBold = boldWords.some(bw => bw.replace(/[¡!.,?]/g, '').toLowerCase() === cleanWord);
+                                                {remainingLines
+                                                    .split('\n')
+                                                    .map((line, lineIndex, linesArr) => (
+                                                        <span
+                                                            key={lineIndex}
+                                                            className="block mb-2 last:mb-0"
+                                                        >
+                                                            {line
+                                                                .split(' ')
+                                                                .map(
+                                                                    (word, wordIndex, wordsArr) => {
+                                                                        const cleanWord = word
+                                                                            .replace(/[¡!.,?]/g, '')
+                                                                            .toLowerCase();
+                                                                        const isBold =
+                                                                            boldWords.some(
+                                                                                (bw) =>
+                                                                                    bw
+                                                                                        .replace(
+                                                                                            /[¡!.,?]/g,
+                                                                                            '',
+                                                                                        )
+                                                                                        .toLowerCase() ===
+                                                                                    cleanWord,
+                                                                            );
 
-                                                            const isLastLine = lineIndex === linesArr.length - 1;
-                                                            const isLastWord = wordIndex === wordsArr.length - 1;
-                                                            const showHeart = isLastLine && isLastWord && word.endsWith('.');
-                                                            const displayWord = showHeart ? word.slice(0, -1) : word;
+                                                                        const isLastLine =
+                                                                            lineIndex ===
+                                                                            linesArr.length - 1;
+                                                                        const isLastWord =
+                                                                            wordIndex ===
+                                                                            wordsArr.length - 1;
+                                                                        const showHeart =
+                                                                            isLastLine &&
+                                                                            isLastWord &&
+                                                                            word.endsWith('.');
+                                                                        const displayWord =
+                                                                            showHeart
+                                                                                ? word.slice(0, -1)
+                                                                                : word;
 
-                                                            return (
-                                                                <span key={wordIndex} className="inline-flex items-center align-baseline flex-wrap">
-                                                                    {isBold ? (
-                                                                        <strong className="font-bold text-slate-900 dark:text-white/100 text-lg lg:text-xl">{displayWord}</strong>
-                                                                    ) : (
-                                                                        displayWord
-                                                                    )}
-                                                                    {showHeart && (
-                                                                        <motion.div
-                                                                            variants={undefined}
-                                                                            initial={{ scale: 1 }}
-                                                                            animate={{ scale: [1, 1.25, 1, 1.25, 1, 1] }}
-                                                                            transition={{
-                                                                                repeat: Infinity,
-                                                                                duration: 2,
-                                                                                ease: "easeInOut",
-                                                                                times: [0, 0.15, 0.3, 0.45, 0.6, 1]
-                                                                            }}
-                                                                            className="inline-block ml-1 align-middle"
-                                                                        >
-                                                                            <Heart className="w-4 h-4 text-red-600 fill-red-600" />
-                                                                        </motion.div>
-                                                                    )}
-                                                                    <span className="whitespace-pre"> </span>
-                                                                </span>
-                                                            );
-                                                        })}
-                                                    </span>
-                                                ))}
+                                                                        return (
+                                                                            <span
+                                                                                key={wordIndex}
+                                                                                className="inline-flex items-center align-baseline flex-wrap"
+                                                                            >
+                                                                                {isBold ? (
+                                                                                    <strong className="font-bold text-slate-900 dark:text-white/100 text-lg lg:text-xl">
+                                                                                        {
+                                                                                            displayWord
+                                                                                        }
+                                                                                    </strong>
+                                                                                ) : (
+                                                                                    displayWord
+                                                                                )}
+                                                                                {showHeart && (
+                                                                                    <motion.div
+                                                                                        variants={
+                                                                                            undefined
+                                                                                        }
+                                                                                        initial={{
+                                                                                            scale: 1,
+                                                                                        }}
+                                                                                        animate={{
+                                                                                            scale: [
+                                                                                                1,
+                                                                                                1.25,
+                                                                                                1,
+                                                                                                1.25,
+                                                                                                1,
+                                                                                                1,
+                                                                                            ],
+                                                                                        }}
+                                                                                        transition={{
+                                                                                            repeat: Infinity,
+                                                                                            duration: 2,
+                                                                                            ease: 'easeInOut',
+                                                                                            times: [
+                                                                                                0,
+                                                                                                0.15,
+                                                                                                0.3,
+                                                                                                0.45,
+                                                                                                0.6,
+                                                                                                1,
+                                                                                            ],
+                                                                                        }}
+                                                                                        className="inline-block ml-1 align-middle"
+                                                                                    >
+                                                                                        <Heart className="w-4 h-4 text-red-600 fill-red-600" />
+                                                                                    </motion.div>
+                                                                                )}
+                                                                                <span className="whitespace-pre">
+                                                                                    {' '}
+                                                                                </span>
+                                                                            </span>
+                                                                        );
+                                                                    },
+                                                                )}
+                                                        </span>
+                                                    ))}
                                             </motion.div>
                                         </>
                                     );
@@ -204,7 +300,10 @@ export default function Hero({ dict, lang }: HeroProps) {
                     {/* CTA Buttons - Centered Row */}
                     <div className="w-full flex justify-center mt-24 mb-16">
                         <motion.div variants={itemVariants}>
-                            <Link href={`/${lang}/contact`} className="btn-primary text-xl px-12 py-5 w-full sm:w-[320px] text-center transform hover:scale-105 transition-all">
+                            <Link
+                                href={`/${lang}/contact`}
+                                className="btn-primary text-xl px-12 py-5 w-full sm:w-[320px] text-center transform hover:scale-105 transition-all"
+                            >
                                 {dict.ctaPrimary}
                             </Link>
                         </motion.div>
@@ -216,16 +315,18 @@ export default function Hero({ dict, lang }: HeroProps) {
                         className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-32 pt-12 border-t border-slate-200 dark:border-dark-800"
                     >
                         {[
-                            { target: 150, suffix: '+', label: lang === 'ru' ? 'Проектов' : lang === 'es' ? 'Proyectos' : 'Projects' },
-                            { target: 50, suffix: '+', label: lang === 'ru' ? 'Клиентов' : lang === 'es' ? 'Clientes' : 'Clients' },
-                            { target: 8, suffix: '+', label: lang === 'ru' ? 'Лет' : lang === 'es' ? 'Años' : 'Years' },
-                            { target: 99, suffix: '%', label: lang === 'ru' ? 'Удовлетворенность' : lang === 'es' ? 'Satisfacción' : 'Satisfaction' },
+                            { target: 150, suffix: '+', label: dict.stats.projects },
+                            { target: 50, suffix: '+', label: dict.stats.clients },
+                            { target: 8, suffix: '+', label: dict.stats.years },
+                            { target: 99, suffix: '%', label: dict.stats.satisfaction },
                         ].map((stat) => (
                             <div key={stat.label} className="text-center group/stat">
                                 <div className="text-3xl sm:text-4xl heading-secondary-stretch font-light text-slate-900 dark:text-white mb-2 transition-colors duration-300">
                                     <Counter value={stat.target} suffix={stat.suffix} />
                                 </div>
-                                <div className="text-slate-500 dark:text-dark-500 text-xs font-medium uppercase tracking-widest">{stat.label}</div>
+                                <div className="text-slate-500 dark:text-dark-500 text-xs font-medium uppercase tracking-widest">
+                                    {stat.label}
+                                </div>
                             </div>
                         ))}
                     </motion.div>

@@ -17,6 +17,12 @@
             "privacy": "Privacy Policy",
             "terms": "Terms of Service"
         },
+        "header": {
+            "menu": "Menu",
+            "openMenu": "Open menu",
+            "closeMenu": "Close menu",
+            "language": "Language"
+        },
         "footer": {
             "rights": "All rights reserved.",
             "services": "Services",
@@ -62,13 +68,7 @@
             "company": "Company Name",
             "companyPlaceholder": "Your Company",
             "service": "Service Interested In",
-            "serviceOptions": [
-                "Branding",
-                "Websites",
-                "SEO",
-                "Individual Support",
-                "Other"
-            ],
+            "serviceOptions": ["Branding", "Websites", "SEO", "Individual Support", "Other"],
             "budget": "Project Budget",
             "budgetOptions": [
                 "Under $5,000",
@@ -98,7 +98,13 @@
         "title2": "That Drive Results",
         "subtitle": "Your design doesn't have to be terrible!\nTurning your vision into a stunning brand.\nWe create attractive and memorable logos, drive marketing strategies, and see through the eyes of your customers.\nWe write modern and high-performance websites.\nWe apply the latest technologies, develop user-friendly interfaces and scalable digital solutions for both large enterprises and small startups.\nWe improve SEO - search ranking, differentiate you from competitors in social media, and support your projects, maintaining expectations and multiplying results.",
         "ctaPrimary": "Start Your Project",
-        "ctaSecondary": "View Our Work"
+        "ctaSecondary": "View Our Work",
+        "stats": {
+            "projects": "Projects",
+            "clients": "Clients",
+            "years": "Years",
+            "satisfaction": "Satisfaction"
+        }
     },
     "home": {
         "services": {
@@ -110,12 +116,14 @@
         },
         "showreel": {
             "badge": "Showreel",
+            "title": "Featured Projects & Showreel",
             "title1": "Featured",
             "titleGradient": "Projects",
             "subtitle": "Discover how we help brands grow with custom digital solutions.",
             "videoId": "QT3L4tZ14-4",
             "button": "View All",
-            "viewProject": "View Project"
+            "viewProject": "View Project",
+            "watchVideo": "Watch video"
         },
         "testimonials": {
             "badge": "Testimonials",
@@ -143,6 +151,28 @@
             "title1": "Comprehensive",
             "titleGradient": "Digital Solutions",
             "subtitle": "From concept to launch, we provide end-to-end digital services to help your business grow in the digital age."
+        },
+        "menuLinks": {
+            "branding": {
+                "label": "Branding",
+                "description": "Logos, visual identity and positioning"
+            },
+            "websites": {
+                "label": "Websites",
+                "description": "Modern websites and interfaces"
+            },
+            "seo": {
+                "label": "SEO",
+                "description": "Search optimization and promotion"
+            },
+            "custom": {
+                "label": "Support",
+                "description": "Technical support and development"
+            },
+            "solutions": {
+                "label": "Integrated Digital Solutions",
+                "description": "Full-cycle digital solutions"
+            }
         },
         "list": [
             {
@@ -297,11 +327,7 @@
                 "client": "Luxe Brands Inc.",
                 "year": "2024",
                 "slug": "luxe-fashion",
-                "results": [
-                    "+200% conversion",
-                    "+150% order value",
-                    "2.5s load"
-                ]
+                "results": ["+200% conversion", "+150% order value", "2.5s load"]
             },
             {
                 "id": 2,
@@ -312,11 +338,7 @@
                 "client": "FinanceHub Corp.",
                 "year": "2024",
                 "slug": "fintech-dashboard",
-                "results": [
-                    "50K+ users",
-                    "99.9% uptime",
-                    "Real-time data"
-                ]
+                "results": ["50K+ users", "99.9% uptime", "Real-time data"]
             }
         ],
         "cta": {
@@ -325,13 +347,7 @@
             "subtitle": "Your project could be our next success story. Let's build something special and we'll feature your project on our showreel page.",
             "button": "Start Your Project"
         },
-        "categories": [
-            "All",
-            "Web Development",
-            "E-Commerce",
-            "Web Application",
-            "UI/UX Design"
-        ]
+        "categories": ["All", "Web Development", "E-Commerce", "Web Application", "UI/UX Design"]
     },
     "about": {
         "hero": {

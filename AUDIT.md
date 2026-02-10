@@ -14,37 +14,42 @@
 ```
 Route (app)                                 Size  First Load JS
 ┌ ○ /_not-found                            995 B         103 kB
-├ ƒ /[lang]                              21.5 kB         173 kB
-├ ƒ /[lang]/about                          173 B         111 kB
+├ ● /[lang]                              20.8 kB         172 kB
+├ ● /[lang]/about                          173 B         111 kB
 ├ ● /[lang]/case/[slug]                  1.07 kB         147 kB
-├ ƒ /[lang]/contact                      6.53 kB         149 kB
-├ ƒ /[lang]/services                     1.08 kB         147 kB
-├ ƒ /[lang]/services/branding            1.08 kB         147 kB
-├ ƒ /[lang]/services/custom              1.08 kB         147 kB
-├ ƒ /[lang]/services/seo                 1.08 kB         147 kB
-├ ƒ /[lang]/services/solutions             161 B         106 kB
-├ ƒ /[lang]/services/websites            1.08 kB         147 kB
-├ ƒ /[lang]/showreel                     3.27 kB         150 kB
-├ ƒ /[lang]/terms                          141 B         102 kB
-├ ƒ /[lang]/privacy                        141 B         102 kB
-├ ƒ /api/contact                           141 B         102 kB
-├ ○ /robots.txt                            141 B         102 kB
-└ ○ /sitemap.xml                           141 B         102 kB
+├ ● /[lang]/contact                      6.53 kB         149 kB
+├ ● /[lang]/services                     1.07 kB         147 kB
+├ ● /[lang]/services/branding            1.07 kB         147 kB
+├ ● /[lang]/services/custom              1.07 kB         147 kB
+├ ● /[lang]/services/seo                 1.07 kB         147 kB
+├ ● /[lang]/services/solutions             161 B         106 kB
+├ ● /[lang]/services/websites            1.07 kB         147 kB
+├ ● /[lang]/showreel                     3.27 kB         150 kB
+├ ● /[lang]/terms                          143 B         102 kB
+├ ● /[lang]/privacy                        143 B         102 kB
+├ ƒ /api/contact                           143 B         102 kB
+├ ○ /manifest.webmanifest                  143 B         102 kB
+├ ○ /robots.txt                            143 B         102 kB
+└ ○ /sitemap.xml                           143 B         102 kB
 + First Load JS shared by all             102 kB
 ```
 
 ### ESLint: ✅ БЕЗ ОШИБОК
+
 ### TypeScript: ✅ БЕЗ ОШИБОК (`tsc --noEmit` — 0 ошибок)
 
 ### Тесты: ✅ 92/92 PASSED
 
-| Файл | Статус | Деталь |
-|------|--------|--------|
-| TypeWriter.test.tsx | ✅ PASS | 14/14 |
-| CookieConsentProvider.test.tsx | ✅ PASS | 30/30 |
-| ContactForm.test.tsx | ✅ PASS | 30/30 |
-| LanguageSwitcher.test.tsx | ✅ PASS | 1/1 |
-| Header.test.tsx | ✅ PASS | 3/3 |
+### Playwright E2E: ✅ 2/2 PASSED
+
+| Файл                           | Статус  | Деталь |
+| ------------------------------ | ------- | ------ |
+| TypeWriter.test.tsx            | ✅ PASS | 14/14  |
+| CookieConsentProvider.test.tsx | ✅ PASS | 30/30  |
+| ContactForm.test.tsx           | ✅ PASS | 30/30  |
+| LanguageSwitcher.test.tsx      | ✅ PASS | 1/1    |
+| Header.test.tsx                | ✅ PASS | 3/3    |
+| Playwright smoke               | ✅ PASS | 2/2    |
 
 ### Merge Conflicts: ✅ ОТСУТСТВУЮТ (в исходном коде)
 
@@ -52,20 +57,20 @@ Route (app)                                 Size  First Load JS
 
 ## Общая информация
 
-| Параметр | Значение |
-|----------|----------|
-| Фреймворк | Next.js ^15.5.7 (App Router) |
-| Язык | TypeScript ^5.0, strict mode |
-| Стилизация | Tailwind CSS ^3.4.0 |
-| React | ^18.3.0 |
-| Анимации | Framer Motion ^12.29.2 |
-| Smooth Scroll | Lenis ^1.3.17 |
-| Email | Resend ^6.9.1 |
-| Аналитика | @vercel/analytics, @vercel/speed-insights |
-| Тестирование | Jest ^30.2.0, @testing-library/react ^16.3.2 |
-| Исходных файлов (.ts/.tsx) | 74 |
-| Словари (i18n) | 3 (en, ru, es) — ~500 строк каждый |
-| Node.js | >=22 <23 |
+| Параметр                   | Значение                                     |
+| -------------------------- | -------------------------------------------- |
+| Фреймворк                  | Next.js ^15.5.7 (App Router)                 |
+| Язык                       | TypeScript ^5.0, strict mode                 |
+| Стилизация                 | Tailwind CSS ^3.4.0                          |
+| React                      | ^18.3.0                                      |
+| Анимации                   | Framer Motion ^12.29.2                       |
+| Smooth Scroll              | Lenis ^1.3.17                                |
+| Email                      | Resend ^6.9.1                                |
+| Аналитика                  | @vercel/analytics, @vercel/speed-insights    |
+| Тестирование               | Jest ^30.2.0, @testing-library/react ^16.3.2 |
+| Исходных файлов (.ts/.tsx) | 74                                           |
+| Словари (i18n)             | 3 (en, ru, es) — ~500 строк каждый           |
+| Node.js                    | >=22 <23                                     |
 
 ---
 
@@ -109,14 +114,14 @@ src/
 - **Header.tsx — 569 строк.** Слишком большой компонент. Содержит: десктопную навигацию, мобильное меню, dropdown услуг, анимации, scroll-логику. Рекомендуется разбить на подкомпоненты.
 - **ContactForm.tsx — 35 530 байт.** Очень большой файл. Содержит форму, валидацию, reCAPTCHA, табы, анимации. Стоит вынести логику валидации и API-вызовы в отдельные хуки.
 - **Дублирование переводов в компонентах.** Навигационные тексты захардкожены в `Header.tsx` (строки 97-101) вместо использования словарей:
-  ```typescript
-  const navigations: Record<Locale, ...> = {
-      en: { home: 'Home', services: 'Services', ... },
-      ru: { home: 'Главная', services: 'Услуги', ... },
-      ...
-  };
-  ```
-  Эти тексты уже есть в `common.nav` словарей. Нужно передавать `dict` через props.
+    ```typescript
+    const navigations: Record<Locale, ...> = {
+        en: { home: 'Home', services: 'Services', ... },
+        ru: { home: 'Главная', services: 'Услуги', ... },
+        ...
+    };
+    ```
+    Эти тексты уже есть в `common.nav` словарей. Нужно передавать `dict` через props.
 
 ---
 
@@ -140,32 +145,27 @@ src/
 
 Fallback удалён. Теперь используется только `process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY`.
 
-#### 2.3. Захардкоженные тексты в компонентах — ⚠️ частично исправлено
+#### 2.3. Захардкоженные тексты в компонентах — ✅ исправлено
 
 Несколько компонентов содержат тексты напрямую вместо словарей:
 
-- **Showreel.tsx** (строки 20-24): `showreelTitle` объект с переводами
-- **Showreel.tsx** (строки 86-90): subtitle текст через тернарный оператор `lang === 'ru' ? ... : ...`
-- **Hero.tsx** (строки 219-222): labels статистики (`'Проектов'`, `'Клиентов'`, `'Лет'`)
-- **Contact page / Footer**: `emailActionText` перенесён в словари (ключ `contact.info.emailAction`)
-
-**Осталось:** перенести в словари тексты из `Header.tsx`, `Hero.tsx`, `Showreel.tsx`.
+- **Header/Hero/Showreel**: переводы вынесены в словари и используются через `dict`.
+- **Contact page / Footer**: `emailActionText` перенесён в словари (ключ `contact.info.emailAction`).
 
 #### 2.4. Неиспользуемые импорты и переменные — ✅ исправлено
 
 Удалены неиспользуемые переменные и импорты в `Showreel.tsx`, `Services.tsx`, `Testimonials.tsx`.
 
-#### 2.5. Inline styles вместо Tailwind классов — ⚠️ частично исправлено
+#### 2.5. Inline styles вместо Tailwind классов — ✅ исправлено
 
 Множество компонентов используют `style={{}}` вместо Tailwind:
-- **Services.tsx** (строка 91): `style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}`
-- **Showreel.tsx** (строка 73): `style={{ display: 'inline-block', transform: 'scaleY(1.7) scaleX(1.05)', transformOrigin: 'center' }}`
-- **About page**: повторяющиеся `style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}` → заменены на `.font-frantz-stretch`
-- **Footer**: 6 повторов inline styles → заменены на `.font-frantz-stretch`
 
-**Осталось:** заменить inline styles в `Services.tsx`, `Showreel.tsx`, `Logo.tsx`.
+- **Services.tsx**: inline styles заменены на Tailwind/`font-frantz-stretch`.
+- **Showreel.tsx**: inline styles заменены на Tailwind.
+- **About page/Footer**: `font-frantz-stretch` уже применён.
 
 **Решение:** Создать утилитарные CSS-классы в `globals.css` для повторяющихся стилей:
+
 ```css
 .font-frantz-stretch {
     font-variation-settings: 'wght' 900;
@@ -254,24 +254,20 @@ Fallback удалён. Теперь используется только `proce
 ### Текущий статус
 
 ```
-Test Suites: 2 failed, 3 passed, 5 total
-Tests:       4 failed, 88 passed, 92 total
+Test Suites: 5 passed, 5 total
+Tests:       92 passed, 92 total
+Playwright:  2 passed, 2 total
 ```
 
 ### Проваленные тесты
 
-| Тест | Файл | Причина |
-|------|-------|---------|
-| `has different styling for active vs inactive buttons` | LanguageSwitcher.test.tsx | Вероятно, изменился CSS/className компонента |
-| `renders logo with link to home` | Header.test.tsx | Компонент Logo изменился, тест не обновлён |
-| `closes mobile menu when overlay is clicked` | Header.test.tsx | `waitFor` timeout — framer-motion AnimatePresence не обрабатывается в тестовом окружении |
-| `closes mobile menu when a navigation link is clicked` | Header.test.tsx | Аналогично — проблема с mock framer-motion |
+— отсутствуют
 
 ### Рекомендации по тестам
 
 - **Обновить mock для framer-motion** — AnimatePresence и motion компоненты нужно корректно мокать
 - **Добавить тесты для**: API route `/api/contact`, ShowreelGrid, CTA, About page, Services page
-- **Добавить e2e тесты** (Playwright/Cypress) для критических user flows: навигация, смена языка, отправка формы
+- **Расширить e2e тесты** (Playwright) для критических user flows: навигация, смена языка, отправка формы
 - **Добавить тест валидации словарей** — проверять что все ключи присутствуют во всех 3 словарях
 
 ---
@@ -290,51 +286,55 @@ Tests:       4 failed, 88 passed, 92 total
 
 ## 📊 СВОДНАЯ ТАБЛИЦА МЕТРИК
 
-| Метрика | Значение | Оценка |
-|---------|----------|--------|
-| Production Build | ✅ Успешно | ✅ |
-| TypeScript | 0 ошибок | ✅ |
-| ESLint | 0 ошибок | ✅ |
-| Тесты | 92/92 passed (100%) | ✅ |
-| Merge Conflicts | 0 | ✅ |
-| Security Headers | 6/6 (включая CSP) | ✅ |
-| i18n | 3 языка, полные словари | ✅ |
-| First Load JS (shared) | 102 kB | ✅ |
-| Heaviest page | /[lang] — 173 kB | ⚠️ |
-| Количество страниц | 17 routes | ✅ |
+| Метрика                | Значение                | Оценка |
+| ---------------------- | ----------------------- | ------ |
+| Production Build       | ✅ Успешно              | ✅     |
+| TypeScript             | 0 ошибок                | ✅     |
+| ESLint                 | 0 ошибок                | ✅     |
+| Тесты                  | 92/92 passed (100%)     | ✅     |
+| E2E (Playwright)       | 2/2 passed              | ✅     |
+| Merge Conflicts        | 0                       | ✅     |
+| Security Headers       | 6/6 (включая CSP)       | ✅     |
+| i18n                   | 3 языка, полные словари | ✅     |
+| First Load JS (shared) | 102 kB                  | ✅     |
+| Heaviest page          | /[lang] — 173 kB        | ⚠️     |
+| Количество страниц     | 17 routes               | ✅     |
 
 ---
 
 ## 📋 ИТОГОВАЯ ОЦЕНКА
 
-| Категория | Балл | Комментарий |
-|-----------|------|-------------|
-| Архитектура | 8/10 | Отличная структура, но Header слишком большой |
-| Качество кода | 8/10 | `as any` удалён, остаются локальные hardcoded тексты |
-| Стилизация | 8/10 | Продуманная дизайн-система, но много inline styles |
-| Безопасность | 8/10 | CSP добавлен, секреты вынесены в env |
-| Производительность | 8/10 | Хорошие показатели, есть потенциал оптимизации |
-| Тесты | 7/10 | 92 теста, e2e ещё нет |
-| Локализация | 9/10 | Полная поддержка 3 языков |
-| Документация | 4/10 | README устаревший, нет API docs |
+| Категория          | Балл | Комментарий                                          |
+| ------------------ | ---- | ---------------------------------------------------- |
+| Архитектура        | 8/10 | Отличная структура, но Header слишком большой        |
+| Качество кода      | 8/10 | `as any` удалён, остаются локальные hardcoded тексты |
+| Стилизация         | 8/10 | Продуманная дизайн-система, но много inline styles   |
+| Безопасность       | 8/10 | CSP добавлен, секреты вынесены в env                 |
+| Производительность | 8/10 | Хорошие показатели, есть потенциал оптимизации       |
+| Тесты              | 8/10 | Jest + Playwright smoke покрытие                     |
+| Локализация        | 9/10 | Полная поддержка 3 языков                            |
+| Документация       | 4/10 | README устаревший, нет API docs                      |
 
-**Общая оценка: 7.8/10** — Проект стабилен, собирается, все тесты проходят. Основные области для улучшения: вынести оставшиеся hardcoded тексты в словари, уменьшить крупные компоненты, добавить e2e и форматирование.
+**Общая оценка: 8.0/10** — Проект стабилен, собирается, все тесты проходят. Основные области для улучшения: уменьшить крупные компоненты, добавить тест полноты словарей, расширить e2e и форматирование.
 
 ---
 
 ## 🚀 ПЛАН ДЕЙСТВИЙ (по приоритетам)
 
 ### P0 — Немедленно (выполнено)
+
 1. Починить 4 проваленных теста (Header.test.tsx, LanguageSwitcher.test.tsx) — ✅
 2. Убрать захардкоженный reCAPTCHA fallback ключ — ✅
 
-### P1 — В течение недели (частично выполнено)
+### P1 — В течение недели (выполнено)
+
 3. Вынести email и WhatsApp номер в env-переменные — ✅
 4. Убрать `as any` в layout.tsx — заменить на `as Locale` — ✅
-5. Перенести захардкоженные тексты из компонентов в словари — ⚠️ (остались Header/Hero/Showreel)
+5. Перенести захардкоженные тексты из компонентов в словари — ✅
 6. Удалить неиспользуемые переменные (slideInRight в Services, mounted в Testimonials) — ✅
 
 ### P2 — В течение месяца (частично выполнено)
+
 7. Разбить Header.tsx на подкомпоненты (DesktopNav, MobileMenu, ServicesDropdown)
 8. Создать CSS-класс для повторяющихся inline styles (`font-frantz-stretch`) — ✅ (About, Footer)
 9. Добавить Content-Security-Policy header — ✅
@@ -343,8 +343,9 @@ Tests:       4 failed, 88 passed, 92 total
 12. Обновить README.md — ✅ (env-переменные)
 
 ### P3 — По возможности
+
 13. Lazy-load секций ниже fold на главной странице
-14. Добавить e2e тесты (Playwright) — ⏳ в процессе
-15. Настроить prettier + husky + lint-staged — ⏳ в процессе
+14. Добавить e2e тесты (Playwright) — ✅ базовые smoke тесты
+15. Настроить prettier + husky + lint-staged — ✅
 16. Рассмотреть миграцию next.config.js → next.config.ts
 17. Добавить `.nvmrc` файл

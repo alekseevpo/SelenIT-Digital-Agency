@@ -41,7 +41,11 @@ export async function generateStaticParams() {
     return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
 
@@ -51,7 +55,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
             default: `Selen.IT | Digital Agency - Web Development & Design`,
         },
         description: dict.hero.subtitle,
-        keywords: ['web development', 'digital agency', 'web design', 'UI/UX', 'React', 'Next.js', 'software engineering'],
+        keywords: [
+            'web development',
+            'digital agency',
+            'web design',
+            'UI/UX',
+            'React',
+            'Next.js',
+            'software engineering',
+        ],
         authors: [{ name: 'Selen.IT Digital Agency' }],
         metadataBase: new URL('https://selen.it'),
         alternates: {
@@ -121,7 +133,9 @@ export default async function RootLayout({
                 <WebSiteJsonLd url="https://selen.it" lang={lang} />
                 <LocalBusinessJsonLd url="https://selen.it" />
             </head>
-            <body className={`${inter.variable} ${ttFrantz.variable} font-sans antialiased transition-colors duration-300`}>
+            <body
+                className={`${inter.variable} ${ttFrantz.variable} font-sans antialiased transition-colors duration-300`}
+            >
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"
@@ -130,11 +144,9 @@ export default async function RootLayout({
                 >
                     <CookieConsentProvider>
                         <SmoothScrollProvider>
-                            <Header lang={lang as Locale} />
+                            <Header lang={lang as Locale} dict={dict} />
                             <main className="min-h-screen transition-colors duration-300">
-                                <PageTransition>
-                                    {children}
-                                </PageTransition>
+                                <PageTransition>{children}</PageTransition>
                             </main>
                             <Footer lang={lang as Locale} dict={dict} />
                         </SmoothScrollProvider>

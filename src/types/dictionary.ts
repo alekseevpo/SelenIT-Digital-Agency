@@ -22,6 +22,12 @@ export interface FooterLinks {
 
 export interface CommonDict {
     nav: NavLink;
+    header: {
+        menu: string;
+        openMenu: string;
+        closeMenu: string;
+        language: string;
+    };
     footer: FooterLinks;
 }
 
@@ -33,6 +39,12 @@ export interface HeroDict {
     subtitle: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    stats: {
+        projects: string;
+        clients: string;
+        years: string;
+        satisfaction: string;
+    };
 }
 
 export interface ServiceItem {
@@ -49,6 +61,13 @@ export interface ServicesDict {
         title1: string;
         titleGradient: string;
         subtitle: string;
+    };
+    menuLinks: {
+        branding: { label: string; description: string };
+        websites: { label: string; description: string };
+        seo: { label: string; description: string };
+        custom: { label: string; description: string };
+        solutions: { label: string; description: string };
     };
     list: ServiceItem[];
     process: {
@@ -204,11 +223,14 @@ export interface Dictionary {
         };
         showreel: {
             badge: string;
+            title: string;
             title1: string;
             titleGradient: string;
             subtitle: string;
             videoId: string;
             button: string;
+            viewProject: string;
+            watchVideo: string;
         };
         testimonials: {
             badge: string;

@@ -17,6 +17,12 @@
             "privacy": "Política de Privacidad",
             "terms": "Términos de Servicio"
         },
+        "header": {
+            "menu": "Menú",
+            "openMenu": "Abrir menú",
+            "closeMenu": "Cerrar menú",
+            "language": "Idioma"
+        },
         "footer": {
             "rights": "Todos los derechos reservados.",
             "services": "Servicios",
@@ -62,13 +68,7 @@
             "company": "Nombre de la empresa",
             "companyPlaceholder": "Su empresa",
             "service": "Servicio de interés",
-            "serviceOptions": [
-                "Branding",
-                "Sitios Web",
-                "SEO",
-                "Soporte Individual",
-                "Otro"
-            ],
+            "serviceOptions": ["Branding", "Sitios Web", "SEO", "Soporte Individual", "Otro"],
             "budget": "Presupuesto del proyecto",
             "budgetOptions": [
                 "Menos de $5,000",
@@ -98,7 +98,13 @@
         "title2": "Que Impulsan Resultados",
         "subtitle": "¡Su diseño no tiene por qué ser terrible!\nConvertimos su visión en una marca impresionante.\nCreamos logotipos atractivos y memorables, impulsamos estrategias de marketing y miramos a través de los ojos de sus clientes.\nEscribimos sitios web modernos y de alto rendimiento.\nAplicamos las últimas tecnologías, desarrollamos interfaces amigables y soluciones digitales escalables tanto para grandes empresas como para pequeñas startups.\nMejoramos el SEO - posicionamiento en buscadores, le destacamos entre la competencia en redes sociales y apoyamos sus proyectos manteniendo expectativas y multiplicando resultados.",
         "ctaPrimary": "Iniciar Proyecto",
-        "ctaSecondary": "Ver Nuestro Trabajo"
+        "ctaSecondary": "Ver Nuestro Trabajo",
+        "stats": {
+            "projects": "Proyectos",
+            "clients": "Clientes",
+            "years": "Años",
+            "satisfaction": "Satisfacción"
+        }
     },
     "home": {
         "services": {
@@ -110,12 +116,14 @@
         },
         "showreel": {
             "badge": "Showreel",
+            "title": "Proyectos destacados y Showreel",
             "title1": "Proyectos",
             "titleGradient": "Destacados",
             "subtitle": "Descubra cómo ayudamos a las marcas a crecer con soluciones digitales a medida.",
             "videoId": "QT3L4tZ14-4",
             "button": "Ver Todo",
-            "viewProject": "Ver Proyecto"
+            "viewProject": "Ver Proyecto",
+            "watchVideo": "Ver video"
         },
         "testimonials": {
             "badge": "Testimonios",
@@ -142,7 +150,29 @@
             "badge": "Nuestros Servicios",
             "title1": "Soluciones",
             "titleGradient": "Digitales Integrales",
-            "subtitle": "Desde el concepto hasta el lanzamiento, brindamos servicios digitales de principio a fin para ayudar a su empresa a crecer."
+            "subtitle": "Del concepto al lanzamiento, brindamos servicios digitales de extremo a extremo para ayudar a tu negocio a crecer."
+        },
+        "menuLinks": {
+            "branding": {
+                "label": "Branding",
+                "description": "Logos, identidad visual y posicionamiento"
+            },
+            "websites": {
+                "label": "Sitios Web",
+                "description": "Sitios web e interfaces modernas"
+            },
+            "seo": {
+                "label": "SEO",
+                "description": "Optimización y posicionamiento web"
+            },
+            "custom": {
+                "label": "Soporte",
+                "description": "Soporte técnico y desarrollo"
+            },
+            "solutions": {
+                "label": "Soluciones Digitales Integrales",
+                "description": "Ciclo completo de soluciones digitales"
+            }
         },
         "list": [
             {
@@ -297,11 +327,7 @@
                 "client": "Luxe Brands Inc.",
                 "year": "2024",
                 "slug": "luxe-fashion",
-                "results": [
-                    "+200% conversión",
-                    "+150% pedido medio",
-                    "Carga 2.5s"
-                ]
+                "results": ["+200% conversión", "+150% pedido medio", "Carga 2.5s"]
             },
             {
                 "id": 2,
@@ -312,11 +338,7 @@
                 "client": "FinanceHub Corp.",
                 "year": "2024",
                 "slug": "fintech-dashboard",
-                "results": [
-                    "50K+ usuarios",
-                    "99.9% uptime",
-                    "Datos en tiempo real"
-                ]
+                "results": ["50K+ usuarios", "99.9% uptime", "Datos en tiempo real"]
             }
         ],
         "cta": {
@@ -325,13 +347,7 @@
             "subtitle": "Su proyecto podría ser nuestra próxima historia de éxito. Creemos algo especial y destacaremos su proyecto en nuestra página de showreel.",
             "button": "Iniciar Proyecto"
         },
-        "categories": [
-            "Todos",
-            "Desarrollo Web",
-            "E-Commerce",
-            "Aplicaciones Web",
-            "Diseño UI/UX"
-        ]
+        "categories": ["Todos", "Desarrollo Web", "E-Commerce", "Aplicaciones Web", "Diseño UI/UX"]
     },
     "about": {
         "hero": {
