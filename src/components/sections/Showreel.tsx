@@ -121,12 +121,12 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                     <span className="text-red-600 dark:text-red-500 text-xs font-semibold uppercase tracking-wider mb-2 block">
                                         {project.category}
                                     </span>
-                                    <h3 className="text-3xl md:text-4xl font-frantz font-black text-slate-900 dark:text-white mb-3 uppercase tracking-wide leading-none inline-block origin-left scale-y-[1.2]">
+                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-frantz font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide leading-none block md:inline-block origin-left scale-y-[1.2]">
                                         {project.title}
                                     </h3>
                                     <Link
                                         href={`/${lang}/showreel`}
-                                        className="inline-flex items-center text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-orange-500 dark:hover:text-primary-400 transition-colors group/link"
+                                        className="inline-flex items-center text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-orange-500 dark:hover:text-primary-400 transition-colors group/link mt-1"
                                     >
                                         {dict.viewProject}
                                         <svg

@@ -13,9 +13,9 @@ interface FooterProps {
 
 const getFooterLinks = (lang: string, dict: Dictionary) => {
     return {
-        services: dict.services.list.slice(0, 4).map(service => ({
+        services: dict.services.list.slice(0, 4).map((service) => ({
             href: `/${lang}/services#${service.id}`,
-            label: service.title
+            label: service.title,
         })),
         company: [
             { href: `/${lang}/about`, label: dict.common.nav.about },
@@ -38,10 +38,12 @@ export default function Footer({ lang, dict }: FooterProps) {
     return (
         <footer className="bg-transparent dark:bg-black border-t border-slate-200 dark:border-dark-800 transition-colors duration-300">
             <div className="container-custom py-10 md:py-12 px-4 sm:px-6 lg:px-8">
-
                 {/* Mobile: Centered Brand Section */}
                 <div className="flex flex-col items-center text-center md:hidden mb-8">
-                    <Link href={`/${lang}`} className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg">
+                    <Link
+                        href={`/${lang}`}
+                        className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
+                    >
                         <Logo size={64} showText={true} />
                     </Link>
                     <p className="text-slate-600 dark:text-dark-400 mb-5 leading-relaxed text-sm max-w-xs">
@@ -106,8 +108,8 @@ export default function Footer({ lang, dict }: FooterProps) {
                 </div>
 
                 {/* Mobile: Contact Section */}
-                <div className="md:hidden mb-12 p-6 rounded-[3rem] bg-cream-100/50 dark:bg-dark-950/50 border border-slate-100/50 dark:border-dark-800 backdrop-blur-sm text-left">
-                    <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] font-frantz-stretch">
+                <div className="md:hidden mb-12 p-6 rounded-[3rem] bg-cream-100/50 dark:bg-dark-950/50 border border-slate-100/50 dark:border-dark-800 backdrop-blur-sm text-center">
+                    <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-10 uppercase tracking-wide text-6xl leading-[0.9] font-frantz-stretch text-center">
                         {footerDict.getInTouch}
                     </h4>
                     <div className="flex flex-col gap-3">
@@ -115,8 +117,18 @@ export default function Footer({ lang, dict }: FooterProps) {
                             href={`mailto:${CONTACT_EMAIL}`}
                             className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 text-slate-600 dark:text-dark-400 hover:text-red-600 dark:hover:text-red-500 transition-all duration-300 text-sm shadow-sm"
                         >
-                            <svg className="w-4 h-4 text-red-600 dark:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            <svg
+                                className="w-4 h-4 text-red-600 dark:text-red-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                />
                             </svg>
                             {emailText}
                         </a>
@@ -127,15 +139,34 @@ export default function Footer({ lang, dict }: FooterProps) {
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 text-slate-600 dark:text-dark-400 hover:text-green-500 transition-all duration-300 text-sm shadow-sm"
                             >
-                                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                <svg
+                                    className="w-4 h-4 text-green-500"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
                                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.897.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.084 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                                 </svg>
                                 WhatsApp
                             </a>
                             <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 text-slate-600 dark:text-dark-400 text-sm shadow-sm">
-                                <svg className="w-4 h-4 text-red-600 dark:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <svg
+                                    className="w-4 h-4 text-red-600 dark:text-red-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                    />
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                    />
                                 </svg>
                                 {footerDict.address}
                             </div>
@@ -147,7 +178,10 @@ export default function Footer({ lang, dict }: FooterProps) {
                 <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Brand */}
                     <div className="lg:col-span-1">
-                        <Link href={`/${lang}`} className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg">
+                        <Link
+                            href={`/${lang}`}
+                            className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
+                        >
                             <Logo size={64} showText={true} />
                         </Link>
                         <p className="text-slate-600 dark:text-dark-400 mb-4 leading-relaxed text-sm">
@@ -172,7 +206,9 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Services */}
                     <div className="text-left">
-                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">{footerDict.services}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">
+                            {footerDict.services}
+                        </h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.services.map((link) => (
                                 <li key={link.href}>
@@ -189,7 +225,9 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Company */}
                     <div className="text-left">
-                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">{footerDict.company}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">
+                            {footerDict.company}
+                        </h4>
                         <ul className="space-y-2 text-sm">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
@@ -206,28 +244,73 @@ export default function Footer({ lang, dict }: FooterProps) {
 
                     {/* Contact */}
                     <div className="text-left">
-                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">{footerDict.getInTouch}</h4>
+                        <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">
+                            {footerDict.getInTouch}
+                        </h4>
                         <ul className="space-y-4 text-slate-600 dark:text-dark-400 text-sm">
                             <li className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                <svg
+                                    className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                    />
                                 </svg>
-                                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-red-600 dark:hover:text-red-500 transition-colors truncate">
+                                <a
+                                    href={`mailto:${CONTACT_EMAIL}`}
+                                    className="hover:text-red-600 dark:hover:text-red-500 transition-colors truncate"
+                                >
                                     {emailText}
                                 </a>
                             </li>
                             <li className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                <svg
+                                    className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                    />
                                 </svg>
-                                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
+                                <a
+                                    href={WHATSAPP_LINK}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-red-600 dark:hover:text-red-500 transition-colors"
+                                >
                                     WhatsApp
                                 </a>
                             </li>
                             <li className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <svg
+                                    className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                    />
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                    />
                                 </svg>
                                 <span>{footerDict.address}</span>
                             </li>
@@ -239,14 +322,21 @@ export default function Footer({ lang, dict }: FooterProps) {
                 <div className="mt-8 pt-6 border-t border-slate-200 dark:border-dark-800">
                     <div className="flex flex-col items-center gap-3 md:flex-row md:justify-between">
                         <p className="text-slate-500 dark:text-dark-500 text-xs text-center md:text-left">
-                            © {new Date().getFullYear()} Selen.IT Digital Agency. {footerDict.rights}
+                            © {new Date().getFullYear()} Selen.IT Digital Agency.{' '}
+                            {footerDict.rights}
                         </p>
                         <div className="flex gap-4 text-xs font-medium">
-                            <Link href={`/${lang}/privacy`} className="text-slate-500 dark:text-dark-500 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+                            <Link
+                                href={`/${lang}/privacy`}
+                                className="text-slate-500 dark:text-dark-500 hover:text-red-600 dark:hover:text-red-500 transition-colors"
+                            >
                                 {footerDict.privacy}
                             </Link>
                             <span className="text-slate-300 dark:text-dark-700">•</span>
-                            <Link href={`/${lang}/terms`} className="text-slate-500 dark:text-dark-500 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+                            <Link
+                                href={`/${lang}/terms`}
+                                className="text-slate-500 dark:text-dark-500 hover:text-red-600 dark:hover:text-red-500 transition-colors"
+                            >
                                 {footerDict.terms}
                             </Link>
                         </div>

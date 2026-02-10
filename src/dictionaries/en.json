@@ -20,7 +20,7 @@
         "header": {
             "menu": "Menu",
             "openMenu": "Open menu",
-            "closeMenu": "Close menu",
+            "closeMenu": "Close",
             "language": "Language"
         },
         "footer": {
@@ -365,7 +365,7 @@
         "story": {
             "badge": "Our Story",
             "title1": "From a Small Studio to a",
-            "titleGradient": "Global Agency",
+            "titleGradient": "global agency",
             "p1": "Selen.IT was founded in 2016 with a simple mission: to bridge the gap between complex technology and meaningful user experiences.",
             "p2": "What started as a two-person operation has grown into a full-service digital agency with clients across three continents.",
             "p3": "Today, we partner with startups and enterprises alike to build the digital products of tomorrow."

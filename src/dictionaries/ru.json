@@ -20,7 +20,7 @@
         "header": {
             "menu": "Меню",
             "openMenu": "Открыть меню",
-            "closeMenu": "Закрыть меню",
+            "closeMenu": "Закрыть",
             "language": "Язык"
         },
         "footer": {
