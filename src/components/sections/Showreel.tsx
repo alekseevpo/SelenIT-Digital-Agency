@@ -17,6 +17,7 @@ interface ShowreelProps {
         button: string;
         viewProject: string;
         watchVideo: string;
+        comingSoon: string;
     };
 }
 
@@ -56,7 +57,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                 <div className="relative py-2 md:py-4 mb-0 flex items-center justify-center">
                     <div className="max-w-4xl mx-auto text-center">
                         <Reveal width="100%" delay={0.3}>
-                            <h2 className="heading-2 heading-hero mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05]">
+                            <h2 className="heading-2 heading-hero mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full">
                                 <span className="text-slate-900 dark:text-white">{dict.title}</span>
                             </h2>
                         </Reveal>
@@ -117,11 +118,17 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                     {featuredProjects.map((project, index) => (
                         <Reveal key={project.id} delay={0.1 * index}>
                             <div className="glass-card group relative overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 aspect-[16/10] flex flex-col justify-end p-6 md:p-8">
+                                {/* Coming Soon Badge */}
+                                <div className="absolute top-4 right-4 z-10">
+                                    <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider bg-slate-100/80 dark:bg-slate-800/80 px-2 py-1 rounded-full backdrop-blur-sm">
+                                        {dict.comingSoon}
+                                    </span>
+                                </div>
                                 <div className="relative z-10">
                                     <span className="text-red-600 dark:text-red-500 text-xs font-semibold uppercase tracking-wider mb-2 block">
                                         {project.category}
                                     </span>
-                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-frantz font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide leading-none block md:inline-block origin-left scale-y-[1.2]">
+                                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-frantz font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide leading-none block md:inline-block origin-left scale-y-[1.2]">
                                         {project.title}
                                     </h3>
                                     <Link

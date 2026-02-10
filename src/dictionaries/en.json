@@ -115,15 +115,16 @@
             "learnMore": "Learn More"
         },
         "showreel": {
-            "badge": "Showreel",
-            "title": "Featured Projects & Showreel",
+            "badge": "Featured Projects",
+            "title": "Projects & Showreel",
             "title1": "Featured",
             "titleGradient": "Projects",
             "subtitle": "Discover how we help brands grow with custom digital solutions.",
             "videoId": "QT3L4tZ14-4",
             "button": "View All",
             "viewProject": "View Project",
-            "watchVideo": "Watch video"
+            "watchVideo": "Watch Video",
+            "comingSoon": "Coming Soon"
         },
         "testimonials": {
             "badge": "Testimonials",

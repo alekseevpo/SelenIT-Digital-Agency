@@ -115,15 +115,16 @@
             "learnMore": "Saber más"
         },
         "showreel": {
-            "badge": "Showreel",
-            "title": "Proyectos destacados y Showreel",
+            "badge": "Proyectos Destacados",
+            "title": "Proyectos y Showreel",
             "title1": "Proyectos",
             "titleGradient": "Destacados",
-            "subtitle": "Descubra cómo ayudamos a las marcas a crecer con soluciones digitales a medida.",
+            "subtitle": "Descubre cómo ayudamos a las marcas a crecer con soluciones digitales personalizadas.",
             "videoId": "QT3L4tZ14-4",
-            "button": "Ver Todo",
+            "button": "Ver Todos",
             "viewProject": "Ver Proyecto",
-            "watchVideo": "Ver video"
+            "watchVideo": "Ver Video",
+            "comingSoon": "Próximamente"
         },
         "testimonials": {
             "badge": "Testimonios",

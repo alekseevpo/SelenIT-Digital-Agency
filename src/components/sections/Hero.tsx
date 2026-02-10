@@ -94,8 +94,8 @@ export default function Hero({ dict, lang }: HeroProps) {
                             {/* Heading */}
                             <motion.h1
                                 variants={itemVariants}
-                                className="heading-1 heading-hero text-7xl sm:text-8xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 lg:mb-0 text-slate-900 dark:text-white leading-[0.85] -ml-2 sm:-ml-8 lg:-ml-12"
-                                style={{ '--hero-scale': 3 } as React.CSSProperties}
+                                className="heading-1 heading-hero text-7xl sm:text-8xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 lg:mb-0 text-slate-900 dark:text-white leading-[0.85] ml-0 sm:-ml-8 lg:-ml-12"
+                                style={{ '--hero-scale': 4 } as React.CSSProperties}
                             >
                                 {dict.title1}
                                 <br />
@@ -129,7 +129,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                             {/* Subheading */}
                             <motion.div
                                 variants={itemVariants}
-                                className="text-body text-base lg:text-sm mb-12 lg:mb-4 leading-relaxed transition-colors opacity-90 whitespace-pre-line border-l border-slate-200 dark:border-dark-800 pl-6"
+                                className="text-body text-sm lg:text-sm mb-12 lg:mb-4 leading-tight transition-colors opacity-90 whitespace-pre-line ml-4 lg:border-l lg:border-slate-200 dark:lg:border-dark-800 lg:pl-6"
                             >
                                 {(() => {
                                     const text = dict.subtitle;

@@ -122,7 +122,7 @@ article p {
 }
 
 .heading-hero {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-frantz;
+    @apply text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] font-frantz;
     --hero-scale: 1;
     font-variation-settings:
         'MHLN' 1000,
@@ -296,7 +296,7 @@ article p {
     }
 
     .heading-2 {
-        @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight font-frantz;
+        @apply text-4xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight font-frantz;
     }
 
     .heading-3 {
