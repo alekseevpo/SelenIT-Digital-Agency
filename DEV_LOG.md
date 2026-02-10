@@ -73,6 +73,13 @@
 - ✅ Lint/Test/Build/E2E: `npm run lint`, `npm run test`, `npm run build`, `npm run test:e2e`
 - ⚠️ E2E требовали освобождения порта 5001 (остановлен лишний процесс)
 
+### 10:10 - Mobile Responsiveness Audit & Mobile E2E
+
+- ✅ Hero: смягчён отрицательный отступ заголовка на мобильных (исключено обрезание)
+- ✅ Contact: блок расписания переведён в колонку на mobile (читабельность)
+- ✅ Добавлены Playwright мобильные тесты (iPhone 13) для меню/формы/showreel/services/testimonials
+- ✅ Полный прогон: `npm run lint`, `npm run test`, `npm run build`, `npm run test:e2e`
+
 **Что остаётся:**
 
 - Уменьшить крупные компоненты (Header, ContactForm)

@@ -94,7 +94,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                             {/* Heading */}
                             <motion.h1
                                 variants={itemVariants}
-                                className="heading-1 heading-hero text-6xl sm:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 lg:mb-0 text-slate-900 dark:text-white leading-[0.85] -ml-8 lg:-ml-12"
+                                className="heading-1 heading-hero text-6xl sm:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 lg:mb-0 text-slate-900 dark:text-white leading-[0.85] -ml-2 sm:-ml-8 lg:-ml-12"
                             >
                                 {dict.title1}
                                 <br />
