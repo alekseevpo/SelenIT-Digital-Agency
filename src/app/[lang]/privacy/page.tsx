@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 interface PageProps {
     params: Promise<{ lang: string }>;
@@ -18,9 +19,15 @@ export default async function PrivacyPage({ params }: PageProps) {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, content } = dict.privacy;
+    const baseUrl = 'https://selen.it';
+    const breadcrumbs = [
+        { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
+        { name: dict.common.nav.privacy, url: `${baseUrl}/${lang}/privacy` },
+    ];
 
     return (
         <div className="bg-transparent dark:bg-dark-950 min-h-screen py-24">
+            <BreadcrumbJsonLd items={breadcrumbs} />
             <div className="container-custom px-4 sm:px-6 lg:px-8">
                 <div className="max-w-3xl mx-auto">
                     <h1 className="heading-2 mb-4 text-slate-900 dark:text-white">{hero.title}</h1>

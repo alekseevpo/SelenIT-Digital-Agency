@@ -4,6 +4,7 @@ import { Locale } from '@/i18n-config';
 import ShowreelGrid from '@/components/ShowreelGrid';
 import YouTubeEmbed from '@/components/ui/YouTubeEmbed';
 import CTA from '@/components/sections/CTA';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
@@ -41,6 +42,11 @@ export default async function ShowreelPage({ params }: PageProps) {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, grid, projects: dictProjects, cta, categories } = dict.showreel;
+    const baseUrl = 'https://selen.it';
+    const breadcrumbs = [
+        { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
+        { name: dict.common.nav.showreel, url: `${baseUrl}/${lang}/showreel` },
+    ];
 
     const projects = dictProjects.map((p) => ({
         ...p,
@@ -51,6 +57,7 @@ export default async function ShowreelPage({ params }: PageProps) {
 
     return (
         <div className="bg-transparent dark:bg-dark-950 transition-colors duration-300">
+            <BreadcrumbJsonLd items={breadcrumbs} />
             {/* Hero Section with Video */}
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">

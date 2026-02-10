@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 interface PageProps {
     params: Promise<{ lang: string }>;
@@ -24,13 +25,12 @@ export default async function ContactPage({ params }: PageProps) {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, info, form } = dict.contact;
-
-    const emailActionText = {
-        en: 'Email us',
-        ru: 'Написать в почту',
-        es: 'Escribir al correo'
-    };
-    const emailText = emailActionText[lang as keyof typeof emailActionText] || emailActionText.en;
+    const emailText = info.emailAction;
+    const baseUrl = 'https://selen.it';
+    const breadcrumbs = [
+        { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
+        { name: dict.common.nav.contact, url: `${baseUrl}/${lang}/contact` },
+    ];
 
     const contactInfo = [
         {
@@ -57,6 +57,7 @@ export default async function ContactPage({ params }: PageProps) {
 
     return (
         <div className="min-h-screen transition-colors duration-300">
+            <BreadcrumbJsonLd items={breadcrumbs} />
             {/* Hero Section */}
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">

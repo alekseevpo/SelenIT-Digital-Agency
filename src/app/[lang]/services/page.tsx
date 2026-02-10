@@ -3,6 +3,7 @@ import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 import { Reveal } from '@/components/ui/Reveal';
 import CTA from '@/components/sections/CTA';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
@@ -55,9 +56,15 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, list: servicesList, process, cta } = dict.services;
+    const baseUrl = 'https://selen.it';
+    const breadcrumbs = [
+        { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
+        { name: dict.common.nav.services, url: `${baseUrl}/${lang}/services` },
+    ];
 
     return (
         <div className="bg-transparent dark:bg-black transition-colors duration-300">
+            <BreadcrumbJsonLd items={breadcrumbs} />
             {/* Hero Section */}
             <section className="pt-32 pb-10 relative overflow-hidden bg-transparent dark:bg-black transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">

@@ -33,13 +33,7 @@ const getFooterLinks = (lang: string, dict: Dictionary) => {
 export default function Footer({ lang, dict }: FooterProps) {
     const footerLinks = getFooterLinks(lang, dict);
     const footerDict = dict.common.footer;
-
-    const emailActionText = {
-        en: 'Email us',
-        ru: 'Написать в почту',
-        es: 'Escribir al correo'
-    };
-    const emailText = emailActionText[lang as keyof typeof emailActionText] || emailActionText.en;
+    const emailText = dict.contact.info.emailAction;
 
     return (
         <footer className="bg-transparent dark:bg-black border-t border-slate-200 dark:border-dark-800 transition-colors duration-300">

@@ -153,6 +153,7 @@ export interface Dictionary {
             title: string;
             subtitle: string;
             email: string;
+            emailAction: string;
             phone: string;
             office: string;
             hoursTitle: string;

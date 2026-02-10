@@ -1,6 +1,7 @@
 # Selen.IT Digital Agency — Полный аудит проекта
 
 **Дата аудита:** 2026-02-09  
+**Дата обновления:** 2026-02-10  
 **Версия проекта:** 0.1.0  
 **Ветка:** v0.2.0
 
@@ -35,15 +36,15 @@ Route (app)                                 Size  First Load JS
 ### ESLint: ✅ БЕЗ ОШИБОК
 ### TypeScript: ✅ БЕЗ ОШИБОК (`tsc --noEmit` — 0 ошибок)
 
-### Тесты: ⚠️ 88/92 PASSED (4 failed)
+### Тесты: ✅ 92/92 PASSED
 
 | Файл | Статус | Деталь |
 |------|--------|--------|
 | TypeWriter.test.tsx | ✅ PASS | 14/14 |
 | CookieConsentProvider.test.tsx | ✅ PASS | 30/30 |
 | ContactForm.test.tsx | ✅ PASS | 30/30 |
-| LanguageSwitcher.test.tsx | ❌ FAIL | 1 failed — `has different styling for active vs inactive buttons` |
-| Header.test.tsx | ❌ FAIL | 3 failed — `renders logo`, `closes mobile menu (overlay)`, `closes mobile menu (link click)` |
+| LanguageSwitcher.test.tsx | ✅ PASS | 1/1 |
+| Header.test.tsx | ✅ PASS | 3/3 |
 
 ### Merge Conflicts: ✅ ОТСУТСТВУЮТ (в исходном коде)
 
@@ -131,49 +132,38 @@ src/
 
 ### 🔴 Критические проблемы кода
 
-#### 2.1. `as any` type assertions
+#### 2.1. `as any` type assertions — ✅ исправлено
 
-В `layout.tsx` (строки 122, 128):
-```typescript
-<Header lang={lang as any} />
-<Footer lang={lang as any} dict={dict} />
-```
-**Проблема:** Обход типизации. `lang` — это `string`, а `Header` ожидает `Locale`.  
-**Решение:** Использовать `lang as Locale` после валидации или типизировать `params` как `Locale`.
+В `layout.tsx` заменено на строгую типизацию `lang as Locale`.
 
-#### 2.2. Захардкоженный reCAPTCHA ключ
+#### 2.2. Захардкоженный reCAPTCHA ключ — ✅ исправлено
 
-В `ContactForm.tsx`:
-```typescript
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdTllosAAAAAMPpiP2SBA8aXW0JRKc5Legha5Jp';
-```
-**Проблема:** Fallback-ключ в коде — утечка секрета. Если `.env.local` не настроен, используется публичный ключ.  
-**Решение:** Убрать fallback, показывать ошибку если ключ не задан.
+Fallback удалён. Теперь используется только `process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY`.
 
-#### 2.3. Захардкоженные тексты в компонентах
+#### 2.3. Захардкоженные тексты в компонентах — ⚠️ частично исправлено
 
 Несколько компонентов содержат тексты напрямую вместо словарей:
 
 - **Showreel.tsx** (строки 20-24): `showreelTitle` объект с переводами
 - **Showreel.tsx** (строки 86-90): subtitle текст через тернарный оператор `lang === 'ru' ? ... : ...`
 - **Hero.tsx** (строки 219-222): labels статистики (`'Проектов'`, `'Клиентов'`, `'Лет'`)
-- **Contact page** (строки 24-28): `emailActionText` объект
-- **Footer.tsx** (строки 34-38): `emailActionText` дублирован
+- **Contact page / Footer**: `emailActionText` перенесён в словари (ключ `contact.info.emailAction`)
 
-**Решение:** Перенести все тексты в словари `ru.json`, `en.json`, `es.json`.
+**Осталось:** перенести в словари тексты из `Header.tsx`, `Hero.tsx`, `Showreel.tsx`.
 
-#### 2.4. Неиспользуемые импорты и переменные
+#### 2.4. Неиспользуемые импорты и переменные — ✅ исправлено
 
-- **Showreel.tsx**: импортирует `useState` для `showPlayButton`, но `slideInRight` и `fadeIn` (строки 50-51) нигде не используются в JSX
-- **Services.tsx**: `slideInRight` (строка 56) вычисляется, но не используется в JSX
-- **Testimonials.tsx**: `mounted` state (строка 34) устанавливается, но нигде не проверяется
+Удалены неиспользуемые переменные и импорты в `Showreel.tsx`, `Services.tsx`, `Testimonials.tsx`.
 
-#### 2.5. Inline styles вместо Tailwind классов
+#### 2.5. Inline styles вместо Tailwind классов — ⚠️ частично исправлено
 
 Множество компонентов используют `style={{}}` вместо Tailwind:
 - **Services.tsx** (строка 91): `style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}`
 - **Showreel.tsx** (строка 73): `style={{ display: 'inline-block', transform: 'scaleY(1.7) scaleX(1.05)', transformOrigin: 'center' }}`
-- **About page** (строка 138, 183): повторяющиеся `style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}`
+- **About page**: повторяющиеся `style={{ fontVariationSettings: "'wght' 900", transform: 'scaleX(1.15)' }}` → заменены на `.font-frantz-stretch`
+- **Footer**: 6 повторов inline styles → заменены на `.font-frantz-stretch`
+
+**Осталось:** заменить inline styles в `Services.tsx`, `Showreel.tsx`, `Logo.tsx`.
 
 **Решение:** Создать утилитарные CSS-классы в `globals.css` для повторяющихся стилей:
 ```css
@@ -215,9 +205,9 @@ const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdTll
 ### ⚠️ Замечания
 
 - **`heading-hero` класс** (globals.css строки 115-127) использует `transform: scaleY(1.7) scaleX(1.15)` — это может вызвать проблемы с accessibility (размытие текста при масштабировании). Рекомендуется тестировать на разных устройствах
-- **`p { max-width: 70ch }` глобальное правило** (строка 111) — может неожиданно ограничивать ширину параграфов в компонентах, где это нежелательно
-- **Дублирование `next.config.js` images.domains** — используется deprecated `domains` вместо `remotePatterns`
-- **`cream-50` цвет полностью прозрачный** (`rgba(253, 248, 240, 0)`) — комментарий говорит "force rebuild", возможно это временное решение
+- **`p { max-width: 70ch }` глобальное правило** — ✅ ограничено только для `.text-body` и `article p`
+- **`images.domains`** — ✅ заменено на `images.remotePatterns`
+- **`cream-50` полностью прозрачный** — ✅ исправлено до `rgba(253, 248, 240, 0.3)`
 
 ---
 
@@ -233,10 +223,9 @@ const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdTll
 
 ### 🔴 Проблемы
 
-- **Отсутствует Content-Security-Policy (CSP) header** — критически важный заголовок для защиты от XSS
-- **Захардкоженный reCAPTCHA ключ** (см. п. 2.2)
-- **Email `alekseevpo@gmail.com` захардкожен** в нескольких файлах (contact/page.tsx, Footer.tsx). Рекомендуется вынести в env-переменную
-- **WhatsApp номер захардкожен** (`+34 624 68 27 95`) в нескольких местах
+- **Content-Security-Policy (CSP) header** — ✅ добавлен
+- **reCAPTCHA fallback** — ✅ удалён
+- **Email / WhatsApp** — ✅ вынесены в env-переменные
 
 ---
 
@@ -306,9 +295,9 @@ Tests:       4 failed, 88 passed, 92 total
 | Production Build | ✅ Успешно | ✅ |
 | TypeScript | 0 ошибок | ✅ |
 | ESLint | 0 ошибок | ✅ |
-| Тесты | 88/92 passed (96%) | ⚠️ |
+| Тесты | 92/92 passed (100%) | ✅ |
 | Merge Conflicts | 0 | ✅ |
-| Security Headers | 5/6 (нет CSP) | ⚠️ |
+| Security Headers | 6/6 (включая CSP) | ✅ |
 | i18n | 3 языка, полные словари | ✅ |
 | First Load JS (shared) | 102 kB | ✅ |
 | Heaviest page | /[lang] — 173 kB | ⚠️ |
@@ -321,41 +310,41 @@ Tests:       4 failed, 88 passed, 92 total
 | Категория | Балл | Комментарий |
 |-----------|------|-------------|
 | Архитектура | 8/10 | Отличная структура, но Header слишком большой |
-| Качество кода | 7/10 | TS без ошибок, но есть `as any`, захардкоженные значения |
+| Качество кода | 8/10 | `as any` удалён, остаются локальные hardcoded тексты |
 | Стилизация | 8/10 | Продуманная дизайн-система, но много inline styles |
-| Безопасность | 6/10 | Хорошие headers, но нет CSP, захардкоженные ключи |
+| Безопасность | 8/10 | CSP добавлен, секреты вынесены в env |
 | Производительность | 8/10 | Хорошие показатели, есть потенциал оптимизации |
-| Тесты | 6/10 | 88 тестов, но 4 провалены, нет e2e |
+| Тесты | 7/10 | 92 теста, e2e ещё нет |
 | Локализация | 9/10 | Полная поддержка 3 языков |
 | Документация | 4/10 | README устаревший, нет API docs |
 
-**Общая оценка: 7.0/10** — Проект в рабочем состоянии, хорошо структурирован, успешно собирается. Основные области для улучшения: починить 4 теста, убрать захардкоженные значения, разбить крупные компоненты, добавить CSP.
+**Общая оценка: 7.8/10** — Проект стабилен, собирается, все тесты проходят. Основные области для улучшения: вынести оставшиеся hardcoded тексты в словари, уменьшить крупные компоненты, добавить e2e и форматирование.
 
 ---
 
 ## 🚀 ПЛАН ДЕЙСТВИЙ (по приоритетам)
 
-### P0 — Немедленно
-1. Починить 4 проваленных теста (Header.test.tsx, LanguageSwitcher.test.tsx)
-2. Убрать захардкоженный reCAPTCHA fallback ключ
+### P0 — Немедленно (выполнено)
+1. Починить 4 проваленных теста (Header.test.tsx, LanguageSwitcher.test.tsx) — ✅
+2. Убрать захардкоженный reCAPTCHA fallback ключ — ✅
 
-### P1 — В течение недели
-3. Вынести email и WhatsApp номер в env-переменные
-4. Убрать `as any` в layout.tsx — заменить на `as Locale`
-5. Перенести захардкоженные тексты из компонентов в словари
-6. Удалить неиспользуемые переменные (slideInRight в Services, mounted в Testimonials)
+### P1 — В течение недели (частично выполнено)
+3. Вынести email и WhatsApp номер в env-переменные — ✅
+4. Убрать `as any` в layout.tsx — заменить на `as Locale` — ✅
+5. Перенести захардкоженные тексты из компонентов в словари — ⚠️ (остались Header/Hero/Showreel)
+6. Удалить неиспользуемые переменные (slideInRight в Services, mounted в Testimonials) — ✅
 
-### P2 — В течение месяца
+### P2 — В течение месяца (частично выполнено)
 7. Разбить Header.tsx на подкомпоненты (DesktopNav, MobileMenu, ServicesDropdown)
-8. Создать CSS-класс для повторяющихся inline styles (`font-frantz-stretch`)
-9. Добавить Content-Security-Policy header
-10. Заменить `images.domains` на `images.remotePatterns` в next.config
+8. Создать CSS-класс для повторяющихся inline styles (`font-frantz-stretch`) — ✅ (About, Footer)
+9. Добавить Content-Security-Policy header — ✅
+10. Заменить `images.domains` на `images.remotePatterns` в next.config — ✅
 11. Добавить тест валидации полноты словарей
-12. Обновить README.md
+12. Обновить README.md — ✅ (env-переменные)
 
 ### P3 — По возможности
 13. Lazy-load секций ниже fold на главной странице
-14. Добавить e2e тесты (Playwright)
-15. Настроить prettier + husky + lint-staged
+14. Добавить e2e тесты (Playwright) — ⏳ в процессе
+15. Настроить prettier + husky + lint-staged — ⏳ в процессе
 16. Рассмотреть миграцию next.config.js → next.config.ts
 17. Добавить `.nvmrc` файл

@@ -6,6 +6,7 @@ import { getDictionary } from '@/get-dictionary';
 import type { Locale } from '@/i18n-config';
 import { ArrowLeft, ArrowRight, Calendar, Building2, Clock, ExternalLink } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 interface CaseStudy {
     slug: string;
@@ -310,11 +311,20 @@ export default async function CaseStudyPage({
 }) {
     const { lang, slug } = await params;
     const caseStudy = caseStudies[lang]?.[slug] || caseStudies.en?.[slug];
+    const dict = await getDictionary(lang as Locale);
     const ui = uiText[lang as keyof typeof uiText] || uiText.en;
+
+    const baseUrl = 'https://selen.it';
 
     if (!caseStudy) {
         notFound();
     }
+
+    const breadcrumbs = [
+        { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
+        { name: dict.common.nav.showreel, url: `${baseUrl}/${lang}/showreel` },
+        { name: caseStudy.title, url: `${baseUrl}/${lang}/case/${slug}` },
+    ];
 
     const nextCaseStudy = caseStudy.nextCase
         ? caseStudies[lang]?.[caseStudy.nextCase] || caseStudies.en?.[caseStudy.nextCase]
@@ -322,6 +332,7 @@ export default async function CaseStudyPage({
 
     return (
         <div className="min-h-screen bg-cream-50 dark:bg-dark-950 transition-colors duration-300">
+            <BreadcrumbJsonLd items={breadcrumbs} />
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-500/5 dark:from-primary-500/5 dark:to-primary-600/5" />

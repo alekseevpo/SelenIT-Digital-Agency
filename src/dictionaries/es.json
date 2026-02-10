@@ -39,6 +39,7 @@
             "title": "Nuestros contactos",
             "subtitle": "¿Tiene un proyecto en mente? Hablemos sobre cómo podemos ayudarle a alcanzar sus metas.",
             "email": "Email",
+            "emailAction": "Escribir al correo",
             "phone": "Teléfono",
             "office": "Oficina",
             "hoursTitle": "Horario de Oficina",

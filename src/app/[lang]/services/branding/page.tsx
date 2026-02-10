@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 import CTA from '@/components/sections/CTA';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 const content = {
     en: {
@@ -49,9 +50,16 @@ export default async function BrandingPage({ params }: PageProps) {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const c = content[(lang as Locale) in content ? (lang as Locale) : 'en'];
+    const baseUrl = 'https://selen.it';
+    const breadcrumbs = [
+        { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
+        { name: dict.common.nav.services, url: `${baseUrl}/${lang}/services` },
+        { name: c.badge, url: `${baseUrl}/${lang}/services/branding` },
+    ];
 
     return (
-        <div className="bg-transparent dark:bg-black transition-colors duration-300">
+        <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+            <BreadcrumbJsonLd items={breadcrumbs} />
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-black transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-2 block">

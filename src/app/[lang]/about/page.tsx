@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
@@ -51,9 +52,15 @@ export default async function AboutPage({ params }: AboutPageProps) {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const { hero, story, stats, values, team, cta } = dict.about;
+    const baseUrl = 'https://selen.it';
+    const breadcrumbs = [
+        { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
+        { name: dict.common.nav.about, url: `${baseUrl}/${lang}/about` },
+    ];
 
     return (
         <>
+            <BreadcrumbJsonLd items={breadcrumbs} />
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">

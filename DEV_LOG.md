@@ -13,6 +13,60 @@
 
 ---
 
+## 2026-02-10
+
+### 01:30 - Development Etiquette & Strict Rules (Project Standards)
+
+**Хороший тон в разработке (по пунктам):**
+1. **Сначала диагностика → потом изменение.** Любая правка начинается с чтения контекста, логов и причины.
+2. **Минимальные правки — максимальный эффект.** Избегаем крупных рефакторингов без нужды.
+3. **Сначала типы и тесты.** TypeScript strict и тесты считаем источником правды.
+4. **Никаких хардкодов.** Тексты → словари, контакты/секреты → `.env`, URL → общие константы.
+5. **UI/UX консистентность.** Визуальные правки не должны ломать сетку, типографику и контраст.
+6. **SEO и доступность — обязательны.** Metadata, JSON-LD, alt, aria, robots/sitemap — всегда проверяем.
+7. **Стабильность важнее красоты.** Никаких «магических» стилей без объяснения и повторного использования.
+8. **Один источник правды.** Повторяющиеся стили → утилитарные классы; повторяющиеся тексты → словари.
+
+**Строгие правила, которые соблюдаем:**
+- ✅ `tsc --noEmit` должен быть без ошибок.
+- ✅ ESLint без ошибок.
+- ✅ Все тесты должны проходить (Jest 92/92).
+- ✅ Любые секреты только через env-переменные.
+- ✅ Изменения не должны ломать i18n (en/ru/es).
+- ✅ Никаких inline styles без крайней необходимости.
+- ✅ Каждая правка фиксируется в DEV_LOG и AUDIT.
+
+**Параметры здоровья кода (держим в хорошем состоянии):**
+- Build: `next build` ✅
+- Lint: `next lint` ✅
+- TypeScript: `tsc --noEmit` ✅
+- Tests: `jest` ✅
+- Security headers: CSP + основные security headers ✅
+- i18n consistency: все ключи в 3 словарях ✅
+- SEO: metadata + sitemap + robots + JSON-LD ✅
+- Perf: контролируем First Load JS (shared ~102 kB)
+
+### 01:40 - Audit Follow-up & Implementation Details
+- ✅ Добавлены JSON-LD schema (Organization, WebSite, LocalBusiness) в layout
+- ✅ Добавлен Breadcrumb JSON-LD для внутренних страниц (about/contact/services/showreel/privacy/terms + service pages + case)
+- ✅ Обновлён sitemap (включены все сервисные подстраницы + hreflang)
+- ✅ Добавлен web manifest (`/app/manifest.ts`)
+- ✅ `generateStaticParams` в layout для генерации всех локалей
+- ✅ Исправлен `cream-50` (прозрачность 0 → 0.3)
+- ✅ Ограничен `p { max-width: 70ch }` только для `.text-body` и `article p`
+- ✅ Вынесены email/WhatsApp в env-переменные
+- ✅ Удалён fallback reCAPTCHA ключ
+- ✅ Удалены `as any` и лишние импорты
+- ✅ Стили `fontVariationSettings/scaleX` заменены на `.font-frantz-stretch` (About + Footer)
+- ✅ Тексты `emailActionText` перенесены в словари
+
+**Что остаётся:**
+- Перенести оставшиеся тексты в словари (Header/Hero/Showreel)
+- Уменьшить крупные компоненты (Header, ContactForm)
+- Настроить Prettier + Husky + lint-staged (в процессе)
+- Добавить Playwright e2e тесты (в процессе)
+
+
 ## 2026-02-01
 
 ### 11:15 - Typography System Update

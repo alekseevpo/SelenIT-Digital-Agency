@@ -5,6 +5,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import CTA from '@/components/sections/CTA';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
     const { lang } = await params;
@@ -19,9 +20,17 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function SolutionsPage({ params }: { params: Promise<{ lang: string }> }) {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
+    const baseUrl = 'https://selen.it';
+    const solutionTitle = (dict as any).services?.solutions?.title ?? dict.common.nav.services;
+    const breadcrumbs = [
+        { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
+        { name: dict.common.nav.services, url: `${baseUrl}/${lang}/services` },
+        { name: solutionTitle, url: `${baseUrl}/${lang}/services/solutions` },
+    ];
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-black dark:to-neutral-900">
+            <BreadcrumbJsonLd items={breadcrumbs} />
             <div className="container mx-auto px-6 py-20">
                 {/* Hero Section */}
                 <div className="text-center mb-16">
