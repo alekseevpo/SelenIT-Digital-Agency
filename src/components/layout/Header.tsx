@@ -50,11 +50,11 @@ const overlayVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { duration: 0.2 },
+        transition: { duration: 0.6 },
     },
     exit: {
         opacity: 0,
-        transition: { duration: 0.2, delay: 0.1 },
+        transition: { duration: 0.4, delay: 0.1 },
     },
 };
 
@@ -68,10 +68,10 @@ const menuVariants = {
         opacity: 1,
         transition: {
             type: 'spring' as const,
-            stiffness: 300,
-            damping: 30,
-            staggerChildren: 0.04,
-            delayChildren: 0.08,
+            stiffness: 60,
+            damping: 15,
+            staggerChildren: 0.12,
+            delayChildren: 0.25,
         },
     },
     exit: {
@@ -92,8 +92,8 @@ const itemVariants = {
         scale: 1,
         transition: {
             type: 'spring' as const,
-            stiffness: 400,
-            damping: 25,
+            stiffness: 120,
+            damping: 15,
         },
     },
     exit: { opacity: 0, x: -10 },
@@ -449,7 +449,7 @@ export default function Header({ lang, dict }: HeaderProps) {
 
                     {/* Mobile Controls - Top Right */}
                     <div
-                        className={`md:hidden flex items-center gap-2 pointer-events-auto transition-all duration-500 ${isScrolled ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
+                        className={`md:hidden flex items-center gap-2 pointer-events-auto transition-all duration-500 mt-4 ${isScrolled ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
                     >
                         <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full">
                             <ThemeToggle />
@@ -521,12 +521,13 @@ export default function Header({ lang, dict }: HeaderProps) {
                                     className="flex justify-between items-center mb-8"
                                     variants={itemVariants}
                                 >
-                                    <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white">
+                                    <h2 className="text-7xl sm:text-8xl md:text-9xl lg:text-10xl font-bold text-slate-900 dark:text-white ml-4 relative">
                                         {headerDict.menu}
+                                        <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-red-500 -mb-2"></span>
                                     </h2>
                                     <motion.button
                                         onClick={closeMenu}
-                                        className="flex items-center gap-2 text-slate-500 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+                                        className="flex items-center gap-2 text-slate-500 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors -mt-4"
                                         aria-label={headerDict.closeMenu}
                                         whileTap={{ scale: 0.95 }}
                                     >
@@ -550,83 +551,40 @@ export default function Header({ lang, dict }: HeaderProps) {
                                 </motion.div>
 
                                 {/* Navigation List */}
-                                <div className="flex-1 overflow-y-auto py-4">
+                                <div className="flex-1 overflow-y-auto py-4 mt-8">
                                     <div className="flex flex-col gap-3">
                                         {navLinks.map((link) => {
                                             const isActive = pathname === link.href;
                                             const isServices = link.label === 'services';
 
                                             return (
-                                                <motion.div
-                                                    key={link.href}
-                                                    variants={itemVariants}
-                                                    className="rounded-2xl"
-                                                >
+                                                <div key={link.href} className="rounded-2xl">
                                                     {!isServices ? (
                                                         <Link
                                                             href={link.href}
-                                                            className={`group flex items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 ${
+                                                            className={`group flex items-center justify-between px-4 py-3 transition-all duration-300 relative ${
                                                                 isActive
-                                                                    ? 'bg-red-600 text-white border-red-500/60 shadow-lg shadow-red-600/20'
-                                                                    : 'bg-white/80 dark:bg-white/5 text-slate-700 dark:text-slate-200 border-slate-200/60 dark:border-white/10 hover:bg-white dark:hover:bg-white/10'
+                                                                    ? 'text-red-600 dark:text-red-500'
+                                                                    : 'text-slate-700 dark:text-slate-200'
                                                             }`}
                                                             onClick={closeMenu}
                                                         >
                                                             <div className="flex items-center gap-3">
-                                                                <span
-                                                                    className={`w-10 h-10 rounded-xl flex items-center justify-center border ${
-                                                                        isActive
-                                                                            ? 'bg-white/15 border-white/20 text-white'
-                                                                            : 'bg-cream-100 dark:bg-dark-900 border-slate-200/60 dark:border-white/10 text-slate-500 dark:text-slate-300'
-                                                                    }`}
-                                                                >
-                                                                    <svg
-                                                                        className="w-5 h-5"
-                                                                        fill="none"
-                                                                        viewBox="0 0 24 24"
-                                                                        stroke="currentColor"
-                                                                        strokeWidth={1.5}
-                                                                    >
-                                                                        <path
-                                                                            strokeLinecap="round"
-                                                                            strokeLinejoin="round"
-                                                                            d={link.icon}
-                                                                        />
-                                                                    </svg>
-                                                                </span>
                                                                 <span className="font-semibold text-base tracking-wide">
                                                                     {navDict[link.label]}
                                                                 </span>
                                                             </div>
-                                                            <svg
-                                                                className={`w-4 h-4 transition-transform ${
-                                                                    isActive
-                                                                        ? 'text-white/80'
-                                                                        : 'text-slate-400 group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300'
-                                                                }`}
-                                                                fill="none"
-                                                                viewBox="0 0 24 24"
-                                                                stroke="currentColor"
-                                                                strokeWidth={1.5}
-                                                            >
-                                                                <path
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                    d="M9 5l7 7-7 7"
-                                                                />
-                                                            </svg>
+                                                            <span className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-red-600 to-red-500"></span>
                                                         </Link>
                                                     ) : (
-                                                        <div
-                                                            className={`rounded-2xl border transition-all duration-300 ${
-                                                                isServicesOpen
-                                                                    ? 'bg-cream-100/80 dark:bg-white/5 border-red-500/30'
-                                                                    : 'bg-white/80 dark:bg-white/5 border-slate-200/60 dark:border-white/10'
-                                                            }`}
-                                                        >
+                                                        <div className="relative">
                                                             <button
                                                                 type="button"
-                                                                className="w-full flex items-center justify-between px-4 py-3"
+                                                                className={`w-full flex items-center justify-between px-4 py-3 transition-all duration-300 relative ${
+                                                                    isServicesOpen || isActive
+                                                                        ? 'text-red-600 dark:text-red-500'
+                                                                        : 'text-slate-700 dark:text-slate-200'
+                                                                }`}
                                                                 onClick={() =>
                                                                     setIsServicesOpen(
                                                                         !isServicesOpen,
@@ -634,28 +592,6 @@ export default function Header({ lang, dict }: HeaderProps) {
                                                                 }
                                                             >
                                                                 <div className="flex items-center gap-3">
-                                                                    <span
-                                                                        className={`w-10 h-10 rounded-xl flex items-center justify-center border ${
-                                                                            isServicesOpen ||
-                                                                            isActive
-                                                                                ? 'bg-red-600/10 border-red-600/30 text-red-600'
-                                                                                : 'bg-cream-100 dark:bg-dark-900 border-slate-200/60 dark:border-white/10 text-slate-500 dark:text-slate-300'
-                                                                        }`}
-                                                                    >
-                                                                        <svg
-                                                                            className="w-5 h-5"
-                                                                            fill="none"
-                                                                            viewBox="0 0 24 24"
-                                                                            stroke="currentColor"
-                                                                            strokeWidth={1.5}
-                                                                        >
-                                                                            <path
-                                                                                strokeLinecap="round"
-                                                                                strokeLinejoin="round"
-                                                                                d={link.icon}
-                                                                            />
-                                                                        </svg>
-                                                                    </span>
                                                                     <span
                                                                         className={`font-semibold text-base tracking-wide ${
                                                                             isServicesOpen ||
@@ -667,24 +603,21 @@ export default function Header({ lang, dict }: HeaderProps) {
                                                                         {navDict[link.label]}
                                                                     </span>
                                                                 </div>
-                                                                <motion.svg
-                                                                    className="w-4 h-4 text-slate-500 dark:text-slate-300"
-                                                                    fill="none"
-                                                                    viewBox="0 0 24 24"
-                                                                    stroke="currentColor"
+                                                                <motion.img
+                                                                    src="/arrow.png"
+                                                                    alt="Arrow"
+                                                                    className={`w-4 h-4 transition-transform duration-300 mr-0 ${
+                                                                        isServicesOpen || isActive
+                                                                            ? 'brightness-0 saturate-100'
+                                                                            : 'brightness-0 saturate-100 dark:brightness-0 dark:invert'
+                                                                    }`}
                                                                     animate={{
                                                                         rotate: isServicesOpen
                                                                             ? 180
                                                                             : 0,
                                                                     }}
-                                                                >
-                                                                    <path
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        strokeWidth={2}
-                                                                        d="M19 9l-7 7-7-7"
-                                                                    />
-                                                                </motion.svg>
+                                                                />
+                                                                <span className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-red-600 to-red-500"></span>
                                                             </button>
 
                                                             <AnimatePresence>
@@ -702,7 +635,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                                                                             opacity: 0,
                                                                             height: 0,
                                                                         }}
-                                                                        className="px-4 pb-4 pt-1 flex flex-col gap-2"
+                                                                        className="px-4 pb-4 pt-3 flex flex-col gap-2"
                                                                     >
                                                                         {servicesSubLinks.map(
                                                                             (sub) => (
@@ -712,7 +645,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                                                                                     onClick={
                                                                                         closeMenu
                                                                                     }
-                                                                                    className="block px-3 py-2 rounded-xl bg-white/80 dark:bg-black/20 text-sm font-medium text-slate-600 dark:text-dark-200 hover:bg-white dark:hover:bg-white/10 transition-colors"
+                                                                                    className="block px-3 py-2 text-sm font-medium text-slate-600 dark:text-dark-200 hover:text-red-600 dark:hover:text-red-500 transition-colors"
                                                                                 >
                                                                                     {sub.label}
                                                                                 </Link>
@@ -723,7 +656,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                                                             </AnimatePresence>
                                                         </div>
                                                     )}
-                                                </motion.div>
+                                                </div>
                                             );
                                         })}
                                     </div>
