@@ -518,7 +518,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                             <div className="relative z-10 h-full flex flex-col p-5 pt-8">
                                 {/* Header */}
                                 <motion.div
-                                    className="flex justify-between items-center mb-8"
+                                    className="flex justify-between items-center mb-8 mr-2"
                                     variants={itemVariants}
                                 >
                                     <h2 className="text-7xl sm:text-8xl md:text-9xl lg:text-10xl font-bold text-slate-900 dark:text-white ml-4 relative">
@@ -527,7 +527,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                                     </h2>
                                     <motion.button
                                         onClick={closeMenu}
-                                        className="flex items-center gap-2 text-slate-500 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors -mt-4"
+                                        className="flex items-center gap-2 text-slate-500 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors -mt-7"
                                         aria-label={headerDict.closeMenu}
                                         whileTap={{ scale: 0.95 }}
                                     >
@@ -552,7 +552,7 @@ export default function Header({ lang, dict }: HeaderProps) {
 
                                 {/* Navigation List */}
                                 <div className="flex-1 overflow-y-auto py-4 mt-8">
-                                    <div className="flex flex-col gap-3">
+                                    <div className="flex flex-col gap-4">
                                         {navLinks.map((link) => {
                                             const isActive = pathname === link.href;
                                             const isServices = link.label === 'services';
@@ -562,7 +562,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                                                     {!isServices ? (
                                                         <Link
                                                             href={link.href}
-                                                            className={`group flex items-center justify-between px-4 py-3 transition-all duration-300 relative ${
+                                                            className={`group flex items-center justify-between px-4 py-3 transition-all duration-300 relative border-b border-slate-200/30 dark:border-white/10 ${
                                                                 isActive
                                                                     ? 'text-red-600 dark:text-red-500'
                                                                     : 'text-slate-700 dark:text-slate-200'
@@ -580,7 +580,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                                                         <div className="relative">
                                                             <button
                                                                 type="button"
-                                                                className={`w-full flex items-center justify-between px-4 py-3 transition-all duration-300 relative ${
+                                                                className={`w-full flex items-center justify-between px-4 py-3 transition-all duration-300 relative border-b border-slate-200/30 dark:border-white/10 ${
                                                                     isServicesOpen || isActive
                                                                         ? 'text-red-600 dark:text-red-500'
                                                                         : 'text-slate-700 dark:text-slate-200'
@@ -665,7 +665,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                                 {/* Footer */}
                                 <motion.div
                                     variants={footerVariants}
-                                    className="mt-5 pt-4 border-t border-slate-200/50 dark:border-white/10 flex items-center justify-between"
+                                    className="pt-4 border-t border-slate-200/50 dark:border-white/10 flex items-center justify-between"
                                 >
                                     <span className="text-xs font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wider">
                                         {headerDict.language}
@@ -673,7 +673,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                                     <LanguageSwitcher currentLang={lang} />
                                 </motion.div>
 
-                                <motion.div variants={footerVariants} className="mt-4">
+                                <motion.div variants={footerVariants} className="mt-2">
                                     <Link
                                         href={`/${lang}/contact`}
                                         onClick={closeMenu}

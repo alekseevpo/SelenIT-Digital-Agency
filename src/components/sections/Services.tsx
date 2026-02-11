@@ -74,57 +74,52 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
             <div className="container-custom relative z-10">
                 {/* Section Header */}
                 <div className="text-center max-w-4xl mx-auto mb-16">
-                    <Reveal width="100%" delay={0.3}>
-                        <h2 className="heading-hero mb-6">
-                            <span className="text-slate-900 dark:text-white">
-                                {dict.title1} {dict.titleGradient}
-                            </span>
-                        </h2>
-                    </Reveal>
+                    <h2 className="heading-hero mb-6 text-3xl md:text-4xl lg:text-5xl">
+                        <span className="text-slate-900 dark:text-white">
+                            {dict.title1} {dict.titleGradient}
+                        </span>
+                    </h2>
 
                     <div className="max-w-3xl mx-auto mt-12 sm:mt-16">
-                        <Reveal width="100%" delay={0.2}>
-                            <p className="text-body transition-colors duration-300">
-                                {dict.subtitle}
-                            </p>
-                        </Reveal>
+                        <p className="text-body transition-colors duration-300">{dict.subtitle}</p>
                     </div>
                 </div>
 
                 {/* Services Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {displayServices.map((service, index) => (
-                        <Reveal key={service.id} delay={0.2 * index}>
-                            <div className="glass-card p-8 card-hover group h-full flex flex-col shadow-sm">
-                                {/* Icon */}
-                                <div className="w-14 h-14 flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                                    {serviceIcons[service.id]}
-                                </div>
-
-                                {/* Title */}
-                                <h3 className="text-slate-900 dark:text-white font-frantz font-black font-frantz-stretch mb-6 uppercase tracking-wide text-3xl md:text-4xl leading-none w-full">
-                                    {service.title}
-                                </h3>
-
-                                {/* Description - fixed height with line clamp */}
-                                <p className="text-slate-600 dark:text-dark-400 mb-6 leading-relaxed line-clamp-3 min-h-[4.5rem]">
-                                    {service.description}
-                                </p>
-
-                                {/* Features - pushed to bottom */}
-                                <ul className="space-y-2 mt-auto">
-                                    {service.features.slice(0, 3).map((feature) => (
-                                        <li
-                                            key={feature}
-                                            className="flex items-center gap-3 text-sm text-slate-500 dark:text-dark-300 group/item"
-                                        >
-                                            <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-300" />
-                                            <span className="truncate">{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                        <div
+                            key={service.id}
+                            className="glass-card p-8 card-hover group h-full flex flex-col shadow-sm"
+                        >
+                            {/* Icon */}
+                            <div className="w-14 h-14 flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                                {serviceIcons[service.id]}
                             </div>
-                        </Reveal>
+
+                            {/* Title */}
+                            <h3 className="text-slate-900 dark:text-white font-frantz font-black font-frantz-stretch mb-6 uppercase tracking-wide text-3xl md:text-4xl leading-none w-full">
+                                {service.title}
+                            </h3>
+
+                            {/* Description - fixed height with line clamp */}
+                            <p className="text-slate-600 dark:text-dark-400 mb-6 leading-relaxed line-clamp-3 min-h-[4.5rem]">
+                                {service.description}
+                            </p>
+
+                            {/* Features - pushed to bottom */}
+                            <ul className="space-y-2 mt-auto">
+                                {service.features.slice(0, 3).map((feature) => (
+                                    <li
+                                        key={feature}
+                                        className="flex items-center gap-3 text-sm text-slate-500 dark:text-dark-300 group/item"
+                                    >
+                                        <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-300" />
+                                        <span className="truncate">{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     ))}
                 </div>
             </div>

@@ -12,7 +12,7 @@ interface LogoProps {
 export function Logo({ className = '', size = 32, showText = true, animated = true }: LogoProps) {
     return (
         <motion.div
-            className={`flex items-center gap-0.5 relative ${className}`}
+            className={`flex items-center gap-1 relative ${className}`}
             initial={animated ? { opacity: 0 } : { opacity: 1 }}
             animate={{ opacity: 1 }}
             whileHover="hover"
@@ -38,18 +38,31 @@ export function Logo({ className = '', size = 32, showText = true, animated = tr
                 Agency
             </span>
             <motion.div
-                className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full"
+                className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full sm:hidden"
+                initial={{ width: '100%' }}
+                animate={{ width: '100%' }}
+            />
+            <motion.div
+                className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full hidden sm:block"
                 initial={{ width: 0 }}
                 variants={{
-                    hover: { width: '100%' }
+                    hover: { width: '100%' },
                 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
             />
         </motion.div>
     );
 }
 
-export function LogoMark({ size = 32, className = '', animated = true }: { size?: number; className?: string; animated?: boolean }) {
+export function LogoMark({
+    size = 32,
+    className = '',
+    animated = true,
+}: {
+    size?: number;
+    className?: string;
+    animated?: boolean;
+}) {
     return (
         <motion.div
             className={`flex items-center relative ${className}`}
@@ -75,9 +88,9 @@ export function LogoMark({ size = 32, className = '', animated = true }: { size?
                 className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full"
                 initial={{ width: 0 }}
                 variants={{
-                    hover: { width: '100%' }
+                    hover: { width: '100%' },
                 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
+                transition={{ duration: 0.8, ease: 'easeInOut' }}
             />
         </motion.div>
     );

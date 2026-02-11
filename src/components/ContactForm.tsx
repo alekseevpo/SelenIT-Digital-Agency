@@ -101,7 +101,9 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
             return null;
         }
         try {
-            const token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact_form' });
+            const token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {
+                action: 'contact_form',
+            });
             return token;
         } catch (error) {
             console.error('reCAPTCHA error:', error);
@@ -111,19 +113,52 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
     const validate = (): boolean => {
         const newErrors: FormErrors = {};
-        if (!formState.name.trim()) newErrors.name = lang === 'ru' ? 'Введите имя' : lang === 'es' ? 'Ingrese su nombre' : 'Name is required';
+        if (!formState.name.trim())
+            newErrors.name =
+                lang === 'ru'
+                    ? 'Введите имя'
+                    : lang === 'es'
+                      ? 'Ingrese su nombre'
+                      : 'Name is required';
 
         if (activeTab === 'message') {
             if (!formState.email.trim()) {
-                newErrors.email = lang === 'ru' ? 'Введите email' : lang === 'es' ? 'Ingrese su email' : 'Email is required';
+                newErrors.email =
+                    lang === 'ru'
+                        ? 'Введите email'
+                        : lang === 'es'
+                          ? 'Ingrese su email'
+                          : 'Email is required';
             } else if (!/\S+@\S+\.\S+/.test(formState.email)) {
-                newErrors.email = lang === 'ru' ? 'Некорректный email' : lang === 'es' ? 'Email inválido' : 'Invalid email format';
+                newErrors.email =
+                    lang === 'ru'
+                        ? 'Некорректный email'
+                        : lang === 'es'
+                          ? 'Email inválido'
+                          : 'Invalid email format';
             }
-            if (!formState.service) newErrors.service = lang === 'ru' ? 'Выберите услугу' : lang === 'es' ? 'Seleccione un servicio' : 'Please select a service';
-            if (!formState.message.trim()) newErrors.message = lang === 'ru' ? 'Введите детали' : lang === 'es' ? 'Ingrese detalles' : 'Details are required';
+            if (!formState.service)
+                newErrors.service =
+                    lang === 'ru'
+                        ? 'Выберите услугу'
+                        : lang === 'es'
+                          ? 'Seleccione un servicio'
+                          : 'Please select a service';
+            if (!formState.message.trim())
+                newErrors.message =
+                    lang === 'ru'
+                        ? 'Введите детали'
+                        : lang === 'es'
+                          ? 'Ingrese detalles'
+                          : 'Details are required';
         } else {
             if (!formState.phone.trim()) {
-                newErrors.phone = lang === 'ru' ? 'Введите номер телефона' : lang === 'es' ? 'Ingrese su teléfono' : 'Phone is required';
+                newErrors.phone =
+                    lang === 'ru'
+                        ? 'Введите номер телефона'
+                        : lang === 'es'
+                          ? 'Ingrese su teléfono'
+                          : 'Phone is required';
             }
         }
 
@@ -152,12 +187,15 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
             // Log warning but proceed if reCAPTCHA is blocked by ad-blocker
             if (!recaptchaToken) {
-                console.warn('reCAPTCHA not loaded or blocked. Proceeding with honeypot protection only.');
+                console.warn(
+                    'reCAPTCHA not loaded or blocked. Proceeding with honeypot protection only.',
+                );
             }
 
-            const messageContent = activeTab === 'message'
-                ? `Type: Inquiry\nService: ${formState.service}\nBudget: ${formState.budget || 'Not specified'}\n\n${formState.message}`
-                : `Type: Callback Request\nPhone: ${formState.phone}\nService Interested In: ${formState.service || 'Not specified'}\n\nNotes: ${formState.message || 'No notes provided'}`;
+            const messageContent =
+                activeTab === 'message'
+                    ? `Type: Inquiry\nService: ${formState.service}\nBudget: ${formState.budget || 'Not specified'}\n\n${formState.message}`
+                    : `Type: Callback Request\nPhone: ${formState.phone}\nService Interested In: ${formState.service || 'Not specified'}\n\nNotes: ${formState.message || 'No notes provided'}`;
 
             // Submit to API
             const response = await fetch('/api/contact', {
@@ -194,16 +232,20 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         } catch (error) {
             console.error('Submit error:', error);
             setSubmitError(
-                lang === 'ru' ? 'Ошибка отправки. Попробуйте позже.' :
-                    lang === 'es' ? 'Error al enviar. Intente más tarde.' :
-                        'Failed to send. Please try again later.'
+                lang === 'ru'
+                    ? 'Ошибка отправки. Попробуйте позже.'
+                    : lang === 'es'
+                      ? 'Error al enviar. Intente más tarde.'
+                      : 'Failed to send. Please try again later.',
             );
         } finally {
             setIsSubmitting(false);
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    ) => {
         const { name, value } = e.target;
         setFormState((prev) => ({
             ...prev,
@@ -211,13 +253,13 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         }));
         // Real-time validation clear
         if (errors[name as keyof FormErrors]) {
-            setErrors(prev => ({ ...prev, [name]: undefined }));
+            setErrors((prev) => ({ ...prev, [name]: undefined }));
         }
         setSubmitError(null);
     };
 
     return (
-        <div className="glass-card p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500">
+        <div className="p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500">
             {/* Subtle background glow for the card */}
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary-500/5 blur-[100px] rounded-full pointer-events-none group-hover/card:bg-primary-500/10 transition-colors duration-700" />
 
@@ -231,20 +273,27 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                         <motion.svg
                             initial={{ pathLength: 0 }}
                             animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
                             className="w-10 h-10 text-green-500"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                         >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2.5}
+                                d="M5 13l4 4L19 7"
+                            />
                         </motion.svg>
                     </div>
                     <h3 className="heading-3 mb-4 text-slate-900 dark:text-white font-bold tracking-tight">
                         {activeTab === 'message' ? dict.successTitle : dict.callbackSuccessTitle}
                     </h3>
                     <p className="text-slate-600 dark:text-dark-400 mb-8 max-w-sm mx-auto leading-relaxed">
-                        {activeTab === 'message' ? dict.successSubtitle : dict.callbackSuccessSubtitle}
+                        {activeTab === 'message'
+                            ? dict.successSubtitle
+                            : dict.callbackSuccessSubtitle}
                     </p>
                     <button
                         onClick={() => setIsSubmitted(false)}
@@ -265,32 +314,38 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                             animate={{
                                 x: activeTab === 'message' ? '0%' : '100%',
                             }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                             style={{ width: 'calc(50% - 4px)' }}
                         />
                         <button
                             type="button"
                             onClick={() => setActiveTab('message')}
-                            className={`relative flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 z-10 ${activeTab === 'message'
-                                ? 'text-primary-600 dark:text-primary-400'
-                                : 'text-slate-500 dark:text-dark-500 hover:text-slate-700 dark:hover:text-dark-300'
-                                }`}
+                            className={`relative flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 z-10 ${
+                                activeTab === 'message'
+                                    ? 'text-primary-600 dark:text-primary-400'
+                                    : 'text-slate-500 dark:text-dark-500 hover:text-slate-700 dark:hover:text-dark-300'
+                            }`}
                         >
                             {dict.tabs.message}
                         </button>
                         <button
                             type="button"
                             onClick={() => setActiveTab('callback')}
-                            className={`relative flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 z-10 ${activeTab === 'callback'
-                                ? 'text-primary-600 dark:text-primary-400'
-                                : 'text-slate-500 dark:text-dark-500 hover:text-slate-700 dark:hover:text-dark-300'
-                                }`}
+                            className={`relative flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 z-10 ${
+                                activeTab === 'callback'
+                                    ? 'text-primary-600 dark:text-primary-400'
+                                    : 'text-slate-500 dark:text-dark-500 hover:text-slate-700 dark:hover:text-dark-300'
+                            }`}
                         >
                             {dict.tabs.callback}
                         </button>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-7" noValidate>
+                    <form
+                        onSubmit={handleSubmit}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-7"
+                        noValidate
+                    >
                         {/* Honeypot field - hidden from users */}
                         <div className="hidden" aria-hidden="true">
                             <input
@@ -314,7 +369,10 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                             >
                                 {/* Common: Name */}
                                 <div className="group/input">
-                                    <label htmlFor="name" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
+                                    <label
+                                        htmlFor="name"
+                                        className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500"
+                                    >
                                         {dict.fullName} <span className="text-red-500">*</span>
                                     </label>
                                     <input
@@ -323,22 +381,38 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                         name="name"
                                         value={formState.name}
                                         onChange={handleChange}
-                                        className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.name
-                                            ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
-                                            : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
-                                            }`}
+                                        className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${
+                                            errors.name
+                                                ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
+                                                : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
+                                        }`}
                                         placeholder="Jane Doe"
                                     />
-                                    {errors.name && <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
-                                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
-                                        {errors.name}
-                                    </p>}
+                                    {errors.name && (
+                                        <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
+                                            <svg
+                                                className="w-3 h-3"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20"
+                                            >
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                            {errors.name}
+                                        </p>
+                                    )}
                                 </div>
 
                                 {/* Conditional: Email or Phone */}
                                 {activeTab === 'message' ? (
                                     <div className="group/input">
-                                        <label htmlFor="email" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
+                                        <label
+                                            htmlFor="email"
+                                            className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500"
+                                        >
                                             {dict.email} <span className="text-red-500">*</span>
                                         </label>
                                         <input
@@ -347,20 +421,36 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                             name="email"
                                             value={formState.email}
                                             onChange={handleChange}
-                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.email
-                                                ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
-                                                : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
-                                                }`}
+                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${
+                                                errors.email
+                                                    ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
+                                                    : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
+                                            }`}
                                             placeholder="jane@company.com"
                                         />
-                                        {errors.email && <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
-                                            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
-                                            {errors.email}
-                                        </p>}
+                                        {errors.email && (
+                                            <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
+                                                <svg
+                                                    className="w-3 h-3"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 20 20"
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+                                                {errors.email}
+                                            </p>
+                                        )}
                                     </div>
                                 ) : (
                                     <div className="group/input">
-                                        <label htmlFor="phone" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
+                                        <label
+                                            htmlFor="phone"
+                                            className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500"
+                                        >
                                             {dict.phone} <span className="text-red-500">*</span>
                                         </label>
                                         <input
@@ -369,21 +459,37 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                             name="phone"
                                             value={formState.phone}
                                             onChange={handleChange}
-                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${errors.phone
-                                                ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
-                                                : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
-                                                }`}
+                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${
+                                                errors.phone
+                                                    ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
+                                                    : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
+                                            }`}
                                             placeholder={dict.phonePlaceholder}
                                         />
-                                        {errors.phone && <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
-                                            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
-                                            {errors.phone}
-                                        </p>}
+                                        {errors.phone && (
+                                            <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
+                                                <svg
+                                                    className="w-3 h-3"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 20 20"
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+                                                {errors.phone}
+                                            </p>
+                                        )}
                                     </div>
                                 )}
 
                                 <div className="group/input">
-                                    <label htmlFor="company" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
+                                    <label
+                                        htmlFor="company"
+                                        className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500"
+                                    >
                                         {dict.company}
                                     </label>
                                     <input
@@ -398,8 +504,14 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 </div>
 
                                 <div className="group/input">
-                                    <label htmlFor="service" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
-                                        {dict.service} {activeTab === 'message' && <span className="text-red-500">*</span>}
+                                    <label
+                                        htmlFor="service"
+                                        className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500"
+                                    >
+                                        {dict.service}{' '}
+                                        {activeTab === 'message' && (
+                                            <span className="text-red-500">*</span>
+                                        )}
                                     </label>
                                     <div className="relative">
                                         <select
@@ -407,28 +519,57 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                             name="service"
                                             value={formState.service}
                                             onChange={handleChange}
-                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border transition-all outline-none appearance-none focus:ring-4 focus:ring-primary-500/10 cursor-pointer ${errors.service
-                                                ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
-                                                : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm backdrop-blur-md'
-                                                }`}
+                                            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border transition-all outline-none appearance-none focus:ring-4 focus:ring-primary-500/10 cursor-pointer ${
+                                                errors.service
+                                                    ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
+                                                    : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm backdrop-blur-md'
+                                            }`}
                                         >
-                                            <option value="" className="bg-white dark:bg-dark-900">{dict.selectService}</option>
+                                            <option value="" className="bg-white dark:bg-dark-900">
+                                                {dict.selectService}
+                                            </option>
                                             {dict.serviceOptions.map((service) => (
-                                                <option key={service} value={service} className="bg-white dark:bg-dark-900">
+                                                <option
+                                                    key={service}
+                                                    value={service}
+                                                    className="bg-white dark:bg-dark-900"
+                                                >
                                                     {service}
                                                 </option>
                                             ))}
                                         </select>
                                         <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 dark:text-dark-600">
-                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            <svg
+                                                className="w-5 h-5"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M19 9l-7 7-7-7"
+                                                />
                                             </svg>
                                         </div>
                                     </div>
-                                    {errors.service && <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
-                                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
-                                        {errors.service}
-                                    </p>}
+                                    {errors.service && (
+                                        <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
+                                            <svg
+                                                className="w-3 h-3"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20"
+                                            >
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                            {errors.service}
+                                        </p>
+                                    )}
                                 </div>
 
                                 {activeTab === 'message' && (
@@ -438,7 +579,10 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                         exit={{ opacity: 0, height: 0 }}
                                         className="col-span-1 md:col-span-2 group/input"
                                     >
-                                        <label htmlFor="budget" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
+                                        <label
+                                            htmlFor="budget"
+                                            className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500"
+                                        >
                                             {dict.budget}
                                         </label>
                                         <div className="relative">
@@ -449,16 +593,35 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                                 onChange={handleChange}
                                                 className="w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white appearance-none focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm backdrop-blur-md cursor-pointer"
                                             >
-                                                <option value="" className="bg-white dark:bg-dark-900">{dict.selectBudget}</option>
+                                                <option
+                                                    value=""
+                                                    className="bg-white dark:bg-dark-900"
+                                                >
+                                                    {dict.selectBudget}
+                                                </option>
                                                 {dict.budgetOptions.map((budget) => (
-                                                    <option key={budget} value={budget} className="bg-white dark:bg-dark-900">
+                                                    <option
+                                                        key={budget}
+                                                        value={budget}
+                                                        className="bg-white dark:bg-dark-900"
+                                                    >
                                                         {budget}
                                                     </option>
                                                 ))}
                                             </select>
                                             <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 dark:text-dark-600">
-                                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                <svg
+                                                    className="w-5 h-5"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={2}
+                                                        d="M19 9l-7 7-7-7"
+                                                    />
                                                 </svg>
                                             </div>
                                         </div>
@@ -466,8 +629,18 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 )}
 
                                 <div className="col-span-1 md:col-span-2 group/input">
-                                    <label htmlFor="message" className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500">
-                                        {activeTab === 'message' ? dict.details : (lang === 'ru' ? 'ДОПОЛНИТЕЛЬНЫЕ ПРИМЕЧАНИЯ' : 'ADDITIONAL NOTES')} {activeTab === 'message' && <span className="text-red-500">*</span>}
+                                    <label
+                                        htmlFor="message"
+                                        className="block text-xs font-bold text-slate-500 dark:text-dark-500 uppercase tracking-[0.15em] mb-2.5 transition-colors group-focus-within/input:text-primary-500"
+                                    >
+                                        {activeTab === 'message'
+                                            ? dict.details
+                                            : lang === 'ru'
+                                              ? 'ДОПОЛНИТЕЛЬНЫЕ ПРИМЕЧАНИЯ'
+                                              : 'ADDITIONAL NOTES'}{' '}
+                                        {activeTab === 'message' && (
+                                            <span className="text-red-500">*</span>
+                                        )}
                                     </label>
                                     <textarea
                                         id="message"
@@ -475,16 +648,35 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                         rows={activeTab === 'message' ? 5 : 4}
                                         value={formState.message}
                                         onChange={handleChange}
-                                        className={`w-full px-5 py-4 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none resize-none focus:ring-4 focus:ring-primary-500/10 ${errors.message
-                                            ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
-                                            : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
-                                            }`}
-                                        placeholder={activeTab === 'message' ? dict.detailsPlaceholder : (lang === 'ru' ? 'Расскажите вкратце, о чем пойдет речь...' : 'Tell us briefly what the call will be about...')}
+                                        className={`w-full px-5 py-4 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none resize-none focus:ring-4 focus:ring-primary-500/10 ${
+                                            errors.message
+                                                ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
+                                                : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
+                                        }`}
+                                        placeholder={
+                                            activeTab === 'message'
+                                                ? dict.detailsPlaceholder
+                                                : lang === 'ru'
+                                                  ? 'Расскажите вкратце, о чем пойдет речь...'
+                                                  : 'Tell us briefly what the call will be about...'
+                                        }
                                     />
-                                    {errors.message && <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
-                                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
-                                        {errors.message}
-                                    </p>}
+                                    {errors.message && (
+                                        <p className="mt-2 text-xs text-red-500 font-semibold flex items-center gap-1">
+                                            <svg
+                                                className="w-3 h-3"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20"
+                                            >
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                            {errors.message}
+                                        </p>
+                                    )}
                                 </div>
                             </motion.div>
                         </AnimatePresence>
@@ -495,8 +687,16 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="col-span-1 md:col-span-2 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 flex items-center gap-3 text-sm font-medium"
                             >
-                                <svg className="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                <svg
+                                    className="w-5 h-5 shrink-0"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                        clipRule="evenodd"
+                                    />
                                 </svg>
                                 {submitError}
                             </motion.div>
@@ -515,26 +715,56 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
                                 {isSubmitting ? (
                                     <>
-                                        <svg className="animate-spin w-6 h-6 text-white" fill="none" viewBox="0 0 24 24">
-                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                        <svg
+                                            className="animate-spin w-6 h-6 text-white"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <circle
+                                                className="opacity-25"
+                                                cx="12"
+                                                cy="12"
+                                                r="10"
+                                                stroke="currentColor"
+                                                strokeWidth="4"
+                                            />
+                                            <path
+                                                className="opacity-75"
+                                                fill="currentColor"
+                                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                            />
                                         </svg>
-                                        <span className="relative uppercase tracking-widest text-sm">{dict.sending}</span>
+                                        <span className="relative uppercase tracking-widest text-sm">
+                                            {dict.sending}
+                                        </span>
                                     </>
                                 ) : (
                                     <>
                                         <span className="relative uppercase tracking-widest text-sm">
-                                            {activeTab === 'message' ? dict.submit : (lang === 'ru' ? 'Заказать звонок' : 'Request Callback')}
+                                            {activeTab === 'message'
+                                                ? dict.submit
+                                                : lang === 'ru'
+                                                  ? 'Заказать звонок'
+                                                  : 'Request Callback'}
                                         </span>
                                         <motion.svg
                                             className="w-5 h-5 relative"
                                             animate={{ x: [0, 5, 0] }}
-                                            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                                            transition={{
+                                                repeat: Infinity,
+                                                duration: 1.5,
+                                                ease: 'easeInOut',
+                                            }}
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
                                         >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={3}
+                                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                            />
                                         </motion.svg>
                                     </>
                                 )}
@@ -543,15 +773,37 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                             {/* reCAPTCHA notice - Centered and clean */}
                             <div className="mt-8 flex flex-col items-center gap-1.5 opacity-60">
                                 <p className="text-[9px] text-slate-500 dark:text-dark-500 text-center font-bold uppercase tracking-[0.2em]">
-                                    {lang === 'ru' ? 'Защищено reCAPTCHA' : lang === 'es' ? 'Protegido por reCAPTCHA' : 'Protected by reCAPTCHA'}
+                                    {lang === 'ru'
+                                        ? 'Защищено reCAPTCHA'
+                                        : lang === 'es'
+                                          ? 'Protegido por reCAPTCHA'
+                                          : 'Protected by reCAPTCHA'}
                                 </p>
                                 <div className="flex items-center gap-2 text-[9px] text-slate-500 dark:text-dark-500 font-bold uppercase tracking-[0.2em]">
-                                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors underline decoration-dotted underline-offset-4">
-                                        {lang === 'ru' ? 'Конфиденциальность' : lang === 'es' ? 'Privacidad' : 'Privacy'}
+                                    <a
+                                        href="https://policies.google.com/privacy"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-primary-500 transition-colors underline decoration-dotted underline-offset-4"
+                                    >
+                                        {lang === 'ru'
+                                            ? 'Конфиденциальность'
+                                            : lang === 'es'
+                                              ? 'Privacidad'
+                                              : 'Privacy'}
                                     </a>
                                     <span className="text-[8px]">&</span>
-                                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500 transition-colors underline decoration-dotted underline-offset-4">
-                                        {lang === 'ru' ? 'Условия' : lang === 'es' ? 'Términos' : 'Terms'}
+                                    <a
+                                        href="https://policies.google.com/terms"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-primary-500 transition-colors underline decoration-dotted underline-offset-4"
+                                    >
+                                        {lang === 'ru'
+                                            ? 'Условия'
+                                            : lang === 'es'
+                                              ? 'Términos'
+                                              : 'Terms'}
                                     </a>
                                 </div>
                             </div>

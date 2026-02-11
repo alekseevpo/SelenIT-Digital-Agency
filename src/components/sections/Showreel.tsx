@@ -14,10 +14,6 @@ interface ShowreelProps {
         titleGradient: string;
         subtitle: string;
         videoId?: string;
-        button: string;
-        viewProject: string;
-        watchVideo: string;
-        comingSoon: string;
     };
 }
 
@@ -105,7 +101,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                         </div>
                                     </div>
                                     <span className="absolute bottom-1/4 text-white/80 text-sm font-medium tracking-wide opacity-0 group-hover/play:opacity-100 transition-opacity duration-300">
-                                        {dict.watchVideo}
+                                        Watch Video
                                     </span>
                                 </div>
                             )}
@@ -121,7 +117,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                 {/* Coming Soon Badge */}
                                 <div className="absolute top-4 right-4 z-10">
                                     <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider bg-slate-100/80 dark:bg-slate-800/80 px-2 py-1 rounded-full backdrop-blur-sm">
-                                        {dict.comingSoon}
+                                        Coming Soon
                                     </span>
                                 </div>
                                 <div className="relative z-10">
@@ -135,7 +131,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                         href={`/${lang}/showreel`}
                                         className="inline-flex items-center text-sm text-slate-700 dark:text-slate-300 font-medium hover:text-orange-500 dark:hover:text-primary-400 transition-colors group/link mt-1"
                                     >
-                                        {dict.viewProject}
+                                        View Project
                                         <svg
                                             className="w-4 h-4 ml-1.5 transition-transform group-hover/link:translate-x-1"
                                             fill="none"
@@ -163,7 +159,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                             href={`/${lang}/showreel`}
                             className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100/50 dark:bg-dark-800 text-slate-900 dark:text-white font-semibold rounded-full border border-slate-200 dark:border-dark-600 transition-all duration-300 hover:border-orange-500 dark:hover:border-primary-500 active:scale-95 backdrop-blur-sm"
                         >
-                            {dict.button}
+                            View All Projects
                             <svg
                                 className="w-4 h-4"
                                 fill="none"

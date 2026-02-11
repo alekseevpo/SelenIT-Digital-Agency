@@ -94,8 +94,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                             {/* Heading */}
                             <motion.h1
                                 variants={itemVariants}
-                                className="heading-1 heading-hero text-7xl sm:text-8xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 lg:mb-0 text-slate-900 dark:text-white leading-[0.85] ml-0 sm:-ml-8 lg:-ml-12"
-                                style={{ '--hero-scale': 4 } as React.CSSProperties}
+                                className="text-[4rem] sm:text-8xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 mt-20 lg:mb-0 lg:mt-0 text-slate-900 dark:text-white leading-[0.85] text-center lg:text-left ml-0 sm:-ml-8 lg:-ml-12"
                             >
                                 {dict.title1}
                                 <br />
@@ -126,6 +125,15 @@ export default function Hero({ dict, lang }: HeroProps) {
                         </div>
 
                         <div className="lg:col-span-6 lg:-translate-y-12">
+                            {/* Mobile Image */}
+                            <div className="lg:hidden mb-8 flex justify-center">
+                                <img
+                                    src="/BugermanAndWall.png"
+                                    alt="Bugerman and Wall illustration"
+                                    className="max-w-full h-auto rounded-lg dark:invert"
+                                />
+                            </div>
+
                             {/* Subheading */}
                             <motion.div
                                 variants={itemVariants}

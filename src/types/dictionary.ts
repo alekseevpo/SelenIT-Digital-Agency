@@ -228,9 +228,6 @@ export interface Dictionary {
             titleGradient: string;
             subtitle: string;
             videoId: string;
-            button: string;
-            viewProject: string;
-            watchVideo: string;
         };
         testimonials: {
             badge: string;

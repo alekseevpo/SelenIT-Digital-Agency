@@ -9,7 +9,7 @@ export default function BackToTop() {
 
     useEffect(() => {
         const toggleVisibility = () => {
-            setIsVisible(window.scrollY > 400);
+            setIsVisible(window.scrollY > 200);
         };
 
         window.addEventListener('scroll', toggleVisibility);
@@ -32,7 +32,7 @@ export default function BackToTop() {
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.2 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-48 right-6 z-50 p-3 rounded-full bg-slate-200 dark:bg-dark-800 hover:bg-slate-300 dark:hover:bg-dark-700 text-slate-700 dark:text-dark-200 shadow-lg transition-colors duration-200"
+                    className="fixed bottom-36 right-6 z-[60] p-3 rounded-full bg-slate-200 dark:bg-dark-800 hover:bg-slate-300 dark:hover:bg-dark-700 text-slate-700 dark:text-dark-200 shadow-lg transition-colors duration-200"
                     aria-label="Back to top"
                 >
                     <ArrowUp className="w-5 h-5" />

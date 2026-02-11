@@ -12,6 +12,7 @@ jest.mock('framer-motion', () => ({
         h2: 'h2',
         svg: 'svg',
         a: 'a',
+        img: 'img',
     },
     AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
     useInView: jest.fn(() => true),

@@ -55,7 +55,7 @@ export default async function ContactPage({ params }: PageProps) {
                 </svg>
             ),
             title: 'WhatsApp',
-            value: WHATSAPP_NUMBER,
+            value: 'Написать в WhatsApp',
             href: WHATSAPP_LINK,
         },
     ];
@@ -75,6 +75,13 @@ export default async function ContactPage({ params }: PageProps) {
                             <span className="gradient-text">{hero.titleGradient}</span>
                         </h1>
                         <p className="text-body transition-colors duration-300">{hero.subtitle}</p>
+                        <div className="mt-8 flex justify-center">
+                            <img
+                                src="/conversation_two.png"
+                                alt="Conversation illustration"
+                                className="rounded-lg dark:invert"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
@@ -85,32 +92,10 @@ export default async function ContactPage({ params }: PageProps) {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                         {/* Contact Info */}
                         <div className="lg:col-span-1 space-y-8">
-                            <div>
-                                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-slate-900 dark:text-white leading-[0.9] tracking-tight">
-                                    {info.title.split(' ').map((word, i, arr) => {
-                                        const cleanWord = word.replace(/[.,]/g, '').toLowerCase();
-                                        const highlightWords = [
-                                            'contacts',
-                                            'контакты',
-                                            'contactos',
-                                        ];
-                                        const isHighlight = highlightWords.some(
-                                            (hw) => cleanWord === hw,
-                                        );
-                                        return (
-                                            <span
-                                                key={i}
-                                                className={isHighlight ? 'text-red-600' : ''}
-                                            >
-                                                {word}
-                                                {i < arr.length - 1 ? ' ' : ''}
-                                            </span>
-                                        );
-                                    })}
+                            <div className="text-center mb-12">
+                                <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 dark:text-white leading-[0.9] tracking-tight">
+                                    Контакты
                                 </h2>
-                                <p className="text-slate-600 dark:text-dark-400 mb-8">
-                                    {info.subtitle}
-                                </p>
                             </div>
 
                             <div className="space-y-4">
@@ -128,9 +113,9 @@ export default async function ContactPage({ params }: PageProps) {
                                                 ? 'noopener noreferrer'
                                                 : undefined
                                         }
-                                        className="flex items-center gap-4 p-4 rounded-xl bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 hover:border-red-600 dark:hover:border-red-500 hover:shadow-md transition-all group w-full"
+                                        className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-dark-700 hover:border-red-600 dark:hover:border-red-500 hover:shadow-md transition-all group w-full"
                                     >
-                                        <div className="w-12 h-12 rounded-lg bg-cream-100 dark:bg-dark-700 flex items-center justify-center text-red-600 dark:text-red-500 group-hover:bg-red-600 dark:group-hover:bg-red-500 group-hover:text-white transition-colors">
+                                        <div className="w-12 h-12 rounded-lg flex items-center justify-center text-red-600 dark:text-red-500 group-hover:bg-red-600 dark:group-hover:bg-red-500 group-hover:text-white transition-colors">
                                             {item.icon}
                                         </div>
                                         <div>
@@ -146,7 +131,7 @@ export default async function ContactPage({ params }: PageProps) {
                             </div>
 
                             {/* Office Hours */}
-                            <div className="glass-card p-10 bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 shadow-sm mt-12">
+                            <div className="p-10 bg-white dark:bg-black border border-slate-200 dark:border-dark-700 shadow-sm mt-12">
                                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-slate-900 dark:text-white leading-[0.9] tracking-normal uppercase">
                                     {(() => {
                                         const title = info.hoursTitle;
@@ -175,19 +160,19 @@ export default async function ContactPage({ params }: PageProps) {
                                 <div className="space-y-6 text-sm text-slate-600 dark:text-dark-400">
                                     <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0 border-b border-slate-200/50 dark:border-dark-700/50 pb-3">
                                         <span className="font-medium">{info.mondayFriday}</span>
-                                        <span className="text-red-600 dark:text-red-500">
+                                        <span className="text-slate-900 dark:text-white">
                                             9:00 AM — 6:00 PM
                                         </span>
                                     </div>
                                     <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0 border-b border-slate-200/50 dark:border-dark-700/50 pb-3">
                                         <span className="font-medium">{info.saturday}</span>
-                                        <span className="text-red-600 dark:text-red-500">
+                                        <span className="text-slate-900 dark:text-white">
                                             10:00 AM — 4:00 PM
                                         </span>
                                     </div>
                                     <div className="flex flex-col sm:flex-row sm:justify-between gap-2 sm:gap-0">
                                         <span className="font-medium">{info.sunday}</span>
-                                        <span className="text-red-600 dark:text-red-500 font-black uppercase tracking-[0.2em] text-sm flex items-center">
+                                        <span className="text-slate-900 dark:text-white font-black uppercase tracking-[0.2em] text-sm flex items-center">
                                             {info.closed}
                                         </span>
                                     </div>
