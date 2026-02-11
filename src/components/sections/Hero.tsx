@@ -82,7 +82,7 @@ export default function Hero({ dict, lang }: HeroProps) {
 
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden">
-            <div className="w-full px-4 sm:px-10 lg:px-12 pt-16 sm:pt-20 pb-24 relative z-10">
+            <div className="w-full px-4 sm:px-10 lg:px-12 pt-16 sm:pt-20 pb-24 relative z-10 overflow-x-hidden">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -130,7 +130,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                                 <img
                                     src="/BugermanAndWall.png"
                                     alt="Bugerman and Wall illustration"
-                                    className="max-w-full h-auto rounded-lg dark:invert"
+                                    className="max-w-[80%] h-auto rounded-lg dark:invert"
                                 />
                             </div>
 

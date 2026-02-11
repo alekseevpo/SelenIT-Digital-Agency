@@ -64,7 +64,7 @@ export default async function ContactPage({ params }: PageProps) {
         <div className="min-h-screen transition-colors duration-300">
             <BreadcrumbJsonLd items={breadcrumbs} />
             {/* Hero Section */}
-            <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300">
+            <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300 overflow-x-hidden">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
                         <span className="invisible font-semibold text-sm uppercase tracking-wider mb-4 block">
@@ -79,7 +79,7 @@ export default async function ContactPage({ params }: PageProps) {
                             <img
                                 src="/conversation_two.png"
                                 alt="Conversation illustration"
-                                className="rounded-lg dark:invert"
+                                className="rounded-lg dark:invert max-w-[80%] h-auto"
                             />
                         </div>
                     </div>
