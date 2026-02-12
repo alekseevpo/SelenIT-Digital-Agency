@@ -100,7 +100,8 @@ export default async function AboutPage({ params }: AboutPageProps) {
                                         <>
                                             <span className="text-red-600 dark:text-red-500">
                                                 {title1}
-                                            </span>{' '}
+                                            </span>
+                                            <br />
                                             {titleGradient}
                                         </>
                                     );
@@ -118,10 +119,10 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                            <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block text-center lg:text-left">
                                 {story.badge}
                             </span>
-                            <h2 className="heading-hero mb-6">
+                            <h2 className="heading-hero mb-6 text-center lg:text-left">
                                 <span className="text-slate-900 dark:text-white">
                                     {story.title1} {story.titleGradient}
                                 </span>
@@ -131,6 +132,15 @@ export default async function AboutPage({ params }: AboutPageProps) {
                                 <p>{story.p2}</p>
                                 <p>{story.p3}</p>
                             </div>
+
+                            {/* Mobile Team Image */}
+                            <div className="lg:hidden mt-8 flex justify-center">
+                                <img
+                                    src="/our_team.png"
+                                    alt="Our Team"
+                                    className="max-w-[80%] h-auto rounded-lg dark:invert"
+                                />
+                            </div>
                         </div>
 
                         {/* Stats Grid */}
@@ -138,13 +148,30 @@ export default async function AboutPage({ params }: AboutPageProps) {
                             {stats.map((stat) => (
                                 <div
                                     key={stat.label}
-                                    className="glass-card p-8 text-center bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700"
+                                    className="glass-card p-8 text-center bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 lg:border lg:border-slate-200 lg:dark:border-dark-700"
                                 >
                                     <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
                                         {stat.value}
                                     </div>
-                                    <div className="text-slate-500 dark:text-dark-400">
-                                        {stat.label}
+                                    <div className="text-slate-500 dark:text-dark-400 text-left">
+                                        {stat.label.split('\n').map((line, index) => (
+                                            <div key={index}>
+                                                {index === 0 ? (
+                                                    <div className="font-semibold mb-3 text-red-600 dark:text-red-500">
+                                                        {line}
+                                                    </div>
+                                                ) : (
+                                                    <div className="flex items-start mb-2 last:mb-0">
+                                                        <span className="text-red-600 dark:text-red-500 mr-3 mt-0 text-sm">
+                                                            •
+                                                        </span>
+                                                        <span className="text-sm leading-relaxed">
+                                                            {line}
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             ))}
