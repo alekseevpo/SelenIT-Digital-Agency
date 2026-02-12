@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Heart } from 'lucide-react';
 import { motion, Variants, useInView, animate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
@@ -128,10 +129,13 @@ export default function Hero({ dict, lang }: HeroProps) {
                         <div className="lg:col-span-6 lg:-translate-y-12">
                             {/* Mobile Image */}
                             <div className="lg:hidden mb-8 flex justify-center">
-                                <img
-                                    src="/terrible_design.png"
-                                    alt="Terrible design illustration"
+                                <Image
+                                    src="/conversation_two.png"
+                                    alt="Conversation illustration"
+                                    width={400}
+                                    height={300}
                                     className="max-w-[80%] h-auto rounded-lg dark:invert"
+                                    priority
                                 />
                             </div>
 

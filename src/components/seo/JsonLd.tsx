@@ -7,6 +7,7 @@ export default function JsonLd({ data }: JsonLdProps) {
         <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+            suppressHydrationWarning
         />
     );
 }
@@ -35,13 +36,10 @@ export function OrganizationJsonLd({ url, lang }: { url: string; lang: string })
                 logo: `${url}/logo.svg`,
                 description: descriptions[lang] || descriptions.en,
                 foundingDate: '2024',
-                sameAs: [
-                    'https://github.com/alekseevpo',
-                    'https://t.me/ppmtrue',
-                ],
+                sameAs: ['https://github.com/alekseevpo', 'https://t.me/ppmtrue'],
                 contactPoint: {
                     '@type': 'ContactPoint',
-                    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'alekseevpo@gmail.com',
+                    email: 'alekseevpo@gmail.com',
                     contactType: 'customer service',
                     availableLanguage: ['English', 'Russian', 'Spanish'],
                 },

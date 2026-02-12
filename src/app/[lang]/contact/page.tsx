@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import ContactForm from '@/components/ContactForm';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
@@ -76,10 +77,13 @@ export default async function ContactPage({ params }: PageProps) {
                         </h1>
                         <p className="text-body transition-colors duration-300">{hero.subtitle}</p>
                         <div className="mt-8 flex justify-center">
-                            <img
+                            <Image
                                 src="/conversation_two.png"
                                 alt="Conversation illustration"
+                                width={400}
+                                height={300}
                                 className="rounded-lg dark:invert max-w-[80%] h-auto"
+                                priority
                             />
                         </div>
                     </div>

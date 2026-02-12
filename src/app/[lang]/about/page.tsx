@@ -135,10 +135,13 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
                             {/* Mobile Team Image */}
                             <div className="lg:hidden mt-8 flex justify-center">
-                                <img
+                                <Image
                                     src="/our_team.png"
                                     alt="Our Team"
+                                    width={400}
+                                    height={300}
                                     className="max-w-[80%] h-auto rounded-lg dark:invert"
+                                    priority
                                 />
                             </div>
                         </div>

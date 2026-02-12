@@ -144,7 +144,7 @@ export default async function RootLayout({
                 <ProgressBar />
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="dark"
+                    defaultTheme="system"
                     enableSystem
                     disableTransitionOnChange
                 >
