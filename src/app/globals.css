@@ -373,6 +373,16 @@ article p {
         background: #f9f3e8 !important;
     }
 
+    /* Force center cookie consent on all devices */
+    [class*='cookie-consent'],
+    [data-testid*='cookie'],
+    div[class*='fixed'][class*='bottom-4'][class*='left-1/2'] {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        margin: 0 !important;
+    }
+
     .gradient-text {
         @apply bg-clip-text text-transparent;
         background-image: linear-gradient(to right, #ff0000, #cc0000);

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Reveal } from '../ui/Reveal';
+import Link from 'next/link';
 
 interface ServicesProps {
     lang: string;
@@ -88,38 +89,40 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                 {/* Services Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {displayServices.map((service, index) => (
-                        <div
+                        <Link
                             key={service.id}
-                            className="glass-card p-8 card-hover group h-full flex flex-col shadow-sm"
+                            href={
+                                service.id === 'support'
+                                    ? `/${lang}/services/custom`
+                                    : `/${lang}/services/${service.id}`
+                            }
+                            className="group"
                         >
-                            {/* Icon */}
-                            <div className="w-14 h-14 flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                                {serviceIcons[service.id]}
+                            <div className="glass-card p-8 card-hover group h-full flex flex-col shadow-sm cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                                {/* Title */}
+                                <h3 className="text-slate-900 dark:text-white font-frantz font-black font-frantz-stretch mb-6 uppercase tracking-wide text-4xl md:text-5xl leading-none w-full">
+                                    {service.title}
+                                </h3>
+
+                                {/* Description - fixed height with line clamp */}
+                                <p className="text-slate-600 dark:text-dark-400 mb-6 leading-relaxed line-clamp-3 min-h-[4.5rem]">
+                                    {service.description}
+                                </p>
+
+                                {/* Features - pushed to bottom */}
+                                <ul className="space-y-2 mt-auto">
+                                    {service.features.slice(0, 3).map((feature) => (
+                                        <li
+                                            key={feature}
+                                            className="flex items-center gap-3 text-sm text-slate-500 dark:text-dark-300 group/item"
+                                        >
+                                            <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-300" />
+                                            <span className="truncate">{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-
-                            {/* Title */}
-                            <h3 className="text-slate-900 dark:text-white font-frantz font-black font-frantz-stretch mb-6 uppercase tracking-wide text-3xl md:text-4xl leading-none w-full">
-                                {service.title}
-                            </h3>
-
-                            {/* Description - fixed height with line clamp */}
-                            <p className="text-slate-600 dark:text-dark-400 mb-6 leading-relaxed line-clamp-3 min-h-[4.5rem]">
-                                {service.description}
-                            </p>
-
-                            {/* Features - pushed to bottom */}
-                            <ul className="space-y-2 mt-auto">
-                                {service.features.slice(0, 3).map((feature) => (
-                                    <li
-                                        key={feature}
-                                        className="flex items-center gap-3 text-sm text-slate-500 dark:text-dark-300 group/item"
-                                    >
-                                        <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-300" />
-                                        <span className="truncate">{feature}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
