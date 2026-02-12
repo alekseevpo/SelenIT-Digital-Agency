@@ -14,12 +14,16 @@ import Footer from '@/components/layout/Footer';
 import { PageTransition } from '@/components/providers/PageTransition';
 import BackToTop from '@/components/ui/BackToTop';
 import ChatWidget from '@/components/ui/ChatWidget';
+import ProgressBar from '@/components/ui/ProgressBar';
+import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import { OrganizationJsonLd, WebSiteJsonLd, LocalBusinessJsonLd } from '@/components/seo/JsonLd';
 
 const inter = Inter({
     subsets: ['latin', 'cyrillic'],
     variable: '--font-inter',
     display: 'swap',
+    preload: true,
+    fallback: ['system-ui', 'arial', 'sans-serif'],
 });
 
 const ttFrantz = localFont({
@@ -31,6 +35,7 @@ const ttFrantz = localFont({
         },
     ],
     variable: '--font-frantz',
+    fallback: ['serif'],
     display: 'swap',
 });
 
@@ -136,25 +141,28 @@ export default async function RootLayout({
             <body
                 className={`${inter.variable} ${ttFrantz.variable} font-sans antialiased transition-colors duration-300`}
             >
+                <ProgressBar />
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="dark"
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <CookieConsentProvider>
-                        <SmoothScrollProvider>
-                            <Header lang={lang as Locale} dict={dict} />
-                            <main className="min-h-screen transition-colors duration-300">
-                                <PageTransition>{children}</PageTransition>
-                            </main>
-                            <Footer lang={lang as Locale} dict={dict} />
-                        </SmoothScrollProvider>
-                        <CookieConsentWrapper lang={lang} dictionary={dict.cookies} />
-                        <AnalyticsWrapper />
-                        <BackToTop />
-                        <ChatWidget />
-                    </CookieConsentProvider>
+                    <ErrorBoundary>
+                        <CookieConsentProvider>
+                            <SmoothScrollProvider>
+                                <Header lang={lang as Locale} dict={dict} />
+                                <main className="min-h-screen transition-colors duration-300">
+                                    <PageTransition>{children}</PageTransition>
+                                </main>
+                                <Footer lang={lang as Locale} dict={dict} />
+                            </SmoothScrollProvider>
+                            <CookieConsentWrapper lang={lang} dictionary={dict.cookies} />
+                            <AnalyticsWrapper />
+                            <BackToTop />
+                            <ChatWidget />
+                        </CookieConsentProvider>
+                    </ErrorBoundary>
                 </ThemeProvider>
             </body>
         </html>
