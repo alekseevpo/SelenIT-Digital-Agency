@@ -247,8 +247,8 @@ article p {
     }
 
     .dark .glass-card {
-        background: var(--card-gradient-dark);
-        border-color: rgba(255, 255, 255, 0.08);
+        background: #000000;
+        border-color: rgba(255, 255, 255, 0.15);
     }
 
     .btn-primary {

@@ -94,7 +94,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                             {/* Heading */}
                             <motion.h1
                                 variants={itemVariants}
-                                className="text-[4rem] sm:text-8xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] mb-12 mt-20 lg:mb-0 lg:mt-0 text-slate-900 dark:text-white leading-[0.85] text-center lg:text-left ml-0 sm:-ml-8 lg:-ml-12"
+                                className="text-[4rem] sm:text-8xl lg:text-[7.5rem] xl:text-8.5xl 2xl:text-9.5xl mb-12 mt-28 lg:mb-0 lg:mt-8 text-slate-900 dark:text-white leading-[0.85] text-center lg:text-left ml-0 sm:-ml-8 lg:-ml-12"
                             >
                                 {dict.title1}
                                 <br />
@@ -128,8 +128,8 @@ export default function Hero({ dict, lang }: HeroProps) {
                             {/* Mobile Image */}
                             <div className="lg:hidden mb-8 flex justify-center">
                                 <img
-                                    src="/BugermanAndWall.png"
-                                    alt="Bugerman and Wall illustration"
+                                    src="/terrible_design.png"
+                                    alt="Terrible design illustration"
                                     className="max-w-[80%] h-auto rounded-lg dark:invert"
                                 />
                             </div>
@@ -307,14 +307,17 @@ export default function Hero({ dict, lang }: HeroProps) {
                     </div>
 
                     {/* CTA Buttons - Centered Row */}
-                    <div className="w-full flex justify-center mt-24 mb-16">
-                        <motion.div variants={itemVariants}>
+                    <div className="w-full flex flex-col items-center mt-24 mb-16">
+                        <motion.div variants={itemVariants} className="flex flex-col items-center">
                             <Link
                                 href={`/${lang}/contact`}
-                                className="btn-primary text-xl px-12 py-5 w-full sm:w-[320px] text-center transform hover:scale-105 transition-all"
+                                className="btn-primary text-xl px-12 py-2 mx-auto sm:w-[320px] lg:w-[320px] text-center transform hover:scale-105 transition-all sm:text-base sm:px-6 sm:py-3"
                             >
                                 {dict.ctaPrimary}
                             </Link>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center">
+                                {dict.ctaNote || 'Это бесплатно'}
+                            </p>
                         </motion.div>
                     </div>
 

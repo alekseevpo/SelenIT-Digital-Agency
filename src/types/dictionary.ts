@@ -39,6 +39,7 @@ export interface HeroDict {
     subtitle: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    ctaNote: string;
     stats: {
         projects: string;
         clients: string;
