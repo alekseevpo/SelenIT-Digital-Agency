@@ -77,11 +77,14 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                 <div className="text-center max-w-4xl mx-auto mb-16">
                     <h2 className="heading-hero mb-6 text-3xl md:text-4xl lg:text-5xl">
                         <span className="text-slate-900 dark:text-white">
-                            {dict.title1} {dict.titleGradient}
+                            {dict.title1}{' '}
+                            <span className="text-red-600 dark:text-red-500">
+                                {dict.titleGradient}
+                            </span>
                         </span>
                     </h2>
 
-                    <div className="max-w-3xl mx-auto mt-12 sm:mt-16">
+                    <div className="max-w-3xl mx-auto mt-3 sm:mt-5 md:mt-2 lg:mt-1">
                         <p className="text-body transition-colors duration-300">{dict.subtitle}</p>
                     </div>
                 </div>

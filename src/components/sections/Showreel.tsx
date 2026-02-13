@@ -50,7 +50,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
         <section ref={sectionRef} className="section-padding overflow-hidden">
             <div className="container-custom">
                 {/* Animated Showreel Title */}
-                <div className="relative py-2 md:py-4 mb-0 flex items-center justify-center">
+                <div className="relative mb-0 flex items-center justify-center">
                     <div className="max-w-4xl mx-auto text-center">
                         <Reveal width="100%" delay={0.3}>
                             <h2 className="heading-2 heading-hero mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full">

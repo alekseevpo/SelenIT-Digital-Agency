@@ -349,13 +349,11 @@ article p {
     }
 
     /* Force white text on "Обсудить" button in light theme */
-    html:not(.dark) a[href*='contact'],
     html:not(.dark) .btn-primary,
     html:not(.dark) button[class*='btn'] {
         color: #ffffff !important;
     }
 
-    html:not(.dark) a[href*='contact'] *,
     html:not(.dark) .btn-primary *,
     html:not(.dark) button[class*='btn'] * {
         color: #ffffff !important;
