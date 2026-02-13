@@ -88,7 +88,7 @@ export async function generateMetadata({
             siteName: 'Selen.IT Digital Agency',
             images: [
                 {
-                    url: '/our_team.png',
+                    url: '/og-final.png',
                     width: 1200,
                     height: 630,
                     alt: 'Selen.IT Digital Agency - Web Development & Design',
@@ -99,7 +99,7 @@ export async function generateMetadata({
             card: 'summary_large_image',
             title: dict.hero.title1 + ' ' + dict.hero.titleGradient + ' ' + dict.hero.title2,
             description: dict.hero.subtitle,
-            images: ['/our_team.png'],
+            images: ['/og-final.png'],
             creator: '@selen_it',
             site: '@selen_it',
         },
