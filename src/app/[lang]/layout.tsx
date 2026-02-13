@@ -70,7 +70,7 @@ export async function generateMetadata({
             'software engineering',
         ],
         authors: [{ name: 'Selen.IT Digital Agency' }],
-        metadataBase: new URL('https://selen.it'),
+        metadataBase: new URL('https://selenit-digital-agency.vercel.app'),
         alternates: {
             canonical: `/${lang}`,
             languages: {
@@ -80,10 +80,10 @@ export async function generateMetadata({
             },
         },
         openGraph: {
-            title: 'Selen.IT | Digital Agency',
+            title: dict.hero.title1 + ' ' + dict.hero.titleGradient + ' ' + dict.hero.title2,
             description: dict.hero.subtitle,
             type: 'website',
-            url: `https://selen.it/${lang}`,
+            url: `https://selenit-digital-agency.vercel.app/${lang}`,
             locale: lang === 'ru' ? 'ru_RU' : lang === 'es' ? 'es_ES' : 'en_US',
             siteName: 'Selen.IT Digital Agency',
             images: [
@@ -91,16 +91,17 @@ export async function generateMetadata({
                     url: '/og-image.png',
                     width: 1200,
                     height: 630,
-                    alt: 'Selen.IT Digital Agency Preview',
+                    alt: 'Selen.IT Digital Agency - Web Development & Design',
                 },
             ],
         },
         twitter: {
             card: 'summary_large_image',
-            title: 'Selen.IT | Digital Agency',
+            title: dict.hero.title1 + ' ' + dict.hero.titleGradient + ' ' + dict.hero.title2,
             description: dict.hero.subtitle,
             images: ['/og-image.png'],
             creator: '@selen_it',
+            site: '@selen_it',
         },
         robots: {
             index: true,
@@ -114,9 +115,17 @@ export async function generateMetadata({
             },
         },
         icons: {
-            icon: '/favicon.ico',
+            icon: '/favicon.svg',
             shortcut: '/favicon-16x16.png',
             apple: '/apple-touch-icon.png',
+        },
+        other: {
+            'msapplication-TileColor': '#dc2626',
+            'msapplication-config': '/browserconfig.xml',
+        },
+        verification: {
+            google: 'verification_code_here',
+            yandex: 'verification_code_here',
         },
     };
 }
