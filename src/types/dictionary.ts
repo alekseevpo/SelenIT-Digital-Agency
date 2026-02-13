@@ -95,7 +95,6 @@ export interface Testimonial {
     content: string;
     author: string;
     role: string;
-    avatar: string;
     rating: number;
 }
 
@@ -235,7 +234,6 @@ export interface Dictionary {
             title1: string;
             titleGradient: string;
             subtitle: string;
-            trustpilotCta?: string;
         };
         technologies: {
             badge: string;

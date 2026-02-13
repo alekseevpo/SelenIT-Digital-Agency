@@ -1,8 +1,11 @@
 'use client';
 
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 import { Reveal } from '../ui/Reveal';
 import Link from 'next/link';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface ServicesProps {
     lang: string;
@@ -66,6 +69,11 @@ const serviceIcons: Record<string, React.ReactNode> = {
 
 export default function Services({ lang, dict, servicesList }: ServicesProps) {
     const displayServices = servicesList.slice(0, 4);
+    const [expandedService, setExpandedService] = useState<string | null>(null);
+
+    const toggleService = (serviceId: string) => {
+        setExpandedService(expandedService === serviceId ? null : serviceId);
+    };
 
     return (
         <section
@@ -85,12 +93,52 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                     </h2>
 
                     <div className="max-w-3xl mx-auto mt-3 sm:mt-5 md:mt-2 lg:mt-1">
-                        <p className="text-body transition-colors duration-300">{dict.subtitle}</p>
+                        <p className="text-body transition-colors duration-300 whitespace-pre-line">
+                            {(() => {
+                                const text = dict.subtitle;
+                                // Check for different languages and apply red color to "цифровые решения"
+                                if (lang === 'ru') {
+                                    return (
+                                        <>
+                                            {text.split('комплексные цифровые решения')[0]}
+                                            {'комплексные '}
+                                            <span className="text-red-600 dark:text-red-500">
+                                                {'цифровые решения'}
+                                            </span>
+                                            {text.split('комплексные цифровые решения')[1] || ''}
+                                        </>
+                                    );
+                                } else if (lang === 'en') {
+                                    return (
+                                        <>
+                                            {text.split('comprehensive digital solutions')[0]}
+                                            {'comprehensive '}
+                                            <span className="text-red-600 dark:text-red-500">
+                                                {'digital solutions'}
+                                            </span>
+                                            {text.split('comprehensive digital solutions')[1] || ''}
+                                        </>
+                                    );
+                                } else if (lang === 'es') {
+                                    return (
+                                        <>
+                                            {text.split('soluciones digitales integrales')[0]}
+                                            {'soluciones '}
+                                            <span className="text-red-600 dark:text-red-500">
+                                                {'digitales integrales'}
+                                            </span>
+                                            {text.split('soluciones digitales integrales')[1] || ''}
+                                        </>
+                                    );
+                                }
+                                return text;
+                            })()}
+                        </p>
                     </div>
                 </div>
 
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {/* Services Grid - Desktop */}
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {displayServices.map((service, index) => (
                         <Link
                             key={service.id}
@@ -126,6 +174,70 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                                 </ul>
                             </div>
                         </Link>
+                    ))}
+                </div>
+
+                {/* Mobile Accordion */}
+                <div className="md:hidden space-y-4">
+                    {displayServices.map((service, index) => (
+                        <div key={service.id} className="glass-card shadow-sm">
+                            <button
+                                onClick={() => toggleService(service.id)}
+                                className="w-full p-6 text-left flex items-center justify-between transition-colors duration-300 hover:bg-slate-50/50 dark:hover:bg-dark-800/50"
+                            >
+                                <h3 className="text-slate-900 dark:text-white font-frantz font-black font-frantz-stretch uppercase tracking-wide text-3xl leading-none">
+                                    {service.title}
+                                </h3>
+                                <div className="flex items-center gap-2">
+                                    {serviceIcons[service.id as keyof typeof serviceIcons]}
+                                    {expandedService === service.id ? (
+                                        <ChevronUp className="w-5 h-5 text-red-600 dark:text-red-500" />
+                                    ) : (
+                                        <ChevronDown className="w-5 h-5 text-slate-400 dark:text-dark-400" />
+                                    )}
+                                </div>
+                            </button>
+
+                            <motion.div
+                                initial={false}
+                                animate={{
+                                    height: expandedService === service.id ? 'auto' : 0,
+                                    opacity: expandedService === service.id ? 1 : 0,
+                                }}
+                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                className="overflow-hidden"
+                            >
+                                <div className="px-6 pb-6">
+                                    <p className="text-slate-600 dark:text-dark-400 mb-6 leading-relaxed">
+                                        {service.description}
+                                    </p>
+
+                                    <ul className="space-y-2 mb-6">
+                                        {service.features.slice(0, 3).map((feature) => (
+                                            <li
+                                                key={feature}
+                                                className="flex items-center gap-3 text-sm text-slate-500 dark:text-dark-300"
+                                            >
+                                                <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 flex-shrink-0" />
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <Link
+                                        href={
+                                            service.id === 'support'
+                                                ? `/${lang}/services/custom`
+                                                : `/${lang}/services/${service.id}`
+                                        }
+                                        className="inline-flex items-center gap-2 text-red-600 dark:text-red-500 font-semibold hover:text-red-700 dark:hover:text-red-400 transition-colors duration-300"
+                                    >
+                                        {dict.learnMore}
+                                        <ChevronDown className="w-4 h-4" />
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

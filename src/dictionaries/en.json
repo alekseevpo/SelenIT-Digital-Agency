@@ -112,7 +112,7 @@
             "badge": "Our Services",
             "title1": "Everything You Need to",
             "titleGradient": "Succeed Online",
-            "subtitle": "From concept to launch and beyond, we provide comprehensive digital solutions tailored to your business needs.",
+            "subtitle": "From concept to launch and beyond, we provide comprehensive\ndigital solutions tailored to your business needs.",
             "learnMore": "Learn More"
         },
         "showreel": {
@@ -128,11 +128,10 @@
             "comingSoon": "Coming Soon"
         },
         "testimonials": {
-            "badge": "Testimonials",
+            "badge": "Client Testimonials",
             "title1": "What Our",
             "titleGradient": "Clients Say",
-            "subtitle": "Don't just take our word for it. Hear from the brands we've helped transform.",
-            "trustpilotCta": "See our reviews on Trustpilot"
+            "subtitle": "Real success stories from our partners around the world."
         },
         "technologies": {
             "badge": "Technologies",

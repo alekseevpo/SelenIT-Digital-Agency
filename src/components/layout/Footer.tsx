@@ -102,7 +102,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                 <div className="md:hidden mb-12 flex justify-center gap-4">
                     <a
                         href={`mailto:${CONTACT_EMAIL}`}
-                        className="w-12 h-12 rounded-full bg-cream-100/50 dark:bg-dark-950/50 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
+                        className="flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white transition-all duration-300"
                         aria-label="Email"
                     >
                         <svg
@@ -123,7 +123,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                         href={WHATSAPP_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 rounded-full bg-cream-100/50 dark:bg-dark-950/50 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
+                        className="flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white transition-all duration-300"
                         aria-label="WhatsApp"
                     >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -134,7 +134,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                         href="https://facebook.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 rounded-full bg-cream-100/50 dark:bg-dark-950/50 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
+                        className="flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white transition-all duration-300"
                         aria-label="Facebook"
                     >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -145,7 +145,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                         href="https://t.me/ppmtrue"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 rounded-full bg-cream-100/50 dark:bg-dark-950/50 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
+                        className="flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white transition-all duration-300"
                         aria-label="Telegram"
                     >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -156,7 +156,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                         href="https://x.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 rounded-full bg-cream-100/50 dark:bg-dark-950/50 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
+                        className="flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white transition-all duration-300"
                         aria-label="X (Twitter)"
                     >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -167,7 +167,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                         href="https://github.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 rounded-full bg-cream-100/50 dark:bg-dark-950/50 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 shadow-sm backdrop-blur-sm"
+                        className="flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white transition-all duration-300"
                         aria-label="GitHub"
                     >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -197,7 +197,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-9 h-9 rounded-full bg-slate-100/50 dark:bg-dark-800 flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-500 transition-all duration-300 backdrop-blur-sm"
+                                    className="flex items-center justify-center text-red-600 dark:text-red-500 hover:text-white dark:hover:text-white transition-all duration-300"
                                     aria-label={link.label}
                                 >
                                     <SocialIcon name={link.icon} />

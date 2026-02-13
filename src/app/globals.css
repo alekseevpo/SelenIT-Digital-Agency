@@ -799,3 +799,19 @@ article p {
         transform: translateX(100%);
     }
 }
+
+/* Fade in animation for stars */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+}

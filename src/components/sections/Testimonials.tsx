@@ -3,15 +3,15 @@
 import { useTheme } from 'next-themes';
 import { useRef } from 'react';
 import { Reveal } from '../ui/Reveal';
-import { ExternalLink, Star } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 
 interface Testimonial {
     id: number;
     content: string;
     author: string;
     role: string;
-    avatar: string;
 }
 
 interface TestimonialsProps {
@@ -21,35 +21,35 @@ interface TestimonialsProps {
         title1: string;
         titleGradient: string;
         subtitle: string;
-        trustpilotCta?: string;
     };
     testimonials: Testimonial[];
 }
-
-// Trustpilot profile URL
-const TRUSTPILOT_URL = 'https://www.trustpilot.com/review/selenit-digital-agency.vercel.app';
 
 export default function Testimonials({ lang, dict, testimonials }: TestimonialsProps) {
     const { resolvedTheme } = useTheme();
     const sectionRef = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
-        offset: ["start end", "center center"]
+        offset: ['start end', 'center center'],
     });
-    const slideInRight = useTransform(scrollYProgress, [0, 0.6], ["50vw", "0%"]);
+    const slideInRight = useTransform(scrollYProgress, [0, 0.6], ['50vw', '0%']);
     const fadeIn = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
 
     return (
         <section ref={sectionRef} className="section-padding transition-colors duration-300">
             <div className="container-custom">
                 <div className="text-center max-w-4xl mx-auto mb-16">
-
                     <Reveal width="100%" delay={0.3}>
                         <h2 className="heading-hero mb-6">
                             <span className="text-slate-900 dark:text-white">
-                                {dict.title1} <motion.span
+                                {dict.title1}{' '}
+                                <motion.span
                                     className="text-red-600 dark:text-red-500"
-                                    style={{ x: slideInRight, opacity: fadeIn, display: 'inline-block' }}
+                                    style={{
+                                        x: slideInRight,
+                                        opacity: fadeIn,
+                                        display: 'inline-block',
+                                    }}
                                 >
                                     {dict.titleGradient}
                                 </motion.span>
@@ -65,64 +65,113 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                     {testimonials.map((testimonial, index) => (
-                        <Reveal key={testimonial.id} delay={0.1 * index} width="100%" className="h-full">
-                            <div className="glass-card p-8 shadow-sm card-hover transition-colors duration-300 h-full flex flex-col rounded-2xl">
-                                <div className="flex gap-1 mb-6">
+                        <Reveal
+                            key={testimonial.id}
+                            delay={0.1 * index}
+                            width="100%"
+                            className="h-full"
+                        >
+                            <div className="group relative h-full bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200 dark:from-dark-800 dark:via-dark-900 dark:to-black rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 border border-cream-200 dark:border-dark-700 overflow-hidden flex flex-col">
+                                {/* Background decoration */}
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-500/10 to-orange-500/5 dark:from-red-500/5 dark:to-orange-500/2 rounded-full blur-3xl"></div>
+
+                                {/* Quote icon */}
+                                <div className="absolute top-6 right-6 text-red-500 dark:text-red-400">
+                                    <Quote className="w-8 h-8" />
+                                </div>
+
+                                {/* Stars */}
+                                <div className="flex gap-1 mb-6 relative z-10">
                                     {[...Array(5)].map((_, i) => (
-                                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                                        <div
+                                            key={i}
+                                            className="animate-fade-in"
+                                            style={{
+                                                animationDelay: `${0.1 * index + i * 0.05}s`,
+                                                animationDuration: '0.3s',
+                                                animationFillMode: 'both',
+                                            }}
+                                        >
+                                            <Star className="w-5 h-5 text-slate-800 fill-slate-800 dark:text-white dark:fill-white drop-shadow-sm" />
+                                        </div>
                                     ))}
                                 </div>
-                                <p className="text-slate-600 dark:text-dark-300 italic mb-8 flex-1 leading-relaxed line-clamp-6">
-                                    &quot;{testimonial.content}&quot;
-                                </p>
-                                <div className="flex items-center gap-4 pt-6 border-t border-slate-200 dark:border-dark-800 mt-auto">
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-lg shrink-0">
-                                        {testimonial.avatar}
+
+                                {/* Content */}
+                                <div className="relative z-10 flex-1 flex flex-col">
+                                    <p className="text-slate-700 dark:text-slate-300 italic mb-8 leading-relaxed text-lg font-medium line-clamp-6 flex-1">
+                                        &quot;{testimonial.content}&quot;
+                                    </p>
+                                </div>
+
+                                {/* Author section */}
+                                <div className="flex items-center justify-between pt-6 border-t border-cream-300/50 dark:border-dark-700/50 mt-auto relative z-10">
+                                    <div className="flex-1">
+                                        <div className="font-bold text-slate-900 dark:text-white text-lg mb-1">
+                                            {testimonial.author}
+                                        </div>
+                                        <div className="text-slate-600 dark:text-slate-400 text-sm font-medium">
+                                            {testimonial.role}
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div className="font-bold text-slate-900 dark:text-white">{testimonial.author}</div>
-                                        <div className="text-slate-500 dark:text-dark-500 text-sm">{testimonial.role}</div>
+                                    <div className="flex-shrink-0 ml-4">
+                                        {testimonial.author === 'Sarah Johnson' ||
+                                        testimonial.author === 'Сара Джонсон' ? (
+                                            <a
+                                                href="https://tech-start.com/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300 drop-shadow-md hover:drop-shadow-lg hover:scale-105"
+                                            >
+                                                <Image
+                                                    src="/arrow.png"
+                                                    alt="Visit TechStart website"
+                                                    width={24}
+                                                    height={24}
+                                                    className="brightness-0 contrast-100"
+                                                    style={{
+                                                        filter: 'brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(4905%) hue-rotate(359deg) brightness(96%) contrast(119%)',
+                                                    }}
+                                                />
+                                            </a>
+                                        ) : testimonial.author === 'Michael Chen' ||
+                                          testimonial.author === 'Михаил Чен' ? (
+                                            <a
+                                                href="https://luxebrands.com/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300 drop-shadow-md hover:drop-shadow-lg hover:scale-105"
+                                            >
+                                                <Image
+                                                    src="/arrow.png"
+                                                    alt="Visit Luxe Brands website"
+                                                    width={24}
+                                                    height={24}
+                                                    className="brightness-0 contrast-100"
+                                                    style={{
+                                                        filter: 'brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(4905%) hue-rotate(359deg) brightness(96%) contrast(119%)',
+                                                    }}
+                                                />
+                                            </a>
+                                        ) : (
+                                            <div className="inline-flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-sm group-hover:drop-shadow-md">
+                                                <Image
+                                                    src="/arrow.png"
+                                                    alt="Arrow"
+                                                    width={24}
+                                                    height={24}
+                                                />
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
+
+                                {/* Hover effect overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-orange-500/5 dark:from-red-500/10 dark:to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
                             </div>
                         </Reveal>
                     ))}
                 </div>
-
-                {/* Trustpilot CTA */}
-                <Reveal width="100%" delay={0.5}>
-                    <div className="mt-16 pt-12 border-t border-slate-200 dark:border-dark-800">
-                        <a
-                            href={TRUSTPILOT_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-50 to-slate-100 dark:from-dark-800 dark:to-dark-900 border border-slate-200 dark:border-dark-700 hover:border-[#00B67A]/50 dark:hover:border-[#00B67A]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#00B67A]/10"
-                        >
-                            {/* Trustpilot Logo */}
-                            <div className="flex items-center gap-2">
-                                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#00B67A" />
-                                </svg>
-                                <span className="text-xl font-bold text-[#00B67A]">Trustpilot</span>
-                            </div>
-
-                            {/* Stars */}
-                            <div className="flex items-center gap-1 px-3 py-1.5 bg-[#00B67A] rounded-md">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 text-white fill-white" />
-                                ))}
-                            </div>
-
-                            {/* CTA Text */}
-                            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 group-hover:text-[#00B67A] transition-colors">
-                                <span className="font-medium">
-                                    {dict.trustpilotCta || 'See our reviews on Trustpilot'}
-                                </span>
-                                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                            </div>
-                        </a>
-                    </div>
-                </Reveal>
             </div>
         </section>
     );

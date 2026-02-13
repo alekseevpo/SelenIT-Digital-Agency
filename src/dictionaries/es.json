@@ -112,7 +112,7 @@
             "badge": "Nuestros Servicios",
             "title1": "Todo lo que necesitas para",
             "titleGradient": "Triunfar Online",
-            "subtitle": "Desde el concepto hasta el lanzamiento y más allá, ofrecemos soluciones integrales adaptadas a sus necesidades.",
+            "subtitle": "Desde el concepto hasta el lanzamiento y más allá, ofrecemos soluciones\ndigitales integrales adaptadas a sus necesidades.",
             "learnMore": "Saber más"
         },
         "showreel": {
@@ -128,11 +128,10 @@
             "comingSoon": "Próximamente"
         },
         "testimonials": {
-            "badge": "Testimonios",
+            "badge": "Testimonios de Clientes",
             "title1": "Lo que dicen",
             "titleGradient": "nuestros clientes",
-            "subtitle": "No confíe solo en nuestra palabra. Esto es lo que dicen las marcas que hemos ayudado a transformar.",
-            "trustpilotCta": "Ver nuestras reseñas en Trustpilot"
+            "subtitle": "Historias reales de éxito de nuestros socios de todo el mundo."
         },
         "technologies": {
             "badge": "Tecnologías",
