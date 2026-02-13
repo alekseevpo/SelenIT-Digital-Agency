@@ -88,7 +88,7 @@ export async function generateMetadata({
             siteName: 'Selen.IT Digital Agency',
             images: [
                 {
-                    url: '/our_team.png',
+                    url: '/our_team.png?v=2',
                     width: 1200,
                     height: 630,
                     alt: 'Selen.IT Digital Agency - Web Development & Design',
@@ -99,7 +99,7 @@ export async function generateMetadata({
             card: 'summary_large_image',
             title: dict.hero.title1 + ' ' + dict.hero.titleGradient + ' ' + dict.hero.title2,
             description: dict.hero.subtitle,
-            images: ['/our_team.png'],
+            images: ['/our_team.png?v=2'],
             creator: '@selen_it',
             site: '@selen_it',
         },
@@ -122,9 +122,9 @@ export async function generateMetadata({
         other: {
             'msapplication-TileColor': '#dc2626',
             'msapplication-config': '/browserconfig.xml',
-            'og:image:secure_url': 'https://selenit-digital-agency.vercel.app/our_team.png',
+            'og:image:secure_url': 'https://selenit-digital-agency.vercel.app/our_team.png?v=2',
             'og:image:type': 'image/png',
-            'twitter:image:src': 'https://selenit-digital-agency.vercel.app/our_team.png',
+            'twitter:image:src': 'https://selenit-digital-agency.vercel.app/our_team.png?v=2',
         },
         verification: {
             google: 'verification_code_here',
