@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { Reveal } from '../ui/Reveal';
+import Image from 'next/image';
+import { Download } from 'lucide-react';
 
 interface CTAProps {
     lang: string;
@@ -65,25 +67,14 @@ export default function CTA({ lang, dict, commonDict }: CTAProps) {
                         >
                             {dict.button}
                         </Link>
-                        <Link
-                            href={`/${lang}/showreel`}
+                        <a
+                            href="/brief.pdf"
+                            download="SelenIT-Brief.pdf"
                             className="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-white flex items-center gap-2 group transition-colors"
                         >
                             {commonDict.ctaSecondary}
-                            <svg
-                                className="w-5 h-5 transition-transform group-hover:translate-x-1"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                />
-                            </svg>
-                        </Link>
+                            <Download className="w-5 h-5 transition-transform group-hover:translate-y-1" />
+                        </a>
                     </div>
                 </Reveal>
             </div>
