@@ -1,3 +1,6 @@
+/// <reference types="jest" />
+/// <reference types="@testing-library/jest-dom" />
+
 import '@testing-library/jest-dom';
 
 // Mock next-themes
@@ -31,10 +34,29 @@ jest.mock('framer-motion', () => {
     // Helper to filter out framer-motion specific props
     const filterFramerProps = (props) => {
         const {
-            layoutId, animate, initial, exit, transition, whileHover, whileTap,
-            variants, layout, drag, dragConstraints, onDragEnd, whileInView,
-            viewport, custom, onHoverStart, onHoverEnd, onAnimationComplete,
-            whileDrag, dragElastic, dragMomentum, onDragStart, onDrag,
+            layoutId,
+            animate,
+            initial,
+            exit,
+            transition,
+            whileHover,
+            whileTap,
+            variants,
+            layout,
+            drag,
+            dragConstraints,
+            onDragEnd,
+            whileInView,
+            viewport,
+            custom,
+            onHoverStart,
+            onHoverEnd,
+            onAnimationComplete,
+            whileDrag,
+            dragElastic,
+            dragMomentum,
+            onDragStart,
+            onDrag,
             ...rest
         } = props;
         return rest;
@@ -43,37 +65,40 @@ jest.mock('framer-motion', () => {
     return {
         motion: {
             div: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('div', { ...filterFramerProps(props), ref }, children)
+                React.createElement('div', { ...filterFramerProps(props), ref }, children),
             ),
             span: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('span', { ...filterFramerProps(props), ref }, children)
+                React.createElement('span', { ...filterFramerProps(props), ref }, children),
             ),
             button: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('button', { ...filterFramerProps(props), ref }, children)
+                React.createElement('button', { ...filterFramerProps(props), ref }, children),
             ),
             li: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('li', { ...filterFramerProps(props), ref }, children)
+                React.createElement('li', { ...filterFramerProps(props), ref }, children),
             ),
             ul: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('ul', { ...filterFramerProps(props), ref }, children)
+                React.createElement('ul', { ...filterFramerProps(props), ref }, children),
             ),
             nav: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('nav', { ...filterFramerProps(props), ref }, children)
+                React.createElement('nav', { ...filterFramerProps(props), ref }, children),
             ),
             a: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('a', { ...filterFramerProps(props), ref }, children)
+                React.createElement('a', { ...filterFramerProps(props), ref }, children),
             ),
             svg: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('svg', { ...filterFramerProps(props), ref }, children)
+                React.createElement('svg', { ...filterFramerProps(props), ref }, children),
             ),
             path: React.forwardRef((props, ref) =>
-                React.createElement('path', { ...filterFramerProps(props), ref })
+                React.createElement('path', { ...filterFramerProps(props), ref }),
             ),
             circle: React.forwardRef((props, ref) =>
-                React.createElement('circle', { ...filterFramerProps(props), ref })
+                React.createElement('circle', { ...filterFramerProps(props), ref }),
             ),
             g: React.forwardRef(({ children, ...props }, ref) =>
-                React.createElement('g', { ...filterFramerProps(props), ref }, children)
+                React.createElement('g', { ...filterFramerProps(props), ref }, children),
+            ),
+            img: React.forwardRef((props, ref) =>
+                React.createElement('img', { ...filterFramerProps(props), ref }),
             ),
         },
         AnimatePresence: ({ children }) => React.createElement(React.Fragment, null, children),

@@ -42,7 +42,7 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
                     <Reveal width="100%" delay={0.3}>
                         <h2 className="heading-hero mb-6">
                             <span className="text-slate-900 dark:text-white">
-                                {dict.title1}{' '}
+                                {dict.title1} <br className="block sm:hidden" />
                                 <motion.span
                                     className="text-red-600 dark:text-red-500"
                                     style={{

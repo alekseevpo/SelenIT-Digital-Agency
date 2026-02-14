@@ -390,6 +390,10 @@ article p {
         background-image: linear-gradient(to right, #ff3333, #ff0000);
     }
 
+    .red-text {
+        @apply text-red-600 dark:text-red-500;
+    }
+
     .glass {
         @apply backdrop-blur-xl border;
         background-color: var(--glass-bg);

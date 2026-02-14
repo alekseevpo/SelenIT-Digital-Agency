@@ -72,8 +72,7 @@ export default async function ContactPage({ params }: PageProps) {
                             {hero.badge}
                         </span>
                         <h1 className="heading-hero mb-6 text-slate-900 dark:text-white tracking-normal">
-                            {hero.title1}{' '}
-                            <span className="gradient-text">{hero.titleGradient}</span>
+                            {hero.title1} <span className="red-text">{hero.titleGradient}</span>
                         </h1>
                         <p className="text-body transition-colors duration-300">{hero.subtitle}</p>
                         <div className="mt-8 flex justify-center">
@@ -98,7 +97,7 @@ export default async function ContactPage({ params }: PageProps) {
                         <div className="lg:col-span-1 space-y-8">
                             <div className="text-center mb-12">
                                 <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 dark:text-white leading-[0.9] tracking-tight">
-                                    Контакты
+                                    {dict.contact.hero.badge}
                                 </h2>
                             </div>
 
@@ -117,7 +116,7 @@ export default async function ContactPage({ params }: PageProps) {
                                                 ? 'noopener noreferrer'
                                                 : undefined
                                         }
-                                        className="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-black border border-slate-200 dark:border-dark-700 hover:border-red-600 dark:hover:border-red-500 hover:shadow-md transition-all group w-full"
+                                        className="flex items-center gap-4 p-4 rounded-xl bg-cream-100 dark:bg-black border border-slate-200 dark:border-dark-700 hover:border-red-600 dark:hover:border-red-500 hover:shadow-md transition-all group w-full"
                                     >
                                         <div className="w-12 h-12 rounded-lg flex items-center justify-center text-red-600 dark:text-red-500 group-hover:bg-red-600 dark:group-hover:bg-red-500 group-hover:text-white transition-colors">
                                             {item.icon}
@@ -135,7 +134,7 @@ export default async function ContactPage({ params }: PageProps) {
                             </div>
 
                             {/* Office Hours */}
-                            <div className="p-10 bg-white dark:bg-black border border-slate-200 dark:border-dark-700 shadow-sm mt-12">
+                            <div className="p-10 bg-cream-100 dark:bg-black border border-slate-200 dark:border-dark-700 shadow-sm mt-12">
                                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-slate-900 dark:text-white leading-[0.9] tracking-normal uppercase">
                                     {(() => {
                                         const title = info.hoursTitle;

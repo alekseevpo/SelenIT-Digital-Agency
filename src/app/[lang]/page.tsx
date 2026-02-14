@@ -2,13 +2,19 @@ import { Metadata } from 'next';
 import { getDictionary } from '@/get-dictionary';
 import type { Locale } from '@/i18n-config';
 import Hero from '@/components/sections/Hero';
-import Services from '@/components/sections/Services';
-import Showreel from '@/components/sections/Showreel';
-import Technologies from '@/components/sections/Technologies';
-import Testimonials from '@/components/sections/Testimonials';
-import CTA from '@/components/sections/CTA';
+import {
+    LazyServices,
+    LazyShowreel,
+    LazyTechnologies,
+    LazyTestimonials,
+    LazyCTA,
+} from '@/components/ui/LazySection';
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     return {
@@ -17,39 +23,22 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     };
 }
 
-export default async function Home({
-    params,
-}: {
-    params: Promise<{ lang: Locale }>;
-}) {
+export default async function Home({ params }: { params: Promise<{ lang: Locale }> }) {
     const { lang } = await params;
     const dict = await getDictionary(lang);
 
     return (
         <>
             <Hero dict={dict.hero} lang={lang} />
-            <Services
-                lang={lang}
-                dict={dict.home.services}
-                servicesList={dict.services.list}
-            />
-            <Showreel
-                lang={lang}
-                dict={dict.home.showreel}
-            />
-            <Technologies
-                dict={dict.home.technologies}
-            />
-            <Testimonials
+            <LazyServices lang={lang} dict={dict.home.services} servicesList={dict.services.list} />
+            <LazyShowreel lang={lang} dict={dict.home.showreel} />
+            <LazyTechnologies dict={dict.home.technologies} />
+            <LazyTestimonials
                 lang={lang}
                 dict={dict.home.testimonials}
                 testimonials={dict.testimonials}
             />
-            <CTA
-                lang={lang}
-                dict={dict.home.cta}
-                commonDict={dict.hero}
-            />
+            <LazyCTA lang={lang} dict={dict.home.cta} commonDict={dict.hero} />
         </>
     );
 }

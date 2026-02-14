@@ -37,7 +37,7 @@ describe('ContactForm', () => {
             const serviceSelect = screen.getByLabelText(/Service/i);
             expect(serviceSelect).toBeInTheDocument();
 
-            mockContactFormDict.serviceOptions.forEach(option => {
+            mockContactFormDict.serviceOptions.forEach((option) => {
                 expect(screen.getByRole('option', { name: option })).toBeInTheDocument();
             });
         });
@@ -45,7 +45,7 @@ describe('ContactForm', () => {
         it('renders budget options from dictionary', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            mockContactFormDict.budgetOptions.forEach(option => {
+            mockContactFormDict.budgetOptions.forEach((option) => {
                 expect(screen.getByRole('option', { name: option })).toBeInTheDocument();
             });
         });
@@ -71,7 +71,9 @@ describe('ContactForm', () => {
             await user.type(screen.getByLabelText(/Details/i), 'Test message');
 
             // Fill honeypot field (simulating bot)
-            const honeypotInput = document.querySelector('input[name="website"]') as HTMLInputElement;
+            const honeypotInput = document.querySelector(
+                'input[name="website"]',
+            ) as HTMLInputElement;
             fireEvent.change(honeypotInput, { target: { value: 'spam-url.com' } });
 
             // Submit
@@ -198,10 +200,14 @@ describe('ContactForm', () => {
     describe('Form submission', () => {
         it('shows loading state during submission', async () => {
             const user = userEvent.setup();
-            mockFetch.mockImplementation(() =>
-                new Promise(resolve =>
-                    setTimeout(() => resolve({ ok: true, json: () => Promise.resolve({}) }), 100)
-                )
+            mockFetch.mockImplementation(
+                () =>
+                    new Promise((resolve) =>
+                        setTimeout(
+                            () => resolve({ ok: true, json: () => Promise.resolve({}) }),
+                            100,
+                        ),
+                    ),
             );
 
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
@@ -287,10 +293,13 @@ describe('ContactForm', () => {
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
 
             await waitFor(() => {
-                expect(mockFetch).toHaveBeenCalledWith('/api/contact', expect.objectContaining({
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                }));
+                expect(mockFetch).toHaveBeenCalledWith(
+                    '/api/contact',
+                    expect.objectContaining({
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                    }),
+                );
 
                 const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
                 expect(callBody.name).toBe('John Doe');
@@ -328,7 +337,9 @@ describe('ContactForm', () => {
             await user.click(screen.getByText(mockContactFormDict.sendAnother));
 
             // Form should be visible again
-            expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
+            await waitFor(() => {
+                expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
+            });
         });
     });
 
@@ -362,7 +373,9 @@ describe('ContactForm', () => {
                 ok: true,
                 json: () => Promise.resolve({ success: true }),
             });
-            (window.grecaptcha.execute as jest.Mock).mockRejectedValueOnce(new Error('reCAPTCHA failed'));
+            (window.grecaptcha.execute as jest.Mock).mockRejectedValueOnce(
+                new Error('reCAPTCHA failed'),
+            );
 
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
