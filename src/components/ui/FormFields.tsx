@@ -50,7 +50,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export function FormInput({ error = false, className = '', ...props }: InputProps) {
     return (
         <input
-            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ring-offset-bg-primary focus:ring-4 focus:ring-primary-500/10 ${
+            className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none ${
                 error
                     ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
                     : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'
@@ -69,17 +69,17 @@ export function FormSelect({ error = false, className = '', children, ...props }
     return (
         <div className="relative">
             <select
-                className={`w-full px-5 py-3.5 rounded-2xl bg-white/50 dark:bg-dark-900/40 border transition-all outline-none appearance-none focus:ring-4 focus:ring-primary-500/10 cursor-pointer ${
+                className={`w-full px-4 py-3 rounded-xl bg-white/80 dark:bg-dark-900/60 border transition-all outline-none appearance-none cursor-pointer text-sm ${
                     error
                         ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
-                        : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm backdrop-blur-md'
+                        : 'border-slate-300 dark:border-white/20 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm backdrop-blur-md hover:border-slate-400 dark:hover:border-white/30'
                 } ${className}`}
                 {...props}
             >
                 {children}
             </select>
-            <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 dark:text-dark-600">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500 dark:text-slate-400">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -99,7 +99,7 @@ interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
 export function FormTextarea({ error = false, className = '', ...props }: TextareaProps) {
     return (
         <textarea
-            className={`w-full px-5 py-4 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none resize-none focus:ring-4 focus:ring-primary-500/10 ${
+            className={`w-full px-5 py-4 rounded-2xl bg-white/50 dark:bg-dark-900/40 border backdrop-blur-md transition-all outline-none resize-none ${
                 error
                     ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
                     : 'border-slate-200 dark:border-white/10 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm'

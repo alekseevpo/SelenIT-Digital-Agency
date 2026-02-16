@@ -706,6 +706,51 @@ article p {
         font-size: 1rem;
         line-height: 1.75;
     }
+
+    /* Better mobile spacing */
+    .section-padding {
+        @apply py-16 px-4;
+    }
+
+    /* Better mobile buttons */
+    .btn-primary,
+    .btn-secondary {
+        @apply w-full py-3 text-base;
+    }
+
+    /* Better mobile cards */
+    .glass-card {
+        @apply p-4;
+    }
+
+    /* Better mobile navigation */
+    .mobile-menu-overlay {
+        @apply px-4;
+    }
+
+    /* Better mobile text */
+    .heading-1 {
+        @apply text-3xl;
+    }
+
+    .heading-2 {
+        @apply text-2xl;
+    }
+
+    .heading-3 {
+        @apply text-xl;
+    }
+
+    /* Override mobile styles for branding page - CRITICAL */
+    @media (max-width: 640px) {
+        .branding-page h3 {
+            font-size: 2.5rem !important;
+            line-height: 1.15 !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.02em !important;
+            font-family: var(--font-frantz), system-ui, sans-serif !important;
+        }
+    }
 }
 
 /* Better text contrast for readability */

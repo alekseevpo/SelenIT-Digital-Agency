@@ -176,7 +176,7 @@ describe('LanguageSwitcher', () => {
             render(<LanguageSwitcher currentLang="en" />);
 
             const buttons = screen.getAllByRole('button');
-            buttons.forEach(button => {
+            buttons.forEach((button) => {
                 expect(button).not.toBeDisabled();
             });
         });

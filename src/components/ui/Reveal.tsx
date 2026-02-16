@@ -3,7 +3,14 @@
 import { motion, useInView, Variants } from 'framer-motion';
 import { useRef } from 'react';
 
-type AnimationType = 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'fade' | 'scale' | 'blur';
+type AnimationType =
+    | 'fade-up'
+    | 'fade-down'
+    | 'fade-left'
+    | 'fade-right'
+    | 'fade'
+    | 'scale'
+    | 'blur';
 
 interface RevealProps {
     children: React.ReactNode;
@@ -33,15 +40,15 @@ const animations: Record<AnimationType, Variants> = {
         hidden: { opacity: 0, x: 50 },
         visible: { opacity: 1, x: 0 },
     },
-    'fade': {
+    fade: {
         hidden: { opacity: 0 },
         visible: { opacity: 1 },
     },
-    'scale': {
+    scale: {
         hidden: { opacity: 0, scale: 0.8 },
         visible: { opacity: 1, scale: 1 },
     },
-    'blur': {
+    blur: {
         hidden: { opacity: 0, filter: 'blur(10px)' },
         visible: { opacity: 1, filter: 'blur(0px)' },
     },

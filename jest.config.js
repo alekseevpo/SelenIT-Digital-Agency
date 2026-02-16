@@ -7,6 +7,7 @@ const createJestConfig = nextJest({
 
 /** @type {import('jest').Config} */
 const customJestConfig = {
+    preset: 'ts-jest',
     setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
     testEnvironment: 'jest-environment-jsdom',
     moduleNameMapper: {
@@ -24,6 +25,11 @@ const customJestConfig = {
             functions: 40,
             lines: 40,
             statements: 40,
+        },
+    },
+    globals: {
+        'ts-jest': {
+            tsconfig: 'tsconfig.test.json',
         },
     },
 };

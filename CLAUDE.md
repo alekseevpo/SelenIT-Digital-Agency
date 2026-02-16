@@ -8,15 +8,15 @@
 
 ## Технологический стек
 
-| Категория | Технология |
-|-----------|------------|
-| Фреймворк | Next.js 14 (App Router) |
-| Язык | TypeScript |
+| Категория  | Технология                               |
+| ---------- | ---------------------------------------- |
+| Фреймворк  | Next.js 14 (App Router)                  |
+| Язык       | TypeScript                               |
 | Стилизация | Tailwind CSS + next-themes (тёмная тема) |
-| Анимации | Framer Motion, Lenis (плавный скролл) |
-| Иконки | Lucide React |
-| Email | Resend |
-| Аналитика | Vercel Analytics, Speed Insights |
+| Анимации   | Framer Motion, Lenis (плавный скролл)    |
+| Иконки     | Lucide React                             |
+| Email      | Resend                                   |
+| Аналитика  | Vercel Analytics, Speed Insights         |
 
 ## Команды
 
@@ -101,37 +101,43 @@ src/
 ## Интернационализация (i18n)
 
 ### Локали
+
 - `en` — английский (по умолчанию)
 - `ru` — русский
 - `es` — испанский
 
 ### Как добавить новый текст
+
 1. Добавить контент во все три файла словарей (`en.json`, `ru.json`, `es.json`)
 2. Обновить тип `Dictionary` в `src/types/dictionary.ts`
 
 ### Использование в компонентах
+
 ```tsx
 // В серверных компонентах страниц
 import { getDictionary } from '@/get-dictionary';
 
 export default async function Page({ params: { lang } }) {
-  const dict = await getDictionary(lang);
-  return <h1>{dict.home.title}</h1>;
+    const dict = await getDictionary(lang);
+    return <h1>{dict.home.title}</h1>;
 }
 ```
 
 ## Стилизация
 
 ### Темы
+
 - Тёмная тема через класс (`darkMode: 'class'` в Tailwind)
 - Переключение через `ThemeToggle` компонент
 
 ### Кастомные цвета (tailwind.config.ts)
+
 - `primary` — основной цвет бренда
 - `accent` — акцентный цвет
 - `dark` — цвета для тёмной темы
 
 ### Кастомные анимации
+
 - `fade-in`, `fade-in-up` — появление
 - `slide-in-left` — выезд слева
 - `float` — плавающий эффект
@@ -140,31 +146,36 @@ export default async function Page({ params: { lang } }) {
 ## Ключевые паттерны
 
 ### Анимация появления при скролле
+
 ```tsx
 import Reveal from '@/components/ui/Reveal';
 
 <Reveal>
-  <div>Контент появится при скролле</div>
-</Reveal>
+    <div>Контент появится при скролле</div>
+</Reveal>;
 ```
 
 ### Плавный скролл
+
 Обеспечивается `SmoothScrollProvider` с библиотекой Lenis.
 
 ### Переходы между страницами
+
 Используется `PageTransition` компонент с Framer Motion.
 
 ## API Endpoints
 
 ### POST /api/contact
+
 Обработка формы обратной связи через Resend.
 
 **Body:**
+
 ```json
 {
-  "name": "string",
-  "email": "string",
-  "message": "string"
+    "name": "string",
+    "email": "string",
+    "message": "string"
 }
 ```
 
@@ -177,6 +188,7 @@ RESEND_API_KEY=          # API ключ Resend для отправки email
 ## Безопасность
 
 Заголовки безопасности в `next.config.js`:
+
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`
 - `X-XSS-Protection: 1; mode=block`

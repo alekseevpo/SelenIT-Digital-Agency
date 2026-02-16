@@ -11,28 +11,50 @@ const content = {
         title1: 'SEO that',
         titleGradient: 'compounds',
         title2: 'over time',
-        subtitle: 'Technical SEO, content structure and performance improvements focused on long-term growth.',
-        bullets: ['Technical SEO', 'Core Web Vitals', 'Information architecture', 'Content recommendations'],
+        subtitle:
+            'Technical SEO, content structure and performance improvements focused on long-term growth.',
+        bullets: [
+            'Technical SEO',
+            'Core Web Vitals',
+            'Information architecture',
+            'Content recommendations',
+        ],
     },
     ru: {
         badge: 'SEO',
         title1: 'SEO, которое',
         titleGradient: 'растёт',
         title2: 'со временем',
-        subtitle: 'Техническое SEO, структура контента и ускорение сайта — чтобы рост был стабильным и измеримым.',
-        bullets: ['Техническое SEO', 'Core Web Vitals', 'Архитектура сайта', 'Рекомендации по контенту'],
+        subtitle:
+            'Техническое SEO, структура контента и ускорение сайта — чтобы рост был стабильным и измеримым.',
+        bullets: [
+            'Техническое SEO',
+            'Core Web Vitals',
+            'Архитектура сайта',
+            'Рекомендации по контенту',
+        ],
     },
     es: {
         badge: 'SEO',
         title1: 'SEO que',
         titleGradient: 'crece',
         title2: 'con el tiempo',
-        subtitle: 'SEO técnico, estructura de contenido y mejoras de rendimiento centradas en crecimiento sostenible.',
-        bullets: ['SEO técnico', 'Core Web Vitals', 'Arquitectura de información', 'Recomendaciones de contenido'],
+        subtitle:
+            'SEO técnico, estructura de contenido y mejoras de rendimiento centradas en crecimiento sostenible.',
+        bullets: [
+            'SEO técnico',
+            'Core Web Vitals',
+            'Arquitectura de información',
+            'Recomendaciones de contenido',
+        ],
     },
 } as const;
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const c = content[(lang as Locale) in content ? (lang as Locale) : 'en'];
@@ -70,12 +92,14 @@ export default async function SeoPage({ params }: PageProps) {
                     </Reveal>
                     <Reveal width="100%" delay={0.35}>
                         <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
-                            {c.title1}{' '}
-                            <span className="gradient-text">{c.titleGradient}</span> {c.title2}
+                            {c.title1} <span className="gradient-text">{c.titleGradient}</span>{' '}
+                            {c.title2}
                         </h1>
                     </Reveal>
                     <Reveal width="100%" delay={0.45}>
-                        <p className="text-body max-w-2xl mx-auto transition-colors duration-300">{c.subtitle}</p>
+                        <p className="text-body max-w-2xl mx-auto transition-colors duration-300">
+                            {c.subtitle}
+                        </p>
                     </Reveal>
                 </div>
             </section>
@@ -86,10 +110,23 @@ export default async function SeoPage({ params }: PageProps) {
                         <div className="glass-card p-10 bg-cream-50/40 dark:bg-neutral-900 border border-slate-200 dark:border-dark-700">
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {c.bullets.map((item) => (
-                                    <li key={item} className="flex items-center gap-3 text-slate-700 dark:text-dark-300">
+                                    <li
+                                        key={item}
+                                        className="flex items-center gap-3 text-slate-700 dark:text-dark-300"
+                                    >
                                         <div className="w-5 h-5 rounded-full bg-orange-500/10 dark:bg-primary-500/10 flex items-center justify-center text-orange-500 dark:text-primary-500">
-                                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                            <svg
+                                                className="w-3 h-3"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={3}
+                                                    d="M5 13l4 4L19 7"
+                                                />
                                             </svg>
                                         </div>
                                         {item}

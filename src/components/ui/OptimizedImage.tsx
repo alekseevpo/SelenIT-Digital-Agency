@@ -29,10 +29,8 @@ export default function OptimizedImage({
                 alt={alt}
                 className={cn(
                     'duration-500 ease-in-out',
-                    isLoading
-                        ? 'scale-105 blur-lg grayscale'
-                        : 'scale-100 blur-0 grayscale-0',
-                    className
+                    isLoading ? 'scale-105 blur-lg grayscale' : 'scale-100 blur-0 grayscale-0',
+                    className,
                 )}
                 placeholder="blur"
                 blurDataURL={BLUR_DATA_URL}

@@ -44,15 +44,24 @@ const caseStudies: Record<string, Record<string, CaseStudy>> = {
             duration: '4 months',
             year: '2024',
             heroImage: '/images/cases/luxe-fashion-hero.jpg',
-            challenge: 'Luxe Brands Inc. needed a complete overhaul of their outdated e-commerce platform. Their existing site suffered from slow load times, poor mobile experience, and a checkout process that led to high cart abandonment rates. They needed a modern, fast, and intuitive shopping experience that matched their premium brand positioning.',
-            solution: 'We built a custom Next.js e-commerce platform with advanced product filtering, real-time inventory updates, and a streamlined checkout process. The new design focuses on high-quality imagery and smooth animations to create a luxurious shopping experience. We implemented server-side rendering for optimal SEO and performance.',
+            challenge:
+                'Luxe Brands Inc. needed a complete overhaul of their outdated e-commerce platform. Their existing site suffered from slow load times, poor mobile experience, and a checkout process that led to high cart abandonment rates. They needed a modern, fast, and intuitive shopping experience that matched their premium brand positioning.',
+            solution:
+                'We built a custom Next.js e-commerce platform with advanced product filtering, real-time inventory updates, and a streamlined checkout process. The new design focuses on high-quality imagery and smooth animations to create a luxurious shopping experience. We implemented server-side rendering for optimal SEO and performance.',
             results: [
                 { label: 'Conversion Rate', value: '4.8%', change: '+200%' },
                 { label: 'Average Order Value', value: '$285', change: '+150%' },
                 { label: 'Page Load Time', value: '2.5s', change: '-60%' },
                 { label: 'Mobile Traffic', value: '68%', change: '+45%' },
             ],
-            technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Sanity CMS', 'Vercel'],
+            technologies: [
+                'Next.js',
+                'TypeScript',
+                'Tailwind CSS',
+                'Stripe',
+                'Sanity CMS',
+                'Vercel',
+            ],
             testimonial: {
                 quote: 'Selen.IT transformed our online presence completely. The new platform not only looks stunning but has significantly improved our sales metrics.',
                 author: 'Sarah Mitchell',
@@ -73,8 +82,10 @@ const caseStudies: Record<string, Record<string, CaseStudy>> = {
             duration: '6 months',
             year: '2024',
             heroImage: '/images/cases/fintech-hero.jpg',
-            challenge: 'FinanceHub Corp. needed a powerful analytics platform that could process millions of transactions in real-time and present complex financial data in an intuitive, actionable format. Their existing tools were fragmented and lacked the sophisticated visualization capabilities their clients demanded.',
-            solution: 'We developed a comprehensive SaaS dashboard with real-time data streaming, interactive charts, AI-powered insights, and customizable reporting. The platform features role-based access control, multi-tenant architecture, and seamless integration with major financial data providers.',
+            challenge:
+                'FinanceHub Corp. needed a powerful analytics platform that could process millions of transactions in real-time and present complex financial data in an intuitive, actionable format. Their existing tools were fragmented and lacked the sophisticated visualization capabilities their clients demanded.',
+            solution:
+                'We developed a comprehensive SaaS dashboard with real-time data streaming, interactive charts, AI-powered insights, and customizable reporting. The platform features role-based access control, multi-tenant architecture, and seamless integration with major financial data providers.',
             results: [
                 { label: 'Active Users', value: '50K+', change: '' },
                 { label: 'Platform Uptime', value: '99.9%', change: '' },
@@ -104,15 +115,24 @@ const caseStudies: Record<string, Record<string, CaseStudy>> = {
             duration: '4 месяца',
             year: '2024',
             heroImage: '/images/cases/luxe-fashion-hero.jpg',
-            challenge: 'Luxe Brands Inc. нуждались в полной переработке их устаревшей e-commerce платформы. Существующий сайт страдал от медленной загрузки, плохого мобильного опыта и процесса оформления заказа, который приводил к высокому проценту брошенных корзин.',
-            solution: 'Мы создали кастомную Next.js e-commerce платформу с продвинутой фильтрацией товаров, обновлением запасов в реальном времени и оптимизированным процессом оформления заказа. Новый дизайн фокусируется на высококачественных изображениях и плавных анимациях.',
+            challenge:
+                'Luxe Brands Inc. нуждались в полной переработке их устаревшей e-commerce платформы. Существующий сайт страдал от медленной загрузки, плохого мобильного опыта и процесса оформления заказа, который приводил к высокому проценту брошенных корзин.',
+            solution:
+                'Мы создали кастомную Next.js e-commerce платформу с продвинутой фильтрацией товаров, обновлением запасов в реальном времени и оптимизированным процессом оформления заказа. Новый дизайн фокусируется на высококачественных изображениях и плавных анимациях.',
             results: [
                 { label: 'Конверсия', value: '4.8%', change: '+200%' },
                 { label: 'Средний чек', value: '$285', change: '+150%' },
                 { label: 'Время загрузки', value: '2.5с', change: '-60%' },
                 { label: 'Мобильный трафик', value: '68%', change: '+45%' },
             ],
-            technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Sanity CMS', 'Vercel'],
+            technologies: [
+                'Next.js',
+                'TypeScript',
+                'Tailwind CSS',
+                'Stripe',
+                'Sanity CMS',
+                'Vercel',
+            ],
             testimonial: {
                 quote: 'Selen.IT полностью преобразили наше онлайн-присутствие. Новая платформа не только выглядит потрясающе, но и значительно улучшила наши показатели продаж.',
                 author: 'Сара Митчелл',
@@ -133,8 +153,10 @@ const caseStudies: Record<string, Record<string, CaseStudy>> = {
             duration: '6 месяцев',
             year: '2024',
             heroImage: '/images/cases/fintech-hero.jpg',
-            challenge: 'FinanceHub Corp. нуждались в мощной аналитической платформе, способной обрабатывать миллионы транзакций в реальном времени и представлять сложные финансовые данные в интуитивном, практически применимом формате.',
-            solution: 'Мы разработали комплексную SaaS-панель с потоковой передачей данных в реальном времени, интерактивными графиками, AI-инсайтами и настраиваемой отчетностью. Платформа имеет ролевой контроль доступа и мультитенантную архитектуру.',
+            challenge:
+                'FinanceHub Corp. нуждались в мощной аналитической платформе, способной обрабатывать миллионы транзакций в реальном времени и представлять сложные финансовые данные в интуитивном, практически применимом формате.',
+            solution:
+                'Мы разработали комплексную SaaS-панель с потоковой передачей данных в реальном времени, интерактивными графиками, AI-инсайтами и настраиваемой отчетностью. Платформа имеет ролевой контроль доступа и мультитенантную архитектуру.',
             results: [
                 { label: 'Активные пользователи', value: '50K+', change: '' },
                 { label: 'Аптайм платформы', value: '99.9%', change: '' },
@@ -164,15 +186,24 @@ const caseStudies: Record<string, Record<string, CaseStudy>> = {
             duration: '4 meses',
             year: '2024',
             heroImage: '/images/cases/luxe-fashion-hero.jpg',
-            challenge: 'Luxe Brands Inc. necesitaba una renovación completa de su plataforma de comercio electrónico obsoleta. Su sitio existente sufría de tiempos de carga lentos, mala experiencia móvil y un proceso de pago que llevaba a altas tasas de abandono del carrito.',
-            solution: 'Construimos una plataforma de comercio electrónico Next.js personalizada con filtrado avanzado de productos, actualizaciones de inventario en tiempo real y un proceso de pago optimizado. El nuevo diseño se centra en imágenes de alta calidad y animaciones fluidas.',
+            challenge:
+                'Luxe Brands Inc. necesitaba una renovación completa de su plataforma de comercio electrónico obsoleta. Su sitio existente sufría de tiempos de carga lentos, mala experiencia móvil y un proceso de pago que llevaba a altas tasas de abandono del carrito.',
+            solution:
+                'Construimos una plataforma de comercio electrónico Next.js personalizada con filtrado avanzado de productos, actualizaciones de inventario en tiempo real y un proceso de pago optimizado. El nuevo diseño se centra en imágenes de alta calidad y animaciones fluidas.',
             results: [
                 { label: 'Tasa de Conversión', value: '4.8%', change: '+200%' },
                 { label: 'Pedido Promedio', value: '$285', change: '+150%' },
                 { label: 'Tiempo de Carga', value: '2.5s', change: '-60%' },
                 { label: 'Tráfico Móvil', value: '68%', change: '+45%' },
             ],
-            technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Sanity CMS', 'Vercel'],
+            technologies: [
+                'Next.js',
+                'TypeScript',
+                'Tailwind CSS',
+                'Stripe',
+                'Sanity CMS',
+                'Vercel',
+            ],
             testimonial: {
                 quote: 'Selen.IT transformó completamente nuestra presencia online. La nueva plataforma no solo se ve impresionante, sino que ha mejorado significativamente nuestras métricas de ventas.',
                 author: 'Sarah Mitchell',
@@ -193,8 +224,10 @@ const caseStudies: Record<string, Record<string, CaseStudy>> = {
             duration: '6 meses',
             year: '2024',
             heroImage: '/images/cases/fintech-hero.jpg',
-            challenge: 'FinanceHub Corp. necesitaba una potente plataforma de análisis que pudiera procesar millones de transacciones en tiempo real y presentar datos financieros complejos en un formato intuitivo y accionable.',
-            solution: 'Desarrollamos un dashboard SaaS completo con transmisión de datos en tiempo real, gráficos interactivos, insights impulsados por IA e informes personalizables. La plataforma cuenta con control de acceso basado en roles y arquitectura multi-tenant.',
+            challenge:
+                'FinanceHub Corp. necesitaba una potente plataforma de análisis que pudiera procesar millones de transacciones en tiempo real y presentar datos financieros complejos en un formato intuitivo y accionable.',
+            solution:
+                'Desarrollamos un dashboard SaaS completo con transmisión de datos en tiempo real, gráficos interactivos, insights impulsados por IA e informes personalizables. La plataforma cuenta con control de acceso basado en roles y arquitectura multi-tenant.',
             results: [
                 { label: 'Usuarios Activos', value: '50K+', change: '' },
                 { label: 'Uptime', value: '99.9%', change: '' },
@@ -528,9 +561,7 @@ export default async function CaseStudyPage({
                         </h2>
                     </Reveal>
                     <Reveal>
-                        <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-                            {ui.ctaText}
-                        </p>
+                        <p className="text-white/80 mb-8 max-w-2xl mx-auto">{ui.ctaText}</p>
                     </Reveal>
                     <Reveal>
                         <Link

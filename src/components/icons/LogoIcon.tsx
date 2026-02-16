@@ -28,13 +28,28 @@ export const LogoIcon = ({ size = 44, colors, animated, isHovered, controls }: L
             <defs>
                 <linearGradient id="logoGradientMain" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor={colors.start}>
-                        <animate attributeName="stop-color" values={colors.startAnim} dur="4s" repeatCount="indefinite" />
+                        <animate
+                            attributeName="stop-color"
+                            values={colors.startAnim}
+                            dur="4s"
+                            repeatCount="indefinite"
+                        />
                     </stop>
                     <stop offset="50%" stopColor={colors.mid}>
-                        <animate attributeName="stop-color" values={colors.midAnim} dur="4s" repeatCount="indefinite" />
+                        <animate
+                            attributeName="stop-color"
+                            values={colors.midAnim}
+                            dur="4s"
+                            repeatCount="indefinite"
+                        />
                     </stop>
                     <stop offset="100%" stopColor={colors.end}>
-                        <animate attributeName="stop-color" values={colors.endAnim} dur="4s" repeatCount="indefinite" />
+                        <animate
+                            attributeName="stop-color"
+                            values={colors.endAnim}
+                            dur="4s"
+                            repeatCount="indefinite"
+                        />
                     </stop>
                 </linearGradient>
 
@@ -80,10 +95,16 @@ export const LogoIcon = ({ size = 44, colors, animated, isHovered, controls }: L
                 cy="10"
                 r="6"
                 fill="url(#logoGradientMain)"
-                filter={isHovered ? "url(#logoGlowStrong)" : "url(#logoGlow)"}
+                filter={isHovered ? 'url(#logoGlowStrong)' : 'url(#logoGlow)'}
                 initial={animated ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.0, type: "spring", stiffness: 500, damping: 15 }}
+                transition={{
+                    duration: 0.5,
+                    delay: 1.0,
+                    type: 'spring',
+                    stiffness: 500,
+                    damping: 15,
+                }}
             />
         </motion.svg>
     );

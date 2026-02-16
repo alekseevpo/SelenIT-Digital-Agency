@@ -1,69 +1,69 @@
 {
-  "rules": [
-    {
-      "id": "nextjs-file-structure",
-      "name": "Правильная структура файлов Next.js",
-      "description": "Проверяет наличие обязательных файлов в App Router",
-      "pattern": "/app/.*/(page|layout|loading|error)\\.tsx$",
-      "severity": "warning",
-      "message": "Убедись, что используешь правильные названия файлов в App Router: page.tsx, layout.tsx, etc."
-    },
-    {
-      "id": "no-any-typescript",
-      "name": "Избегай типа 'any' в TypeScript",
-      "description": "Запрещает использование нестрогой типизации",
-      "pattern": "\\bany\\b",
-      "exclude_pattern": "eslint-disable",
-      "severity": "error",
-      "message": "Используй конкретные типы вместо 'any' для лучшей типобезопасности"
-    },
-    {
-      "id": "tailwind-class-order",
-      "name": "Порядок классов Tailwind",
-      "description": "Проверяет правильный порядок utility классов",
-      "pattern": "className=\"([^\"]+)\"",
-      "severity": "warning",
-      "message": "Проверь порядок классов Tailwind согласно официальной спеке"
-    },
-    {
-      "id": "framer-motion-import",
-      "name": "Правильный импорт Framer Motion",
-      "description": "Проверяет использование motion компонентов",
-      "pattern": "from\\s+[\"']framer-motion[\"']",
-      "severity": "info",
-      "message": "Используй motion компоненты для анимаций"
-    },
-    {
-      "id": "dark-theme-setup",
-      "name": "Настройка темной темы",
-      "description": "Проверяет использование next-themes",
-      "pattern": "useTheme\\(|ThemeProvider",
-      "severity": "info",
-      "message": "Убедись, что темизация реализована через next-themes"
-    },
-    {
-      "id": "resend-email-integration",
-      "name": "Интеграция Resend",
-      "description": "Проверяет использование Resend для email",
-      "pattern": "resend\\.(emails|send)",
-      "severity": "info",
-      "message": "Используй Resend SDK для отправки писем"
-    },
-    {
-      "id": "lucide-react-icons",
-      "name": "Использование Lucide React",
-      "description": "Проверяет использование правильных иконок",
-      "pattern": "from\\s+[\"']lucide-react[\"']",
-      "severity": "info",
-      "message": "Используй иконки из lucide-react"
-    },
-    {
-      "id": "vercel-analytics",
-      "name": "Аналитика Vercel",
-      "description": "Проверяет подключение аналитики",
-      "pattern": "VercelAnalytics|SpeedInsights",
-      "severity": "info",
-      "message": "Не забудь подключить Vercel Analytics"
-    }
-  ]
+    "rules": [
+        {
+            "id": "nextjs-file-structure",
+            "name": "Правильная структура файлов Next.js",
+            "description": "Проверяет наличие обязательных файлов в App Router",
+            "pattern": "/app/.*/(page|layout|loading|error)\\.tsx$",
+            "severity": "warning",
+            "message": "Убедись, что используешь правильные названия файлов в App Router: page.tsx, layout.tsx, etc."
+        },
+        {
+            "id": "no-any-typescript",
+            "name": "Избегай типа 'any' в TypeScript",
+            "description": "Запрещает использование нестрогой типизации",
+            "pattern": "\\bany\\b",
+            "exclude_pattern": "eslint-disable",
+            "severity": "error",
+            "message": "Используй конкретные типы вместо 'any' для лучшей типобезопасности"
+        },
+        {
+            "id": "tailwind-class-order",
+            "name": "Порядок классов Tailwind",
+            "description": "Проверяет правильный порядок utility классов",
+            "pattern": "className=\"([^\"]+)\"",
+            "severity": "warning",
+            "message": "Проверь порядок классов Tailwind согласно официальной спеке"
+        },
+        {
+            "id": "framer-motion-import",
+            "name": "Правильный импорт Framer Motion",
+            "description": "Проверяет использование motion компонентов",
+            "pattern": "from\\s+[\"']framer-motion[\"']",
+            "severity": "info",
+            "message": "Используй motion компоненты для анимаций"
+        },
+        {
+            "id": "dark-theme-setup",
+            "name": "Настройка темной темы",
+            "description": "Проверяет использование next-themes",
+            "pattern": "useTheme\\(|ThemeProvider",
+            "severity": "info",
+            "message": "Убедись, что темизация реализована через next-themes"
+        },
+        {
+            "id": "resend-email-integration",
+            "name": "Интеграция Resend",
+            "description": "Проверяет использование Resend для email",
+            "pattern": "resend\\.(emails|send)",
+            "severity": "info",
+            "message": "Используй Resend SDK для отправки писем"
+        },
+        {
+            "id": "lucide-react-icons",
+            "name": "Использование Lucide React",
+            "description": "Проверяет использование правильных иконок",
+            "pattern": "from\\s+[\"']lucide-react[\"']",
+            "severity": "info",
+            "message": "Используй иконки из lucide-react"
+        },
+        {
+            "id": "vercel-analytics",
+            "name": "Аналитика Vercel",
+            "description": "Проверяет подключение аналитики",
+            "pattern": "VercelAnalytics|SpeedInsights",
+            "severity": "info",
+            "message": "Не забудь подключить Vercel Analytics"
+        }
+    ]
 }

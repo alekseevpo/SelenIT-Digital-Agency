@@ -1,99 +1,93 @@
 {
-  "skills": [
-    {
-      "id": "nextjs-development",
-      "name": "Next.js 14 Development",
-      "level": "expert",
-      "description": "Профессиональная разработка на Next.js 14 с использованием App Router, Server Components, и оптимизации производительности",
-      "technologies": ["App Router", "Server Actions", "Route Handlers", "Middleware"],
-      "focus_areas": ["SSR", "SSG", "ISR", "Performance Optimization"]
-    },
-    {
-      "id": "typescript-expert",
-      "name": "TypeScript Expert",
-      "level": "expert",
-      "description": "Продвинутая типизация, generics, utility types, строгая типобезопасность",
-      "technologies": ["Advanced Types", "Generics", "Utility Types", "Type Guards"],
-      "focus_areas": ["Type Safety", "Code Quality", "Refactoring"]
-    },
-    {
-      "id": "react-architecture",
-      "name": "React Architecture",
-      "level": "advanced",
-      "description": "Создание масштабируемых и поддерживаемых React приложений с правильной архитектурой",
-      "technologies": ["Hooks", "Context", "State Management", "Component Patterns"],
-      "focus_areas": ["Component Design", "State Management", "Performance"]
-    },
-    {
-      "id": "tailwind-css",
-      "name": "Tailwind CSS Styling",
-      "level": "advanced",
-      "description": "Эффективное использование Tailwind CSS для создания современных UI с поддержкой темизации",
-      "technologies": ["Tailwind", "next-themes", "Responsive Design", "Custom Plugins"],
-      "focus_areas": ["Dark Mode", "Responsive Layouts", "Design System"]
-    },
-    {
-      "id": "animation-specialist",
-      "name": "Animation Specialist",
-      "level": "intermediate",
-      "description": "Создание плавных и производительных анимаций с Framer Motion и Lenis",
-      "technologies": ["Framer Motion", "Lenis", "GSAP", "CSS Animations"],
-      "focus_areas": ["Micro-interactions", "Page Transitions", "Scroll Effects"]
-    },
-    {
-      "id": "ui-ux-implementation",
-      "name": "UI/UX Implementation",
-      "level": "advanced",
-      "description": "Реализация дизайн-систем и пользовательских интерфейсов с акцентом на доступность",
-      "technologies": ["Accessibility", "Responsive Design", "Performance", "Testing"],
-      "focus_areas": ["WCAG Compliance", "User Experience", "Cross-browser Support"]
-    },
-    {
-      "id": "backend-integration",
-      "name": "Backend Integration",
-      "level": "intermediate",
-      "description": "Интеграция с backend API, работа с email сервисами и аналитикой",
-      "technologies": ["Resend", "API Routes", "Server Actions", "Webhooks"],
-      "focus_areas": ["Email Integration", "API Development", "Data Fetching"]
-    },
-    {
-      "id": "performance-optimization",
-      "name": "Performance Optimization",
-      "level": "advanced",
-      "description": "Оптимизация производительности веб-приложений и SEO",
-      "technologies": ["Vercel Analytics", "Image Optimization", "Code Splitting", "Caching"],
-      "focus_areas": ["Bundle Optimization", "Loading Performance", "Core Web Vitals"]
-    },
-    {
-      "id": "testing-practices",
-      "name": "Testing Practices",
-      "level": "intermediate",
-      "description": "Написание тестов и обеспечение качества кода",
-      "technologies": ["Jest", "React Testing Library", "Cypress", "Playwright"],
-      "focus_areas": ["Unit Testing", "Integration Testing", "E2E Testing"]
-    },
-    {
-      "id": "deployment-devops",
-      "name": "Deployment & DevOps",
-      "level": "intermediate",
-      "description": "Деплой и мониторинг приложений на Vercel",
-      "technologies": ["Vercel", "CI/CD", "Monitoring", "Environment Variables"],
-      "focus_areas": ["Production Deployment", "Performance Monitoring", "Error Tracking"]
-    }
-  ],
-  
-  "preferred_tools": [
-    "VS Code",
-    "Chrome DevTools",
-    "Figma",
-    "Postman",
-    "GitHub"
-  ],
-  
-  "learning_goals": [
-    "Advanced Framer Motion patterns",
-    "WebGL and Three.js integration",
-    "Advanced Next.js caching strategies",
-    "Micro-frontend architecture"
-  ]
+    "skills": [
+        {
+            "id": "nextjs-development",
+            "name": "Next.js 14 Development",
+            "level": "expert",
+            "description": "Профессиональная разработка на Next.js 14 с использованием App Router, Server Components, и оптимизации производительности",
+            "technologies": ["App Router", "Server Actions", "Route Handlers", "Middleware"],
+            "focus_areas": ["SSR", "SSG", "ISR", "Performance Optimization"]
+        },
+        {
+            "id": "typescript-expert",
+            "name": "TypeScript Expert",
+            "level": "expert",
+            "description": "Продвинутая типизация, generics, utility types, строгая типобезопасность",
+            "technologies": ["Advanced Types", "Generics", "Utility Types", "Type Guards"],
+            "focus_areas": ["Type Safety", "Code Quality", "Refactoring"]
+        },
+        {
+            "id": "react-architecture",
+            "name": "React Architecture",
+            "level": "advanced",
+            "description": "Создание масштабируемых и поддерживаемых React приложений с правильной архитектурой",
+            "technologies": ["Hooks", "Context", "State Management", "Component Patterns"],
+            "focus_areas": ["Component Design", "State Management", "Performance"]
+        },
+        {
+            "id": "tailwind-css",
+            "name": "Tailwind CSS Styling",
+            "level": "advanced",
+            "description": "Эффективное использование Tailwind CSS для создания современных UI с поддержкой темизации",
+            "technologies": ["Tailwind", "next-themes", "Responsive Design", "Custom Plugins"],
+            "focus_areas": ["Dark Mode", "Responsive Layouts", "Design System"]
+        },
+        {
+            "id": "animation-specialist",
+            "name": "Animation Specialist",
+            "level": "intermediate",
+            "description": "Создание плавных и производительных анимаций с Framer Motion и Lenis",
+            "technologies": ["Framer Motion", "Lenis", "GSAP", "CSS Animations"],
+            "focus_areas": ["Micro-interactions", "Page Transitions", "Scroll Effects"]
+        },
+        {
+            "id": "ui-ux-implementation",
+            "name": "UI/UX Implementation",
+            "level": "advanced",
+            "description": "Реализация дизайн-систем и пользовательских интерфейсов с акцентом на доступность",
+            "technologies": ["Accessibility", "Responsive Design", "Performance", "Testing"],
+            "focus_areas": ["WCAG Compliance", "User Experience", "Cross-browser Support"]
+        },
+        {
+            "id": "backend-integration",
+            "name": "Backend Integration",
+            "level": "intermediate",
+            "description": "Интеграция с backend API, работа с email сервисами и аналитикой",
+            "technologies": ["Resend", "API Routes", "Server Actions", "Webhooks"],
+            "focus_areas": ["Email Integration", "API Development", "Data Fetching"]
+        },
+        {
+            "id": "performance-optimization",
+            "name": "Performance Optimization",
+            "level": "advanced",
+            "description": "Оптимизация производительности веб-приложений и SEO",
+            "technologies": ["Vercel Analytics", "Image Optimization", "Code Splitting", "Caching"],
+            "focus_areas": ["Bundle Optimization", "Loading Performance", "Core Web Vitals"]
+        },
+        {
+            "id": "testing-practices",
+            "name": "Testing Practices",
+            "level": "intermediate",
+            "description": "Написание тестов и обеспечение качества кода",
+            "technologies": ["Jest", "React Testing Library", "Cypress", "Playwright"],
+            "focus_areas": ["Unit Testing", "Integration Testing", "E2E Testing"]
+        },
+        {
+            "id": "deployment-devops",
+            "name": "Deployment & DevOps",
+            "level": "intermediate",
+            "description": "Деплой и мониторинг приложений на Vercel",
+            "technologies": ["Vercel", "CI/CD", "Monitoring", "Environment Variables"],
+            "focus_areas": ["Production Deployment", "Performance Monitoring", "Error Tracking"]
+        }
+    ],
+
+    "preferred_tools": ["VS Code", "Chrome DevTools", "Figma", "Postman", "GitHub"],
+
+    "learning_goals": [
+        "Advanced Framer Motion patterns",
+        "WebGL and Three.js integration",
+        "Advanced Next.js caching strategies",
+        "Micro-frontend architecture"
+    ]
 }

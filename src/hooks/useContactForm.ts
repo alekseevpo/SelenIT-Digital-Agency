@@ -7,6 +7,7 @@ interface FormState {
     company: string;
     service: string;
     budget: string;
+    dontKnowBudget: boolean;
     message: string;
     website: string; // Honeypot field
 }
@@ -34,6 +35,7 @@ export function useContactForm({ lang, activeTab, onSubmit }: UseContactFormProp
         company: '',
         service: '',
         budget: '',
+        dontKnowBudget: false,
         message: '',
         website: '',
     });
@@ -108,10 +110,11 @@ export function useContactForm({ lang, activeTab, onSubmit }: UseContactFormProp
 
     const handleChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-            const { name, value } = e.target;
+            const { name, value, type, checked } = e.target as HTMLInputElement;
+
             setFormState((prev) => ({
                 ...prev,
-                [name]: value,
+                [name]: type === 'checkbox' ? checked : value,
             }));
 
             // Clear error for this field
@@ -131,6 +134,7 @@ export function useContactForm({ lang, activeTab, onSubmit }: UseContactFormProp
             company: '',
             service: '',
             budget: '',
+            dontKnowBudget: false,
             message: '',
             website: '',
         });

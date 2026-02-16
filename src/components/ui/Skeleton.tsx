@@ -5,14 +5,7 @@ interface SkeletonProps {
 }
 
 export function Skeleton({ className }: SkeletonProps) {
-    return (
-        <div
-            className={cn(
-                'animate-pulse bg-slate-200 dark:bg-dark-700 rounded',
-                className
-            )}
-        />
-    );
+    return <div className={cn('animate-pulse bg-slate-200 dark:bg-dark-700 rounded', className)} />;
 }
 
 interface SkeletonTextProps {
@@ -24,13 +17,7 @@ export function SkeletonText({ lines = 3, className }: SkeletonTextProps) {
     return (
         <div className={cn('space-y-2', className)}>
             {Array.from({ length: lines }).map((_, i) => (
-                <Skeleton
-                    key={i}
-                    className={cn(
-                        'h-4',
-                        i === lines - 1 ? 'w-3/4' : 'w-full'
-                    )}
-                />
+                <Skeleton key={i} className={cn('h-4', i === lines - 1 ? 'w-3/4' : 'w-full')} />
             ))}
         </div>
     );
@@ -50,9 +37,5 @@ export function SkeletonCard({ className }: SkeletonProps) {
 }
 
 export function SkeletonAvatar({ className }: SkeletonProps) {
-    return (
-        <Skeleton
-            className={cn('w-12 h-12 rounded-full', className)}
-        />
-    );
+    return <Skeleton className={cn('w-12 h-12 rounded-full', className)} />;
 }

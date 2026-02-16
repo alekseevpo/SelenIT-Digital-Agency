@@ -5,18 +5,11 @@ import { CookieConsentProvider } from '@/components/providers/CookieConsentProvi
 
 // Test wrapper with providers
 function AllTheProviders({ children }: { children: React.ReactNode }) {
-    return (
-        <CookieConsentProvider>
-            {children}
-        </CookieConsentProvider>
-    );
+    return <CookieConsentProvider>{children}</CookieConsentProvider>;
 }
 
 // Custom render function
-function customRender(
-    ui: ReactElement,
-    options?: Omit<RenderOptions, 'wrapper'>
-) {
+function customRender(ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) {
     return render(ui, { wrapper: AllTheProviders, ...options });
 }
 

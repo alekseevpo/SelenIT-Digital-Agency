@@ -50,13 +50,13 @@ export function ThemeToggle() {
                         animate={{
                             scale: 1,
                             opacity: 1,
-                            rotate: isHovered ? 180 : 0
+                            rotate: isHovered ? 180 : 0,
                         }}
                         exit={{ scale: 0, opacity: 0, rotate: 90 }}
                         transition={{
-                            scale: { duration: 0.3, ease: "easeOut" },
+                            scale: { duration: 0.3, ease: 'easeOut' },
                             opacity: { duration: 0.3 },
-                            rotate: { duration: 0.5, ease: "easeInOut" }
+                            rotate: { duration: 0.5, ease: 'easeInOut' },
                         }}
                     >
                         <svg
@@ -70,7 +70,13 @@ export function ThemeToggle() {
                             <line x1="12" y1="2" x2="12" y2="4" strokeLinecap="round" />
                             <line x1="12" y1="20" x2="12" y2="22" strokeLinecap="round" />
                             <line x1="4.93" y1="4.93" x2="6.34" y2="6.34" strokeLinecap="round" />
-                            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07" strokeLinecap="round" />
+                            <line
+                                x1="17.66"
+                                y1="17.66"
+                                x2="19.07"
+                                y2="19.07"
+                                strokeLinecap="round"
+                            />
                             <line x1="2" y1="12" x2="4" y2="12" strokeLinecap="round" />
                             <line x1="20" y1="12" x2="22" y2="12" strokeLinecap="round" />
                             <line x1="4.93" y1="19.07" x2="6.34" y2="17.66" strokeLinecap="round" />
@@ -84,13 +90,13 @@ export function ThemeToggle() {
                         animate={{
                             scale: 1,
                             opacity: 1,
-                            rotate: isHovered ? -20 : 0
+                            rotate: isHovered ? -20 : 0,
                         }}
                         exit={{ scale: 0, opacity: 0, rotate: -90 }}
                         transition={{
-                            scale: { duration: 0.3, ease: "easeOut" },
+                            scale: { duration: 0.3, ease: 'easeOut' },
                             opacity: { duration: 0.3 },
-                            rotate: { duration: 0.3, ease: "easeInOut" }
+                            rotate: { duration: 0.3, ease: 'easeInOut' },
                         }}
                     >
                         <svg

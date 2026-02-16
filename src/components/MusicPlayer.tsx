@@ -158,7 +158,7 @@ export default function MusicPlayer() {
             {/* Уведомление о музыке */}
             {showNotification && (
                 <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 animate-slideDown">
-                    <div className="bg-white/90 dark:bg-dark-900/90 backdrop-blur-md border border-slate-200/50 dark:border-white/10 rounded-xl shadow-lg p-3 min-w-[240px]">
+                    <div className="bg-white/20 dark:bg-black/20 backdrop-blur-sm border border-slate-200/30 dark:border-white/10 rounded-xl shadow-lg p-3 min-w-[240px]">
                         <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-1.5">
                                 <Music className="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" />
@@ -195,7 +195,7 @@ export default function MusicPlayer() {
             {userChoice !== false && (
                 <button
                     onClick={togglePlayer}
-                    className="fixed bottom-6 right-6 w-12 h-12 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-40"
+                    className="fixed bottom-6 right-6 w-12 h-12 bg-white/20 dark:bg-black/20 backdrop-blur-sm hover:bg-white/30 dark:hover:bg-black/30 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-40"
                     title="Музыкальный плеер"
                 >
                     {isPlaying ? (
@@ -208,9 +208,9 @@ export default function MusicPlayer() {
 
             {/* Мини проигрыватель */}
             {showPlayer && userChoice !== false && (
-                <div className="fixed bottom-16 right-24 w-64 bg-white/70 dark:bg-dark-900/70 backdrop-blur-xl border border-slate-200/30 dark:border-white/5 rounded-2xl shadow-2xl p-3 z-40 animate-slideUp">
+                <div className="fixed bottom-16 right-24 w-64 bg-white/20 dark:bg-black/20 backdrop-blur-sm border border-slate-200/20 dark:border-white/10 rounded-2xl shadow-2xl p-3 z-40 animate-slideUp">
                     <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                             ProleteR
                         </h3>
                         <button
@@ -225,7 +225,7 @@ export default function MusicPlayer() {
                     <div className="flex items-center gap-2 mb-3">
                         <button
                             onClick={togglePlay}
-                            className="w-10 h-10 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 shadow-lg"
+                            className="w-10 h-10 bg-white/30 dark:bg-black/30 hover:bg-white/40 dark:hover:bg-black/40 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-105 shadow-lg -mt-2"
                         >
                             {isPlaying ? (
                                 <Pause className="w-4 h-4 text-white" />

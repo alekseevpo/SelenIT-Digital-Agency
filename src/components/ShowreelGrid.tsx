@@ -31,7 +31,11 @@ interface ShowreelGridProps {
     };
 }
 
-export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGridProps, 'categories'>) {
+export default function ShowreelGrid({
+    projects,
+    lang,
+    dict,
+}: Omit<ShowreelGridProps, 'categories'>) {
     return (
         <section className="section-padding bg-transparent dark:bg-dark-950 transition-colors duration-300">
             <div className="container-custom">
@@ -44,12 +48,20 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                             {/* Video or Image Placeholder */}
                             <div className="aspect-video relative">
                                 {project.videoId ? (
-                                    <YouTubeEmbed videoId={project.videoId} title={project.title} lang={lang} />
+                                    <YouTubeEmbed
+                                        videoId={project.videoId}
+                                        title={project.title}
+                                        lang={lang}
+                                    />
                                 ) : (
-                                    <div className={`w-full h-full bg-gradient-to-br ${project.color} relative`}>
+                                    <div
+                                        className={`w-full h-full bg-gradient-to-br ${project.color} relative`}
+                                    >
                                         <div className="absolute inset-0 bg-dark-900/40 group-hover:bg-dark-900/20 transition-all duration-500" />
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="text-white/80 text-sm">{dict.projectPreview}</span>
+                                            <span className="text-white/80 text-sm">
+                                                {dict.projectPreview}
+                                            </span>
                                         </div>
                                     </div>
                                 )}
@@ -61,19 +73,31 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                                     <span className="px-3 py-1 rounded-full bg-red-600/20 dark:bg-red-500/20 text-red-600 dark:text-red-500 text-xs font-medium">
                                         {project.category}
                                     </span>
-                                    <span className="text-slate-500 dark:text-dark-500 text-sm">{project.year}</span>
+                                    <span className="text-slate-500 dark:text-dark-500 text-sm">
+                                        {project.year}
+                                    </span>
                                 </div>
 
-                                <h3 className="text-3xl md:text-4xl font-frantz font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide leading-none group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors" style={{ transform: 'scaleY(1.2)' }}>
+                                <h3
+                                    className="text-3xl md:text-4xl font-frantz font-black text-slate-900 dark:text-white mb-2 uppercase tracking-wide leading-none group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors"
+                                    style={{ transform: 'scaleY(1.2)' }}
+                                >
                                     {project.title}
                                 </h3>
-                                <p className="text-slate-500 dark:text-dark-400 text-sm mb-2">{dict.client}: {project.client}</p>
-                                <p className="text-slate-600 dark:text-dark-300 mb-6">{project.description}</p>
+                                <p className="text-slate-500 dark:text-dark-400 text-sm mb-2">
+                                    {dict.client}: {project.client}
+                                </p>
+                                <p className="text-slate-600 dark:text-dark-300 mb-6">
+                                    {project.description}
+                                </p>
 
                                 {/* Tags */}
                                 <div className="flex flex-wrap gap-2 mb-6">
                                     {project.tags.map((tag) => (
-                                        <span key={tag} className="px-2 py-1 rounded bg-slate-200 dark:bg-dark-800 text-slate-600 dark:text-dark-300 text-xs">
+                                        <span
+                                            key={tag}
+                                            className="px-2 py-1 rounded bg-slate-200 dark:bg-dark-800 text-slate-600 dark:text-dark-300 text-xs"
+                                        >
                                             {tag}
                                         </span>
                                     ))}
@@ -82,7 +106,10 @@ export default function ShowreelGrid({ projects, lang, dict }: Omit<ShowreelGrid
                                 {/* Results */}
                                 <div className="flex flex-wrap gap-4 pt-6 border-t border-slate-200 dark:border-dark-700">
                                     {project.results.map((result) => (
-                                        <span key={result} className="text-sm text-red-600 dark:text-red-500 font-medium">
+                                        <span
+                                            key={result}
+                                            className="text-sm text-red-600 dark:text-red-500 font-medium"
+                                        >
                                             {result}
                                         </span>
                                     ))}

@@ -11,8 +11,7 @@ interface AnimatedTitleProps {
 export function AnimatedTitle({ title1, words, className = '' }: AnimatedTitleProps) {
     return (
         <h1 className={className}>
-            {title1}{' '}
-            <TypeWriter words={words} />
+            {title1} <TypeWriter words={words} />
         </h1>
     );
 }

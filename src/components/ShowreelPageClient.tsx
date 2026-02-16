@@ -1,9 +1,12 @@
 'use client';
 
 import YouTubeEmbed from '@/components/ui/YouTubeEmbed';
-import ShowreelGridOptimized from '@/components/ShowreelGridOptimized';
-import { LazyCTA } from '@/components/ui/LazySection';
+import { lazy, Suspense } from 'react';
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
+import { LazyCTA } from '@/components/ui/LazySection';
+
+// Lazy load heavy components
+const ShowreelGridLight = lazy(() => import('@/components/ShowreelGridLight'));
 
 interface ShowreelPageClientProps {
     hero: any;
@@ -51,9 +54,29 @@ export default function ShowreelPageClient({
             </section>
 
             {/* Filterable Portfolio Grid */}
-            <ShowreelGridOptimized projects={projects} lang={lang} dict={grid} />
+            <Suspense
+                fallback={
+                    <div className="py-20 bg-slate-50 dark:bg-dark-900">
+                        <div className="container-custom px-4 sm:px-6 lg:px-8">
+                            <div className="h-64 animate-pulse bg-slate-200 dark:bg-dark-800 rounded-2xl" />
+                        </div>
+                    </div>
+                }
+            >
+                <ShowreelGridLight projects={projects} lang={lang} dict={grid} />
+            </Suspense>
 
-            <LazyCTA lang={lang} dict={cta} commonDict={hero} />
+            <Suspense
+                fallback={
+                    <div className="py-20 bg-white dark:bg-dark-950">
+                        <div className="container-custom px-4 sm:px-6 lg:px-8">
+                            <div className="h-32 animate-pulse bg-slate-200 dark:bg-dark-800 rounded-2xl" />
+                        </div>
+                    </div>
+                }
+            >
+                <LazyCTA lang={lang} dict={cta} commonDict={hero} />
+            </Suspense>
         </div>
     );
 }

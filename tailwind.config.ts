@@ -62,9 +62,11 @@ const config: Config = {
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                'gradient-conic':
+                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
                 'hero-gradient': 'linear-gradient(135deg, #ff0000 0%, #cc0000 100%)',
-                'card-gradient': 'linear-gradient(135deg, rgba(255, 0, 0, 0.05) 0%, rgba(148, 163, 184, 0.05) 100%)',
+                'card-gradient':
+                    'linear-gradient(135deg, rgba(255, 0, 0, 0.05) 0%, rgba(148, 163, 184, 0.05) 100%)',
             },
             animation: {
                 'fade-in': 'fadeIn 0.5s ease-out',
@@ -73,7 +75,7 @@ const config: Config = {
                 'slide-in-left': 'slideInLeft 0.6s ease-out',
                 'slide-in-right': 'slideInRight 0.6s ease-out',
                 'scale-in': 'scaleIn 0.4s ease-out',
-                'float': 'float 6s ease-in-out infinite',
+                float: 'float 6s ease-in-out infinite',
                 'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
                 'gradient-x': 'gradientX 15s ease infinite',
             },
@@ -116,10 +118,11 @@ const config: Config = {
                 },
             },
             boxShadow: {
-                'glow': '0 0 20px rgba(255, 0, 0, 0.15)',
+                glow: '0 0 20px rgba(255, 0, 0, 0.15)',
                 'glow-lg': '0 0 40px rgba(255, 0, 0, 0.3)',
-                'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                card: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                'card-hover':
+                    '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
             },
             backdropBlur: {
                 xs: '2px',

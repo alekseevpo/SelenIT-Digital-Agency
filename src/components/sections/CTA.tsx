@@ -63,18 +63,10 @@ export default function CTA({ lang, dict, commonDict }: CTAProps) {
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                         <Link
                             href={`/${lang}/contact`}
-                            className="btn-primary text-lg px-8 py-4 shadow-xl shadow-primary-900/20 hover:shadow-primary-600/30 transition-shadow"
+                            className="btn-primary text-lg sm:text-base px-6 sm:px-8 py-3 sm:py-3 transform hover:scale-105 transition-all"
                         >
                             {dict.button}
                         </Link>
-                        <a
-                            href="/brief.pdf"
-                            download="SelenIT-Brief.pdf"
-                            className="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-white flex items-center gap-2 group transition-colors"
-                        >
-                            {commonDict.ctaSecondary}
-                            <Download className="w-5 h-5 transition-transform group-hover:translate-y-1" />
-                        </a>
                     </div>
                 </Reveal>
             </div>

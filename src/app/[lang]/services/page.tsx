@@ -5,7 +5,11 @@ import { Reveal } from '@/components/ui/Reveal';
 import CTA from '@/components/sections/CTA';
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     return {
@@ -21,33 +25,68 @@ interface ServicesPageProps {
 const serviceIcons: Record<string, React.ReactNode> = {
     'web-development': (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+            />
         </svg>
     ),
     'ui-ux-design': (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+            />
         </svg>
     ),
-    'ecommerce': (
+    ecommerce: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+            />
         </svg>
     ),
     'web-applications': (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+            />
         </svg>
     ),
     'mobile-first': (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+            />
         </svg>
     ),
-    'maintenance': (
+    maintenance: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            />
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
         </svg>
     ),
 };
@@ -94,10 +133,14 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
                     <div className="grid grid-cols-1 gap-12 sm:gap-24">
                         {servicesList.map((service, index) => (
                             <Reveal key={service.id} delay={0.2 * index} width="100%">
-                                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                                <div
+                                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                                >
                                     <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-
-                                        <h3 className="font-frantz font-black uppercase tracking-wider text-5xl md:text-6xl mb-8 text-slate-900 dark:text-white leading-none origin-left inline-block" style={{ transform: 'scaleY(1.5) scaleX(1.1)' }}>
+                                        <h3
+                                            className="font-frantz font-black uppercase tracking-wider text-5xl md:text-6xl mb-8 text-slate-900 dark:text-white leading-none origin-left inline-block"
+                                            style={{ transform: 'scaleY(1.5) scaleX(1.1)' }}
+                                        >
                                             {service.title}
                                         </h3>
                                         <p className="text-lg text-slate-600 dark:text-dark-400 mb-8 transition-colors duration-300">
@@ -105,16 +148,23 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
                                         </p>
                                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             {service.features.map((feature) => (
-                                                <li key={feature} className="flex items-center gap-3 text-slate-700 dark:text-dark-300 group/feature">
+                                                <li
+                                                    key={feature}
+                                                    className="flex items-center gap-3 text-slate-700 dark:text-dark-300 group/feature"
+                                                >
                                                     <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 flex-shrink-0 group-hover/feature:scale-150 transition-transform duration-300" />
                                                     {feature}
                                                 </li>
                                             ))}
                                         </ul>
                                     </div>
-                                    <div className={`relative aspect-video rounded-3xl overflow-hidden bg-slate-100/50 dark:bg-black shadow-2xl ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                                    <div
+                                        className={`relative aspect-video rounded-3xl overflow-hidden bg-slate-100/50 dark:bg-black shadow-2xl ${index % 2 === 1 ? 'lg:order-1' : ''}`}
+                                    >
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="text-slate-400 font-medium">Project Preview Placeholder</div>
+                                            <div className="text-slate-400 font-medium">
+                                                Project Preview Placeholder
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +204,10 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
                                     <div className="text-7xl font-bold text-slate-900/5 dark:text-white/5 absolute top-6 right-8 group-hover:text-red-600/10 dark:group-hover:text-red-500/10 transition-colors">
                                         {item.step}
                                     </div>
-                                    <h3 className="text-4xl sm:text-5xl font-frantz font-black text-slate-900 dark:text-white mb-6 relative z-10 uppercase tracking-normal leading-[0.9] origin-left" style={{ transform: 'scaleY(1.4) scaleX(1.05)' }}>
+                                    <h3
+                                        className="text-4xl sm:text-5xl font-frantz font-black text-slate-900 dark:text-white mb-6 relative z-10 uppercase tracking-normal leading-[0.9] origin-left"
+                                        style={{ transform: 'scaleY(1.4) scaleX(1.05)' }}
+                                    >
                                         {item.title}
                                     </h3>
                                     <p className="text-slate-600 dark:text-dark-400 relative z-10 transition-colors duration-300">
@@ -167,11 +220,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
                 </div>
             </section>
 
-            <CTA
-                lang={lang as Locale}
-                dict={cta}
-                commonDict={dict.hero}
-            />
+            <CTA lang={lang as Locale} dict={cta} commonDict={dict.hero} />
         </div>
     );
 }

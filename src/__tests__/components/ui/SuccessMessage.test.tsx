@@ -57,7 +57,7 @@ describe('SuccessMessage Component', () => {
     it('has correct button attributes', () => {
         render(<SuccessMessage {...defaultProps} />);
 
-        const button = screen.getByText('Send another message');
+        const button = screen.getByRole('button', { name: 'Send another message' });
         expect(button).toHaveAttribute('type', 'button');
     });
 
@@ -67,7 +67,7 @@ describe('SuccessMessage Component', () => {
         const container = screen.getByText('Thank you!').closest('div');
         expect(container).toHaveClass('text-center', 'py-10');
 
-        const button = screen.getByText('Send another message');
+        const button = screen.getByRole('button', { name: 'Send another message' });
         expect(button).toHaveClass('btn-secondary', 'group/btn', 'relative', 'overflow-hidden');
     });
 

@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Production builds
+.next/
+out/
+build/
+dist/
+
+# Generated files
+coverage/
+*.log
+.DS_Store
+.env*
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Other
+*.min.js
+*.min.css
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ico
+*.pdf
+
+# Test files
+__snapshots__/
+coverage/
+
+# Config files that shouldn't be formatted
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

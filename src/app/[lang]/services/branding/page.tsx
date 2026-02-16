@@ -10,10 +10,19 @@ const content = {
         badge: 'Branding',
         title1: "We'll build a",
         titleGradient: 'brand',
-        title2: "they'll remember!",
+        title2: "they'll <span class='text-red-600 dark:text-red-500 underline decoration-black dark:decoration-white decoration-2 underline-offset-4'>remember</span>",
         subtitle:
             'Strategy, identity and messaging that makes you stand out and converts attention into trust.',
-        bullets: ['Brand strategy', 'Visual identity', 'Tone of voice', 'Brand guidelines'],
+        bullets: [
+            'Brand strategy',
+            'Visual identity',
+            'Tone of voice',
+            'Brand guidelines',
+            'Market research',
+            'Positioning',
+            'Systematic approach',
+            'Brand voice',
+        ],
         mainContent: {
             intro1: 'In a world where the average user sees up to 10,000 advertising messages per day, "just a logo" is no longer enough. For a client to choose you over a competitor with a 5% lower price, your brand must have something more than a pretty picture. It must have character, values, and DNA.',
             intro2: `At SELEN.<span class="text-red-600 dark:text-red-500">IT</span>, we don't just "draw brands" — we design emotional experiences that make audiences fall in love.`,
@@ -57,8 +66,8 @@ const content = {
             quote: 'Branding is a long-term investment in added value. A strong brand allows you to sell at higher prices, hire better employees, and maintain customer loyalty for years.',
             whyUs: {
                 title: 'Why trust ',
-                highlight: 'this',
-                highlight2: ' to SELEN.',
+                highlight: 'this ',
+                highlight2: 'to SELEN.',
                 highlight3: 'IT?',
                 content:
                     "We combine the analytical approach of a digital agency with creative vision. We don't offer template solutions because your business is unique. Our task is to make sure that when your niche is mentioned, your company name immediately pops into the client's head.",
@@ -66,7 +75,7 @@ const content = {
             ctaBox: {
                 title: "Ready to announce yourself so you can't be ignored?",
                 subtitle:
-                    'Would you like me to prepare a brief or free consultation plan for you so we can discuss your future brand?',
+                    'Would you like us to prepare a brief or free consultation plan for you so we can discuss your future brand?',
             },
         },
     },
@@ -74,7 +83,7 @@ const content = {
         badge: 'Брендинг',
         title1: 'Создадим',
         titleGradient: 'бренд',
-        title2: ', который запомнят!',
+        title2: ', который <span class="text-red-600 dark:text-red-500 underline decoration-black dark:decoration-white decoration-2 underline-offset-4">запомнят</span>',
         subtitle:
             'Стратегия, айдентика и коммуникация, которые выделяют и превращают внимание в доверие.',
         bullets: [
@@ -82,6 +91,10 @@ const content = {
             'Визуальная айдентика',
             'Тон коммуникации',
             'Брендбук и гайдлайны',
+            'Исследование рынка',
+            'Позиционирование',
+            'Системный подход',
+            'Голос бренда',
         ],
         mainContent: {
             intro1: 'В мире, где средний пользователь видит до 10 000 рекламных сообщений в день, «просто логотипа» уже недостаточно. Чтобы клиент выбрал вас, а не конкурента с ценой на 5% ниже, ваш бренд должен обладать чем-то большим, чем симпатичная картинка. Он должен обладать характером, ценностями и ДНК.',
@@ -126,8 +139,8 @@ const content = {
             quote: 'Брендинг — это долгосрочная инвестиция в добавочную стоимость. Сильный бренд позволяет продавать дороже, нанимать лучших сотрудников и сохранять лояльность клиентов годами.',
             whyUs: {
                 title: 'Почему стоит доверить ',
-                highlight: 'это',
-                highlight2: ' SELEN.',
+                highlight: 'это ',
+                highlight2: 'SELEN.',
                 highlight3: 'IT?',
                 content:
                     'Мы объединяем аналитический подход digital-агентства с креативным видением. Мы не предлагаем шаблонных решений, потому что ваш бизнес уникален. Наша задача — сделать так, чтобы при упоминании вашей ниши у клиента в голове сразу всплывало название вашей компании.',
@@ -135,7 +148,7 @@ const content = {
             ctaBox: {
                 title: 'Готовы заявить о себе так, чтобы вас невозможно было игнорировать?',
                 subtitle:
-                    'Хотите, я подготовлю для вас краткий бриф или план бесплатной консультации, чтобы мы могли обсудить ваш будущий бренд?',
+                    'Хотите, мы подготовим для вас краткий бриф или план бесплатной консультации, чтобы мы могли обсудить ваш будущий бренд?',
             },
         },
     },
@@ -143,10 +156,19 @@ const content = {
         badge: 'Branding',
         title1: 'Crearemos una',
         titleGradient: 'marca',
-        title2: '¡que recordarán!',
+        title2: '¡que <span class="text-red-600 dark:text-red-500 underline decoration-black dark:decoration-white decoration-2 underline-offset-4">recordarán</span>',
         subtitle:
             'Estrategia, identidad y mensajes que te diferencian y convierten la atención en confianza.',
-        bullets: ['Estrategia de marca', 'Identidad visual', 'Tono de voz', 'Guías de marca'],
+        bullets: [
+            'Estrategia de marca',
+            'Identidad visual',
+            'Tono de voz',
+            'Guías de marca',
+            'Investigación de mercado',
+            'Posicionamiento',
+            'Enfoque sistemático',
+            'Voz de la marca',
+        ],
         mainContent: {
             intro1: 'En un mundo donde el usuario promedio ve hasta 10,000 mensajes publicitarios al día, "solo un logo" ya no es suficiente. Para que un cliente te elija a ti en lugar de un competidor con un precio 5% más bajo, tu marca debe tener algo más que una imagen bonita. Debe tener carácter, valores y ADN.',
             intro2: `En SELEN.<span class="text-red-600 dark:text-red-500">IT</span>, no solo "dibujamos marcas" — diseñamos experiencias emocionales que hacen que la audiencia se enamore.`,
@@ -190,8 +212,8 @@ const content = {
             quote: 'El branding es una inversión a largo plazo en valor agregado. Una marca fuerte te permite vender a precios más altos, contratar mejores empleados y mantener la lealtad de los clientes durante años.',
             whyUs: {
                 title: '¿Por qué confiar ',
-                highlight: 'esto',
-                highlight2: ' a SELEN.',
+                highlight: 'esto ',
+                highlight2: 'a SELEN.',
                 highlight3: 'IT?',
                 content:
                     'Combinamos el enfoque analítico de una agencia digital con visión creativa. No ofrecemos soluciones plantilla porque tu negocio es único. Nuestra tarea es hacer que cuando se mencione tu nicho, el nombre de tu empresa aparezca inmediatamente en la mente del cliente.',
@@ -199,7 +221,7 @@ const content = {
             ctaBox: {
                 title: '¿Listos para anunciarse de manera que sea imposible ignorarlos?',
                 subtitle:
-                    '¿Quieres que prepare un breve o plan de consulta gratuita para que podamos discutir tu futura marca?',
+                    '¿Quieren que preparemos para ustedes un breve o un plan de consulta gratuita para que podamos discutir su futuro marca?',
             },
         },
     },
@@ -236,7 +258,7 @@ export default async function BrandingPage({ params }: PageProps) {
     ];
 
     return (
-        <div className="min-h-screen bg-cream-50 dark:bg-black transition-colors duration-300">
+        <div className="min-h-screen bg-cream-50 dark:bg-black transition-colors duration-300 branding-page">
             <BreadcrumbJsonLd items={breadcrumbs} />
             <section className="pt-40 pb-20 relative overflow-hidden bg-transparent dark:bg-black transition-colors duration-300">
                 <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -246,10 +268,18 @@ export default async function BrandingPage({ params }: PageProps) {
                         </span>
                     </Reveal>
                     <Reveal width="100%" delay={0.35}>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
-                            {c.title1} <span className="gradient-text">{c.titleGradient}</span>{' '}
-                            {c.title2}
-                        </h1>
+                        <h1
+                            className="heading-1 mb-6 text-slate-900 dark:text-white"
+                            style={{
+                                fontSize: '5rem',
+                                lineHeight: 0.95,
+                                fontWeight: 700,
+                                letterSpacing: '0.01em',
+                            }}
+                            dangerouslySetInnerHTML={{
+                                __html: `${c.title1} <span class="gradient-text">${c.titleGradient}</span>${c.title2}`,
+                            }}
+                        />
                     </Reveal>
                     <Reveal width="100%" delay={0.45}>
                         <p className="text-body max-w-2xl mx-auto transition-colors duration-300 mb-2">
@@ -273,7 +303,39 @@ export default async function BrandingPage({ params }: PageProps) {
                                 dangerouslySetInnerHTML={{ __html: c.mainContent.intro2 }}
                             />
 
-                            <h3 className="heading-2 mb-3 text-slate-900 dark:text-white">
+                            {/* Two Column Layout with Image */}
+                            <div className="mb-8 flex flex-col-reverse lg:flex-row gap-8 items-center">
+                                <div className="flex-1">
+                                    <p className="text-body leading-relaxed mb-4">
+                                        В мире, где средний пользователь видит до 10 000 рекламных
+                                        сообщений в день, «просто логотипа» уже недостаточно. Чтобы
+                                        клиент выбрал вас, а не конкурента с ценой на 5% ниже, ваш
+                                        бренд должен обладать чем-то большим, чем симпатичная
+                                        картинка. Он должен обладать характером, ценностями и ДНК.
+                                    </p>
+                                    <p className="text-body leading-relaxed">
+                                        В SELEN.IT мы не просто «рисуем бренды» — мы проектируем
+                                        эмоциональный опыт, который заставляет аудиторию влюбляться.
+                                    </p>
+                                </div>
+                                <div className="flex-shrink-0 lg:w-1/3 -mt-8 pt-8">
+                                    <img
+                                        src="/artist_.png"
+                                        alt="Artist illustration"
+                                        className="max-w-full h-auto rounded-lg dark:invert"
+                                    />
+                                </div>
+                            </div>
+
+                            <h3
+                                className="mb-3 text-slate-900 dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight font-frantz"
+                                style={{
+                                    fontSize: '3rem',
+                                    lineHeight: 1.15,
+                                    fontWeight: 700,
+                                    letterSpacing: '0.02em',
+                                }}
+                            >
                                 {c.mainContent.section1.title}
                                 <span className="text-red-600 dark:text-red-500">
                                     {c.mainContent.section1.highlight}
@@ -289,7 +351,15 @@ export default async function BrandingPage({ params }: PageProps) {
                                 ))}
                             </ul>
 
-                            <h3 className="heading-2 mb-3 text-slate-900 dark:text-white">
+                            <h3
+                                className="mb-3 text-slate-900 dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight font-frantz"
+                                style={{
+                                    fontSize: '3rem',
+                                    lineHeight: 1.15,
+                                    fontWeight: 700,
+                                    letterSpacing: '0.02em',
+                                }}
+                            >
                                 {c.mainContent.section2.title}
                                 <span className="text-red-600 dark:text-red-500">
                                     {c.mainContent.section2.highlight}
@@ -305,7 +375,15 @@ export default async function BrandingPage({ params }: PageProps) {
                                 ))}
                             </ul>
 
-                            <h3 className="heading-2 mb-3 text-slate-900 dark:text-white">
+                            <h3
+                                className="mb-3 text-slate-900 dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight font-frantz"
+                                style={{
+                                    fontSize: '3rem',
+                                    lineHeight: 1.15,
+                                    fontWeight: 700,
+                                    letterSpacing: '0.02em',
+                                }}
+                            >
                                 {c.mainContent.section3.title}
                                 <span className="text-red-600 dark:text-red-500">
                                     {c.mainContent.section3.highlight}
@@ -316,7 +394,15 @@ export default async function BrandingPage({ params }: PageProps) {
                                 dangerouslySetInnerHTML={{ __html: c.mainContent.section3.content }}
                             />
 
-                            <h3 className="heading-2 mb-3 text-slate-900 dark:text-white">
+                            <h3
+                                className="mb-3 text-slate-900 dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight font-frantz"
+                                style={{
+                                    fontSize: '3rem',
+                                    lineHeight: 1.15,
+                                    fontWeight: 700,
+                                    letterSpacing: '0.02em',
+                                }}
+                            >
                                 {c.mainContent.section4.title}
                                 <span className="text-red-600 dark:text-red-500">
                                     {c.mainContent.section4.highlight}
@@ -336,7 +422,15 @@ export default async function BrandingPage({ params }: PageProps) {
                                 <p>{c.mainContent.quote}</p>
                             </blockquote>
 
-                            <h3 className="heading-2 mb-3 text-slate-900 dark:text-white">
+                            <h3
+                                className="mb-3 text-slate-900 dark:text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight font-frantz"
+                                style={{
+                                    fontSize: '3rem',
+                                    lineHeight: 1.15,
+                                    fontWeight: 700,
+                                    letterSpacing: '0.02em',
+                                }}
+                            >
                                 {c.mainContent.whyUs.title}
                                 <span className="text-red-600 dark:text-red-500">
                                     {c.mainContent.whyUs.highlight}
@@ -344,9 +438,20 @@ export default async function BrandingPage({ params }: PageProps) {
                                 SELEN.<span className="text-red-600 dark:text-red-500">IT</span>?
                             </h3>
                             <p
-                                className="mb-4 text-body leading-relaxed"
+                                className="mb-10 text-body leading-relaxed"
                                 dangerouslySetInnerHTML={{ __html: c.mainContent.whyUs.content }}
                             />
+
+                            <div className="flex flex-wrap gap-2 justify-center mb-10">
+                                {c.bullets.map((item) => (
+                                    <span
+                                        key={item}
+                                        className="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm font-medium border border-slate-200 dark:border-slate-700"
+                                    >
+                                        {item}
+                                    </span>
+                                ))}
+                            </div>
 
                             <div className="bg-cream-50 dark:bg-dark-800 rounded-2xl p-8 my-6 border border-slate-200 dark:border-dark-700">
                                 <p className="text-center text-lg font-semibold text-slate-900 dark:text-white mb-4">
@@ -356,40 +461,6 @@ export default async function BrandingPage({ params }: PageProps) {
                                     {c.mainContent.ctaBox.subtitle}
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="section-padding">
-                <div className="container-custom px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-3xl mx-auto">
-                        <div className="glass-card p-10 bg-cream-50/40 dark:bg-neutral-900 border border-slate-200 dark:border-dark-700">
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {c.bullets.map((item) => (
-                                    <li
-                                        key={item}
-                                        className="flex items-center gap-3 text-slate-700 dark:text-dark-300"
-                                    >
-                                        <div className="w-5 h-5 rounded-full bg-orange-500/10 dark:bg-primary-500/10 flex items-center justify-center text-orange-500 dark:text-primary-500">
-                                            <svg
-                                                className="w-3 h-3"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth={3}
-                                                    d="M5 13l4 4L19 7"
-                                                />
-                                            </svg>
-                                        </div>
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
                     </div>
                 </div>

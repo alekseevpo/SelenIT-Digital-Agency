@@ -96,7 +96,7 @@ export default async function ContactPage({ params }: PageProps) {
                         {/* Contact Info */}
                         <div className="lg:col-span-1 space-y-8">
                             <div className="text-center mb-12">
-                                <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 dark:text-white leading-[0.9] tracking-tight">
+                                <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-red-600 dark:text-red-500 leading-[0.9] tracking-tight">
                                     {dict.contact.hero.badge}
                                 </h2>
                             </div>

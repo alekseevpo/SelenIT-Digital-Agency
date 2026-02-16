@@ -312,15 +312,15 @@ export default function Hero({ dict, lang }: HeroProps) {
                     </div>
 
                     {/* CTA Buttons - Centered Row */}
-                    <div className="w-full flex flex-col items-center mt-24 mb-16">
+                    <div className="w-full flex flex-col items-center mt-16 sm:mt-20 md:mt-24 mb-12 sm:mb-16">
                         <motion.div variants={itemVariants} className="flex flex-col items-center">
                             <Link
                                 href={`/${lang}/contact`}
-                                className="btn-primary text-xl px-12 py-2 mx-auto sm:w-[320px] lg:w-[320px] text-center transform hover:scale-105 transition-all sm:text-base sm:px-6 sm:py-3"
+                                className="btn-primary text-lg sm:text-base px-8 sm:px-6 py-3 sm:py-3 mx-auto w-full sm:w-[280px] md:w-[320px] text-center transform hover:scale-105 transition-all"
                             >
                                 {dict.ctaPrimary}
                             </Link>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center">
+                            <p className="text-xs sm:text-xs text-slate-500 dark:text-slate-400 mt-2 text-center px-4">
                                 {dict.ctaNote || 'Это бесплатно'}
                             </p>
                         </motion.div>
@@ -329,7 +329,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                     {/* Stats */}
                     <motion.div
                         variants={itemVariants as any}
-                        className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-32 pt-12 border-t border-slate-200 dark:border-dark-800"
+                        className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-20 sm:mt-24 md:mt-32 pt-8 sm:pt-12 border-t border-slate-200 dark:border-dark-800"
                     >
                         {[
                             { target: 150, suffix: '+', label: dict.stats.projects },
@@ -338,10 +338,10 @@ export default function Hero({ dict, lang }: HeroProps) {
                             { target: 99, suffix: '%', label: dict.stats.satisfaction },
                         ].map((stat) => (
                             <div key={stat.label} className="text-center group/stat">
-                                <div className="text-3xl sm:text-4xl heading-secondary-stretch font-light text-slate-900 dark:text-white mb-2 transition-colors duration-300">
+                                <div className="text-2xl sm:text-3xl md:text-4xl heading-secondary-stretch font-light text-slate-900 dark:text-white mb-2 transition-colors duration-300">
                                     <Counter value={stat.target} suffix={stat.suffix} />
                                 </div>
-                                <div className="text-slate-500 dark:text-dark-500 text-xs font-medium uppercase tracking-widest">
+                                <div className="text-xs sm:text-xs md:text-xs text-slate-500 dark:text-dark-500 font-medium uppercase tracking-widest px-2">
                                     {stat.label}
                                 </div>
                             </div>

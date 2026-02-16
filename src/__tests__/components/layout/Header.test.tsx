@@ -18,20 +18,9 @@ jest.mock('next/navigation', () => ({
 }));
 
 // Mock useNavigationLogic
+const mockUseNavigationLogic = jest.fn();
 jest.mock('@/hooks/useNavigationLogic', () => ({
-    useNavigationLogic: () => ({
-        isScrolled: false,
-        isMobileMenuOpen: false,
-        isDesktopServicesOpen: false,
-        isMobileServicesOpen: false,
-        scrollY: 0,
-        toggleMobileMenu: jest.fn(),
-        closeMobileMenu: jest.fn(),
-        toggleDesktopServices: jest.fn(),
-        closeDesktopServices: jest.fn(),
-        toggleMobileServices: jest.fn(),
-        closeMobileServices: jest.fn(),
-    }),
+    useNavigationLogic: mockUseNavigationLogic,
 }));
 
 // Mock ThemeToggle
@@ -70,6 +59,35 @@ const mockDict = {
         nav: mockNavDict,
         header: mockHeaderDict,
     },
+    services: {
+        menuLinks: [
+            { title: 'Web Development', href: '/services/web-development' },
+            { title: 'Mobile Apps', href: '/services/mobile-apps' },
+            { title: 'UI/UX Design', href: '/services/ui-ux-design' },
+        ],
+        menu: {
+            branding: {
+                label: 'Branding',
+                description: 'Branding services',
+            },
+            custom: {
+                label: 'Custom Solutions',
+                description: 'Custom development',
+            },
+            seo: {
+                label: 'SEO',
+                description: 'SEO optimization',
+            },
+            solutions: {
+                label: 'Solutions',
+                description: 'Business solutions',
+            },
+            websites: {
+                label: 'Websites',
+                description: 'Website development',
+            },
+        },
+    },
 } as any;
 
 describe('Header', () => {
@@ -78,8 +96,57 @@ describe('Header', () => {
         dict: mockDict,
     };
 
+    // Helper function to create mock return value
+    const createMockReturnValue = (overrides = {}) => ({
+        isScrolled: false,
+        isMobileMenuOpen: false,
+        isDesktopServicesOpen: false,
+        isMobileServicesOpen: false,
+        scrollY: 0,
+        pathname: '/en',
+        navDict: mockNavDict,
+        headerDict: mockHeaderDict,
+        servicesSubLinks: [
+            { title: 'Web Development', href: '/services/web-development' },
+            { title: 'Mobile Apps', href: '/services/mobile-apps' },
+            { title: 'UI/UX Design', href: '/services/ui-ux-design' },
+        ],
+        servicesMenu: {
+            branding: {
+                label: 'Branding',
+                description: 'Branding services',
+            },
+            custom: {
+                label: 'Custom Solutions',
+                description: 'Custom development',
+            },
+            seo: {
+                label: 'SEO',
+                description: 'SEO optimization',
+            },
+            solutions: {
+                label: 'Solutions',
+                description: 'Business solutions',
+            },
+            websites: {
+                label: 'Websites',
+                description: 'Website development',
+            },
+        },
+        toggleMobileMenu: jest.fn(),
+        closeMobileMenu: jest.fn(),
+        toggleDesktopServices: jest.fn(),
+        closeDesktopServices: jest.fn(),
+        toggleMobileServices: jest.fn(),
+        closeMobileServices: jest.fn(),
+        ...overrides,
+    });
+
     beforeEach(() => {
         jest.clearAllMocks();
+
+        // Setup mock function
+        mockUseNavigationLogic.mockReturnValue(createMockReturnValue());
     });
 
     it('renders header correctly', () => {
@@ -108,21 +175,29 @@ describe('Header', () => {
         expect(screen.getByText('Get Started')).toBeInTheDocument();
     });
 
+    it('renders correct links for English locale', () => {
+        render(<Header {...defaultProps} />);
+
+        expect(screen.getByRole('link', { name: /home/i })).toHaveAttribute('href', '/en');
+        expect(screen.getByRole('link', { name: /services/i })).toHaveAttribute(
+            'href',
+            '/Services',
+        );
+        expect(screen.getByRole('link', { name: /showreel/i })).toHaveAttribute(
+            'href',
+            '/en/showreel',
+        );
+        expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute('href', '/en/about');
+        expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute(
+            'href',
+            '/en/contact',
+        );
+    });
+
     it('applies scrolled class when scrolled', () => {
-        const { useNavigationLogic } = require('@/hooks/useNavigationLogic');
-        useNavigationLogic.mockReturnValue({
-            isScrolled: true,
-            isMobileMenuOpen: false,
-            isDesktopServicesOpen: false,
-            isMobileServicesOpen: false,
-            scrollY: 100,
-            toggleMobileMenu: jest.fn(),
-            closeMobileMenu: jest.fn(),
-            toggleDesktopServices: jest.fn(),
-            closeDesktopServices: jest.fn(),
-            toggleMobileServices: jest.fn(),
-            closeMobileServices: jest.fn(),
-        });
+        mockUseNavigationLogic.mockReturnValue(
+            createMockReturnValue({ isScrolled: true, scrollY: 100 }),
+        );
 
         render(<Header {...defaultProps} />);
 
@@ -138,8 +213,7 @@ describe('Header', () => {
     });
 
     it('renders mobile menu when open', () => {
-        const { useNavigationLogic } = require('@/hooks/useNavigationLogic');
-        useNavigationLogic.mockReturnValue({
+        mockUseNavigationLogic.mockReturnValue({
             isScrolled: false,
             isMobileMenuOpen: true,
             isDesktopServicesOpen: false,
@@ -170,9 +244,8 @@ describe('Header', () => {
     });
 
     it('calls toggleMobileMenu when mobile menu button is clicked', () => {
-        const { useNavigationLogic } = require('@/hooks/useNavigationLogic');
         const mockToggleMobileMenu = jest.fn();
-        useNavigationLogic.mockReturnValue({
+        mockUseNavigationLogic.mockReturnValue({
             isScrolled: false,
             isMobileMenuOpen: false,
             isDesktopServicesOpen: false,
@@ -249,8 +322,7 @@ describe('Header', () => {
     });
 
     it('handles desktop services dropdown state', () => {
-        const { useNavigationLogic } = require('@/hooks/useNavigationLogic');
-        useNavigationLogic.mockReturnValue({
+        mockUseNavigationLogic.mockReturnValue({
             isScrolled: false,
             isMobileMenuOpen: false,
             isDesktopServicesOpen: true,
@@ -271,8 +343,7 @@ describe('Header', () => {
     });
 
     it('handles mobile services dropdown state', () => {
-        const { useNavigationLogic } = require('@/hooks/useNavigationLogic');
-        useNavigationLogic.mockReturnValue({
+        mockUseNavigationLogic.mockReturnValue({
             isScrolled: false,
             isMobileMenuOpen: true,
             isDesktopServicesOpen: false,

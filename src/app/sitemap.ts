@@ -5,7 +5,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://selen.it';
     const locales = i18n.locales;
 
-    const routes: { path: string; changeFrequency: 'daily' | 'weekly' | 'monthly'; priority: number }[] = [
+    const routes: {
+        path: string;
+        changeFrequency: 'daily' | 'weekly' | 'monthly';
+        priority: number;
+    }[] = [
         { path: '', changeFrequency: 'daily', priority: 1.0 },
         { path: '/services', changeFrequency: 'weekly', priority: 0.9 },
         { path: '/services/websites', changeFrequency: 'weekly', priority: 0.8 },
@@ -31,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 priority: route.priority,
                 alternates: {
                     languages: Object.fromEntries(
-                        locales.map((l) => [l, `${baseUrl}/${l}${route.path}`])
+                        locales.map((l) => [l, `${baseUrl}/${l}${route.path}`]),
                     ),
                 },
             });

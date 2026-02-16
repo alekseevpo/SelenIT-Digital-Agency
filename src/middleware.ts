@@ -12,7 +12,9 @@ function getLocale(request: NextRequest): string | undefined {
     let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
     // Filter out wildcards and invalid locale strings
-    languages = languages.filter((lang) => lang !== '*' && /^[a-zA-Z]{2,3}(-[a-zA-Z]{2,3})?$/.test(lang));
+    languages = languages.filter(
+        (lang) => lang !== '*' && /^[a-zA-Z]{2,3}(-[a-zA-Z]{2,3})?$/.test(lang),
+    );
 
     // If no valid languages, return default
     if (languages.length === 0) {
@@ -27,20 +29,19 @@ export function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
     const pathnameIsMissingLocale = i18n.locales.every(
-        (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+        (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
     );
 
     if (pathnameIsMissingLocale) {
         const locale = getLocale(request);
         return NextResponse.redirect(
-            new URL(
-                `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
-                request.url
-            )
+            new URL(`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`, request.url),
         );
     }
 }
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico|og-image.png|\\.well-known|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4|webm|ogg|mp3|wav)$).*)'],
+    matcher: [
+        '/((?!api|_next/static|_next/image|images|favicon.ico|og-image.png|\\.well-known|.*\\.(?:svg|png|jpg|jpeg|gif|webp|mp4|webm|ogg|mp3|wav)$).*)',
+    ],
 };

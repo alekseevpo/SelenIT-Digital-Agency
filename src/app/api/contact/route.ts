@@ -44,10 +44,7 @@ export async function POST(request: NextRequest) {
 
         // Validate required fields
         if (!name || !email || !message) {
-            return NextResponse.json(
-                { error: 'Missing required fields' },
-                { status: 400 }
-            );
+            return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
         // Verify reCAPTCHA if token is provided
@@ -56,11 +53,13 @@ export async function POST(request: NextRequest) {
             if (!isHuman) {
                 return NextResponse.json(
                     { error: 'reCAPTCHA verification failed' },
-                    { status: 400 }
+                    { status: 400 },
                 );
             }
         } else {
-            console.log('Skipping reCAPTCHA verification: no token provided (likely blocked by ad-blocker)');
+            console.log(
+                'Skipping reCAPTCHA verification: no token provided (likely blocked by ad-blocker)',
+            );
         }
 
         // Initialize Resend (must be inside function, not at module level for build)
@@ -100,21 +99,12 @@ export async function POST(request: NextRequest) {
 
         if (error) {
             console.error('Resend error:', error);
-            return NextResponse.json(
-                { error: 'Failed to send email' },
-                { status: 500 }
-            );
+            return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
         }
 
-        return NextResponse.json(
-            { success: true, messageId: data?.id },
-            { status: 200 }
-        );
+        return NextResponse.json({ success: true, messageId: data?.id }, { status: 200 });
     } catch (error) {
         console.error('Contact form error:', error);
-        return NextResponse.json(
-            { error: 'Internal server error' },
-            { status: 500 }
-        );
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
     }
 }

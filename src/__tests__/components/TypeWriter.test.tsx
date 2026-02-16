@@ -83,7 +83,7 @@ describe('TypeWriter', () => {
                     typingSpeed={100}
                     pauseDuration={1000}
                     deletingSpeed={50}
-                />
+                />,
             );
 
             const textElement = document.querySelector('.gradient-text');
@@ -111,7 +111,7 @@ describe('TypeWriter', () => {
                     typingSpeed={100}
                     pauseDuration={500}
                     deletingSpeed={50}
-                />
+                />,
             );
 
             const textElement = document.querySelector('.gradient-text');
@@ -149,7 +149,7 @@ describe('TypeWriter', () => {
                     typingSpeed={100}
                     pauseDuration={100}
                     deletingSpeed={25}
-                />
+                />,
             );
 
             const textElement = document.querySelector('.gradient-text');
@@ -184,7 +184,7 @@ describe('TypeWriter', () => {
                     typingSpeed={50}
                     pauseDuration={100}
                     deletingSpeed={25}
-                />
+                />,
             );
 
             const textElement = document.querySelector('.gradient-text');
@@ -232,7 +232,7 @@ describe('TypeWriter', () => {
                     typingSpeed={50}
                     pauseDuration={50}
                     deletingSpeed={25}
-                />
+                />,
             );
 
             const textElement = document.querySelector('.gradient-text');
@@ -290,7 +290,7 @@ describe('TypeWriter', () => {
                     typingSpeed={50}
                     pauseDuration={100}
                     deletingSpeed={25}
-                />
+                />,
             );
 
             const textElement = document.querySelector('.gradient-text');
@@ -327,12 +327,7 @@ describe('TypeWriter', () => {
         });
 
         it('handles long words', async () => {
-            render(
-                <TypeWriter
-                    words={['ABCDE']}
-                    typingSpeed={10}
-                />
-            );
+            render(<TypeWriter words={['ABCDE']} typingSpeed={10} />);
 
             const textElement = document.querySelector('.gradient-text');
 
@@ -346,12 +341,7 @@ describe('TypeWriter', () => {
         });
 
         it('handles words with spaces', async () => {
-            render(
-                <TypeWriter
-                    words={['Hi you']}
-                    typingSpeed={50}
-                />
-            );
+            render(<TypeWriter words={['Hi you']} typingSpeed={50} />);
 
             const textElement = document.querySelector('.gradient-text');
 

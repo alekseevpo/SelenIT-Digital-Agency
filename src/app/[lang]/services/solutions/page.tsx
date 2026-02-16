@@ -53,32 +53,48 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
                             <div className="flex items-start space-x-4">
                                 <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                                 <div>
-                                <h3 className="text-lg font-semibold mb-2">{(dict as any).services?.solutions?.strategy ?? ''}</h3>
-                                <p className="text-slate-600 dark:text-slate-400">{(dict as any).services?.solutions?.strategyDesc ?? ''}</p>
+                                    <h3 className="text-lg font-semibold mb-2">
+                                        {(dict as any).services?.solutions?.strategy ?? ''}
+                                    </h3>
+                                    <p className="text-slate-600 dark:text-slate-400">
+                                        {(dict as any).services?.solutions?.strategyDesc ?? ''}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="flex items-start space-x-4">
                                 <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                                 <div>
-                                <h3 className="text-lg font-semibold mb-2">{(dict as any).services?.solutions?.development ?? ''}</h3>
-                                <p className="text-slate-600 dark:text-slate-400">{(dict as any).services?.solutions?.developmentDesc ?? ''}</p>
+                                    <h3 className="text-lg font-semibold mb-2">
+                                        {(dict as any).services?.solutions?.development ?? ''}
+                                    </h3>
+                                    <p className="text-slate-600 dark:text-slate-400">
+                                        {(dict as any).services?.solutions?.developmentDesc ?? ''}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="flex items-start space-x-4">
                                 <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                                 <div>
-                                <h3 className="text-lg font-semibold mb-2">{(dict as any).services?.solutions?.optimization ?? ''}</h3>
-                                <p className="text-slate-600 dark:text-slate-400">{(dict as any).services?.solutions?.optimizationDesc ?? ''}</p>
+                                    <h3 className="text-lg font-semibold mb-2">
+                                        {(dict as any).services?.solutions?.optimization ?? ''}
+                                    </h3>
+                                    <p className="text-slate-600 dark:text-slate-400">
+                                        {(dict as any).services?.solutions?.optimizationDesc ?? ''}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="flex items-start space-x-4">
                                 <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                                 <div>
-                                <h3 className="text-lg font-semibold mb-2">{(dict as any).services?.solutions?.support ?? ''}</h3>
-                                <p className="text-slate-600 dark:text-slate-400">{(dict as any).services?.solutions?.supportDesc ?? ''}</p>
+                                    <h3 className="text-lg font-semibold mb-2">
+                                        {(dict as any).services?.solutions?.support ?? ''}
+                                    </h3>
+                                    <p className="text-slate-600 dark:text-slate-400">
+                                        {(dict as any).services?.solutions?.supportDesc ?? ''}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -92,23 +108,39 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
 
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="border-l-4 border-red-600 pl-6">
-                                <h3 className="font-semibold mb-2">{(dict as any).services?.solutions?.analysis ?? ''}</h3>
-                                <p className="text-slate-600 dark:text-slate-400">{(dict as any).services?.solutions?.analysisDesc ?? ''}</p>
+                                <h3 className="font-semibold mb-2">
+                                    {(dict as any).services?.solutions?.analysis ?? ''}
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400">
+                                    {(dict as any).services?.solutions?.analysisDesc ?? ''}
+                                </p>
                             </div>
 
                             <div className="border-l-4 border-red-600 pl-6">
-                                <h3 className="font-semibold mb-2">{(dict as any).services?.solutions?.planning ?? ''}</h3>
-                                <p className="text-slate-600 dark:text-slate-400">{(dict as any).services?.solutions?.planningDesc ?? ''}</p>
+                                <h3 className="font-semibold mb-2">
+                                    {(dict as any).services?.solutions?.planning ?? ''}
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400">
+                                    {(dict as any).services?.solutions?.planningDesc ?? ''}
+                                </p>
                             </div>
 
                             <div className="border-l-4 border-red-600 pl-6">
-                                <h3 className="font-semibold mb-2">{(dict as any).services?.solutions?.implementation ?? ''}</h3>
-                                <p className="text-slate-600 dark:text-slate-400">{(dict as any).services?.solutions?.implementationDesc ?? ''}</p>
+                                <h3 className="font-semibold mb-2">
+                                    {(dict as any).services?.solutions?.implementation ?? ''}
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400">
+                                    {(dict as any).services?.solutions?.implementationDesc ?? ''}
+                                </p>
                             </div>
 
                             <div className="border-l-4 border-red-600 pl-6">
-                                <h3 className="font-semibold mb-2">{(dict as any).services?.solutions?.monitoring ?? ''}</h3>
-                                <p className="text-slate-600 dark:text-slate-400">{(dict as any).services?.solutions?.monitoringDesc ?? ''}</p>
+                                <h3 className="font-semibold mb-2">
+                                    {(dict as any).services?.solutions?.monitoring ?? ''}
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400">
+                                    {(dict as any).services?.solutions?.monitoringDesc ?? ''}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -121,7 +153,10 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
                         <p className="text-xl mb-8 opacity-90">
                             {(dict as any).services?.solutions?.ctaDescription ?? ''}
                         </p>
-                        <Link href={`/${lang}/contact`} className="inline-flex items-center px-4 py-2 bg-white text-red-600 rounded-md shadow hover:bg-slate-100">
+                        <Link
+                            href={`/${lang}/contact`}
+                            className="inline-flex items-center px-4 py-2 bg-white text-red-600 rounded-md shadow hover:bg-slate-100"
+                        >
                             {dict.common.nav.getStarted}
                             <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>

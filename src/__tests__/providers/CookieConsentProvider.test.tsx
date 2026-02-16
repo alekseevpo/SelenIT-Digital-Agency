@@ -1,6 +1,10 @@
 import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { CookieConsentProvider, useCookieConsent, ConsentStatus } from '@/components/providers/CookieConsentProvider';
+import {
+    CookieConsentProvider,
+    useCookieConsent,
+    ConsentStatus,
+} from '@/components/providers/CookieConsentProvider';
 
 // Test component to access context
 function TestConsumer() {
@@ -28,7 +32,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             expect(screen.getByTestId('consent-status')).toHaveTextContent('pending');
@@ -38,7 +42,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             expect(screen.getByTestId('has-consent')).toHaveTextContent('false');
@@ -50,7 +54,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             await waitFor(() => {
@@ -64,7 +68,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             await waitFor(() => {
@@ -78,7 +82,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             // Should remain pending since value is invalid
@@ -94,7 +98,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             await user.click(screen.getByText('Accept'));
@@ -107,7 +111,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             await user.click(screen.getByText('Decline'));
@@ -120,7 +124,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             await user.click(screen.getByText('Accept'));
@@ -133,7 +137,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             await user.click(screen.getByText('Decline'));
@@ -148,7 +152,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             await user.click(screen.getByText('Accept'));
@@ -161,7 +165,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             await user.click(screen.getByText('Decline'));
@@ -173,7 +177,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             expect(screen.getByTestId('has-consent')).toHaveTextContent('false');
@@ -200,7 +204,7 @@ describe('CookieConsentProvider', () => {
             const { rerender } = render(
                 <CookieConsentProvider>
                     <TestConsumer />
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             // After hydration, should show stored value
@@ -215,7 +219,7 @@ describe('CookieConsentProvider', () => {
             render(
                 <CookieConsentProvider>
                     <div data-testid="child">Child content</div>
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             expect(screen.getByTestId('child')).toBeInTheDocument();
@@ -235,7 +239,7 @@ describe('CookieConsentProvider', () => {
                             <DeepChild />
                         </div>
                     </div>
-                </CookieConsentProvider>
+                </CookieConsentProvider>,
             );
 
             expect(screen.getByTestId('deep-child')).toHaveTextContent('pending');

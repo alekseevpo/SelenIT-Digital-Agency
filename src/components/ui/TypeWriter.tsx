@@ -54,7 +54,16 @@ export function TypeWriter({
                 return () => clearTimeout(timeout);
             }
         }
-    }, [currentText, isDeleting, isPaused, currentWordIndex, words, typingSpeed, deletingSpeed, pauseDuration]);
+    }, [
+        currentText,
+        isDeleting,
+        isPaused,
+        currentWordIndex,
+        words,
+        typingSpeed,
+        deletingSpeed,
+        pauseDuration,
+    ]);
 
     return (
         <span className={`inline-flex items-baseline ${className}`}>
