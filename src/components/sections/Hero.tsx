@@ -91,12 +91,12 @@ export default function Hero({ dict, lang }: HeroProps) {
                     animate="visible"
                     className="max-w-7xl mx-auto text-left lg:-translate-y-8"
                 >
-                    <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
-                        <div className="lg:col-span-6">
-                            {/* Heading */}
+                    <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-start">
+                        <div className="lg:col-span-6 lg:mt-16">
+                            {/* Main Heading */}
                             <motion.h1
                                 variants={itemVariants}
-                                className="text-[4rem] sm:text-8xl lg:text-[7.5rem] xl:text-8.5xl 2xl:text-9.5xl mb-12 mt-28 lg:mb-0 lg:mt-16 text-slate-900 dark:text-white leading-[0.85] text-center lg:text-left ml-0 sm:-ml-8 lg:-ml-12"
+                                className="text-[4rem] sm:text-8xl lg:text-[7.5rem] xl:text-8.5xl 2xl:text-9.5xl mb-12 mt-28 lg:mb-0 lg:mt-8 text-slate-900 dark:text-white leading-[0.85] lg:leading-[0.84] text-center lg:text-left ml-0 sm:-ml-8 lg:-ml-12"
                             >
                                 {dict.title1}
                                 <br />
@@ -124,9 +124,27 @@ export default function Hero({ dict, lang }: HeroProps) {
                                 <br />
                                 {dict.title2.split(' ').slice(-1)}
                             </motion.h1>
+
+                            {/* CTA Button - Desktop Only */}
+                            <div className="hidden lg:block mt-16">
+                                <motion.div
+                                    variants={itemVariants}
+                                    className="flex flex-col items-center"
+                                >
+                                    <Link
+                                        href={`/${lang}/contact`}
+                                        className="btn-primary text-lg px-7 py-2 text-center transform hover:scale-105 transition-all"
+                                    >
+                                        {dict.ctaPrimary}
+                                    </Link>
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                                        {dict.ctaNote || 'Это бесплатно'}
+                                    </p>
+                                </motion.div>
+                            </div>
                         </div>
 
-                        <div className="lg:col-span-6 lg:-translate-y-12">
+                        <div className="lg:col-span-6 lg:mt-16">
                             {/* Mobile Image */}
                             <div className="lg:hidden mb-8 flex justify-center">
                                 <Image
@@ -136,13 +154,14 @@ export default function Hero({ dict, lang }: HeroProps) {
                                     height={300}
                                     className="max-w-[80%] h-auto rounded-lg dark:invert"
                                     priority
+                                    sizes="(max-width: 1024px) 80vw, 0"
                                 />
                             </div>
 
                             {/* Subheading */}
                             <motion.div
                                 variants={itemVariants}
-                                className="text-body text-sm lg:text-sm mb-12 lg:mb-4 leading-tight transition-colors opacity-90 whitespace-pre-line ml-4 lg:border-l lg:border-slate-200 dark:lg:border-dark-800 lg:pl-6"
+                                className="text-body text-sm lg:text-sm mb-44 lg:mb-4 leading-tight transition-colors opacity-90 whitespace-pre-line ml-4 lg:border-l lg:border-slate-200 dark:lg:border-dark-800 lg:pl-6 mt-0 lg:mt-8"
                             >
                                 {(() => {
                                     const text = dict.subtitle;
@@ -167,7 +186,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                                             {/* First line as separate heading */}
                                             <motion.h2
                                                 variants={itemVariants}
-                                                className="heading-2 mb-6 text-slate-900 dark:text-white tracking-wide mt-0"
+                                                className="mb-6 text-slate-900 dark:text-white tracking-wide mt-0 text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight font-frantz"
                                             >
                                                 {firstLine.split(' ').map((word, wordIndex) => {
                                                     const cleanWord = word
@@ -308,11 +327,23 @@ export default function Hero({ dict, lang }: HeroProps) {
                                     );
                                 })()}
                             </motion.div>
+
+                            {/* Desktop Image */}
+                            <div className="hidden lg:block mb-4 flex justify-center mt-0">
+                                <Image
+                                    src="/terrible_design.png"
+                                    alt="Terrible design illustration"
+                                    width={280}
+                                    height={224}
+                                    className="max-w-[60%] h-auto rounded-lg dark:invert"
+                                    priority
+                                />
+                            </div>
                         </div>
                     </div>
 
-                    {/* CTA Buttons - Centered Row */}
-                    <div className="w-full flex flex-col items-center mt-16 sm:mt-20 md:mt-24 mb-12 sm:mb-16">
+                    {/* CTA Buttons - Mobile Only */}
+                    <div className="lg:hidden w-full flex flex-col items-center mt-4 sm:mt-6 md:mt-8 mb-12 sm:mb-16">
                         <motion.div variants={itemVariants} className="flex flex-col items-center">
                             <Link
                                 href={`/${lang}/contact`}

@@ -112,7 +112,7 @@
             "badge": "Our Services",
             "title1": "Everything You Need to",
             "titleGradient": "Succeed Online",
-            "subtitle": "From concept to launch and beyond, we provide comprehensive\ndigital solutions tailored to your business needs.",
+            "subtitle": "From concept to launch and beyond, we provide comprehensive digital solutions tailored to your business needs.",
             "learnMore": "Learn More"
         },
         "showreel": {
@@ -132,6 +132,11 @@
             "title1": "What Our",
             "titleGradient": "Clients Say",
             "subtitle": "Real success stories from our partners around the world."
+        },
+        "reviews": {
+            "badge": "All Reviews",
+            "title": "All Client Reviews",
+            "subtitle": "Complete collection of testimonials from our partners and clients worldwide. See how we help businesses grow and achieve their goals."
         },
         "technologies": {
             "badge": "Technologies",
@@ -199,6 +204,8 @@
                     "Corporate Websites",
                     "Landing Pages",
                     "Multi-page Portals",
+                    "Online Platforms",
+                    "E-commerce Stores",
                     "Responsive Design",
                     "High Performance",
                     "System Integration"
@@ -366,7 +373,7 @@
         "story": {
             "badge": "Our Story",
             "title1": "From a Small Studio to a",
-            "titleGradient": "global agency",
+            "titleGradient": "big agency",
             "p1": "Selen.IT was founded in 2016 with a simple mission: to bridge the gap between complex technology and meaningful user experiences.",
             "p2": "What started as a two-person operation has grown into a full-service digital agency with clients across three continents.",
             "p3": "Today, we partner with startups and enterprises alike to build the digital products of tomorrow."
@@ -386,7 +393,7 @@
             },
             {
                 "value": "100+",
-                "label": "Tech Solutions:\nMobile apps\nCustom sales forms\nSurveys and questionnaires\nAdvertising modules\nWebsites & landing pages\nFinancial reporting tools\nConstruction shop calculators\nand many more.."
+                "label": "Tech Solutions:\nMobile apps\nCustom sales forms\nSurveys and questionnaires\nAdvertising modules\nWebsites & landing pages\nFinancial reporting tools\nConstruction shop calculators\nand many more"
             }
         ],
         "values": {
@@ -475,6 +482,86 @@
             "author": "Michael Chen",
             "role": "Founder, Luxe Brands",
             "avatar": "MC",
+            "rating": 5
+        },
+        {
+            "id": 3,
+            "content": "The Selen.IT team created a mobile app that our customers love. Intuitive design and stable performance.",
+            "author": "Elena Petrova",
+            "role": "Product Manager, FinTech Solutions",
+            "avatar": "EP",
+            "rating": 5
+        },
+        {
+            "id": 4,
+            "content": "Thanks to Selen.IT we expanded into new markets. Their SEO optimization and content strategy exceeded all expectations.",
+            "author": "Alexander Volkov",
+            "role": "Marketing Director, Global Trade Co.",
+            "avatar": "AV",
+            "rating": 5
+        },
+        {
+            "id": 5,
+            "content": "Selen.IT developed a complex analytics system for us. Now we make decisions based on real data.",
+            "author": "Maria Sokolova",
+            "role": "CTO, Data Analytics Pro",
+            "avatar": "MS",
+            "rating": 5
+        },
+        {
+            "id": 6,
+            "content": "Partnering with Selen.IT transformed our business. Their creative approach and technical expertise is the perfect combination.",
+            "author": "Dmitry Novikov",
+            "role": "CEO, Innovation Labs",
+            "avatar": "DN",
+            "rating": 5
+        },
+        {
+            "id": 7,
+            "content": "Selen.IT created a brand that stands out in the market. The design and logo became recognizable.",
+            "author": "Anna Williams",
+            "role": "Creative Director, Brand Studio",
+            "avatar": "AW",
+            "rating": 5
+        },
+        {
+            "id": 8,
+            "content": "Their development team works fast and with high quality. The project was completed on time.",
+            "author": "Carlos Rodriguez",
+            "role": "Project Manager, Construction Co.",
+            "avatar": "CR",
+            "rating": 5
+        },
+        {
+            "id": 9,
+            "content": "Selen.IT helped us with digital transformation. The results exceeded all expectations.",
+            "author": "Sophie Martin",
+            "role": "COO, Retail Chain",
+            "avatar": "SM",
+            "rating": 5
+        },
+        {
+            "id": 10,
+            "content": "Excellent support service. Always available and ready to help with any issue.",
+            "author": "James Wilson",
+            "role": "IT Director, Healthcare Group",
+            "avatar": "JW",
+            "rating": 5
+        },
+        {
+            "id": 11,
+            "content": "Selen.IT developed an e-commerce platform for us. Sales increased by 150%.",
+            "author": "Lisa Chen",
+            "role": "CEO, Fashion Brand",
+            "avatar": "LC",
+            "rating": 5
+        },
+        {
+            "id": 12,
+            "content": "Professional approach to every project. I recommend to anyone looking for a reliable partner.",
+            "author": "Robert Brown",
+            "role": "Founder, Tech Startup",
+            "avatar": "RB",
             "rating": 5
         }
     ],

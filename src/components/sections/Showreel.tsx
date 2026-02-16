@@ -53,8 +53,33 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                 <div className="relative mb-0 flex items-center justify-center">
                     <div className="max-w-4xl mx-auto text-center">
                         <Reveal width="100%" delay={0.3}>
-                            <h2 className="heading-2 heading-hero mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full">
-                                <span className="text-slate-900 dark:text-white">{dict.title}</span>
+                            <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-wide font-frantz">
+                                {(() => {
+                                    const title = dict.title;
+                                    const words = title.split(' ');
+                                    return words.map((word, index) => {
+                                        if (word.toLowerCase().includes('шоурил')) {
+                                            return (
+                                                <span
+                                                    key={index}
+                                                    className="text-red-600 dark:text-red-500"
+                                                >
+                                                    {word}
+                                                    {index < words.length - 1 ? ' ' : ''}
+                                                </span>
+                                            );
+                                        }
+                                        return (
+                                            <span
+                                                key={index}
+                                                className="text-slate-900 dark:text-white"
+                                            >
+                                                {word}
+                                                {index < words.length - 1 ? ' ' : ''}
+                                            </span>
+                                        );
+                                    });
+                                })()}
                             </h2>
                         </Reveal>
                     </div>
@@ -62,7 +87,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
 
                 {/* Subtitle */}
                 <Reveal delay={0.2}>
-                    <p className="text-body text-center max-w-2xl mx-auto mb-8 md:mb-12 -mt-4 md:-mt-6">
+                    <p className="text-body text-center max-w-2xl mx-auto mb-8 md:mb-12 mt-4 md:mt-6">
                         {dict.subtitle}
                     </p>
                 </Reveal>

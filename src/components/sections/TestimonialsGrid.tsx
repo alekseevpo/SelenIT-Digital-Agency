@@ -1,33 +1,22 @@
 'use client';
 
-import { useTheme } from 'next-themes';
-import { useRef } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { Star, Quote } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Reveal } from '../ui/Reveal';
+import { motion, Variants, useInView, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import type { Testimonial } from '@/types/dictionary';
 
-interface Testimonial {
-    id: number;
-    content: string;
-    author: string;
-    role: string;
-}
-
-interface TestimonialsProps {
+interface TestimonialsGridProps {
     lang: string;
     dict: {
-        badge: string;
-        title1: string;
-        titleGradient: string;
+        title: string;
         subtitle: string;
+        badge: string;
     };
     testimonials: Testimonial[];
 }
 
-export default function Testimonials({ lang, dict, testimonials }: TestimonialsProps) {
-    const { resolvedTheme } = useTheme();
+export default function TestimonialsGrid({ lang, dict, testimonials }: TestimonialsGridProps) {
     const sectionRef = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -39,92 +28,105 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
     return (
         <section ref={sectionRef} className="section-padding transition-colors duration-300">
             <div className="container-custom">
-                <div className="text-center max-w-4xl mx-auto mb-16">
-                    <Reveal width="100%" delay={0.2}>
-                        <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
-                            {dict.badge}
+                <div className="text-center max-w-4xl mx-auto mb-12">
+                    <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
+                        {dict.badge}
+                    </span>
+                    <h2 className="heading-hero mb-6">
+                        <span className="text-slate-900 dark:text-white">
+                            {(() => {
+                                const title = dict.title;
+                                const words = title.split(' ');
+                                return words.map((word, index) => {
+                                    if (
+                                        word.toLowerCase().includes('reviews') ||
+                                        word.toLowerCase().includes('reseñas') ||
+                                        word.toLowerCase().includes('отзывы')
+                                    ) {
+                                        return (
+                                            <span
+                                                key={index}
+                                                className="text-red-600 dark:text-red-500"
+                                            >
+                                                {word}
+                                                {index < words.length - 1 ? ' ' : ''}
+                                            </span>
+                                        );
+                                    }
+                                    return (
+                                        <span
+                                            key={index}
+                                            className="text-slate-900 dark:text-white"
+                                        >
+                                            {word}
+                                            {index < words.length - 1 ? ' ' : ''}
+                                        </span>
+                                    );
+                                });
+                            })()}
                         </span>
-                    </Reveal>
-                    <Reveal width="100%" delay={0.3}>
-                        <h2 className="heading-hero mb-6">
-                            <span className="text-slate-900 dark:text-white">
-                                {dict.title1} <br className="block sm:hidden" />
-                                <motion.span
-                                    className="text-red-600 dark:text-red-500"
-                                    style={{
-                                        x: slideInRight,
-                                        opacity: fadeIn,
-                                        display: 'inline-block',
-                                    }}
-                                >
-                                    {dict.titleGradient}
-                                </motion.span>
-                            </span>
-                        </h2>
-                    </Reveal>
-                    <Reveal width="100%" delay={0.4}>
-                        <p className="text-body transition-colors duration-300 mx-auto">
-                            {dict.subtitle}
-                        </p>
-                    </Reveal>
+                    </h2>
+                    <p className="text-body transition-colors duration-300 mx-auto">
+                        {dict.subtitle}
+                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                    {testimonials.slice(0, 3).map((testimonial, index) => (
-                        <Reveal
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-stretch">
+                    {testimonials.map((testimonial, index) => (
+                        <motion.div
                             key={testimonial.id}
-                            delay={0.1 * index}
-                            width="100%"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.05 * index }}
+                            viewport={{ once: true }}
                             className="h-full"
                         >
-                            <div className="group relative h-full bg-cream-100 dark:bg-dark-800 rounded-2xl p-6 shadow-lg border border-cream-200 dark:border-dark-700 overflow-hidden flex flex-col">
+                            <div className="relative h-full bg-cream-100 dark:bg-dark-800 rounded-xl p-4 shadow-md border border-cream-200 dark:border-dark-700 overflow-hidden flex flex-col">
                                 {/* Stars */}
-                                <div className="flex gap-1 mb-4 relative z-10">
+                                <div className="flex gap-1 mb-3">
                                     {[...Array(5)].map((_, i) => (
-                                        <div
+                                        <Star
                                             key={i}
-                                            className="animate-fade-in"
-                                            style={{
-                                                animationDelay: `${0.1 * index + i * 0.05}s`,
-                                                animationDuration: '0.3s',
-                                                animationFillMode: 'both',
-                                            }}
-                                        >
-                                            <Star className="w-4 h-4 text-slate-800 fill-slate-800 dark:text-white dark:fill-white drop-shadow-sm" />
-                                        </div>
+                                            className="w-3 h-3 text-slate-800 fill-slate-800 dark:text-white dark:fill-white"
+                                        />
                                     ))}
                                 </div>
 
+                                {/* Quote icon */}
+                                <div className="absolute top-3 right-3 text-red-500 dark:text-red-400 opacity-20">
+                                    <Quote className="w-4 h-4" />
+                                </div>
+
                                 {/* Content */}
-                                <div className="relative z-10 flex-1 flex flex-col">
-                                    <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed text-sm font-normal line-clamp-6 flex-1">
+                                <div className="flex-1 flex flex-col">
+                                    <p className="text-slate-700 dark:text-slate-300 mb-3 leading-relaxed text-xs font-normal line-clamp-4 flex-1">
                                         &quot;{testimonial.content}&quot;
                                     </p>
                                 </div>
 
                                 {/* Author section */}
-                                <div className="flex items-center justify-between pt-4 border-t border-cream-300/50 dark:border-dark-700/50 mt-auto relative z-10">
+                                <div className="flex items-center justify-between pt-3 border-t border-cream-300/50 dark:border-dark-700/50 mt-auto">
                                     <div className="flex-1">
-                                        <div className="font-bold text-slate-900 dark:text-white text-base mb-1">
+                                        <div className="font-bold text-slate-900 dark:text-white text-sm mb-1">
                                             {testimonial.author}
                                         </div>
                                         <div className="text-slate-600 dark:text-slate-400 text-xs font-medium">
                                             {testimonial.role}
                                         </div>
                                     </div>
-                                    <div className="flex-shrink-0 ml-4">
+                                    <div className="flex-shrink-0 ml-2">
                                         {testimonial.author === 'Sarah Johnson' ? (
                                             <a
                                                 href="https://tech-start.com/"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300 drop-shadow-md hover:drop-shadow-lg hover:scale-105"
+                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300"
                                             >
                                                 <Image
                                                     src="/arrow.png"
                                                     alt="Visit TechStart website"
-                                                    width={24}
-                                                    height={24}
+                                                    width={16}
+                                                    height={16}
                                                     className="brightness-0 contrast-100"
                                                     style={{
                                                         filter: 'brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(4905%) hue-rotate(359deg) brightness(96%) contrast(119%)',
@@ -136,13 +138,13 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
                                                 href="https://luxebrands.com/"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300 drop-shadow-md hover:drop-shadow-lg hover:scale-105"
+                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300"
                                             >
                                                 <Image
                                                     src="/arrow.png"
                                                     alt="Visit Luxe Brands website"
-                                                    width={24}
-                                                    height={24}
+                                                    width={16}
+                                                    height={16}
                                                     className="brightness-0 contrast-100"
                                                     style={{
                                                         filter: 'brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(4905%) hue-rotate(359deg) brightness(96%) contrast(119%)',
@@ -154,13 +156,13 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
                                                 href="https://www.thefintechsolutions.com/"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300 drop-shadow-md hover:drop-shadow-lg hover:scale-105"
+                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300"
                                             >
                                                 <Image
                                                     src="/arrow.png"
                                                     alt="Visit FinTech Solutions website"
-                                                    width={24}
-                                                    height={24}
+                                                    width={16}
+                                                    height={16}
                                                     className="brightness-0 contrast-100"
                                                     style={{
                                                         filter: 'brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(4905%) hue-rotate(359deg) brightness(96%) contrast(119%)',
@@ -172,13 +174,13 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
                                                 href="https://globaltrade.kz"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300 drop-shadow-md hover:drop-shadow-lg hover:scale-105"
+                                                className="inline-flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300"
                                             >
                                                 <Image
                                                     src="/arrow.png"
                                                     alt="Visit Global Trade website"
-                                                    width={24}
-                                                    height={24}
+                                                    width={16}
+                                                    height={16}
                                                     className="brightness-0 contrast-100"
                                                     style={{
                                                         filter: 'brightness(0) saturate(100%) invert(16%) sepia(91%) saturate(4905%) hue-rotate(359deg) brightness(96%) contrast(119%)',
@@ -186,30 +188,20 @@ export default function Testimonials({ lang, dict, testimonials }: TestimonialsP
                                                 />
                                             </a>
                                         ) : (
-                                            <div className="inline-flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-sm group-hover:drop-shadow-md">
+                                            <div className="inline-flex items-center justify-center opacity-60">
                                                 <Image
                                                     src="/arrow.png"
                                                     alt="Arrow"
-                                                    width={24}
-                                                    height={24}
+                                                    width={16}
+                                                    height={16}
                                                 />
                                             </div>
                                         )}
                                     </div>
                                 </div>
                             </div>
-                        </Reveal>
+                        </motion.div>
                     ))}
-                </div>
-
-                {/* More Reviews Link */}
-                <div className="text-center mt-12">
-                    <Link
-                        href={`/${lang}/reviews`}
-                        className="text-red-600 dark:text-red-500 hover:text-red-700 dark:hover:text-red-400 font-medium transition-colors duration-300"
-                    >
-                        {lang === 'ru' ? 'больше..' : lang === 'es' ? 'más..' : 'more..'}
-                    </Link>
                 </div>
             </div>
         </section>

@@ -235,6 +235,11 @@ export interface Dictionary {
             titleGradient: string;
             subtitle: string;
         };
+        reviews: {
+            badge: string;
+            title: string;
+            subtitle: string;
+        };
         technologies: {
             badge: string;
             title: string;
@@ -288,6 +293,11 @@ export interface Dictionary {
     };
     about: AboutDict;
     testimonials: Testimonial[];
+    reviews: {
+        badge: string;
+        title: string;
+        subtitle: string;
+    };
     privacy: {
         hero: {
             title: string;

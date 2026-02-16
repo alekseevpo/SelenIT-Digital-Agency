@@ -112,7 +112,7 @@
             "badge": "Nuestros Servicios",
             "title1": "Todo lo que necesitas para",
             "titleGradient": "Triunfar Online",
-            "subtitle": "Desde el concepto hasta el lanzamiento y más allá, ofrecemos soluciones\ndigitales integrales adaptadas a sus necesidades.",
+            "subtitle": "Desde el concepto hasta el lanzamiento y más allá, ofrecemos soluciones digitales integrales adaptadas a sus necesidades.",
             "learnMore": "Saber más"
         },
         "showreel": {
@@ -132,6 +132,11 @@
             "title1": "Lo que dicen",
             "titleGradient": "nuestros clientes",
             "subtitle": "Historias reales de éxito de nuestros socios de todo el mundo."
+        },
+        "reviews": {
+            "badge": "Todas las Reseñas",
+            "title": "Todas las Reseñas de Clientes",
+            "subtitle": "Colección completa de testimonios de nuestros socios y clientes de todo el mundo. Descubra cómo ayudamos a las empresas a crecer y alcanzar sus objetivos."
         },
         "technologies": {
             "badge": "Tecnologías",
@@ -199,6 +204,8 @@
                     "Sitios Corporativos",
                     "Landing Pages",
                     "Portales Multicanal",
+                    "Plataformas Online",
+                    "Tiendas Online",
                     "Diseño Adaptable",
                     "Alto Rendimiento",
                     "Integración de Sistemas"
@@ -366,7 +373,7 @@
         "story": {
             "badge": "Nuestra Historia",
             "title1": "De un pequeño estudio a",
-            "titleGradient": "agencia global",
+            "titleGradient": "gran agencia",
             "p1": "Selen.IT fue fundada en 2016 con una misión simple: cerrar la brecha entre la tecnología compleja y las experiencias de usuario significativas.",
             "p2": "Lo que comenzó como una operación de dos personas ha crecido hasta convertirse en una agencia digital de servicios completos con clientes en tres continentes.",
             "p3": "Hoy, nos asociamos con startups y empresas por igual para construir los productos digitales del mañana."
@@ -386,7 +393,7 @@
             },
             {
                 "value": "100+",
-                "label": "Soluciones tecnológicas:\nAplicaciones móviles\nFormularios de venta personalizados\nEncuestas y cuestionarios\nMódulos publicitarios\nSitios web y landing pages\nHerramientas de informes financieros\nCalculadoras de tiendas de construcción\ny mucho más.."
+                "label": "Soluciones tecnológicas:\nAplicaciones móviles\nFormularios de venta personalizados\nEncuestas y cuestionarios\nMódulos publicitarios\nSitios web y landing pages\nHerramientas de informes financieros\nCalculadoras de tiendas de construcción\ny mucho más"
             }
         ],
         "values": {
@@ -475,6 +482,86 @@
             "author": "Michael Chen",
             "role": "Founder, Luxe Brands",
             "avatar": "MC",
+            "rating": 5
+        },
+        {
+            "id": 3,
+            "content": "El equipo de Selen.IT creó una aplicación móvil que nuestros clientes aman. Diseño intuitivo y rendimiento estable.",
+            "author": "Elena Petrova",
+            "role": "Product Manager, FinTech Solutions",
+            "avatar": "EP",
+            "rating": 5
+        },
+        {
+            "id": 4,
+            "content": "Gracias a Selen.IT nos expandimos a nuevos mercados. Su optimización SEO y estrategia de contenido superaron todas las expectativas.",
+            "author": "Alexander Volkov",
+            "role": "Marketing Director, Global Trade Co.",
+            "avatar": "AV",
+            "rating": 5
+        },
+        {
+            "id": 5,
+            "content": "Selen.IT desarrolló un sistema de analíticas complejo para nosotros. Ahora tomamos decisiones basadas en datos reales.",
+            "author": "Maria Sokolova",
+            "role": "CTO, Data Analytics Pro",
+            "avatar": "MS",
+            "rating": 5
+        },
+        {
+            "id": 6,
+            "content": "Asociarse con Selen.IT transformó nuestro negocio. Su enfoque creativo y experiencia técnica es la combinación perfecta.",
+            "author": "Dmitry Novikov",
+            "role": "CEO, Innovation Labs",
+            "avatar": "DN",
+            "rating": 5
+        },
+        {
+            "id": 7,
+            "content": "Selen.IT creó una marca que destaca en el mercado. El diseño y el logotipo se volvieron reconocibles.",
+            "author": "Anna Williams",
+            "role": "Creative Director, Brand Studio",
+            "avatar": "AW",
+            "rating": 5
+        },
+        {
+            "id": 8,
+            "content": "Su equipo de desarrollo trabaja rápido y con alta calidad. El proyecto se completó a tiempo.",
+            "author": "Carlos Rodriguez",
+            "role": "Project Manager, Construction Co.",
+            "avatar": "CR",
+            "rating": 5
+        },
+        {
+            "id": 9,
+            "content": "Selen.IT nos ayudó con la transformación digital. Los resultados superaron todas las expectativas.",
+            "author": "Sophie Martin",
+            "role": "COO, Retail Chain",
+            "avatar": "SM",
+            "rating": 5
+        },
+        {
+            "id": 10,
+            "content": "Excelente servicio de soporte. Siempre disponible y listo para ayudar con cualquier problema.",
+            "author": "James Wilson",
+            "role": "IT Director, Healthcare Group",
+            "avatar": "JW",
+            "rating": 5
+        },
+        {
+            "id": 11,
+            "content": "Selen.IT desarrolló una plataforma de comercio electrónico para nosotros. Las ventas aumentaron un 150%.",
+            "author": "Lisa Chen",
+            "role": "CEO, Fashion Brand",
+            "avatar": "LC",
+            "rating": 5
+        },
+        {
+            "id": 12,
+            "content": "Enfoque profesional para cada proyecto. Recomiendo a cualquiera que busque un socio confiable.",
+            "author": "Robert Brown",
+            "role": "Founder, Tech Startup",
+            "avatar": "RB",
             "rating": 5
         }
     ],

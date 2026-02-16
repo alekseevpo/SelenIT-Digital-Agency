@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
+import StatsAccordion from '@/components/sections/StatsAccordion';
 
 export async function generateMetadata({
     params,
@@ -111,6 +112,28 @@ export default async function AboutPage({ params }: AboutPageProps) {
                         <p className="text-body transition-colors duration-300 mb-[30px]">
                             {hero.subtitle}
                         </p>
+
+                        {/* Coders Pro Image */}
+                        <div className="flex justify-center mb-12">
+                            <Image
+                                src="/coders_pro.png"
+                                alt="Professional Coders Team"
+                                width={600}
+                                height={400}
+                                className="rounded-lg max-w-full h-auto invert dark:invert-0"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Story Badge - Centered */}
+            <section className="py-8 bg-transparent dark:bg-dark-950 transition-colors duration-300">
+                <div className="container-custom">
+                    <div className="text-center">
+                        <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider block">
+                            {story.badge}
+                        </span>
                     </div>
                 </div>
             </section>
@@ -119,12 +142,12 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block text-center lg:text-left">
-                                {story.badge}
-                            </span>
                             <h2 className="heading-hero mb-6 text-center lg:text-left">
                                 <span className="text-slate-900 dark:text-white">
-                                    {story.title1} {story.titleGradient}
+                                    {story.title1}{' '}
+                                    <span className="text-red-600 dark:text-red-500">
+                                        {story.titleGradient}
+                                    </span>
                                 </span>
                             </h2>
                             <div className="space-y-4 text-slate-600 dark:text-dark-400 transition-colors duration-300 mt-8 lg:-ml-12">
@@ -146,38 +169,9 @@ export default async function AboutPage({ params }: AboutPageProps) {
                             </div>
                         </div>
 
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-2 gap-6">
-                            {stats.map((stat) => (
-                                <div
-                                    key={stat.label}
-                                    className="glass-card p-8 text-center bg-cream-50/50 dark:bg-dark-800 border border-slate-200 dark:border-dark-700 lg:border lg:border-slate-200 lg:dark:border-dark-700"
-                                >
-                                    <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
-                                        {stat.value}
-                                    </div>
-                                    <div className="text-slate-500 dark:text-dark-400 text-left">
-                                        {stat.label.split('\n').map((line, index) => (
-                                            <div key={index}>
-                                                {index === 0 ? (
-                                                    <div className="font-semibold mb-3 text-red-600 dark:text-red-500">
-                                                        {line}
-                                                    </div>
-                                                ) : (
-                                                    <div className="flex items-start mb-2 last:mb-0">
-                                                        <span className="text-red-600 dark:text-red-500 mr-3 mt-0 text-sm">
-                                                            •
-                                                        </span>
-                                                        <span className="text-sm leading-relaxed">
-                                                            {line}
-                                                        </span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
+                        {/* Stats Accordion */}
+                        <div className="mt-12">
+                            <StatsAccordion stats={stats} />
                         </div>
                     </div>
                 </div>

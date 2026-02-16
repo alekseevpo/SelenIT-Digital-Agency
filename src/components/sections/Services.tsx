@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Reveal } from '../ui/Reveal';
 import Link from 'next/link';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import Image from 'next/image';
 
 interface ServicesProps {
     lang: string;
@@ -83,7 +84,7 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
             <div className="container-custom relative z-10">
                 {/* Section Header */}
                 <div className="text-center max-w-4xl mx-auto mb-16">
-                    <h2 className="heading-hero mb-6 text-3xl md:text-4xl lg:text-5xl">
+                    <h2 className="mb-6 text-5xl md:text-6xl lg:text-6xl font-bold leading-[1.15] tracking-wide font-frantz">
                         <span className="text-slate-900 dark:text-white">
                             {dict.title1}{' '}
                             <span className="text-red-600 dark:text-red-500">
@@ -180,20 +181,31 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                 {/* Mobile Accordion */}
                 <div className="md:hidden space-y-4">
                     {displayServices.map((service, index) => (
-                        <div key={service.id} className="glass-card shadow-sm">
+                        <div key={service.id}>
                             <button
                                 onClick={() => toggleService(service.id)}
-                                className="w-full p-6 text-left flex items-center justify-between transition-colors duration-300 hover:bg-slate-50/50 dark:hover:bg-dark-800/50"
+                                className="w-full p-6 text-left flex items-center justify-between transition-colors duration-300"
                             >
                                 <h3 className="text-slate-900 dark:text-white font-frantz font-black font-frantz-stretch uppercase tracking-wide text-3xl leading-none">
                                     {service.title}
                                 </h3>
                                 <div className="flex items-center gap-2">
-                                    {serviceIcons[service.id as keyof typeof serviceIcons]}
                                     {expandedService === service.id ? (
-                                        <ChevronUp className="w-5 h-5 text-red-600 dark:text-red-500" />
+                                        <Image
+                                            src="/arrow.png"
+                                            alt="Expand"
+                                            width={20}
+                                            height={20}
+                                            className="rotate-180 transition-transform duration-300 dark:invert"
+                                        />
                                     ) : (
-                                        <ChevronDown className="w-5 h-5 text-slate-400 dark:text-dark-400" />
+                                        <Image
+                                            src="/arrow.png"
+                                            alt="Collapse"
+                                            width={20}
+                                            height={20}
+                                            className="transition-transform duration-300 dark:invert"
+                                        />
                                     )}
                                 </div>
                             </button>
@@ -213,12 +225,11 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                                     </p>
 
                                     <ul className="space-y-2 mb-6">
-                                        {service.features.slice(0, 3).map((feature) => (
+                                        {service.features.slice(0, 5).map((feature) => (
                                             <li
                                                 key={feature}
                                                 className="flex items-center gap-3 text-sm text-slate-500 dark:text-dark-300"
                                             >
-                                                <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 flex-shrink-0" />
                                                 <span>{feature}</span>
                                             </li>
                                         ))}
