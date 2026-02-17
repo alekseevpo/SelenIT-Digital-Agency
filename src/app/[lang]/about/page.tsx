@@ -92,7 +92,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                         <span className="text-red-600 dark:text-red-500 font-semibold text-sm uppercase tracking-wider mb-4 block">
                             {hero.badge}
                         </span>
-                        <h1 className="heading-hero mb-6">
+                        <h1 className="heading-hero mb-10 lg:mb-12">
                             <span className="text-slate-900 dark:text-white">
                                 {(() => {
                                     const title1 = hero.title1;
@@ -142,14 +142,17 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 <div className="container-custom">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h2 className="heading-hero mb-6 text-center lg:text-left">
-                                <span className="text-slate-900 dark:text-white">
-                                    {story.title1}{' '}
-                                    <span className="text-red-600 dark:text-red-500">
-                                        {story.titleGradient}
+                            <div className="text-center lg:text-left">
+                                <h2 className="heading-hero mb-6 break-words hyphens-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+                                    <span className="text-slate-900 dark:text-white mobile-center-text">
+                                        {story.title1}
+                                        <br className="block lg:hidden" />
+                                        <span className="text-red-600 dark:text-red-500">
+                                            {story.titleGradient}
+                                        </span>
                                     </span>
-                                </span>
-                            </h2>
+                                </h2>
+                            </div>
                             <div className="space-y-4 text-slate-600 dark:text-dark-400 transition-colors duration-300 mt-8 lg:-ml-12">
                                 <p>{story.p1}</p>
                                 <p>{story.p2}</p>

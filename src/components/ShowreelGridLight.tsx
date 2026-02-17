@@ -121,8 +121,8 @@ export default function ShowreelGridOptimized({ projects, lang, dict }: Showreel
                             onClick={() => setFilter(category)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                                 filter === category
-                                    ? 'bg-primary-600 text-white'
-                                    : 'bg-white dark:bg-dark-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-dark-700'
+                                    ? 'bg-red-600 text-white'
+                                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
                             }`}
                         >
                             {category === 'all' ? dict.filterAll : category}

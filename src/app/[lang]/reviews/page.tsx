@@ -44,6 +44,22 @@ export default async function ReviewsPage({ params }: { params: Promise<{ lang: 
                                 : lang === 'es'
                                   ? 'Colección completa de testimonios de nuestros socios y clientes de todo el mundo. Descubra cómo ayudamos a las empresas a crecer y alcanzar sus objetivos.'
                                   : 'Complete collection of testimonials from our partners and clients worldwide. See how we help businesses grow and achieve their goals.',
+                        companies:
+                            lang === 'es'
+                                ? [
+                                      { name: 'REMEMBER', link: null },
+                                      { name: 'AURA', link: null },
+                                      { name: 'kw - Keller Williams', link: null },
+                                      { name: 'Coachella', link: null },
+                                      { name: 'Publix', link: null },
+                                      { name: 'EPIC Games', link: null },
+                                      { name: 'Chick-fil-A', link: 'https://www.chick-fil-a.com' },
+                                      { name: 'StubHub', link: 'https://www.stubhub.com' },
+                                      { name: 'crunchyroll', link: 'https://www.crunchyroll.com' },
+                                      { name: 'TOSHIBA', link: null },
+                                      { name: 'WALMART', link: null },
+                                  ]
+                                : undefined,
                     }
                 }
                 testimonials={dict.testimonials || []}

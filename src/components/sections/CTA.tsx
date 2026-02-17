@@ -63,7 +63,7 @@ export default function CTA({ lang, dict, commonDict }: CTAProps) {
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                         <Link
                             href={`/${lang}/contact`}
-                            className="btn-primary text-lg sm:text-base px-6 sm:px-8 py-3 sm:py-3 transform hover:scale-105 transition-all"
+                            className="btn-primary text-lg sm:text-base px-6 sm:px-8 py-3 sm:py-3 transform hover:scale-105 transition-all w-full sm:w-auto"
                         >
                             {dict.button}
                         </Link>

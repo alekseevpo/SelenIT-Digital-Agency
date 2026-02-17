@@ -282,7 +282,7 @@ export default async function BrandingPage({ params }: PageProps) {
                         />
                     </Reveal>
                     <Reveal width="100%" delay={0.45}>
-                        <p className="text-body max-w-2xl mx-auto transition-colors duration-300 mb-2">
+                        <p className="text-body max-w-2xl mx-auto transition-colors duration-300 mb-2 sm:mb-4">
                             {c.subtitle}
                         </p>
                     </Reveal>
@@ -290,7 +290,7 @@ export default async function BrandingPage({ params }: PageProps) {
             </section>
 
             {/* New Content Section */}
-            <section className="pt-4 section-padding">
+            <section className="pt-2 sm:pt-4 section-padding">
                 <div className="container-custom px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto">
                         <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">

@@ -96,7 +96,7 @@ export function LocalBusinessJsonLd({ url }: { url: string }) {
                 name: 'Selen.IT Digital Agency',
                 url,
                 logo: `${url}/logo.svg`,
-                image: `${url}/og-image.png`,
+                image: `${url}/conversation_two.png`,
                 priceRange: '$$',
                 address: {
                     '@type': 'PostalAddress',

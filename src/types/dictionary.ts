@@ -173,6 +173,8 @@ export interface Dictionary {
             subtitle: string;
             email: string;
             emailAction: string;
+            whatsapp: string;
+            whatsappAction: string;
             phone: string;
             office: string;
             hoursTitle: string;
@@ -196,6 +198,7 @@ export interface Dictionary {
             companyPlaceholder: string;
             service: string;
             serviceOptions: string[];
+            notSureOption: string;
             budget: string;
             budgetOptions: string[];
             details: string;
@@ -297,6 +300,10 @@ export interface Dictionary {
         badge: string;
         title: string;
         subtitle: string;
+        companies?: {
+            name: string;
+            link: string | null;
+        }[];
     };
     privacy: {
         hero: {

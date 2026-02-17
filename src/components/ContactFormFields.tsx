@@ -87,53 +87,59 @@ export default function ContactFormFields({
 
             {/* Tab-specific fields */}
             {activeTab === 'message' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-7">
-                    <FormField label={dict.budget} error={errors.budget} className="md:col-span-1">
-                        <FormSelect
-                            id="budget"
-                            name="budget"
-                            value={formState.budget}
-                            onChange={handleChange}
-                            error={!!errors.budget}
+                <div className="space-y-7">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-7 items-center">
+                        <FormField
+                            label={dict.budget}
+                            error={errors.budget}
+                            className="lg:col-span-2"
                         >
-                            <option value="">{dict.selectBudget}</option>
-                            {dict.budgetOptions.map((budget: string) => (
-                                <option key={budget} value={budget}>
-                                    {budget}
-                                </option>
-                            ))}
-                        </FormSelect>
-                    </FormField>
-                    <div className="flex items-center justify-center md:justify-start mt-8 md:mt-6">
-                        <label className="flex items-center gap-3 cursor-pointer group">
-                            <div className="relative">
-                                <input
-                                    type="checkbox"
-                                    name="dontKnowBudget"
-                                    checked={formState.dontKnowBudget || false}
-                                    onChange={handleChange}
-                                    className="sr-only peer"
-                                />
-                                <div className="w-5 h-5 rounded-md border-2 border-slate-300 dark:border-slate-600 peer-checked:border-red-600 dark:peer-checked:border-red-500 peer-checked:bg-red-600 dark:peer-checked:bg-red-500 transition-all duration-200 flex items-center justify-center">
-                                    <svg
-                                        className="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={3}
-                                            d="M5 13l4 4L19 7"
-                                        />
-                                    </svg>
+                            <FormSelect
+                                id="budget"
+                                name="budget"
+                                value={formState.budget}
+                                onChange={handleChange}
+                                error={!!errors.budget}
+                            >
+                                <option value="">{dict.selectBudget}</option>
+                                {dict.budgetOptions.map((budget: string) => (
+                                    <option key={budget} value={budget}>
+                                        {budget}
+                                    </option>
+                                ))}
+                            </FormSelect>
+                        </FormField>
+                        <div className="flex justify-end lg:justify-start lg:mt-5">
+                            <label className="flex items-center gap-3 cursor-pointer group">
+                                <div className="relative">
+                                    <input
+                                        type="checkbox"
+                                        name="dontKnowBudget"
+                                        checked={formState.dontKnowBudget || false}
+                                        onChange={handleChange}
+                                        className="sr-only peer"
+                                    />
+                                    <div className="w-5 h-5 rounded-md border-2 border-slate-300 dark:border-slate-600 peer-checked:border-red-600 dark:peer-checked:border-red-500 peer-checked:bg-red-600 dark:peer-checked:bg-red-500 transition-all duration-200 flex items-center justify-center">
+                                        <svg
+                                            className="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={3}
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
-                            </div>
-                            <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors whitespace-nowrap select-none">
-                                Не знаю, хочу обсудить
-                            </span>
-                        </label>
+                                <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors whitespace-nowrap select-none">
+                                    {dict.notSureOption}
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             )}

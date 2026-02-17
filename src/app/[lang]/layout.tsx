@@ -100,7 +100,7 @@ export async function generateMetadata({
             card: 'summary_large_image',
             title: dict.hero.title1 + ' ' + dict.hero.titleGradient + ' ' + dict.hero.title2,
             description: dict.hero.subtitle,
-            images: ['/our_team.png?v=2'],
+            images: ['/conversation_two.png'],
             creator: '@selen_it',
             site: '@selen_it',
         },
@@ -123,9 +123,9 @@ export async function generateMetadata({
         other: {
             'msapplication-TileColor': '#dc2626',
             'msapplication-config': '/browserconfig.xml',
-            'og:image:secure_url': 'https://selenit-digital-agency.vercel.app/our_team.png?v=2',
+            'og:image:secure_url': 'https://selenit-digital-agency.vercel.app/conversation_two.png',
             'og:image:type': 'image/png',
-            'twitter:image:src': 'https://selenit-digital-agency.vercel.app/our_team.png?v=2',
+            'twitter:image:src': 'https://selenit-digital-agency.vercel.app/conversation_two.png',
         },
         verification: {
             google: 'verification_code_here',

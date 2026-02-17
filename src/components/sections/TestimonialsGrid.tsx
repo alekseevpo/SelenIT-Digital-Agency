@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Star, Quote } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { motion, Variants, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import type { Testimonial } from '@/types/dictionary';
@@ -12,6 +12,10 @@ interface TestimonialsGridProps {
         title: string;
         subtitle: string;
         badge: string;
+        companies?: {
+            name: string;
+            link: string | null;
+        }[];
     };
     testimonials: Testimonial[];
 }
@@ -71,6 +75,37 @@ export default function TestimonialsGrid({ lang, dict, testimonials }: Testimoni
                     </p>
                 </div>
 
+                {/* Companies List */}
+                {dict.companies && dict.companies.length > 0 && (
+                    <div className="text-center max-w-4xl mx-auto mb-12">
+                        <div className="flex flex-wrap justify-center gap-3 items-center">
+                            {dict.companies.map((company, index) => (
+                                <div key={index} className="flex items-center">
+                                    {company.link ? (
+                                        <a
+                                            href={company.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-red-600 dark:text-red-500 hover:text-red-700 dark:hover:text-red-400 font-medium transition-colors duration-300"
+                                        >
+                                            {company.name}
+                                        </a>
+                                    ) : (
+                                        <span className="text-slate-600 dark:text-slate-400 font-medium">
+                                            {company.name}
+                                        </span>
+                                    )}
+                                    {dict.companies && index < dict.companies.length - 1 && (
+                                        <span className="mx-3 text-slate-400 dark:text-slate-600">
+                                            •
+                                        </span>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-stretch">
                     {testimonials.map((testimonial, index) => (
                         <motion.div
@@ -90,11 +125,6 @@ export default function TestimonialsGrid({ lang, dict, testimonials }: Testimoni
                                             className="w-3 h-3 text-slate-800 fill-slate-800 dark:text-white dark:fill-white"
                                         />
                                     ))}
-                                </div>
-
-                                {/* Quote icon */}
-                                <div className="absolute top-3 right-3 text-red-500 dark:text-red-400 opacity-20">
-                                    <Quote className="w-4 h-4" />
                                 </div>
 
                                 {/* Content */}

@@ -69,7 +69,7 @@ export function FormSelect({ error = false, className = '', children, ...props }
     return (
         <div className="relative">
             <select
-                className={`w-full px-4 py-3 rounded-xl bg-white/80 dark:bg-dark-900/60 border transition-all outline-none appearance-none cursor-pointer text-sm ${
+                className={`w-full min-w-[200px] px-4 py-3 rounded-xl bg-white/80 dark:bg-dark-900/60 border transition-all outline-none appearance-none cursor-pointer text-sm whitespace-nowrap ${
                     error
                         ? 'border-red-500/50 text-red-900 dark:text-red-400 bg-red-50/10'
                         : 'border-slate-300 dark:border-white/20 text-slate-900 dark:text-white focus:border-primary-500/50 dark:focus:border-primary-500/50 shadow-sm backdrop-blur-md hover:border-slate-400 dark:hover:border-white/30'

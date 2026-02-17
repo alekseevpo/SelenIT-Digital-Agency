@@ -178,8 +178,21 @@ article p {
     max-width: 70ch;
 }
 
+.services-hero-title {
+    font-size: clamp(80px, 20vw, 240px) !important;
+    font-family: var(--font-frantz) !important;
+    transform: scaleY(1.7) scaleX(1.15) !important;
+    transform-origin: center !important;
+    line-height: 0.8 !important;
+    letter-spacing: 0.03em !important;
+    text-transform: uppercase !important;
+    padding: 0.4em 0 !important;
+    font-weight: 400 !important;
+    color: inherit !important;
+}
+
 .heading-hero {
-    @apply text-6xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-frantz;
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-frantz;
     --hero-scale: 1;
     font-variation-settings:
         'MHLN' 1000,
@@ -188,7 +201,10 @@ article p {
     transform: scaleY(calc(1.7 * var(--hero-scale))) scaleX(calc(1.15 * var(--hero-scale)));
     transform-origin: center;
     max-width: 100%;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
     line-height: 0.8;
     font-weight: 400;
     letter-spacing: 0.03em;
@@ -222,6 +238,17 @@ article p {
     transform-origin: bottom center;
     line-height: 1.1;
     font-weight: 300;
+}
+
+.mobile-center-text {
+    text-align: center !important;
+    display: block !important;
+}
+
+@media (min-width: 1024px) {
+    .mobile-center-text {
+        text-align: left !important;
+    }
 }
 
 @keyframes text-shine {

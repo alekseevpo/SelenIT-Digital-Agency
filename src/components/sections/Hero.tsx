@@ -161,7 +161,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                             {/* Subheading */}
                             <motion.div
                                 variants={itemVariants}
-                                className="text-body text-sm lg:text-sm mb-44 lg:mb-4 leading-tight transition-colors opacity-90 whitespace-pre-line ml-4 lg:border-l lg:border-slate-200 dark:lg:border-dark-800 lg:pl-6 mt-0 lg:mt-8"
+                                className="text-body text-sm lg:text-sm mb-44 lg:mb-4 leading-tight transition-colors opacity-90 whitespace-pre-line ml-4 lg:border-l lg:border-slate-300 dark:lg:border-slate-700 lg:pl-6 mt-0 lg:mt-8"
                             >
                                 {(() => {
                                     const text = dict.subtitle;
@@ -360,7 +360,7 @@ export default function Hero({ dict, lang }: HeroProps) {
                     {/* Stats */}
                     <motion.div
                         variants={itemVariants as any}
-                        className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-20 sm:mt-24 md:mt-32 pt-8 sm:pt-12 border-t border-slate-200 dark:border-dark-800"
+                        className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-20 sm:mt-24 md:mt-32 pt-8 sm:pt-12 border-t border-slate-300 dark:border-slate-700"
                     >
                         {[
                             { target: 150, suffix: '+', label: dict.stats.projects },
