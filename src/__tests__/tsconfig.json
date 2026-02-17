@@ -3,7 +3,8 @@
     "compilerOptions": {
         "isolatedModules": false,
         "types": ["jest", "@testing-library/jest-dom"],
+        "typeRoots": ["./node_modules/@types", "./"],
         "jsx": "react-jsx"
     },
-    "include": ["**/*.ts", "**/*.tsx"]
+    "include": ["**/*.ts", "**/*.tsx", "jest.d.ts"]
 }

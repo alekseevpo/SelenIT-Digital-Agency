@@ -177,27 +177,47 @@
 <a name='L112'></a><a href='#L112'>112</a>
 <a name='L113'></a><a href='#L113'>113</a>
 <a name='L114'></a><a href='#L114'>114</a>
-<a name='L115'></a><a href='#L115'>115</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">68x</span>
-<span class="cline-any cline-yes">112x</span>
-<span class="cline-any cline-yes">112x</span>
-<span class="cline-any cline-yes">112x</span>
+<span class="cline-any cline-yes">92x</span>
+<span class="cline-any cline-yes">145x</span>
+<span class="cline-any cline-yes">145x</span>
+<span class="cline-any cline-yes">144x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">112x</span>
-<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-yes">144x</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">112x</span>
+<span class="cline-any cline-yes">144x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">144x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -205,17 +225,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">112x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">68x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -330,7 +342,7 @@ export function ThemeToggle() {
             onClick={handleThemeChange}
             onHoverStart={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >s</span>etIsHovered(true)}</span>
             onHoverEnd={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >s</span>etIsHovered(false)}</span>
-            className="w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-amber-500/10 dark:hover:bg-amber-400/10 transition-colors duration-300"
+            className="w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/10 dark:hover:bg-red-500/10 transition-colors duration-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label={`Switch to ${isDark ? <span class="branch-0 cbranch-no" title="branch not covered" >'light' : '</span>dark'} mode`}
@@ -343,13 +355,13 @@ export function ThemeToggle() {
                         animate={{
                             scale: 1,
                             opacity: 1,
-                            rotate: isHovered ? 180 : 0
+                            rotate: isHovered ? 180 : 0,
                         }}
                         exit={{ scale: 0, opacity: 0, rotate: 90 }}
                         transition={{
-                            scale: { duration: 0.3, ease: "easeOut" },
+                            scale: { duration: 0.3, ease: 'easeOut' },
                             opacity: { duration: 0.3 },
-                            rotate: { duration: 0.5, ease: "easeInOut" }
+                            rotate: { duration: 0.5, ease: 'easeInOut' },
                         }}
                     &gt;
                         &lt;svg
@@ -363,7 +375,13 @@ export function ThemeToggle() {
                             &lt;line x1="12" y1="2" x2="12" y2="4" strokeLinecap="round" /&gt;
                             &lt;line x1="12" y1="20" x2="12" y2="22" strokeLinecap="round" /&gt;
                             &lt;line x1="4.93" y1="4.93" x2="6.34" y2="6.34" strokeLinecap="round" /&gt;
-                            &lt;line x1="17.66" y1="17.66" x2="19.07" y2="19.07" strokeLinecap="round" /&gt;
+                            &lt;line
+                                x1="17.66"
+                                y1="17.66"
+                                x2="19.07"
+                                y2="19.07"
+                                strokeLinecap="round"
+                            /&gt;
                             &lt;line x1="2" y1="12" x2="4" y2="12" strokeLinecap="round" /&gt;
                             &lt;line x1="20" y1="12" x2="22" y2="12" strokeLinecap="round" /&gt;
                             &lt;line x1="4.93" y1="19.07" x2="6.34" y2="17.66" strokeLinecap="round" /&gt;
@@ -377,13 +395,13 @@ export function ThemeToggle() {
                         animate={{
                             scale: 1,
                             opacity: 1,
-                            rotate: isHovered ? <span class="branch-0 cbranch-no" title="branch not covered" >-20 : 0</span>
+                            rotate: isHovered ? <span class="branch-0 cbranch-no" title="branch not covered" >-20 : 0</span>,
                         }}
                         exit={{ scale: 0, opacity: 0, rotate: -90 }}
                         transition={{
-                            scale: { duration: 0.3, ease: "easeOut" },
+                            scale: { duration: 0.3, ease: 'easeOut' },
                             opacity: { duration: 0.3 },
-                            rotate: { duration: 0.3, ease: "easeInOut" }
+                            rotate: { duration: 0.3, ease: 'easeInOut' },
                         }}
                     &gt;
                         &lt;svg
@@ -412,7 +430,7 @@ export function ThemeToggle() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-31T13:53:25.499Z
+                at 2026-02-17T08:51:51.076Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -153,7 +153,8 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -243,11 +244,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use client";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use client';
 &nbsp;
-import { motion, Easing } from <span class="cstat-no" title="statement not covered" >"framer-motion";</span>
-import { useEffect, useState } from <span class="cstat-no" title="statement not covered" >"react";</span>
-import { useTheme } from <span class="cstat-no" title="statement not covered" >"next-themes";</span>
+import { motion, Easing } from <span class="cstat-no" title="statement not covered" >'framer-motion';</span>
+import { useEffect, useState } from <span class="cstat-no" title="statement not covered" >'react';</span>
+import { useTheme } from <span class="cstat-no" title="statement not covered" >'next-themes';</span>
 &nbsp;
 export default function <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >FluidBackground() {</span></span>
     const { theme } = <span class="cstat-no" title="statement not covered" >useTheme();</span>
@@ -259,44 +261,44 @@ export default function <span class="cstat-no" title="statement not covered" ><s
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!mounted) <span class="cstat-no" title="statement not covered" >return null;</span></span>
 &nbsp;
-    const isDark = <span class="cstat-no" title="statement not covered" >theme === "dark";</span>
+    const isDark = <span class="cstat-no" title="statement not covered" >theme === 'dark';</span>
 &nbsp;
     // Configuration for blobs
     // Using slightly different colors for light/dark modes
     const blobs = <span class="cstat-no" title="statement not covered" >[</span>
         {
             // Primary Blob
-            color: isDark ? "bg-primary-600/50" : "bg-primary-400/50",
+            color: isDark ? 'bg-primary-600/50' : 'bg-primary-400/50',
             initial: { x: -100, y: -100, scale: 1 },
             animate: {
                 x: [-100, 100, -50, -100],
                 y: [-100, 50, 100, -100],
                 scale: [1, 1.2, 1, 1],
             },
-            transition: { duration: 20, repeat: Infinity, ease: "linear" as "linear" }
+            transition: { duration: 20, repeat: Infinity, ease: 'linear' as 'linear' },
         },
         {
             // Accent Blob
-            color: isDark ? "bg-accent-600/50" : "bg-accent-400/50",
+            color: isDark ? 'bg-accent-600/50' : 'bg-accent-400/50',
             initial: { x: 400, y: 200, scale: 1.2 },
             animate: {
                 x: [400, 200, 500, 400],
                 y: [200, 400, 100, 200],
                 scale: [1.2, 1, 1.2, 1.2],
             },
-            transition: { duration: 25, repeat: Infinity, ease: "linear" as "linear" }
+            transition: { duration: 25, repeat: Infinity, ease: 'linear' as 'linear' },
         },
         {
             // Secondary Blob (Purple/Blue mix)
-            color: isDark ? "bg-blue-600/50" : "bg-blue-400/50",
+            color: isDark ? 'bg-blue-600/50' : 'bg-blue-400/50',
             initial: { x: 100, y: 500, scale: 0.8 },
             animate: {
                 x: [100, 300, -100, 100],
                 y: [500, 300, 600, 500],
                 scale: [0.8, 1.1, 0.9, 0.8],
             },
-            transition: { duration: 22, repeat: Infinity, ease: "linear" as "linear" }
-        }
+            transition: { duration: 22, repeat: Infinity, ease: 'linear' as 'linear' },
+        },
     ];
 &nbsp;
     return (
@@ -325,7 +327,8 @@ export default function <span class="cstat-no" title="statement not covered" ><s
             ))}
 &nbsp;
             {/* Noise Overlay for texture */}
-            &lt;div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            &lt;div
+                className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
                 }}
@@ -340,7 +343,7 @@ export default function <span class="cstat-no" title="statement not covered" ><s
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-31T13:53:25.499Z
+                at 2026-02-17T08:51:51.076Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

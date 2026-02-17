@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Reveal } from '../ui/Reveal';
@@ -123,20 +124,124 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
     return (
         <section ref={sectionRef} className="section-padding overflow-hidden">
             <div className="container-custom">
-                {/* Animated Showreel Title */}
+                {/* Animated Showreel Title - Desktop: Two Columns, Mobile: Single Column */}
                 <div className="relative mb-0 flex items-center justify-center">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <Reveal width="100%" delay={0.3}>
-                            <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-wide font-frantz">
-                                {(() => {
-                                    const title = dict.title;
-                                    const words = title.split(' ');
-                                    return words.map((word, index) => {
-                                        if (word.toLowerCase().includes('шоурил')) {
+                    <div className="max-w-6xl mx-auto">
+                        {/* Desktop: Two Column Layout */}
+                        <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                            {/* Left Column: Title */}
+                            <div className="text-left">
+                                <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-wide font-frantz">
+                                    {(() => {
+                                        const title = dict.title;
+                                        // Для русского языка вручную формируем с пробелами
+                                        const formattedTitle =
+                                            lang === 'ru' ? 'Проекты & Шоурилс' : title;
+                                        const words = formattedTitle.split(' ');
+                                        return words.map((word, index) => {
+                                            if (
+                                                word.toLowerCase().includes('шоурил') ||
+                                                word.toLowerCase().includes('showreels')
+                                            ) {
+                                                return (
+                                                    <span
+                                                        key={index}
+                                                        className="text-red-600 dark:text-red-500 inline-block animate-slide-in-right"
+                                                        style={{
+                                                            animation: `slideInRight 0.8s ease-out ${0.5 + index * 0.1}s both`,
+                                                        }}
+                                                    >
+                                                        {word}
+                                                        {index < words.length - 1 ? ' ' : ''}
+                                                    </span>
+                                                );
+                                            }
+                                            if (
+                                                word.toLowerCase().includes('projects') ||
+                                                word.toLowerCase().includes('проекты')
+                                            ) {
+                                                return (
+                                                    <span
+                                                        key={index}
+                                                        className="text-slate-900 dark:text-white inline-block animate-slide-in-up-bounce"
+                                                        style={{
+                                                            animation: `slideInUpBounce 0.7s ease-out ${0.2 + index * 0.05}s both`,
+                                                        }}
+                                                    >
+                                                        {word}
+                                                        {index < words.length - 1 ? ' ' : ''}
+                                                    </span>
+                                                );
+                                            }
                                             return (
                                                 <span
                                                     key={index}
-                                                    className="text-red-600 dark:text-red-500"
+                                                    className="text-slate-900 dark:text-white inline-block animate-slide-in-left"
+                                                    style={{
+                                                        animation: `slideInLeft 0.6s ease-out ${0.3 + index * 0.05}s both`,
+                                                    }}
+                                                >
+                                                    {word}
+                                                    {index < words.length - 1 ? ' ' : ''}
+                                                </span>
+                                            );
+                                        });
+                                    })()}
+                                </h2>
+                            </div>
+
+                            {/* Right Column: Image */}
+                            <div className="flex justify-center lg:justify-end">
+                                <Reveal delay={0.4}>
+                                    <Image
+                                        src="/showreel.png"
+                                        alt="Showreel"
+                                        width={280}
+                                        height={210}
+                                        className="w-full max-w-40 lg:max-w-48 h-auto object-contain dark:invert-0 invert contrast-125"
+                                    />
+                                </Reveal>
+                            </div>
+                        </div>
+
+                        {/* Mobile/Tablet: Single Column Layout */}
+                        <div className="lg:hidden text-center">
+                            <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-wide font-frantz">
+                                {(() => {
+                                    const title = dict.title;
+                                    // Для русского языка вручную формируем с пробелами
+                                    const formattedTitle =
+                                        lang === 'ru' ? 'Проекты & Шоурилс' : title;
+                                    const words = formattedTitle.split(' ');
+                                    return words.map((word, index) => {
+                                        if (
+                                            word.toLowerCase().includes('шоурил') ||
+                                            word.toLowerCase().includes('showreels')
+                                        ) {
+                                            return (
+                                                <span
+                                                    key={index}
+                                                    className="text-red-600 dark:text-red-500 inline-block animate-slide-in-right"
+                                                    style={{
+                                                        animation: `slideInRight 0.8s ease-out ${0.5 + index * 0.1}s both`,
+                                                    }}
+                                                >
+                                                    {word}
+                                                    {index < words.length - 1 ? ' ' : ''}
+                                                </span>
+                                            );
+                                        }
+                                        if (
+                                            word.toLowerCase().includes('projects') ||
+                                            word.toLowerCase().includes('проекты')
+                                        ) {
+                                            return (
+                                                <span
+                                                    key={index}
+                                                    className="text-slate-900 dark:text-white inline-block animate-slide-in-up-bounce"
+                                                    style={{
+                                                        animation: `slideInUpBounce 0.7s ease-out ${0.2 + index * 0.05}s both`,
+                                                    }}
                                                 >
                                                     {word}
                                                     {index < words.length - 1 ? ' ' : ''}
@@ -146,7 +251,10 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                         return (
                                             <span
                                                 key={index}
-                                                className="text-slate-900 dark:text-white"
+                                                className="text-slate-900 dark:text-white inline-block animate-slide-in-left"
+                                                style={{
+                                                    animation: `slideInLeft 0.6s ease-out ${0.3 + index * 0.05}s both`,
+                                                }}
                                             >
                                                 {word}
                                                 {index < words.length - 1 ? ' ' : ''}
@@ -155,7 +263,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                     });
                                 })()}
                             </h2>
-                        </Reveal>
+                        </div>
                     </div>
                 </div>
 
@@ -253,7 +361,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                     {/* Icon and Category */}
                                     <div className="flex items-center justify-between mb-6">
                                         <div>
-                                            <span className="text-red-600 dark:text-red-500 text-xs font-bold uppercase tracking-wider">
+                                            <span className="text-white text-xs font-bold uppercase tracking-wider">
                                                 {project.category}
                                             </span>
                                             <div className="text-slate-500 dark:text-slate-400 text-xs mt-1">
@@ -283,7 +391,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
 
                                     {/* Key Features */}
                                     <div className="mb-6">
-                                        <h4 className="text-sm font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-3 font-sans">
+                                        <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3 font-sans">
                                             {lang === 'ru'
                                                 ? 'Ключевые особенности'
                                                 : lang === 'es'
@@ -294,11 +402,8 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                             {project.features.map((feature, featureIndex) => (
                                                 <span
                                                     key={featureIndex}
-                                                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-600 dark:bg-red-500"
-                                                    style={{
-                                                        color: '#ffffff !important',
-                                                        backgroundColor: '#dc2626 !important',
-                                                    }}
+                                                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium text-white bg-red-600 dark:bg-red-500"
+                                                    style={{ color: '#ffffff !important' }}
                                                 >
                                                     {feature}
                                                 </span>
@@ -308,7 +413,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
 
                                     {/* Tech Stack */}
                                     <div className="mt-auto">
-                                        <h4 className="text-sm font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-3 font-sans">
+                                        <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3 font-sans">
                                             {lang === 'ru'
                                                 ? 'Технологический стек'
                                                 : lang === 'es'

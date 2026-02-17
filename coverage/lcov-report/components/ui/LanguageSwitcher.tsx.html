@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -141,50 +141,44 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">60x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">138x</span>
+<span class="cline-any cline-yes">144x</span>
+<span class="cline-any cline-yes">144x</span>
+<span class="cline-any cline-yes">144x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">144x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">144x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">144x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -192,20 +186,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">222x</span>
-<span class="cline-any cline-yes">222x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">432x</span>
+<span class="cline-any cline-yes">432x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -270,51 +256,44 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
         });
     };
 &nbsp;
+    const languages: Locale[] = ['es', 'en', 'ru'];
+&nbsp;
     return (
         &lt;div
-            className={`flex items-center gap-0.5 transition-opacity duration-300 ${isPending ? 'opacity-50 pointer-events-none' : ''}`}
+            className={`flex items-center gap-1 transition-opacity duration-300`}
             role="group"
             aria-label="Select language"
         &gt;
-            {i18n.locales.map((locale) =&gt; {
+            {languages.map((locale) =&gt; {
                 const isActive = currentLang === locale;
                 return (
-                    &lt;button
+                    &lt;motion.button
                         key={locale}
                         onClick={() =&gt; handleLanguageChange(locale)}
-                        disabled={isPending}
+                        whileHover={{ y: -2 }}
                         className={`
-                            relative px-3.5 py-2 rounded-full text-xs font-bold uppercase
-                            transition-all duration-300
-                            ${isActive
-                                ? 'text-white'
-                                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-cream-50/30 dark:hover:bg-cream-50/10'
+                            relative px-3 py-1.5 text-xs font-bold uppercase
+                            transition-all duration-300 rounded-full
+                            ${
+                                isActive
+                                    ? 'text-red-600 dark:text-red-500'
+                                    : 'text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500'
                             }
-                            disabled:cursor-wait
                         `}
                         aria-label={`Switch to ${localeFullNames[locale]}`}
                         aria-pressed={isActive}
                     &gt;
+                        &lt;span className="relative z-10"&gt;{localeNames[locale]}&lt;/span&gt;
                         {isActive &amp;&amp; (
                             &lt;motion.div
-                                layoutId="activeLang"
-                                className="absolute inset-0 bg-gradient-to-r from-orange-500 to-green-500 dark:from-primary-500 dark:to-accent-500 rounded-full -z-10 shadow-lg shadow-orange-500/30 dark:shadow-primary-500/30"
-                                transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                                layoutId="activeLangUnderline"
+                                className="absolute bottom-0 left-2 right-2 h-[2px] bg-red-600 dark:bg-red-500 rounded-full"
+                                transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
                             /&gt;
                         )}
-                        {localeNames[locale]}
-                    &lt;/button&gt;
+                    &lt;/motion.button&gt;
                 );
             })}
-&nbsp;
-            {/* Loading indicator */}
-            {isPending &amp;&amp; (
-                &lt;motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="ml-1 w-4 h-4 rounded-full border-2 border-orange-500 dark:border-primary-500 border-t-transparent animate-spin"
-                /&gt;
-            )}
         &lt;/div&gt;
     );
 }
@@ -325,7 +304,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-31T13:53:25.499Z
+                at 2026-02-17T08:51:51.076Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -30,7 +30,7 @@ export default function CTA({ lang, dict, commonDict }: CTAProps) {
                     </Reveal>
                 </div>
                 <Reveal width="100%" delay={0.4}>
-                    <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed mt-4">
                         {(() => {
                             const text = dict.subtitle;
                             // Check for different languages
