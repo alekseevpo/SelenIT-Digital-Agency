@@ -38,7 +38,7 @@ export function SuccessMessage({
                     />
                 </motion.svg>
             </div>
-            <h3 className="heading-3 mb-4 text-slate-900 dark:text-white font-bold tracking-tight">
+            <h3 className="heading-2 mb-4 text-slate-900 dark:text-white font-bold tracking-tight">
                 {title}
             </h3>
             <p className="text-slate-600 dark:text-dark-400 mb-8 max-w-sm mx-auto leading-relaxed">
