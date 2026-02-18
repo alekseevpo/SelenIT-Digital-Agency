@@ -324,31 +324,6 @@ article p {
         height: auto;
     }
 
-    /* Prevent horizontal scroll in all containers */
-    .container-custom,
-    .container,
-    [class*='container'] {
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-
-    /* Prevent text overflow */
-    * {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-
-    /* Force grid layouts to stay within bounds */
-    [class*='grid'] {
-        max-width: 100%;
-    }
-
-    /* Force flex layouts to stay within bounds */
-    [class*='flex'] {
-        max-width: 100%;
-    }
-
     /* Force light theme backgrounds - override ALL dark backgrounds in light mode */
     html:not(.dark) {
         --bg-primary: #fdfcf0 !important;
@@ -805,14 +780,9 @@ article p {
         @apply text-3xl;
     }
 
-    /* Prevent overflow in success message */
-    .success-message h2,
+    /* Exception for success message - keep it larger */
     .success-message .heading-1 {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        max-width: 100%;
-        overflow: hidden;
+        @apply text-5xl sm:text-6xl lg:text-7xl !important;
     }
 
     .heading-2 {
