@@ -18,7 +18,7 @@ export function SuccessMessage({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="text-center py-10"
+            className="text-center py-10 max-w-full overflow-hidden success-message"
         >
             <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-6 border border-green-500/20">
                 <motion.svg
@@ -38,7 +38,7 @@ export function SuccessMessage({
                     />
                 </motion.svg>
             </div>
-            <h2 className="heading-1 mb-4 text-slate-900 dark:text-white font-bold tracking-tight">
+            <h2 className="heading-1 mb-4 text-slate-900 dark:text-white font-bold tracking-tight break-words overflow-hidden">
                 {title}
             </h2>
             <p className="text-slate-600 dark:text-dark-400 mb-8 max-w-sm mx-auto leading-relaxed">

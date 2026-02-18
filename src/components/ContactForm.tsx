@@ -122,7 +122,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
     };
 
     return (
-        <div className="p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500">
+        <div className="p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500 overflow-x-hidden">
             {isSubmitted ? (
                 <SuccessMessage
                     title={activeTab === 'message' ? dict.successTitle : dict.callbackSuccessTitle}

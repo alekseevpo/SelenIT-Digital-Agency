@@ -805,6 +805,16 @@ article p {
         @apply text-3xl;
     }
 
+    /* Prevent overflow in success message */
+    .success-message h2,
+    .success-message .heading-1 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
     .heading-2 {
         @apply text-2xl;
     }
