@@ -89,6 +89,8 @@ body {
     transition:
         background-color 0.3s ease,
         color 0.3s ease;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 .dark {
@@ -309,6 +311,44 @@ article p {
 
 /* Custom utility classes */
 @layer components {
+    /* Prevent horizontal scroll globally */
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Force all elements to stay within viewport */
+    img,
+    video,
+    svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Prevent horizontal scroll in all containers */
+    .container-custom,
+    .container,
+    [class*='container'] {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Prevent text overflow */
+    * {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* Force grid layouts to stay within bounds */
+    [class*='grid'] {
+        max-width: 100%;
+    }
+
+    /* Force flex layouts to stay within bounds */
+    [class*='flex'] {
+        max-width: 100%;
+    }
+
     /* Force light theme backgrounds - override ALL dark backgrounds in light mode */
     html:not(.dark) {
         --bg-primary: #fdfcf0 !important;
