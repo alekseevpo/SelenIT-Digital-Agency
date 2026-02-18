@@ -46,7 +46,7 @@ export function SuccessMessage({
             </p>
             <button
                 onClick={onSendAnother}
-                className="btn-secondary group/btn relative overflow-hidden"
+                className="btn-primary group/btn relative overflow-hidden"
                 type="button"
             >
                 <span className="relative z-10">{sendAnotherText}</span>
