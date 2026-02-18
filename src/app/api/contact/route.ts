@@ -5,6 +5,10 @@ interface ContactFormData {
     name: string;
     email: string;
     company?: string;
+    service: string;
+    budget?: string;
+    dontKnowBudget?: boolean;
+    phone?: string;
     message: string;
     recaptchaToken: string;
 }
@@ -40,7 +44,17 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 export async function POST(request: NextRequest) {
     try {
         const body: ContactFormData = await request.json();
-        const { name, email, company, message, recaptchaToken } = body;
+        const {
+            name,
+            email,
+            company,
+            service,
+            budget,
+            dontKnowBudget,
+            phone,
+            message,
+            recaptchaToken,
+        } = body;
 
         // Validate required fields
         if (!name || !email || !message) {
@@ -81,6 +95,10 @@ export async function POST(request: NextRequest) {
                         <p><strong>Name:</strong> ${name}</p>
                         <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
                         ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
+                        <p><strong>Service:</strong> ${service}</p>
+                        ${budget ? `<p><strong>Budget:</strong> ${budget}</p>` : ''}
+                        ${dontKnowBudget ? `<p><strong>Budget Discussion:</strong> ✅ User wants to discuss budget</p>` : ''}
+                        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
                     </div>
 
                     <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
