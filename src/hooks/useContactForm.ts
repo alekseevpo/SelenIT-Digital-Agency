@@ -162,6 +162,8 @@ export function useContactForm({ lang, activeTab, onSubmit }: UseContactFormProp
                 await onSubmit?.(formState);
                 setIsSubmitted(true);
                 resetForm();
+                // Scroll to top to show success message
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } catch (error) {
                 console.error('Submit error:', error);
                 setSubmitError(
