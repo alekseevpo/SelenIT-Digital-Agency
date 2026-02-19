@@ -20,9 +20,9 @@ export function OrganizationJsonLd({ url, lang }: { url: string; lang: string })
     };
 
     const descriptions: Record<string, string> = {
-        en: 'Professional web development, UI/UX design, branding and SEO services. We build modern, high-performance websites and digital solutions.',
-        ru: 'Профессиональная веб-разработка, UI/UX дизайн, брендинг и SEO. Создаём современные высокопроизводительные сайты и цифровые решения.',
-        es: 'Desarrollo web profesional, diseño UI/UX, branding y SEO. Creamos sitios web modernos y soluciones digitales de alto rendimiento.',
+        en: 'Professional web development, UI/UX design, branding and SEO services based in Madrid, Spain. We build modern, high-performance websites and digital solutions.',
+        ru: 'Профессиональная веб-разработка, UI/UX дизайн, брендинг и SEO. Базируемся в Мадриде, Испания. Создаём современные высокопроизводительные сайты и цифровые решения.',
+        es: 'Desarrollo web profesional, diseño UI/UX, branding y SEO con sede en Madrid, España. Creamos sitios web modernos y soluciones digitales de alto rendimiento.',
     };
 
     return (
@@ -46,7 +46,7 @@ export function OrganizationJsonLd({ url, lang }: { url: string; lang: string })
                 address: {
                     '@type': 'PostalAddress',
                     addressCountry: 'ES',
-                    addressLocality: 'Barcelona',
+                    addressLocality: 'Madrid',
                 },
                 knowsAbout: [
                     'Web Development',
@@ -56,6 +56,20 @@ export function OrganizationJsonLd({ url, lang }: { url: string; lang: string })
                     'React',
                     'Next.js',
                     'TypeScript',
+                    'Frontend Development',
+                    'Backend Development',
+                    'Full-Stack Development',
+                    'Mobile Development',
+                    'Progressive Web Apps',
+                    'API Development',
+                    'Database Design',
+                    'Cloud Solutions',
+                    'DevOps',
+                    'Performance Optimization',
+                    'Accessibility',
+                    'E-commerce Solutions',
+                    'Custom Web Applications',
+                    'Digital Transformation',
                 ],
             }}
         />
@@ -101,7 +115,7 @@ export function LocalBusinessJsonLd({ url }: { url: string }) {
                 address: {
                     '@type': 'PostalAddress',
                     addressCountry: 'ES',
-                    addressLocality: 'Barcelona',
+                    addressLocality: 'Madrid',
                 },
                 openingHoursSpecification: [
                     {
@@ -147,6 +161,80 @@ export function LocalBusinessJsonLd({ url }: { url: string }) {
                             itemOffered: {
                                 '@type': 'Service',
                                 name: 'Branding',
+                            },
+                        },
+                    ],
+                },
+            }}
+        />
+    );
+}
+
+export function ServiceJsonLd({
+    url,
+    lang,
+    serviceName,
+}: {
+    url: string;
+    lang: string;
+    serviceName: string;
+}) {
+    const serviceDescriptions: Record<string, Record<string, string>> = {
+        'web-development': {
+            en: 'Professional web development services using modern technologies like React, Next.js, and TypeScript. We build scalable, performant, and user-friendly web applications.',
+            ru: 'Профессиональные услуги веб-разработки с использованием современных технологий React, Next.js и TypeScript. Создаем масштабируемые, производительные и удобные веб-приложения.',
+            es: 'Servicios profesionales de desarrollo web utilizando tecnologías modernas como React, Next.js y TypeScript. Construimos aplicaciones web escalables, de alto rendimiento y fáciles de usar.',
+        },
+        'ui-ux-design': {
+            en: 'Expert UI/UX design services creating intuitive, beautiful, and user-centered digital experiences. We focus on usability, accessibility, and conversion optimization.',
+            ru: 'Экспертные услуги UI/UX дизайна, создающие интуитивные, красивые и ориентированные на пользователя цифровые впечатления. Фокусируемся на удобстве использования, доступности и оптимизации конверсии.',
+            es: 'Servicios expertos de diseño UI/UX creando experiencias digitales intuitivas, hermosas y centradas en el usuario. Nos enfocamos en usabilidad, accesibilidad y optimización de conversión.',
+        },
+        'seo-optimization': {
+            en: 'Comprehensive SEO optimization services to improve your website visibility and rankings. We offer technical SEO, content optimization, and performance enhancement.',
+            ru: 'Комплексные услуги SEO оптимизации для улучшения видимости и позиций вашего сайта. Предлагаем технический SEO, оптимизацию контента и улучшение производительности.',
+            es: 'Servicios integrales de optimización SEO para mejorar la visibilidad y clasificación de su sitio web. Ofrecemos SEO técnico, optimización de contenido y mejora del rendimiento.',
+        },
+        branding: {
+            en: 'Complete branding services including logo design, brand identity, visual systems, and marketing materials. We create memorable and impactful brand experiences.',
+            ru: 'Полные услуги брендинга включая дизайн логотипа, фирменный стиль, визуальные системы и маркетинговые материалы. Создаем запоминающиеся и эффектные бренд-впечатления.',
+            es: 'Servicios completos de branding que incluyen diseño de logotipo, identidad de marca, sistemas visuales y materiales de marketing. Creamos experiencias de marca memorables e impactantes.',
+        },
+    };
+
+    const descriptions = serviceDescriptions[serviceName] || serviceDescriptions['web-development'];
+
+    return (
+        <JsonLd
+            data={{
+                '@context': 'https://schema.org',
+                '@type': 'Service',
+                name: serviceName.replace('-', ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
+                description: descriptions[lang] || descriptions.en,
+                provider: {
+                    '@type': 'Organization',
+                    name: 'Selen.IT Digital Agency',
+                    url,
+                },
+                areaServed: {
+                    '@type': 'Place',
+                    address: {
+                        '@type': 'PostalAddress',
+                        addressCountry: 'ES',
+                        addressLocality: 'Madrid',
+                    },
+                },
+                hasOfferCatalog: {
+                    '@type': 'OfferCatalog',
+                    name: 'Digital Services',
+                    itemListElement: [
+                        {
+                            '@type': 'Offer',
+                            itemOffered: {
+                                '@type': 'Service',
+                                name: serviceName
+                                    .replace('-', ' ')
+                                    .replace(/\b\w/g, (l) => l.toUpperCase()),
                             },
                         },
                     ],

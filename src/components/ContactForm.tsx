@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, lazy, Suspense } from 'react';
+import { useState, useCallback, lazy, Suspense, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContactForm } from '@/hooks/useContactForm';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
@@ -8,6 +8,7 @@ import { TabSwitcher } from '@/components/ui/TabSwitcher';
 import { SuccessMessage } from '@/components/ui/SuccessMessage';
 import { ErrorMessage } from '@/components/ui/ErrorMessage';
 import { RecaptchaNotice } from '@/components/ui/RecaptchaNotice';
+import { useEffect } from 'react';
 
 // Lazy load heavy components
 const ContactFormFields = lazy(() => import('@/components/ContactFormFields'));
@@ -50,6 +51,7 @@ interface ContactFormProps {
 export default function ContactForm({ lang, dict }: ContactFormProps) {
     const [activeTab, setActiveTab] = useState<'message' | 'callback'>('message');
     const { recaptchaLoaded, getRecaptchaToken } = useRecaptcha();
+    const successMessageRef = useRef<HTMLDivElement>(null);
 
     const handleFormSubmit = useCallback(
         async (formState: any) => {
@@ -121,19 +123,37 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         resetForm();
     };
 
+    // Focus on success message when form is submitted
+    useEffect(() => {
+        if (isSubmitted && successMessageRef.current) {
+            successMessageRef.current.focus();
+            // Scroll to success message if it's not in view (only in browser)
+            if (typeof window !== 'undefined' && successMessageRef.current.scrollIntoView) {
+                successMessageRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                });
+            }
+        }
+    }, [isSubmitted]);
+
     return (
         <div className="p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500 overflow-x-hidden">
             {isSubmitted ? (
-                <SuccessMessage
-                    title={activeTab === 'message' ? dict.successTitle : dict.callbackSuccessTitle}
-                    subtitle={
-                        activeTab === 'message'
-                            ? dict.successSubtitle
-                            : dict.callbackSuccessSubtitle
-                    }
-                    onSendAnother={handleSendAnother}
-                    sendAnotherText={dict.sendAnother}
-                />
+                <div ref={successMessageRef} tabIndex={-1}>
+                    <SuccessMessage
+                        title={
+                            activeTab === 'message' ? dict.successTitle : dict.callbackSuccessTitle
+                        }
+                        subtitle={
+                            activeTab === 'message'
+                                ? dict.successSubtitle
+                                : dict.callbackSuccessSubtitle
+                        }
+                        onSendAnother={handleSendAnother}
+                        sendAnotherText={dict.sendAnother}
+                    />
+                </div>
             ) : (
                 <div className="space-y-8 relative z-10">
                     {/* Tab Switcher */}

@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { getDictionary } from '@/get-dictionary';
-import { Locale } from '@/i18n-config';
-import CTA from '@/components/sections/CTA';
-import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
+import type { Locale } from '@/i18n-config';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Reveal } from '@/components/ui/Reveal';
+import { BreadcrumbJsonLd } from '@/components/seo/JsonLd';
+import CTA from '@/components/sections/CTA';
 
 const content = {
     en: {
@@ -319,10 +321,15 @@ export default async function BrandingPage({ params }: PageProps) {
                                     </p>
                                 </div>
                                 <div className="flex-shrink-0 lg:w-1/3 -mt-8 pt-8">
-                                    <img
+                                    <Image
                                         src="/artist_.png"
                                         alt="Artist illustration"
+                                        width={400}
+                                        height={300}
                                         className="max-w-full h-auto rounded-lg dark:invert"
+                                        sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 33vw, 400px"
+                                        placeholder="blur"
+                                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A8A"
                                     />
                                 </div>
                             </div>

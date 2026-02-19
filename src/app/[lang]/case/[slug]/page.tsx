@@ -411,10 +411,20 @@ export default async function CaseStudyPage({
                         </div>
                     </Reveal>
 
-                    {/* Hero Image Placeholder */}
+                    {/* Hero Image */}
                     <Reveal>
-                        <div className="aspect-video rounded-2xl bg-gradient-to-br from-orange-500/20 to-amber-500/20 dark:from-primary-500/20 dark:to-primary-600/20 flex items-center justify-center overflow-hidden">
-                            <span className="text-slate-500 dark:text-dark-400">Hero Image</span>
+                        <div className="aspect-video rounded-2xl overflow-hidden">
+                            <Image
+                                src={caseStudy.heroImage}
+                                alt={`${caseStudy.title} - ${caseStudy.client}`}
+                                width={1200}
+                                height={675}
+                                className="w-full h-full object-cover"
+                                priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                                placeholder="blur"
+                                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A8A"
+                            />
                         </div>
                     </Reveal>
                 </div>
@@ -541,10 +551,18 @@ export default async function CaseStudyPage({
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {caseStudy.gallery.map((image, index) => (
                             <Reveal key={index}>
-                                <div className="aspect-video rounded-xl bg-gradient-to-br from-slate-200 to-slate-300 dark:from-dark-700 dark:to-dark-800 flex items-center justify-center">
-                                    <span className="text-slate-500 dark:text-dark-400 text-sm">
-                                        Gallery Image {index + 1}
-                                    </span>
+                                <div className="aspect-video rounded-xl overflow-hidden">
+                                    <Image
+                                        src={image}
+                                        alt={`${caseStudy.title} - Gallery Image ${index + 1}`}
+                                        width={400}
+                                        height={225}
+                                        className="w-full h-full object-cover"
+                                        loading="lazy"
+                                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                        placeholder="blur"
+                                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A8A"
+                                    />
                                 </div>
                             </Reveal>
                         ))}

@@ -40,7 +40,15 @@ test.describe('mobile layout', () => {
 
     test('mobile testimonials section is reachable on home', async ({ page }) => {
         await page.goto('/en');
+        // Wait for page to load completely
+        await page.waitForLoadState('networkidle');
+        // Wait a bit more for lazy loaded components
+        await page.waitForTimeout(2000);
+
         const testimonialsHeading = page.getByRole('heading', { name: /what our clients say/i });
+
+        // Wait for the element to be attached to DOM before scrolling
+        await testimonialsHeading.waitFor({ state: 'attached', timeout: 5000 });
         await testimonialsHeading.scrollIntoViewIfNeeded();
         await expect(testimonialsHeading).toBeVisible();
     });
