@@ -16,9 +16,9 @@ interface CookieConsentProps {
 }
 
 export function CookieConsent({ lang, dictionary }: CookieConsentProps) {
-    const { consent, setConsent } = useCookieConsent();
+    const { consent, setConsent, isHydrated } = useCookieConsent();
 
-    if (consent !== 'pending') {
+    if (!isHydrated || consent !== 'pending') {
         return null;
     }
 

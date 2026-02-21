@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { Reveal } from '../ui/Reveal';
@@ -83,9 +83,9 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
         >
             <div className="container-custom relative z-10">
                 {/* Section Header */}
-                <div className="text-center max-w-4xl mx-auto mb-16">
+                <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 md:mb-16">
                     <h2
-                        className="mb-6 text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] 2xl:text-[5rem] font-bold leading-[1.15] tracking-wide font-frantz"
+                        className="mb-4 sm:mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] 2xl:text-[5rem] font-bold leading-[1.15] tracking-wide font-frantz"
                         style={{
                             fontFamily: 'var(--font-frantz) !important',
                             transform: 'scaleY(1.7) scaleX(1.15) !important',
@@ -101,9 +101,7 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
                     >
                         <span style={{ color: 'inherit !important' }}>
                             {dict.title1}{' '}
-                            <span style={{ color: '#dc2626 !important' }}>
-                                {dict.titleGradient}
-                            </span>
+                            <span style={{ color: '#dc2626' }}>{dict.titleGradient}</span>
                         </span>
                     </h2>
 

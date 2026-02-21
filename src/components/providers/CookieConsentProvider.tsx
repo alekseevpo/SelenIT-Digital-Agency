@@ -8,6 +8,7 @@ interface CookieConsentContextType {
     consent: ConsentStatus;
     setConsent: (status: ConsentStatus) => void;
     hasConsent: boolean;
+    isHydrated: boolean;
 }
 
 const CookieConsentContext = createContext<CookieConsentContextType | undefined>(undefined);
@@ -34,7 +35,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
     const hasConsent = consent === 'accepted';
 
     return (
-        <CookieConsentContext.Provider value={{ consent, setConsent, hasConsent }}>
+        <CookieConsentContext.Provider value={{ consent, setConsent, hasConsent, isHydrated }}>
             {children}
         </CookieConsentContext.Provider>
     );

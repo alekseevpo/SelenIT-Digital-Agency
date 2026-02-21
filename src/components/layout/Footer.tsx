@@ -179,7 +179,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                 {/* Desktop Layout */}
                 <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Brand */}
-                    <div className="lg:col-span-1">
+                    <div className="lg:col-span-1 lg:col-start-1 -ml-8 lg:-ml-12">
                         <Link
                             href={`/${lang}`}
                             className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg"
@@ -207,7 +207,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                     </div>
 
                     {/* Services */}
-                    <div className="text-left">
+                    <div className="text-left lg:col-start-2">
                         <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">
                             {footerDict.services}
                         </h4>
@@ -226,7 +226,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                     </div>
 
                     {/* Company */}
-                    <div className="text-left">
+                    <div className="text-left lg:col-start-3">
                         <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">
                             {footerDict.company}
                         </h4>
@@ -245,7 +245,7 @@ export default function Footer({ lang, dict }: FooterProps) {
                     </div>
 
                     {/* Contact */}
-                    <div className="text-left">
+                    <div className="text-left lg:col-start-4">
                         <h4 className="text-red-600 dark:text-red-500 font-frantz font-black mb-12 uppercase tracking-wide text-5xl leading-[0.9] font-frantz-stretch">
                             {footerDict.getInTouch}
                         </h4>

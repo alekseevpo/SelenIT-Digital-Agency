@@ -39,7 +39,10 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
 
     return (
         <div
-            className={`flex items-center gap-1 transition-opacity duration-300`}
+            className={`
+                flex items-center gap-0.5 transition-opacity duration-300 max-w-fit
+                px-0 py-0 -my-2.5 -mx-1
+            `}
             role="group"
             aria-label="Select language"
         >
@@ -51,7 +54,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
                         onClick={() => handleLanguageChange(locale)}
                         whileHover={{ y: -2 }}
                         className={`
-                            relative px-3 py-1.5 text-xs font-bold uppercase
+                            relative px-2 py-1 text-xs font-bold uppercase
                             transition-all duration-300 rounded-full
                             ${
                                 isActive
@@ -63,13 +66,6 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
                         aria-pressed={isActive}
                     >
                         <span className="relative z-10">{localeNames[locale]}</span>
-                        {isActive && (
-                            <motion.div
-                                layoutId="activeLangUnderline"
-                                className="absolute bottom-0 left-2 right-2 h-[2px] bg-red-600 dark:bg-red-500 rounded-full"
-                                transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
-                            />
-                        )}
                     </motion.button>
                 );
             })}

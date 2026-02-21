@@ -89,9 +89,12 @@ export default async function WebsitesPage({ params }: PageProps) {
                         </span>
                     </Reveal>
                     <Reveal width="100%" delay={0.35}>
-                        <h1 className="heading-1 mb-6 text-slate-900 dark:text-white">
+                        <h1
+                            className="heading-1 mb-6 text-slate-900 dark:text-white"
+                            style={{ letterSpacing: '0.02em' }}
+                        >
                             {c.title1} <span className="gradient-text">{c.titleGradient}</span>{' '}
-                            {c.title2}
+                            <span className="text-red-600 dark:text-red-500">{c.title2}</span>
                         </h1>
                     </Reveal>
                     <Reveal width="100%" delay={0.45}>

@@ -138,7 +138,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
     }, [isSubmitted]);
 
     return (
-        <div className="p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500 overflow-x-hidden">
+        <div className="contact-form p-4 sm:p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500 overflow-x-hidden">
             {isSubmitted ? (
                 <div ref={successMessageRef} tabIndex={-1}>
                     <SuccessMessage
@@ -165,8 +165,9 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
                     <form
                         onSubmit={handleSubmit}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-7"
+                        className="form-grid grid grid-cols-1 md:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6"
                         noValidate
+                        aria-live="polite"
                     >
                         {/* Lazy loaded form fields */}
                         <Suspense

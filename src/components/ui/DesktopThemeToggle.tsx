@@ -4,7 +4,19 @@ import * as React from 'react';
 import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export function ThemeToggle() {
+interface DesktopThemeToggleProps {
+    className?: string;
+    iconSize?: 'small' | 'medium' | 'large';
+    buttonSize?: 'small' | 'medium' | 'large';
+    showHoverEffect?: boolean;
+}
+
+export function DesktopThemeToggle({
+    className = '',
+    iconSize = 'medium',
+    buttonSize = 'medium',
+    showHoverEffect = true,
+}: DesktopThemeToggleProps) {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
     const [isHovered, setIsHovered] = React.useState(false);
@@ -14,32 +26,44 @@ export function ThemeToggle() {
     }, []);
 
     const handleThemeChange = () => {
-        // Add transitioning class for smooth animation
         document.documentElement.classList.add('transitioning');
-
-        // Change theme
         setTheme(theme === 'dark' ? 'light' : 'dark');
-
-        // Remove class after transition
         setTimeout(() => {
             document.documentElement.classList.remove('transitioning');
         }, 500);
     };
 
     if (!mounted) {
-        return <div className="w-10 h-10" />;
+        const sizeClasses = {
+            small: 'w-8 h-8',
+            medium: 'w-10 h-10',
+            large: 'w-12 h-12',
+        };
+        return <div className={sizeClasses[buttonSize]} />;
     }
 
     const isDark = theme === 'dark';
+
+    // Size configurations
+    const buttonClasses = {
+        small: 'w-8 h-8',
+        medium: 'w-10 h-10',
+        large: 'w-12 h-12',
+    };
+
+    const iconClasses = {
+        small: 'w-3 h-3',
+        medium: 'w-5 h-5',
+        large: 'w-7 h-7',
+    };
 
     return (
         <motion.button
             onClick={handleThemeChange}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-white hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/10 dark:hover:bg-red-500/10 transition-colors duration-300"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            className={`${buttonClasses[buttonSize]} rounded-full flex items-center justify-center text-slate-600 dark:text-white transition-colors duration-300 ${className}`}
+            whileTap={showHoverEffect ? { scale: 0.95 } : undefined}
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         >
             <AnimatePresence mode="wait" initial={false}>
@@ -50,7 +74,7 @@ export function ThemeToggle() {
                         animate={{
                             scale: 1,
                             opacity: 1,
-                            rotate: isHovered ? 180 : 0,
+                            rotate: isHovered && showHoverEffect ? 180 : 0,
                         }}
                         exit={{ scale: 0, opacity: 0, rotate: 90 }}
                         transition={{
@@ -60,7 +84,7 @@ export function ThemeToggle() {
                         }}
                     >
                         <svg
-                            className="w-5 h-5"
+                            className={iconClasses[iconSize]}
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -90,7 +114,7 @@ export function ThemeToggle() {
                         animate={{
                             scale: 1,
                             opacity: 1,
-                            rotate: isHovered ? -20 : 0,
+                            rotate: isHovered && showHoverEffect ? -20 : 0,
                         }}
                         exit={{ scale: 0, opacity: 0, rotate: -90 }}
                         transition={{
@@ -100,7 +124,7 @@ export function ThemeToggle() {
                         }}
                     >
                         <svg
-                            className="w-5 h-5"
+                            className={iconClasses[iconSize]}
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"

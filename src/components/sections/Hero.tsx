@@ -1,10 +1,18 @@
 'use client';
 
-import Link from 'next/link';
+import React, { useRef, useEffect, useState } from 'react';
+import {
+    motion,
+    useScroll,
+    useTransform,
+    useInView,
+    useSpring,
+    Variants,
+    animate,
+} from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Heart } from 'lucide-react';
-import { motion, Variants, useInView, animate } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
 
 interface HeroProps {
     dict: {
@@ -92,11 +100,12 @@ export default function Hero({ dict, lang }: HeroProps) {
                     className="max-w-7xl mx-auto text-left lg:-translate-y-8"
                 >
                     <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-start">
-                        <div className="lg:col-span-6 lg:mt-16">
+                        <div className="lg:col-span-6 lg:mt-16 text-center lg:text-left lg:-ml-4">
                             {/* Main Heading */}
                             <motion.h1
                                 variants={itemVariants}
-                                className="text-[4rem] sm:text-8xl lg:text-[7.5rem] xl:text-8.5xl 2xl:text-9.5xl mb-12 mt-28 lg:mb-0 lg:mt-8 text-slate-900 dark:text-white leading-[0.85] lg:leading-[0.84] text-center lg:text-left ml-0 sm:-ml-8 lg:-ml-12"
+                                className="heading-hero text-[4rem] sm:text-[5rem] md:text-6xl lg:text-[6rem] xl:text-7rem 2xl:text-8rem mb-8 sm:mb-12 mt-8 lg:mb-0 lg:mt-8 text-slate-900 dark:text-white leading-[0.95] lg:leading-[0.94] text-center lg:text-left"
+                                style={{ fontSize: 'clamp(3.5rem, 14vw, 6rem)' }}
                             >
                                 {dict.title1}
                                 <br />
@@ -146,15 +155,15 @@ export default function Hero({ dict, lang }: HeroProps) {
 
                         <div className="lg:col-span-6 lg:mt-16">
                             {/* Mobile Image */}
-                            <div className="lg:hidden mb-8 flex justify-center">
+                            <div className="lg:hidden mb-6 flex justify-center">
                                 <Image
                                     src="/conversation_two.png"
                                     alt="Conversation illustration"
                                     width={400}
                                     height={300}
-                                    className="max-w-[80%] h-auto rounded-lg dark:invert"
+                                    className="hero-image max-w-[90%] h-auto rounded-lg dark:invert"
                                     priority
-                                    sizes="(max-width: 1024px) 80vw, 0"
+                                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 80vw, 0"
                                     placeholder="blur"
                                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A8A"
                                 />

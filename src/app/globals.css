@@ -157,6 +157,11 @@ html.transitioning *::after {
         stroke 0.3s ease !important;
 }
 
+/* Prevent size changes during theme transition */
+html.transitioning * {
+    transition-property: background-color, border-color, color, box-shadow, fill, stroke !important;
+}
+
 body {
     font-family:
         var(--font-inter),
@@ -194,7 +199,7 @@ article p {
 }
 
 .heading-hero {
-    @apply text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-frantz;
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-frantz;
     --hero-scale: 1;
     font-variation-settings:
         'MHLN' 1000,
@@ -322,6 +327,39 @@ article p {
     svg {
         max-width: 100%;
         height: auto;
+    }
+
+    /* Allow explicit sizing for theme toggle SVG icons */
+    .theme-toggle svg,
+    [class*='ThemeToggle'] svg,
+    .mobile-theme-toggle svg,
+    .desktop-theme-toggle svg {
+        height: unset !important;
+        width: unset !important;
+        max-width: unset !important;
+        min-height: unset !important;
+    }
+
+    /* Force large size for mobile theme toggle icons */
+    .mobile-theme-toggle svg,
+    [class*='MobileThemeToggle'] svg {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
+    }
+
+    .mobile-theme-toggle svg,
+    [class*='MobileThemeToggle'] svg {
+        stroke-width: 1.5 !important;
+    }
+
+    /* Force large size for BackToTop mobile button icon */
+    .lg:hidden .fixed.bottom-36 svg {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
     }
 
     /* Force light theme backgrounds - override ALL dark backgrounds in light mode */
@@ -915,6 +953,324 @@ article p {
 
 .animate-fade-in {
     animation: fade-in 0.3s ease-out;
+}
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+
+/* Mobile-first typography improvements */
+@media (max-width: 640px) {
+    /* Hero heading - larger responsive sizing */
+    .heading-hero {
+        font-size: clamp(4rem, 14vw, 7rem) !important;
+        line-height: 0.9 !important;
+        letter-spacing: -0.01em !important;
+        text-align: center !important;
+        margin-left: 0 !important;
+    }
+
+    /* Service headings */
+    h2.text-5xl {
+        font-size: clamp(2.5rem, 7vw, 3.5rem) !important;
+        line-height: 1.15 !important;
+    }
+
+    /* Service page headings */
+    .heading-1 {
+        font-size: clamp(2.5rem, 7vw, 3.5rem) !important;
+        line-height: 1.2 !important;
+        letter-spacing: 0.01em !important;
+        word-wrap: break-word !important;
+        hyphens: auto !important;
+        padding: 0 0.5rem !important;
+    }
+
+    /* Mobile language switcher optimization */
+    .language-switcher-mobile {
+        gap: 0.5rem !important;
+    }
+    .language-switcher-mobile button {
+        padding: 0.25rem 0.75rem !important;
+        font-size: 0.75rem !important;
+    }
+    .language-switcher-mobile .active-underline {
+        display: none !important;
+    }
+
+    /* Body text improvements */
+    .text-body {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        letter-spacing: 0.01em !important;
+    }
+
+    /* Card headings */
+    .text-3xl {
+        font-size: 1.75rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Section headings */
+    .text-4xl {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Improve readability for small screens */
+    p,
+    li {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Form labels and inputs */
+    label {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 1rem !important;
+        padding: 0.75rem 1rem !important;
+        min-height: 44px !important; /* Touch target size */
+    }
+
+    /* Button improvements */
+    button {
+        min-height: 44px !important;
+        font-size: 1rem !important;
+        padding: 0.75rem 1.5rem !important;
+    }
+
+    /* Navigation items */
+    .nav-item {
+        font-size: 1rem !important;
+        padding: 0.75rem 1rem !important;
+        min-height: 44px !important;
+    }
+}
+
+/* Mobile spacing optimizations */
+@media (max-width: 640px) {
+    /* Section padding - reduce vertical space */
+    .section-padding {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* Container padding - tighter on mobile */
+    .container-custom {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Card spacing */
+    .glass-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Hero section specific */
+    .hero-section {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* Form spacing */
+    .form-container {
+        padding: 1rem !important;
+    }
+
+    /* Grid gaps for mobile */
+    .gap-8 {
+        gap: 1rem !important;
+    }
+
+    .gap-6 {
+        gap: 0.75rem !important;
+    }
+
+    /* Margin reductions */
+    .mb-16 {
+        margin-bottom: 2rem !important;
+    }
+
+    .mb-12 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .mb-8 {
+        margin-bottom: 1rem !important;
+    }
+
+    .mt-16 {
+        margin-top: 2rem !important;
+    }
+
+    .mt-12 {
+        margin-top: 1.5rem !important;
+    }
+
+    .mt-8 {
+        margin-top: 1rem !important;
+    }
+}
+
+/* Mobile image optimizations */
+@media (max-width: 640px) {
+    /* Hero images */
+    .hero-image {
+        max-width: 90% !important;
+        margin: 1rem auto !important;
+    }
+
+    /* Service images */
+    .service-image {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Team avatars */
+    .team-avatar {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    /* Gallery images */
+    .gallery-image {
+        border-radius: 0.5rem !important;
+    }
+}
+
+/* Mobile form improvements */
+@media (max-width: 640px) {
+    /* Full-width form on mobile */
+    .contact-form {
+        padding: 1rem !important;
+    }
+
+    /* Stack form fields */
+    .form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    /* Better touch targets */
+    .form-input {
+        border-radius: 0.5rem !important;
+        border: 2px solid #e2e8f0 !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .form-input:focus {
+        border-color: #dc2626 !important;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+    }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 640px) {
+    /* Mobile menu items */
+    .mobile-menu-item {
+        padding: 1rem !important;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1) !important;
+        font-size: 1rem !important;
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* Mobile menu spacing */
+    .mobile-menu {
+        padding: 0 !important;
+    }
+
+    /* Language switcher mobile */
+    .mobile-language-switcher {
+        padding: 0.75rem !important;
+        font-size: 0.875rem !important;
+        min-height: 44px !important;
+    }
+}
+
+/* Mobile footer improvements */
+@media (max-width: 640px) {
+    /* Footer sections */
+    .footer-section {
+        margin-bottom: 2rem !important;
+        text-align: center !important;
+    }
+
+    /* Footer links */
+    .footer-link {
+        font-size: 0.95rem !important;
+        padding: 0.5rem 0 !important;
+        display: block !important;
+        text-align: center !important;
+    }
+
+    /* Social icons */
+    .social-icons {
+        justify-content: center !important;
+        gap: 0.75rem !important;
+    }
+
+    .social-icon {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+    }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 640px) {
+    /* Reduce animation complexity on mobile */
+    .animate-fade-in,
+    .animate-slide-in,
+    .animate-scale-in {
+        animation-duration: 0.2s !important;
+    }
+
+    /* Disable hover effects on touch devices */
+    @media (hover: none) {
+        .hover-effect:hover {
+            transform: none !important;
+        }
+    }
+
+    /* Optimize backdrop blur for mobile */
+    .backdrop-blur {
+        backdrop-filter: blur(8px) !important;
+    }
+}
+
+/* Small mobile devices (320px - 480px) */
+@media (max-width: 480px) {
+    /* Even tighter spacing for very small screens */
+    .section-padding {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .container-custom {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    /* Smaller headings */
+    .heading-hero {
+        font-size: clamp(4.5rem, 16vw, 8rem) !important;
+    }
+
+    /* Compact buttons */
+    button {
+        padding: 0.625rem 1.25rem !important;
+        font-size: 0.95rem !important;
+    }
 }
 
 /* Slide in animations for Showreel title */

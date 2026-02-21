@@ -30,7 +30,12 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
     return (
         <>
             <Hero dict={dict.hero} lang={lang} />
-            <LazyServices lang={lang} dict={dict.home.services} servicesList={dict.services.list} />
+            <LazyServices
+                key={`services-${lang}`}
+                lang={lang}
+                dict={dict.home.services}
+                servicesList={dict.services.list}
+            />
             <LazyShowreel lang={lang} dict={dict.home.showreel} />
             <LazyTechnologies dict={dict.home.technologies} />
             <LazyTestimonials

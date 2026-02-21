@@ -14,11 +14,16 @@ interface ShowreelProps {
         title1: string;
         titleGradient: string;
         subtitle: string;
-        videoId?: string;
-        companies?: {
+        videoId: string;
+        button: string;
+        viewProject: string;
+        watchVideo: string;
+        comingSoon: string;
+        developmentBadge: string;
+        companies: Array<{
             name: string;
-            link: string | null;
-        }[];
+            link: string;
+        }>;
     };
 }
 
@@ -131,14 +136,25 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                         <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
                             {/* Left Column: Title */}
                             <div className="text-left">
-                                <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-wide font-frantz">
+                                <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
                                     {(() => {
                                         const title = dict.title;
                                         // Для русского языка вручную формируем с пробелами
-                                        const formattedTitle =
-                                            lang === 'ru' ? 'Проекты & Шоурилс' : title;
-                                        const words = formattedTitle.split(' ');
+                                        const formattedTitle = title;
+                                        const words = formattedTitle
+                                            .split(' ')
+                                            .map((word) => (word === '&' ? '&' : word));
                                         return words.map((word, index) => {
+                                            if (word === '&') {
+                                                return (
+                                                    <span
+                                                        key={index}
+                                                        className="text-slate-900 dark:text-white inline-block mx-2"
+                                                    >
+                                                        &
+                                                    </span>
+                                                );
+                                            }
                                             if (
                                                 word.toLowerCase().includes('шоурил') ||
                                                 word.toLowerCase().includes('showreels')
@@ -146,10 +162,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                                 return (
                                                     <span
                                                         key={index}
-                                                        className="text-red-600 dark:text-red-500 inline-block animate-slide-in-right"
-                                                        style={{
-                                                            animation: `slideInRight 0.8s ease-out ${0.5 + index * 0.1}s both`,
-                                                        }}
+                                                        className="text-red-600 dark:text-red-500 inline-block"
                                                     >
                                                         {word}
                                                         {index < words.length - 1 ? ' ' : ''}
@@ -163,10 +176,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                                 return (
                                                     <span
                                                         key={index}
-                                                        className="text-slate-900 dark:text-white inline-block animate-slide-in-up-bounce"
-                                                        style={{
-                                                            animation: `slideInUpBounce 0.7s ease-out ${0.2 + index * 0.05}s both`,
-                                                        }}
+                                                        className="text-slate-900 dark:text-white inline-block"
                                                     >
                                                         {word}
                                                         {index < words.length - 1 ? ' ' : ''}
@@ -176,10 +186,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                             return (
                                                 <span
                                                     key={index}
-                                                    className="text-slate-900 dark:text-white inline-block animate-slide-in-left"
-                                                    style={{
-                                                        animation: `slideInLeft 0.6s ease-out ${0.3 + index * 0.05}s both`,
-                                                    }}
+                                                    className="text-slate-900 dark:text-white inline-block"
                                                 >
                                                     {word}
                                                     {index < words.length - 1 ? ' ' : ''}
@@ -191,28 +198,43 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                             </div>
 
                             {/* Right Column: Image */}
-                            <div className="flex justify-center lg:justify-end">
+                            <div className="flex justify-center lg:justify-end relative">
                                 <Reveal delay={0.4}>
                                     <Image
                                         src="/showreel.png"
                                         alt="Showreel"
-                                        width={280}
-                                        height={210}
-                                        className="w-full max-w-40 lg:max-w-48 h-auto object-contain dark:invert-0 invert contrast-125"
+                                        width={360}
+                                        height={270}
+                                        className="w-full max-w-52 lg:max-w-64 h-auto object-contain dark:invert-0 invert contrast-125 -translate-y-4"
                                     />
                                 </Reveal>
+                                {/* Development Badge */}
+                                <div className="absolute top-0 right-0 lg:right-4 -translate-y-2">
+                                    <div className="flex items-center gap-1 bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-1.5 rounded-full text-xs font-medium shadow-lg shadow-red-500/25">
+                                        <svg
+                                            className="w-3.5 h-3.5"
+                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                        </svg>
+                                        <span>{dict.developmentBadge}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         {/* Mobile/Tablet: Single Column Layout */}
                         <div className="lg:hidden text-center">
-                            <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-wide font-frantz">
+                            <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
                                 {(() => {
                                     const title = dict.title;
                                     // Для русского языка вручную формируем с пробелами
                                     const formattedTitle =
                                         lang === 'ru' ? 'Проекты & Шоурилс' : title;
-                                    const words = formattedTitle.split(' ');
+                                    const words = formattedTitle
+                                        .split(' ')
+                                        .map((word) => (word === '&' ? '&' : word));
                                     return words.map((word, index) => {
                                         if (
                                             word.toLowerCase().includes('шоурил') ||
@@ -221,10 +243,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                             return (
                                                 <span
                                                     key={index}
-                                                    className="text-red-600 dark:text-red-500 inline-block animate-slide-in-right"
-                                                    style={{
-                                                        animation: `slideInRight 0.8s ease-out ${0.5 + index * 0.1}s both`,
-                                                    }}
+                                                    className="text-red-600 dark:text-red-500 inline-block"
                                                 >
                                                     {word}
                                                     {index < words.length - 1 ? ' ' : ''}
@@ -238,10 +257,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                             return (
                                                 <span
                                                     key={index}
-                                                    className="text-slate-900 dark:text-white inline-block animate-slide-in-up-bounce"
-                                                    style={{
-                                                        animation: `slideInUpBounce 0.7s ease-out ${0.2 + index * 0.05}s both`,
-                                                    }}
+                                                    className="text-slate-900 dark:text-white inline-block"
                                                 >
                                                     {word}
                                                     {index < words.length - 1 ? ' ' : ''}
@@ -251,10 +267,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                         return (
                                             <span
                                                 key={index}
-                                                className="text-slate-900 dark:text-white inline-block animate-slide-in-left"
-                                                style={{
-                                                    animation: `slideInLeft 0.6s ease-out ${0.3 + index * 0.05}s both`,
-                                                }}
+                                                className="text-slate-900 dark:text-white inline-block"
                                             >
                                                 {word}
                                                 {index < words.length - 1 ? ' ' : ''}

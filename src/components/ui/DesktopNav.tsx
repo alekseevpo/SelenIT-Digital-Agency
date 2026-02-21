@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ThemeToggle } from './ThemeToggle';
+import { DesktopThemeToggle } from './DesktopThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Logo } from './Logo';
 import { ServicesDropdown } from './ServicesDropdown';
+import { themeToggleConfig } from '@/config/theme-toggle';
 import type { Locale } from '@/i18n-config';
 import type { Dictionary } from '@/types/dictionary';
 
@@ -154,7 +155,11 @@ export function DesktopNav({
                         <LanguageSwitcher currentLang={lang} />
                     </div>
                     <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                        <ThemeToggle />
+                        <DesktopThemeToggle
+                            iconSize={themeToggleConfig.desktop.iconSize}
+                            buttonSize={themeToggleConfig.desktop.buttonSize}
+                            showHoverEffect={themeToggleConfig.desktop.showHoverEffect}
+                        />
                     </div>
                 </motion.div>
             </div>

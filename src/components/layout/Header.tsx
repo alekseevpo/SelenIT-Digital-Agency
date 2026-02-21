@@ -1,13 +1,17 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ThemeToggle } from '../ui/ThemeToggle';
+import { useTheme } from 'next-themes';
+import { DesktopThemeToggle } from '../ui/DesktopThemeToggle';
+import { MobileThemeToggle } from '../ui/MobileThemeToggle';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
 import { Logo } from '../ui/Logo';
 import { DesktopNav } from '../ui/DesktopNav';
 import { MobileMenu } from '../ui/MobileMenu';
 import { useNavigationLogic } from '@/hooks/useNavigationLogic';
+import { themeToggleConfig } from '@/config/theme-toggle';
 import type { Locale } from '@/i18n-config';
 import type { Dictionary } from '@/types/dictionary';
 
@@ -17,20 +21,35 @@ interface HeaderProps {
 }
 
 export default function Header({ lang, dict }: HeaderProps) {
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const handleMobileThemeChange = () => {
+        document.documentElement.classList.add('transitioning');
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+        setTimeout(() => {
+            document.documentElement.classList.remove('transitioning');
+        }, 500);
+    };
+
     const {
         isScrolled,
-        isMobileMenuOpen,
-        isServicesOpen,
-        isDesktopServicesOpen,
         pathname,
         navDict,
         headerDict,
         servicesSubLinks,
-        closeMenu,
-        toggleMobileMenu,
-        toggleServices,
+        isDesktopServicesOpen,
         handleDesktopServicesEnter,
         handleDesktopServicesLeave,
+        isMobileMenuOpen,
+        toggleMobileMenu,
+        isServicesOpen,
+        toggleServices,
+        closeMenu,
     } = useNavigationLogic({ lang, dict });
 
     return (
@@ -38,8 +57,10 @@ export default function Header({ lang, dict }: HeaderProps) {
             {/* Mobile Language Bar */}
             <div className="md:hidden fixed top-4 left-0 right-0 z-50 px-4 py-2">
                 <div className="flex justify-center">
-                    <div className="bg-white/20 dark:bg-black/20 backdrop-blur-lg border border-slate-200/30 dark:border-white/20 rounded-full p-1.5">
-                        <LanguageSwitcher currentLang={lang} />
+                    <div className="backdrop-blur-2xl bg-white/10 dark:bg-black/10 p-1 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] relative z-10">
+                        <div className="language-switcher-mobile">
+                            <LanguageSwitcher currentLang={lang} />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,14 +97,16 @@ export default function Header({ lang, dict }: HeaderProps) {
 
                     {/* Mobile Controls - Top Right */}
                     <div
-                        className={`md:hidden flex items-center gap-2 pointer-events-auto transition-all duration-500 mt-4`}
+                        className={`md:hidden flex items-center gap-2 pointer-events-auto transition-all duration-500 mt-4 relative z-50`}
                     >
-                        <div className="backdrop-blur-2xl bg-white/20 dark:bg-black/20 border border-slate-200/30 dark:border-white/20 rounded-full p-1.5">
-                            <ThemeToggle />
-                        </div>
+                        <MobileThemeToggle
+                            iconSize={themeToggleConfig.mobile.iconSize}
+                            buttonSize={themeToggleConfig.mobile.buttonSize}
+                            className=""
+                        />
                         <motion.button
                             onClick={toggleMobileMenu}
-                            className="pointer-events-auto bg-white/20 dark:bg-black/20 backdrop-blur-lg border border-slate-200/30 dark:border-white/20 w-12 h-12 rounded-full flex items-center justify-center transition-all active:scale-90 hover:bg-white/30 dark:hover:bg-black/30 focus:outline-none"
+                            className="pointer-events-auto bg-white/20 dark:bg-black/20 backdrop-blur-lg border border-white/20 dark:border-white/20 w-12 h-12 rounded-full flex items-center justify-center transition-all active:scale-90 hover:bg-white/30 dark:hover:bg-black/30 focus:outline-none shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
                             aria-label={
                                 isMobileMenuOpen ? headerDict.closeMenu : headerDict.openMenu
                             }

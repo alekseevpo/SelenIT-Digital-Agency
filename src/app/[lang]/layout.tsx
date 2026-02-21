@@ -12,8 +12,8 @@ import type { Locale } from '@/i18n-config';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { PageTransition } from '@/components/providers/PageTransition';
-import BackToTop from '@/components/ui/BackToTop';
 import ChatWidget from '@/components/ui/ChatWidget';
+import BackToTop from '@/components/ui/BackToTop';
 import MusicPlayer from '@/components/MusicPlayer';
 import ProgressBar from '@/components/ui/ProgressBar';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
@@ -215,9 +215,9 @@ export default async function RootLayout({
                             </SmoothScrollProvider>
                             <CookieConsentWrapper lang={lang} dictionary={dict.cookies} />
                             <AnalyticsWrapper />
-                            <BackToTop />
                             <ChatWidget />
-                            <MusicPlayer />
+                            <BackToTop />
+                            {/* <MusicPlayer /> */}
                         </CookieConsentProvider>
                     </ErrorBoundary>
                 </ThemeProvider>
