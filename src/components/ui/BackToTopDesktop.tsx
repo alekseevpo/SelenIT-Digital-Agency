@@ -51,17 +51,32 @@ export default function BackToTopDesktop() {
         <AnimatePresence>
             {isMounted && isVisible && (
                 <motion.button
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    initial={{ opacity: 0, y: 40, scale: 0.8 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 20, scale: 0.8 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    exit={{ opacity: 0, y: 40, scale: 0.8 }}
+                    transition={{
+                        type: 'spring',
+                        stiffness: 260,
+                        damping: 20,
+                    }}
+                    whileHover="hover"
+                    whileTap={{ scale: 0.9 }}
                     onClick={scrollToTop}
-                    className="hidden lg:flex fixed bottom-36 right-6 z-50 w-12 h-12 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm hover:bg-white dark:hover:bg-black/90 text-slate-700 dark:text-slate-300 shadow-lg transition-all duration-200 items-center justify-center border border-slate-200 dark:border-slate-700"
+                    className="hidden lg:flex fixed bottom-36 right-12 z-50 w-14 h-14 rounded-full bg-white/80 dark:bg-dark-900/80 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(220,38,38,0.2)] dark:hover:shadow-[0_8px_30px_rgba(239,68,68,0.15)] text-slate-800 dark:text-slate-100 transition-shadow duration-300 items-center justify-center group overflow-hidden"
                     aria-label="Наверх"
                 >
-                    <ArrowUp className="w-5 h-5" />
+                    {/* Subtle gradient background that appears on hover */}
+                    <motion.div className="absolute inset-0 bg-gradient-to-tr from-red-500/10 to-transparent dark:from-red-500/20 opacity-0 group-hover:opacity-100 rounded-full transition-opacity duration-300 transform-gpu" />
+
+                    <motion.div
+                        variants={{
+                            hover: { y: -3 },
+                        }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                        className="relative z-10"
+                    >
+                        <ArrowUp className="w-6 h-6 stroke-[2.5] group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors duration-300" />
+                    </motion.div>
                 </motion.button>
             )}
         </AnimatePresence>

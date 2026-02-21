@@ -19,14 +19,14 @@ describe('ContactForm', () => {
 
             // Wait for lazy components to load
             await waitFor(() => {
-                expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
+                expect(document.querySelector('[name="name"]')!).toBeInTheDocument();
             });
 
-            expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
-            expect(screen.getByLabelText(/Company/i)).toBeInTheDocument();
-            expect(screen.getByLabelText(/Service/i)).toBeInTheDocument();
-            expect(screen.getByLabelText(/Budget/i)).toBeInTheDocument();
-            expect(screen.getByLabelText(/Details/i)).toBeInTheDocument();
+            expect(document.querySelector('[name="email"]')!).toBeInTheDocument();
+            expect(document.querySelector('[name="company"]')!).toBeInTheDocument();
+            expect(document.querySelector('select[name="service"]')!).toBeInTheDocument();
+            expect(document.querySelector('select[name="budget"]')!).toBeInTheDocument();
+            expect(document.querySelector('[name="message"]')!).toBeInTheDocument();
         });
 
         it('renders submit button', async () => {
@@ -40,7 +40,7 @@ describe('ContactForm', () => {
         it('renders service options from dictionary', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            const serviceSelect = screen.getByLabelText(/Service/i);
+            const serviceSelect = document.querySelector('select[name="service"]')!;
             expect(serviceSelect).toBeInTheDocument();
 
             mockContactFormDict.serviceOptions.forEach((option) => {
@@ -77,14 +77,17 @@ describe('ContactForm', () => {
 
             // Wait for form to load
             await waitFor(() => {
-                expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
+                expect(document.querySelector('[name="name"]')!).toBeInTheDocument();
             });
 
             // Fill required fields
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
-            await user.type(screen.getByLabelText(/Details/i), 'Test message');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
+            await user.type(document.querySelector('[name="message"]')!, 'Test message');
 
             // Fill honeypot field by directly manipulating form state
             // This simulates a bot filling the hidden field
@@ -121,7 +124,7 @@ describe('ContactForm', () => {
             const user = userEvent.setup();
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
 
             await waitFor(() => {
@@ -133,8 +136,8 @@ describe('ContactForm', () => {
             const user = userEvent.setup();
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'invalid-email');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'invalid-email');
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
 
             await waitFor(() => {
@@ -146,8 +149,8 @@ describe('ContactForm', () => {
             const user = userEvent.setup();
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
 
             await waitFor(() => {
@@ -159,9 +162,12 @@ describe('ContactForm', () => {
             const user = userEvent.setup();
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
 
             await waitFor(() => {
@@ -181,7 +187,7 @@ describe('ContactForm', () => {
             });
 
             // Start typing to clear error
-            await user.type(screen.getByLabelText(/Full Name/i), 'J');
+            await user.type(document.querySelector('[name="name"]')!, 'J');
 
             await waitFor(() => {
                 expect(screen.queryByText(/Name is required/i)).not.toBeInTheDocument();
@@ -229,10 +235,13 @@ describe('ContactForm', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Fill all required fields
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
-            await user.type(screen.getByLabelText(/Details/i), 'Test message');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
+            await user.type(document.querySelector('[name="message"]')!, 'Test message');
 
             // Submit
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
@@ -251,16 +260,19 @@ describe('ContactForm', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Fill all required fields
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
-            await user.type(screen.getByLabelText(/Details/i), 'Test message');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
+            await user.type(document.querySelector('[name="message"]')!, 'Test message');
 
             // Submit
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
 
             await waitFor(() => {
-                expect(screen.getByText(mockContactFormDict.successTitle)).toBeInTheDocument();
+                expect(screen.getByText('Thank you!')).toBeInTheDocument();
                 expect(screen.getByText(mockContactFormDict.successSubtitle)).toBeInTheDocument();
             });
         });
@@ -275,10 +287,13 @@ describe('ContactForm', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Fill all required fields
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
-            await user.type(screen.getByLabelText(/Details/i), 'Test message');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
+            await user.type(document.querySelector('[name="message"]')!, 'Test message');
 
             // Submit
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
@@ -298,12 +313,15 @@ describe('ContactForm', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Fill form
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.type(screen.getByLabelText(/Company/i), 'Acme Inc');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
-            await user.selectOptions(screen.getByLabelText(/Budget/i), '$5k-10k');
-            await user.type(screen.getByLabelText(/Details/i), 'Build a website');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.type(document.querySelector('[name="company"]')!, 'Acme Inc');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
+            await user.selectOptions(document.querySelector('select[name="budget"]')!, '$5k-10k');
+            await user.type(document.querySelector('[name="message"]')!, 'Build a website');
 
             // Submit
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
@@ -338,15 +356,18 @@ describe('ContactForm', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Fill and submit
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
-            await user.type(screen.getByLabelText(/Details/i), 'Test message');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
+            await user.type(document.querySelector('[name="message"]')!, 'Test message');
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
 
             // Wait for success
             await waitFor(() => {
-                expect(screen.getByText(mockContactFormDict.successTitle)).toBeInTheDocument();
+                expect(screen.getByText('Thank you!')).toBeInTheDocument();
             });
 
             // Click send another
@@ -354,7 +375,7 @@ describe('ContactForm', () => {
 
             // Form should be visible again
             await waitFor(() => {
-                expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
+                expect(document.querySelector('[name="name"]')!).toBeInTheDocument();
             });
         });
     });
@@ -370,10 +391,13 @@ describe('ContactForm', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Fill all required fields
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
-            await user.type(screen.getByLabelText(/Details/i), 'Test message');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
+            await user.type(document.querySelector('[name="message"]')!, 'Test message');
 
             // Submit
             await user.click(screen.getByRole('button', { name: /Send Message/i }));
@@ -396,10 +420,13 @@ describe('ContactForm', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Fill all required fields
-            await user.type(screen.getByLabelText(/Full Name/i), 'John Doe');
-            await user.type(screen.getByLabelText(/Email/i), 'john@example.com');
-            await user.selectOptions(screen.getByLabelText(/Service/i), 'Web Development');
-            await user.type(screen.getByLabelText(/Details/i), 'Test message');
+            await user.type(document.querySelector('[name="name"]')!, 'John Doe');
+            await user.type(document.querySelector('[name="email"]')!, 'john@example.com');
+            await user.selectOptions(
+                document.querySelector('select[name="service"]')!,
+                'Web Development',
+            );
+            await user.type(document.querySelector('[name="message"]')!, 'Test message');
 
             // Submit
             await user.click(screen.getByRole('button', { name: /Send Message/i }));

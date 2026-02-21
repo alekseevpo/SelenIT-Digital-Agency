@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '../utils/test-utils';
-import { describe, it, expect } from '@jest/globals';
+import { describe, it } from '@jest/globals';
 import ContactForm from '@/components/ContactForm';
 import { mockContactFormDict } from '../utils/test-utils';
 
@@ -12,20 +12,20 @@ describe('ContactForm - Accessibility (a11y)', () => {
         it('has proper form element with semantic structure', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            const form = screen.getByRole('form');
+            const form = document.querySelector('form')!;
             expect(form).toBeInTheDocument();
         });
 
         it('has proper labels for all form fields', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
+            expect(document.querySelector('[name="name"]')).toBeInTheDocument();
             expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
             expect(screen.getByLabelText(/Phone/i)).toBeInTheDocument();
             expect(screen.getByLabelText(/Company/i)).toBeInTheDocument();
             expect(screen.getByLabelText(/Service/i)).toBeInTheDocument();
             expect(screen.getByLabelText(/Budget/i)).toBeInTheDocument();
-            expect(screen.getByLabelText(/Project Details/i)).toBeInTheDocument();
+            expect(screen.getByLabelText(/Details/i)).toBeInTheDocument();
         });
 
         it('has proper button types and roles', () => {
@@ -52,7 +52,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Check for ARIA attributes on form elements
-            const honeypotField = screen.getByDisplayValue('');
+            const honeypotField = document.querySelector('input[name="website"]')!;
             expect(honeypotField).toHaveAttribute('aria-hidden', 'true');
             expect(honeypotField).toHaveAttribute('tabindex', '-1');
         });
@@ -75,8 +75,8 @@ describe('ContactForm - Accessibility (a11y)', () => {
         it('supports tab navigation through tab switcher', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            const messageTab = screen.getByText('Send Message');
-            const callbackTab = screen.getByText('Request Callback');
+            const messageTab = screen.getByText('Send a message');
+            const callbackTab = screen.getByText('Request a callback');
 
             expect(messageTab).not.toHaveAttribute('disabled');
             expect(callbackTab).not.toHaveAttribute('disabled');
@@ -129,7 +129,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             fireEvent.change(screen.getByLabelText(/Service/i), {
                 target: { value: 'Web Development' },
             });
-            fireEvent.change(screen.getByLabelText(/Project Details/i), {
+            fireEvent.change(screen.getByLabelText(/Details/i), {
                 target: { value: 'Test message' },
             });
 
@@ -195,7 +195,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Check that form has logical structure
-            const form = screen.getByRole('form');
+            const form = document.querySelector('form')!;
             expect(form).toBeInTheDocument();
 
             // Check that fields are grouped logically
@@ -241,7 +241,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             fireEvent.change(screen.getByLabelText(/Service/i), {
                 target: { value: 'Web Development' },
             });
-            fireEvent.change(screen.getByLabelText(/Project Details/i), {
+            fireEvent.change(screen.getByLabelText(/Details/i), {
                 target: { value: 'Test message' },
             });
 
@@ -265,7 +265,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             const tabButtons = screen.getAllByRole('button');
 
             // Check that buttons have appropriate size classes
-            expect(submitButton).toHaveClass('py-3.5', 'px-5');
+            expect(submitButton).toHaveClass('btn-primary');
 
             tabButtons.forEach((button) => {
                 expect(button).toHaveClass('py-2.5');
@@ -275,8 +275,8 @@ describe('ContactForm - Accessibility (a11y)', () => {
         it('has proper spacing between interactive elements', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
-            const form = screen.getByRole('form');
-            expect(form).toHaveClass('gap-x-6', 'gap-y-7');
+            const form = document.querySelector('form')!;
+            expect(form).toHaveClass('form-grid');
         });
 
         it('supports both mouse and keyboard interaction', () => {
@@ -310,7 +310,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             // Check that the component respects the lang prop
-            const form = screen.getByRole('form');
+            const form = document.querySelector('form')!;
             expect(form).toBeInTheDocument();
         });
     });

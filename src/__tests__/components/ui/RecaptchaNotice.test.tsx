@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from '@jest/globals';
+import { describe, it } from '@jest/globals';
 import { RecaptchaNotice } from '@/components/ui/RecaptchaNotice';
 import '@/__tests__/types';
 

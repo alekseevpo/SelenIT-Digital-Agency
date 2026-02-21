@@ -12,8 +12,8 @@ interface Project {
     client: string;
     year: string;
     videoId?: string;
-    tags: string[];
-    color: string;
+    tags?: string[];
+    color?: string;
     results: string[];
     slug?: string;
 }
@@ -64,21 +64,23 @@ function ProjectCard({
                         <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
                             {project.client} • {project.year}
                         </p>
-                        <div className="flex flex-wrap gap-1">
-                            {project.tags.slice(0, 3).map((tag, index) => (
-                                <span
-                                    key={index}
-                                    className="text-xs px-2 py-1 bg-slate-100 dark:bg-dark-800 text-slate-600 dark:text-slate-400 rounded-full"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
-                            {project.tags.length > 3 && (
-                                <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-dark-800 text-slate-600 dark:text-slate-400 rounded-full">
-                                    +{project.tags.length - 3}
-                                </span>
-                            )}
-                        </div>
+                        {project.tags && project.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-1">
+                                {project.tags.slice(0, 3).map((tag, index) => (
+                                    <span
+                                        key={index}
+                                        className="text-xs px-2 py-1 bg-slate-100 dark:bg-dark-800 text-slate-600 dark:text-slate-400 rounded-full"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                                {project.tags.length > 3 && (
+                                    <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-dark-800 text-slate-600 dark:text-slate-400 rounded-full">
+                                        +{project.tags.length - 3}
+                                    </span>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
 

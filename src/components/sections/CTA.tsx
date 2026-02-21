@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Dictionary } from '@/types/dictionary';
 import { Reveal } from '../ui/Reveal';
 import Image from 'next/image';
 import { Download } from 'lucide-react';
@@ -11,9 +12,7 @@ interface CTAProps {
         subtitle: string;
         button: string;
     };
-    commonDict: {
-        ctaSecondary: string;
-    };
+    commonDict?: Partial<Dictionary['hero']>;
 }
 
 export default function CTA({ lang, dict, commonDict }: CTAProps) {
@@ -22,7 +21,7 @@ export default function CTA({ lang, dict, commonDict }: CTAProps) {
             <div className="container-custom relative z-10 text-center">
                 <div className="max-w-4xl mx-auto">
                     <Reveal width="100%" delay={0.3}>
-                        <h2 className="heading-2 heading-hero mb-6">
+                        <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
                             <span className="text-slate-900 dark:text-white">
                                 {dict.title1} {dict.titleGradient}
                             </span>

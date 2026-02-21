@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, beforeEach, afterEach, jest } from '@jest/globals';
+import { describe, it, beforeEach, afterEach, jest } from '@jest/globals';
 import * as React from 'react';
 import '@testing-library/jest-dom';
 
@@ -14,7 +14,7 @@ global.Response = class Response {
     body: any;
     status: number;
     ok: boolean;
-    headers: Headers;
+    headers!: Headers;
     async json() {
         return typeof this.body === 'string' ? JSON.parse(this.body) : this.body;
     }

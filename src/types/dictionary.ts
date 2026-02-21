@@ -82,6 +82,30 @@ export interface ServicesDict {
             description: string;
         }[];
     };
+    solutions?: {
+        title: string;
+        description: string;
+        whatWeOffer: string;
+        strategy: string;
+        strategyDesc: string;
+        development: string;
+        developmentDesc: string;
+        optimization: string;
+        optimizationDesc: string;
+        support: string;
+        supportDesc: string;
+        process: string;
+        analysis: string;
+        analysisDesc: string;
+        planning: string;
+        planningDesc: string;
+        implementation: string;
+        implementationDesc: string;
+        monitoring: string;
+        monitoringDesc: string;
+        readyToStart: string;
+        ctaDescription: string;
+    };
     cta: {
         title1: string;
         titleGradient: string;
@@ -231,6 +255,15 @@ export interface Dictionary {
             titleGradient: string;
             subtitle: string;
             videoId: string;
+            button: string;
+            viewProject: string;
+            watchVideo: string;
+            comingSoon: string;
+            developmentBadge: string;
+            companies: Array<{
+                name: string;
+                link: string;
+            }>;
         };
         testimonials: {
             badge: string;

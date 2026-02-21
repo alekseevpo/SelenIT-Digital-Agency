@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-interface FormState {
+export interface FormState {
     name: string;
     email: string;
     phone: string;
@@ -12,11 +12,13 @@ interface FormState {
     website: string; // Honeypot field
 }
 
-interface FormErrors {
+export interface FormErrors {
     name?: string;
     email?: string;
     phone?: string;
+    company?: string;
     service?: string;
+    budget?: string;
     message?: string;
     recaptcha?: string;
 }

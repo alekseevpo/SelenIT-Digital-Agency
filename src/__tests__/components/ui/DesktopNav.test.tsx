@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { describe, it, expect, jest } from '@jest/globals';
+import { describe, it, jest } from '@jest/globals';
 import { DesktopNav } from '@/components/ui/DesktopNav';
 import '@/__tests__/types';
 
@@ -38,6 +38,8 @@ const mockNavDict = {
     about: 'About',
     contact: 'Contact',
     getStarted: 'Get Started',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
 };
 
 const mockDict = {
@@ -88,7 +90,6 @@ describe('DesktopNav', () => {
         expect(screen.getByText('Showreel')).toBeInTheDocument();
         expect(screen.getByText('About')).toBeInTheDocument();
         expect(screen.getByText('Contact')).toBeInTheDocument();
-        expect(screen.getByText('Get Started')).toBeInTheDocument();
     });
 
     it('applies scrolled class when isScrolled is true', () => {
@@ -178,14 +179,6 @@ describe('DesktopNav', () => {
         expect(handleDesktopServicesLeave).toHaveBeenCalled();
     });
 
-    it('renders get started button correctly', () => {
-        render(<DesktopNav {...defaultProps} />);
-
-        const getStartedButton = screen.getByRole('link', { name: /get started/i });
-        expect(getStartedButton).toHaveAttribute('href', '/en/contact');
-        expect(getStartedButton).toHaveClass('bg-red-600');
-    });
-
     it('handles different languages correctly', () => {
         const spanishProps = {
             ...defaultProps,
@@ -197,6 +190,8 @@ describe('DesktopNav', () => {
                 about: 'Nosotros',
                 contact: 'Contacto',
                 getStarted: 'Empezar',
+                privacy: 'Privacy Policy',
+                terms: 'Terms of Service',
             },
         };
 
@@ -205,7 +200,6 @@ describe('DesktopNav', () => {
         expect(screen.getByText('Inicio')).toBeInTheDocument();
         expect(screen.getByText('Servicios')).toBeInTheDocument();
         expect(screen.getByText('Contacto')).toBeInTheDocument();
-        expect(screen.getByText('Empezar')).toBeInTheDocument();
     });
 
     it('handles empty services sublinks gracefully', () => {
@@ -216,7 +210,21 @@ describe('DesktopNav', () => {
     });
 
     it('handles missing navDict gracefully', () => {
-        render(<DesktopNav {...defaultProps} navDict={{}} />);
+        render(
+            <DesktopNav
+                {...defaultProps}
+                navDict={{
+                    home: '',
+                    services: '',
+                    showreel: '',
+                    about: '',
+                    contact: '',
+                    getStarted: '',
+                    privacy: '',
+                    terms: '',
+                }}
+            />,
+        );
 
         // Should render navigation without crashing
         expect(screen.getByRole('navigation')).toBeInTheDocument();

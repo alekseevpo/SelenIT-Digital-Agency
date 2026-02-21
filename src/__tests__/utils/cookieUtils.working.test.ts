@@ -1,5 +1,5 @@
 // Working cookie utility functions for testing
-import { describe, beforeEach, it, expect } from '@jest/globals';
+import { describe, beforeEach, it } from '@jest/globals';
 
 // Simple cookie utilities that work with testing
 export const cookieUtils = {

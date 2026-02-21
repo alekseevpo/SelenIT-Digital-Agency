@@ -6,25 +6,11 @@ import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Reveal } from '../ui/Reveal';
 
+import type { Dictionary } from '@/types/dictionary';
+
 interface ShowreelProps {
     lang: string;
-    dict: {
-        badge: string;
-        title: string;
-        title1: string;
-        titleGradient: string;
-        subtitle: string;
-        videoId: string;
-        button: string;
-        viewProject: string;
-        watchVideo: string;
-        comingSoon: string;
-        developmentBadge: string;
-        companies: Array<{
-            name: string;
-            link: string;
-        }>;
-    };
+    dict: Dictionary['home']['showreel'];
 }
 
 export default function Showreel({ lang, dict }: ShowreelProps) {

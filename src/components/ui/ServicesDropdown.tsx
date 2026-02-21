@@ -14,7 +14,7 @@ interface ServicesDropdownProps {
     onDesktopServicesEnter: () => void;
     onDesktopServicesLeave: () => void;
     onToggleServices: () => void;
-    navDict: any;
+    navDict: Dictionary['common']['nav'];
     isActive?: boolean;
     isMobile?: boolean;
 }

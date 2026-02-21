@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion';
 
+import type { Dictionary } from '@/types/dictionary';
+
 interface SubmitButtonProps {
     isSubmitting: boolean;
     activeTab: 'message' | 'callback';
-    dict: any;
+    dict: Dictionary['contact']['form'];
 }
 
 export default function SubmitButton({ isSubmitting, activeTab, dict }: SubmitButtonProps) {

@@ -41,6 +41,7 @@ export function LazySection({
             viewport={{ once: true, amount: threshold, margin: rootMargin }}
             variants={lazyVariants}
             transition={{ delay }}
+            data-testid="lazy-section"
         >
             <Suspense
                 fallback={
@@ -58,16 +59,16 @@ export function LazySection({
 }
 
 // HOC for creating lazy loaded components
-export function createLazyComponent(
-    importFunc: () => Promise<{ default: any }>,
+export function createLazyComponent<P extends object>(
+    importFunc: () => Promise<{ default: ComponentType<P> }>,
     fallback?: ReactNode,
 ) {
     const LazyComponent = lazy(importFunc);
 
-    return function LazyWrapper(props: any) {
+    return function LazyWrapper(props: P) {
         return (
-            <LazySection>
-                <LazyComponent {...props} />
+            <LazySection fallback={fallback}>
+                <LazyComponent {...(props as any)} />
             </LazySection>
         );
     };

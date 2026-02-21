@@ -8,13 +8,15 @@ import { LazyCTA } from '@/components/ui/LazySection';
 // Lazy load heavy components
 const ShowreelGridLight = lazy(() => import('@/components/ShowreelGridLight'));
 
+import type { Dictionary } from '@/types/dictionary';
+
 interface ShowreelPageClientProps {
-    hero: any;
-    grid: any;
-    projects: any[];
-    cta: any;
+    hero: Dictionary['showreel']['hero'];
+    grid: Dictionary['showreel']['grid'];
+    projects: Dictionary['showreel']['projects'];
+    cta: Dictionary['showreel']['cta'];
     lang: string;
-    breadcrumbs: any[];
+    breadcrumbs: { name: string; url: string }[];
 }
 
 export default function ShowreelPageClient({

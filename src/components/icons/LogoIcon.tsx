@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 interface LogoIconProps {
     size?: number;
@@ -12,7 +12,7 @@ interface LogoIconProps {
     };
     animated?: boolean;
     isHovered?: boolean;
-    controls?: any;
+    controls?: ReturnType<typeof useAnimation>;
 }
 
 export const LogoIcon = ({ size = 44, colors, animated, isHovered, controls }: LogoIconProps) => {

@@ -2,8 +2,9 @@
 
 import { useState, useCallback, lazy, Suspense, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useContactForm } from '@/hooks/useContactForm';
+import { useContactForm, type FormState } from '@/hooks/useContactForm';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
+import type { Dictionary } from '@/types/dictionary';
 import { TabSwitcher } from '@/components/ui/TabSwitcher';
 import { SuccessMessage } from '@/components/ui/SuccessMessage';
 import { ErrorMessage } from '@/components/ui/ErrorMessage';
@@ -16,36 +17,7 @@ const SubmitButton = lazy(() => import('@/components/SubmitButton'));
 
 interface ContactFormProps {
     lang: string;
-    dict: {
-        tabs: {
-            message: string;
-            callback: string;
-        };
-        title: string;
-        subtitle: string;
-        fullName: string;
-        email: string;
-        phone: string;
-        phonePlaceholder: string;
-        company: string;
-        companyPlaceholder: string;
-        service: string;
-        serviceOptions: string[];
-        budget: string;
-        budgetOptions: string[];
-        details: string;
-        detailsPlaceholder: string;
-        submit: string;
-        sending: string;
-        success: string;
-        successTitle: string;
-        successSubtitle: string;
-        callbackSuccessTitle: string;
-        callbackSuccessSubtitle: string;
-        sendAnother: string;
-        selectService: string;
-        selectBudget: string;
-    };
+    dict: Dictionary['contact']['form'];
 }
 
 export default function ContactForm({ lang, dict }: ContactFormProps) {
@@ -54,7 +26,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
     const successMessageRef = useRef<HTMLDivElement>(null);
 
     const handleFormSubmit = useCallback(
-        async (formState: any) => {
+        async (formState: FormState) => {
             // Get reCAPTCHA token
             const recaptchaToken = await getRecaptchaToken();
 

@@ -13,7 +13,7 @@ interface DesktopNavProps {
     dict: Dictionary;
     isScrolled: boolean;
     pathname: string;
-    navDict: any;
+    navDict: Dictionary['common']['nav'];
     servicesSubLinks: Array<{
         href: string;
         label: string;
@@ -70,7 +70,10 @@ export function DesktopNav({
     return (
         <>
             {/* Desktop Navigation Pill - Centered */}
-            <nav className="absolute left-1/2 -translate-x-1/2 hidden md:block pointer-events-auto">
+            <nav
+                aria-label="Desktop Navigation"
+                className="absolute left-1/2 -translate-x-1/2 hidden md:block pointer-events-auto"
+            >
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}

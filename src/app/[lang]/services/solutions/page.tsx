@@ -12,8 +12,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const dict = await getDictionary(lang as Locale);
 
     return {
-        title: (dict as any).services?.solutions?.title ?? '',
-        description: (dict as any).services?.solutions?.description ?? '',
+        title: dict.services.solutions?.title ?? '',
+        description: dict.services.solutions?.description ?? '',
     };
 }
 
@@ -21,7 +21,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
     const { lang } = await params;
     const dict = await getDictionary(lang as Locale);
     const baseUrl = 'https://selen.it';
-    const solutionTitle = (dict as any).services?.solutions?.title ?? dict.common.nav.services;
+    const solutionTitle = dict.services.solutions?.title ?? dict.common.nav.services;
     const breadcrumbs = [
         { name: dict.common.nav.home, url: `${baseUrl}/${lang}` },
         { name: dict.common.nav.services, url: `${baseUrl}/${lang}/services` },
@@ -34,11 +34,9 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
             <div className="container mx-auto px-6 py-20">
                 {/* Hero Section */}
                 <div className="text-center mb-16">
-                    <h1 className="heading-1 mb-6">
-                        {(dict as any).services?.solutions?.title ?? ''}
-                    </h1>
+                    <h1 className="heading-1 mb-6">{dict.services.solutions?.title ?? ''}</h1>
                     <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-                        {(dict as any).services?.solutions?.description ?? ''}
+                        {dict.services.solutions?.description ?? ''}
                     </p>
                 </div>
 
@@ -46,7 +44,7 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-white dark:bg-dark-800 rounded-2xl shadow-xl p-8 mb-8">
                         <h2 className="heading-2 mb-6">
-                            {(dict as any).services?.solutions?.whatWeOffer ?? ''}
+                            {dict.services.solutions?.whatWeOffer ?? ''}
                         </h2>
 
                         <div className="space-y-6 mb-8">
@@ -54,10 +52,10 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
                                 <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                                 <div>
                                     <h3 className="text-lg font-semibold mb-2">
-                                        {(dict as any).services?.solutions?.strategy ?? ''}
+                                        {dict.services.solutions?.strategy ?? ''}
                                     </h3>
                                     <p className="text-slate-600 dark:text-slate-400">
-                                        {(dict as any).services?.solutions?.strategyDesc ?? ''}
+                                        {dict.services.solutions?.strategyDesc ?? ''}
                                     </p>
                                 </div>
                             </div>
@@ -66,10 +64,10 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
                                 <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                                 <div>
                                     <h3 className="text-lg font-semibold mb-2">
-                                        {(dict as any).services?.solutions?.development ?? ''}
+                                        {dict.services.solutions?.development ?? ''}
                                     </h3>
                                     <p className="text-slate-600 dark:text-slate-400">
-                                        {(dict as any).services?.solutions?.developmentDesc ?? ''}
+                                        {dict.services.solutions?.developmentDesc ?? ''}
                                     </p>
                                 </div>
                             </div>
@@ -78,10 +76,10 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
                                 <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                                 <div>
                                     <h3 className="text-lg font-semibold mb-2">
-                                        {(dict as any).services?.solutions?.optimization ?? ''}
+                                        {dict.services.solutions?.optimization ?? ''}
                                     </h3>
                                     <p className="text-slate-600 dark:text-slate-400">
-                                        {(dict as any).services?.solutions?.optimizationDesc ?? ''}
+                                        {dict.services.solutions?.optimizationDesc ?? ''}
                                     </p>
                                 </div>
                             </div>
@@ -90,10 +88,10 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
                                 <CheckCircle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                                 <div>
                                     <h3 className="text-lg font-semibold mb-2">
-                                        {(dict as any).services?.solutions?.support ?? ''}
+                                        {dict.services.solutions?.support ?? ''}
                                     </h3>
                                     <p className="text-slate-600 dark:text-slate-400">
-                                        {(dict as any).services?.solutions?.supportDesc ?? ''}
+                                        {dict.services.solutions?.supportDesc ?? ''}
                                     </p>
                                 </div>
                             </div>
@@ -102,44 +100,42 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
 
                     {/* Process Section */}
                     <div className="bg-white dark:bg-dark-800 rounded-2xl shadow-xl p-8 mb-8">
-                        <h2 className="heading-2 mb-6">
-                            {(dict as any).services?.solutions?.process ?? ''}
-                        </h2>
+                        <h2 className="heading-2 mb-6">{dict.services.solutions?.process ?? ''}</h2>
 
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="border-l-4 border-red-600 pl-6">
                                 <h3 className="font-semibold mb-2">
-                                    {(dict as any).services?.solutions?.analysis ?? ''}
+                                    {dict.services.solutions?.analysis ?? ''}
                                 </h3>
                                 <p className="text-slate-600 dark:text-slate-400">
-                                    {(dict as any).services?.solutions?.analysisDesc ?? ''}
+                                    {dict.services.solutions?.analysisDesc ?? ''}
                                 </p>
                             </div>
 
                             <div className="border-l-4 border-red-600 pl-6">
                                 <h3 className="font-semibold mb-2">
-                                    {(dict as any).services?.solutions?.planning ?? ''}
+                                    {dict.services.solutions?.planning ?? ''}
                                 </h3>
                                 <p className="text-slate-600 dark:text-slate-400">
-                                    {(dict as any).services?.solutions?.planningDesc ?? ''}
+                                    {dict.services.solutions?.planningDesc ?? ''}
                                 </p>
                             </div>
 
                             <div className="border-l-4 border-red-600 pl-6">
                                 <h3 className="font-semibold mb-2">
-                                    {(dict as any).services?.solutions?.implementation ?? ''}
+                                    {dict.services.solutions?.implementation ?? ''}
                                 </h3>
                                 <p className="text-slate-600 dark:text-slate-400">
-                                    {(dict as any).services?.solutions?.implementationDesc ?? ''}
+                                    {dict.services.solutions?.implementationDesc ?? ''}
                                 </p>
                             </div>
 
                             <div className="border-l-4 border-red-600 pl-6">
                                 <h3 className="font-semibold mb-2">
-                                    {(dict as any).services?.solutions?.monitoring ?? ''}
+                                    {dict.services.solutions?.monitoring ?? ''}
                                 </h3>
                                 <p className="text-slate-600 dark:text-slate-400">
-                                    {(dict as any).services?.solutions?.monitoringDesc ?? ''}
+                                    {dict.services.solutions?.monitoringDesc ?? ''}
                                 </p>
                             </div>
                         </div>
@@ -148,10 +144,10 @@ export default async function SolutionsPage({ params }: { params: Promise<{ lang
                     {/* CTA Section */}
                     <div className="text-center bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 text-white">
                         <h2 className="heading-2 mb-4">
-                            {(dict as any).services?.solutions?.readyToStart ?? ''}
+                            {dict.services.solutions?.readyToStart ?? ''}
                         </h2>
                         <p className="text-xl mb-8 opacity-90">
-                            {(dict as any).services?.solutions?.ctaDescription ?? ''}
+                            {dict.services.solutions?.ctaDescription ?? ''}
                         </p>
                         <Link
                             href={`/${lang}/contact`}

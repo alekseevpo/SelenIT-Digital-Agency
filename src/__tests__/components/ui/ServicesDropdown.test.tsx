@@ -2,7 +2,7 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { describe, it, expect, jest } from '@jest/globals';
+import { describe, it, jest } from '@jest/globals';
 import { ServicesDropdown } from '@/components/ui/ServicesDropdown';
 import '@testing-library/jest-dom';
 
@@ -41,6 +41,8 @@ const mockNavDict = {
     about: 'about',
     contact: 'contact',
     getStarted: 'get-started',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
 };
 
 describe('ServicesDropdown', () => {
@@ -338,7 +340,16 @@ describe('ServicesDropdown', () => {
                 onDesktopServicesEnter={jest.fn()}
                 onDesktopServicesLeave={jest.fn()}
                 onToggleServices={jest.fn()}
-                navDict={{ services: 'services' }}
+                navDict={{
+                    services: 'services',
+                    home: 'home',
+                    showreel: 'showreel',
+                    about: 'about',
+                    contact: 'contact',
+                    getStarted: 'get-started',
+                    privacy: 'Privacy Policy',
+                    terms: 'Terms of Service',
+                }}
                 isActive={false}
                 isMobile={false}
             />,

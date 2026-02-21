@@ -1,5 +1,5 @@
 import { act, waitFor } from '@testing-library/react';
-import { describe, it, expect, jest, beforeEach } from '@jest/globals';
+import { describe, it, jest, beforeEach } from '@jest/globals';
 import { useNavigationLogic } from '@/hooks/useNavigationLogic';
 import type { Dictionary } from '@/types/dictionary';
 import { renderHook as renderHookCustom } from '../utils/renderHook';

@@ -1,7 +1,7 @@
 # Selen.IT Digital Agency — Полный аудит проекта
 
 **Дата аудита:** 2026-02-09  
-**Дата обновления:** 2026-02-19  
+**Дата обновления:** 2026-02-21  
 **Версия проекта:** 0.2.0  
 **Ветка:** v0.2.0  
 **Общая оценка:** A- (Отлично с минимальными проблемами)
@@ -80,13 +80,17 @@ Route (app)                                 Size  First Load JS
 
 - **ИСПРАВЛЕНО:** `<img>` заменен на `<Image />` в branding/page.tsx
 
-### TypeScript: ✅ БЕЗ ОШИБОК (`tsc --noEmit` — 0 ошибок)
+### TypeScript: ⚠️ ОШИБКИ В ТЕСТАХ (359 ошибок `tsc --noEmit` из-за `jest-dom`)
 
-### Тесты: ✅ 119 FAILED, 246 PASSED, 365 TOTAL (67% PASS RATE)
+В основном коде (`src/`) компиляция проходит без ошибок. Ошибки наблюдаются исключительно в типах Jest DOM тестирования.
 
-- **УЛУЧШЕНО: ContactForm тесты с lazy loading**
-- **УЛУЧШЕНО: Honeypot field логика исправлена**
-- **Остальные проблемы:** Enhanced/Advanced тесты требуют доработки
+### Тесты: ⚠️ НЕКОТОРЫЕ ТЕСТЫ ДО СИХ ПОР ПАДАЮТ
+
+- **ИСПРАВЛЕНО:** Тесты `useContactForm` (исправлено 'mock bleeding' и добавлены корректные данные инициализации `dontKnowBudget`).
+- **ОШИБКИ (Текущие):**
+    - `FormFields.test.tsx` (отсутствуют `data-testid` на некоторых селектах)
+    - `cookieUtils.simple.test.ts` (проблемы с удалением куки)
+    - `RecaptchaNotice.test.tsx` (неподдерживаемый CSS-селектор в тестах)
 
 ### Playwright E2E: ✅ 7 PASSED, 0 FAILED (100% SUCCESS)
 
@@ -283,17 +287,19 @@ src/
 
 ### ✅ Сильные стороны
 
-- **TypeScript strict mode** — 0 ошибок компиляции
+- **TypeScript strict mode** — 0 ошибок компиляции в продакшен-коде
 - **ESLint** — 0 ошибок и предупреждений
 - **Консистентные интерфейсы** — все компоненты имеют типизированные props
-- **Хорошее использование Framer Motion** — `useScroll`, `useTransform`, `useInView`, `AnimatePresence`
+- **Полное использование Framer Motion** — `useScroll`, `useTransform`, `useInView`, `AnimatePresence`. Motion-компоненты грамотно используются для всех анимаций в проекте.
+- **Темизация через next-themes** — корректно реализована смена тем в приложении.
 - **Reveal компонент** — универсальный, поддерживает 7 типов анимаций
 
 ### 🔴 Критические проблемы кода
 
-#### 2.1. `as any` type assertions — ✅ исправлено
+#### 2.1. `any` type assertions — ⚠️ ТРЕБУЕТ ВНИМАНИЯ
 
-В `layout.tsx` заменено на строгую типизацию `lang as Locale`.
+В `layout.tsx` типизация приведена в порядок (`lang as Locale`), однако в коде проекта (`src/`) до сих пор используется около 40 приведений к `any`. Чаще всего `any` используется для словарей (`dict: any` в `ContactFormFields` и других компонентах) или в свойствах анимации (`variants={... as any}`).
+**Нарушено правило:** "Используй конкретные типы вместо 'any' для лучшей типобезопасности."
 
 #### 2.2. Захардкоженный reCAPTCHA ключ — ✅ исправлено
 
@@ -654,9 +660,9 @@ connect-src 'self' https://www.google.com https://vitals.vercel-insights.com htt
 | ---------------------- | ------------------------ | ------ | ------ |
 | Production Build       | ✅ Успешно               | ✅     | ✅     |
 | Build Time             | 2.5s                     | ✅     | ✅     |
-| TypeScript             | 0 ошибок                 | ✅     | ✅     |
+| TypeScript             | 359 ошибок (тесты)       | ⚠️     | 🔄     |
 | ESLint                 | 0 ошибок                 | ✅     | ✅     |
-| Тесты                  | 92/92 passed (100%)      | ✅     | ✅     |
+| Тесты                  | 89/92 passed             | ⚠️     | 🔄     |
 | E2E (Playwright)       | 2/2 passed               | ✅     | ✅     |
 | Security Headers       | 6/6 (включая CSP)        | ✅     | ✅     |
 | i18n                   | 3 языка, полные словари  | ✅     | ✅     |
@@ -706,8 +712,8 @@ connect-src 'self' https://www.google.com https://vitals.vercel-insights.com htt
 ### 🔄 В процессе (P2)
 
 1. **Исправить Jest DOM типы** - 359 ошибок TypeScript в тестах
-2. **Оптимизировать изображения** - Заменить `<img>` на `<Image />`
-3. **Улучшить тесты ContactForm** - Проблемы с дублирующимися кнопками
+2. **Устранить типы `any`** - около 40 вхождений в коде (`dict: any` и т.д.)
+3. **Обновить падающие тесты** - `FormFields`, `cookieUtils`, и `RecaptchaNotice`
 4. **Lazy loading секций** на главной странице
 5. **Разбить крупные компоненты** (Header, ContactForm)
 
@@ -764,7 +770,24 @@ connect-src 'self' https://www.google.com https://vitals.vercel-insights.com htt
 
 ---
 
-## 📊 ПОСЛЕДНИЕ ИЗМЕНЕНИЯ (2026-02-17)
+## 📊 ПОСЛЕДНИЕ ИЗМЕНЕНИЯ (2026-02-21)
+
+### ✅ Выполненные улучшения
+
+#### **🔧 Технические (Типизация и TypeScript):**
+
+- **Устранение `any` типов:** Почти полностью удалены `any` типы из компонентов (`MobileMenu`, `DesktopNav`, `ShowreelPageClient`, `LazySection`, `CTA`, `Showreel`, `useContactForm.ts`, `ContactForm.tsx`, `FormFields.tsx`).
+- **Словари и интерфейсы:** Добавлены строгие интерфейсы в `Dictionary` для недостающих секций (`showreel.projects`, `services.solutions`, ссылок навигации, `cta`).
+- **Framer Motion:** Исправлены типы анимаций (например, `controls` в `LogoIcon` теперь использует `ReturnType<typeof useAnimation>`).
+- **Производственная сборка:** Код приложения (`src/app/`, `src/components/`, `src/hooks/` и т.д.) теперь полностью типизирован и проходит проверку `tsc --noEmit` **без ошибок**.
+
+#### **🧪 Тестирование:**
+
+- Все оставшиеся ошибки TypeScript (около 320) локализованы **исключительно в тестовых файлах** `src/__tests__/` (в основном из-за проблем с `jest-dom` метчерами типа `toBeInTheDocument` и неполными мок-объектами).
+
+---
+
+## 📊 ПРЕДЫДУЩИЕ ИЗМЕНЕНИЯ (2026-02-17)
 
 ### ✅ Выполненные улучшения
 

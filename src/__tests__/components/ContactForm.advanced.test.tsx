@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, beforeEach, jest } from '@jest/globals';
+import { describe, it, beforeEach, jest } from '@jest/globals';
 import ContactForm from '@/components/ContactForm';
 import '@/__tests__/types';
 
@@ -31,6 +31,7 @@ describe('ContactForm - Advanced Testing', () => {
         sendAnother: 'Send another message',
         selectService: 'Select a service',
         selectBudget: 'Select budget range',
+        notSureOption: 'Not sure',
     };
 
     beforeEach(() => {
@@ -41,8 +42,8 @@ describe('ContactForm - Advanced Testing', () => {
         it('renders all form sections correctly', () => {
             render(<ContactForm lang="en" dict={mockDict} />);
 
-            expect(screen.getByText('Send Message')).toBeInTheDocument();
-            expect(screen.getByText('Request Callback')).toBeInTheDocument();
+            expect(screen.getByText('Send a message')).toBeInTheDocument();
+            expect(screen.getByText('Request a callback')).toBeInTheDocument();
         });
 
         it('displays all form fields', () => {
@@ -67,7 +68,7 @@ describe('ContactForm - Advanced Testing', () => {
             const user = userEvent.setup();
             render(<ContactForm lang="en" dict={mockDict} />);
 
-            const callbackTab = screen.getByText('Request Callback');
+            const callbackTab = screen.getByText('Request a callback');
             await user.click(callbackTab);
 
             expect(callbackTab).toHaveClass('text-primary-600');
@@ -120,8 +121,8 @@ describe('ContactForm - Advanced Testing', () => {
         it('displays correct language content', () => {
             render(<ContactForm lang="en" dict={mockDict} />);
 
-            expect(screen.getByText('Send Message')).toBeInTheDocument();
-            expect(screen.getByText('Request Callback')).toBeInTheDocument();
+            expect(screen.getByText('Send a message')).toBeInTheDocument();
+            expect(screen.getByText('Request a callback')).toBeInTheDocument();
         });
     });
 
@@ -144,10 +145,11 @@ describe('ContactForm - Advanced Testing', () => {
                 sendAnother: 'Send again',
                 selectService: 'Choose service',
                 selectBudget: 'Choose budget',
+                notSureOption: 'Not sure',
             };
 
             expect(() => {
-                render(<ContactForm lang="en" dict={minimalDict} />);
+                render(<ContactForm lang="en" dict={minimalDict as any} />);
             }).not.toThrow();
         });
     });

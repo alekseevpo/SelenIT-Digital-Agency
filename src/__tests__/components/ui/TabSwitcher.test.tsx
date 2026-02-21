@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from '@jest/globals';
+import { describe, it } from '@jest/globals';
 import { TabSwitcher } from '@/components/ui/TabSwitcher';
 import '@/__tests__/types';
 

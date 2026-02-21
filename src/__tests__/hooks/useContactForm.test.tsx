@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect, beforeEach, jest } from '@jest/globals';
+import { describe, it, beforeEach, jest } from '@jest/globals';
 import { useContactForm } from '@/hooks/useContactForm';
 
 // Mock fetch for API calls
@@ -19,6 +19,7 @@ describe('useContactForm Hook', () => {
     beforeEach(() => {
         jest.clearAllMocks();
         mockFetch.mockClear();
+        mockOnSubmit.mockResolvedValue(undefined);
     });
 
     describe('Initial State', () => {
@@ -32,6 +33,7 @@ describe('useContactForm Hook', () => {
                 company: '',
                 service: '',
                 budget: '',
+                dontKnowBudget: false,
                 message: '',
                 website: '',
             });
@@ -265,6 +267,7 @@ describe('useContactForm Hook', () => {
                 company: '',
                 service: 'Web Development',
                 budget: '',
+                dontKnowBudget: false,
                 message: 'Test message',
                 website: '',
             });
@@ -272,6 +275,20 @@ describe('useContactForm Hook', () => {
 
         it('should set isSubmitting during submission', async () => {
             const { result } = renderHook(() => useContactForm(defaultProps));
+
+            // Set valid data so validation passes
+            act(() => {
+                result.current.handleChange({ target: { name: 'name', value: 'John Doe' } } as any);
+                result.current.handleChange({
+                    target: { name: 'email', value: 'john@example.com' },
+                } as any);
+                result.current.handleChange({
+                    target: { name: 'service', value: 'Web Development' },
+                } as any);
+                result.current.handleChange({
+                    target: { name: 'message', value: 'Test message' },
+                } as any);
+            });
 
             // Mock onSubmit to take time
             mockOnSubmit.mockImplementation(
@@ -405,6 +422,7 @@ describe('useContactForm Hook', () => {
                 company: '',
                 service: '',
                 budget: '',
+                dontKnowBudget: false,
                 message: '',
                 website: '',
             });

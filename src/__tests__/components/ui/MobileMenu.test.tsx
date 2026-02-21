@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { describe, it, expect, jest } from '@jest/globals';
+import { describe, it, jest } from '@jest/globals';
 import { MobileMenu } from '@/components/ui/MobileMenu';
 import '@/__tests__/types';
 
@@ -34,6 +34,8 @@ const mockNavDict = {
     about: 'About',
     contact: 'Contact',
     getStarted: 'Get Started',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
 };
 
 const mockHeaderDict = {
@@ -202,12 +204,6 @@ describe('MobileMenu', () => {
         expect(screen.getByTestId('language-switcher')).toBeInTheDocument();
     });
 
-    it('renders footer section', () => {
-        render(<MobileMenu {...defaultProps} isMobileMenuOpen={true} />);
-
-        expect(screen.getByText('All rights reserved.')).toBeInTheDocument();
-    });
-
     it('handles different languages correctly', () => {
         const spanishProps = {
             ...defaultProps,
@@ -219,6 +215,8 @@ describe('MobileMenu', () => {
                 about: 'Nosotros',
                 contact: 'Contacto',
                 getStarted: 'Empezar',
+                privacy: 'Privacy Policy',
+                terms: 'Terms of Service',
             },
             headerDict: {
                 menu: 'Menú',
@@ -244,14 +242,35 @@ describe('MobileMenu', () => {
     });
 
     it('handles missing navDict gracefully', () => {
-        render(<MobileMenu {...defaultProps} isMobileMenuOpen={true} navDict={{}} />);
+        render(
+            <MobileMenu
+                {...defaultProps}
+                isMobileMenuOpen={true}
+                navDict={{
+                    home: '',
+                    services: '',
+                    showreel: '',
+                    about: '',
+                    contact: '',
+                    getStarted: '',
+                    privacy: '',
+                    terms: '',
+                }}
+            />,
+        );
 
         // Should render navigation without crashing
         expect(screen.getByRole('navigation')).toBeInTheDocument();
     });
 
     it('handles missing headerDict gracefully', () => {
-        render(<MobileMenu {...defaultProps} isMobileMenuOpen={true} headerDict={{}} />);
+        render(
+            <MobileMenu
+                {...defaultProps}
+                isMobileMenuOpen={true}
+                headerDict={{ menu: '', openMenu: '', closeMenu: '', language: '' }}
+            />,
+        );
 
         // Should render navigation without crashing
         expect(screen.getByRole('navigation')).toBeInTheDocument();

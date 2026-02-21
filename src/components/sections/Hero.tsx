@@ -373,7 +373,7 @@ export default function Hero({ dict, lang }: HeroProps) {
 
                     {/* Stats */}
                     <motion.div
-                        variants={itemVariants as any}
+                        variants={itemVariants}
                         className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mt-20 sm:mt-24 md:mt-32 pt-8 sm:pt-12 border-t border-slate-300 dark:border-slate-700"
                     >
                         {[

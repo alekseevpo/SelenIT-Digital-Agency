@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { describe, it, expect, beforeEach, jest } from '@jest/globals';
+import { describe, it, beforeEach, jest } from '@jest/globals';
 import ContactForm from '@/components/ContactForm';
 import '@/__tests__/types';
 
@@ -30,6 +30,7 @@ describe('ContactForm - Working Tests', () => {
         sendAnother: 'Send another message',
         selectService: 'Select a service',
         selectBudget: 'Select budget range',
+        notSureOption: 'Not sure',
     };
 
     it('renders without crashing', () => {

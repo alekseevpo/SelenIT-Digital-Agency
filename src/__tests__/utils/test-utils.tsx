@@ -51,6 +51,7 @@ export const mockContactFormDict = {
     sendAnother: 'Send another message',
     selectService: 'Select a service',
     selectBudget: 'Select a budget',
+    notSureOption: 'Not sure',
 };
 
 // Re-export everything

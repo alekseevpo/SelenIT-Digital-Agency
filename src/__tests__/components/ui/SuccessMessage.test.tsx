@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from '@jest/globals';
+import { describe, it } from '@jest/globals';
 import { SuccessMessage } from '@/components/ui/SuccessMessage';
 import '@/__tests__/types';
 
@@ -68,7 +68,7 @@ describe('SuccessMessage Component', () => {
         expect(container).toHaveClass('text-center', 'py-10');
 
         const button = screen.getByRole('button', { name: 'Send another message' });
-        expect(button).toHaveClass('btn-secondary', 'group/btn', 'relative', 'overflow-hidden');
+        expect(button).toHaveClass('btn-primary', 'group/btn', 'relative', 'overflow-hidden');
     });
 
     it('renders with callback success message', () => {

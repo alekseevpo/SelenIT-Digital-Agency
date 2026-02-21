@@ -10,8 +10,8 @@ interface MobileMenuProps {
     dict: Dictionary;
     isMobileMenuOpen: boolean;
     pathname: string;
-    navDict: any;
-    headerDict: any;
+    navDict: Dictionary['common']['nav'];
+    headerDict: Dictionary['common']['header'];
     servicesSubLinks: Array<{
         href: string;
         label: string;
@@ -85,7 +85,9 @@ const footerVariants = {
     },
 };
 
-const getNavLinks = (lang: string): { href: string; label: string; icon: string }[] => [
+type NavLinkLabel = keyof Dictionary['common']['nav'];
+
+const getNavLinks = (lang: string): { href: string; label: NavLinkLabel; icon: string }[] => [
     {
         href: `/${lang}`,
         label: 'home',
@@ -136,10 +138,12 @@ export function MobileMenu({
                     animate="visible"
                     exit="exit"
                     className="fixed inset-0 z-[60] md:hidden"
+                    data-testid="mobile-menu"
                 >
                     <div
                         className="absolute inset-0 bg-cream-50/70 dark:bg-dark-950/70 backdrop-blur-2xl"
                         onClick={closeMenu}
+                        data-testid="mobile-menu-backdrop"
                     />
                     <motion.div
                         variants={menuVariants}
@@ -185,7 +189,10 @@ export function MobileMenu({
                             </motion.div>
 
                             {/* Navigation List */}
-                            <div className="flex-1 overflow-y-auto py-4 mt-8">
+                            <nav
+                                aria-label="Mobile Navigation"
+                                className="flex-1 overflow-y-auto py-4 mt-8"
+                            >
                                 <div className="flex flex-col gap-4">
                                     {navLinks.map((link) => {
                                         const isActive = pathname === link.href;
@@ -228,7 +235,7 @@ export function MobileMenu({
                                         );
                                     })}
                                 </div>
-                            </div>
+                            </nav>
 
                             {/* Footer */}
                             <motion.div

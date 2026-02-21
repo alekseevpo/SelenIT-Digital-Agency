@@ -2,12 +2,17 @@
 
 import { FormField, FormInput, FormSelect, FormTextarea } from '@/components/ui/FormFields';
 
+import type { Dictionary } from '@/types/dictionary';
+import type { FormState, FormErrors } from '@/hooks/useContactForm';
+
 interface ContactFormFieldsProps {
     activeTab: 'message' | 'callback';
-    dict: any;
-    formState: any;
-    errors: any;
-    handleChange: (e: any) => void;
+    dict: Dictionary['contact']['form'];
+    formState: FormState;
+    errors: FormErrors;
+    handleChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    ) => void;
 }
 
 export default function ContactFormFields({
@@ -164,7 +169,11 @@ export default function ContactFormFields({
             {/* Message field */}
             <div className="col-span-1 md:col-span-2">
                 <FormField
-                    label={activeTab === 'message' ? dict.details : dict.message}
+                    label={
+                        activeTab === 'message'
+                            ? dict.details
+                            : (dict as any).message || dict.details
+                    }
                     error={errors.message}
                 >
                     <FormTextarea

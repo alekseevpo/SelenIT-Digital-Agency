@@ -13,7 +13,7 @@ export function FormField({ label, required, error, children, className = '' }: 
     // Get the id from the child element
     let childId = '';
     if (isValidElement(children)) {
-        const childProps = children.props as any;
+        const childProps = children.props as { id?: string };
         childId = childProps.id || '';
     }
 

@@ -1,5 +1,5 @@
 // Cookie utility functions for testing
-import { describe, beforeEach, it, expect } from '@jest/globals';
+import { describe, beforeEach, it } from '@jest/globals';
 export interface CookieOptions {
     domain?: string;
     path?: string;
@@ -73,23 +73,12 @@ export const cookieUtils = {
      * Delete a cookie
      */
     delete(name: string, options: Pick<CookieOptions, 'domain' | 'path'> = {}): void {
-        // Direct deletion from our mock store
         if (typeof document !== 'undefined') {
-            // For real browser environment
+            // Standard approach to delete cookie
             this.set(name, '', {
                 ...options,
                 expires: new Date(0),
                 maxAge: -1,
-            });
-        } else {
-            // For test environment - direct deletion
-            const cookieString = document.cookie;
-            const cookies = cookieString.split(';');
-            cookies.forEach((cookie) => {
-                const [cookieName] = cookie.trim().split('=');
-                if (cookieName === name) {
-                    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
-                }
             });
         }
     },
