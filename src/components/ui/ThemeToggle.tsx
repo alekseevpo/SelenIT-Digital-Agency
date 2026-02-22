@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function ThemeToggle() {
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
     const [isHovered, setIsHovered] = React.useState(false);
 
@@ -18,7 +18,7 @@ export function ThemeToggle() {
         document.documentElement.classList.add('transitioning');
 
         // Change theme
-        setTheme(theme === 'dark' ? 'light' : 'dark');
+        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
 
         // Remove class after transition
         setTimeout(() => {
@@ -30,7 +30,7 @@ export function ThemeToggle() {
         return <div className="w-10 h-10" />;
     }
 
-    const isDark = theme === 'dark';
+    const isDark = resolvedTheme === 'dark';
 
     return (
         <motion.button

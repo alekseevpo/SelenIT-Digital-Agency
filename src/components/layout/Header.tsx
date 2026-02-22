@@ -21,7 +21,7 @@ interface HeaderProps {
 }
 
 export default function Header({ lang, dict }: HeaderProps) {
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
@@ -30,7 +30,7 @@ export default function Header({ lang, dict }: HeaderProps) {
 
     const handleMobileThemeChange = () => {
         document.documentElement.classList.add('transitioning');
-        setTheme(theme === 'dark' ? 'light' : 'dark');
+        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
         setTimeout(() => {
             document.documentElement.classList.remove('transitioning');
         }, 500);

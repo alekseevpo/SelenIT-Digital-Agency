@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 
 export default function FluidBackground() {
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ export default function FluidBackground() {
 
     if (!mounted) return null;
 
-    const isDark = theme === 'dark';
+    const isDark = resolvedTheme === 'dark';
 
     // Configuration for blobs
     // Using slightly different colors for light/dark modes

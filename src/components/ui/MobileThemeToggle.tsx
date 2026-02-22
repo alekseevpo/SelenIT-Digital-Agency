@@ -15,7 +15,7 @@ export function MobileThemeToggle({
     iconSize = 'large',
     buttonSize = 'large',
 }: MobileThemeToggleProps) {
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
@@ -24,7 +24,7 @@ export function MobileThemeToggle({
 
     const handleThemeChange = () => {
         document.documentElement.classList.add('transitioning');
-        setTheme(theme === 'dark' ? 'light' : 'dark');
+        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
         setTimeout(() => {
             document.documentElement.classList.remove('transitioning');
         }, 500);
@@ -40,7 +40,7 @@ export function MobileThemeToggle({
         return <div className={sizeClasses[buttonSize]} />;
     }
 
-    const isDark = theme === 'dark';
+    const isDark = resolvedTheme === 'dark';
 
     // Size configurations
     const buttonClasses = {
