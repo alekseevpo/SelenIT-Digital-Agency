@@ -31,8 +31,8 @@ export default function ContactFormFields({
                     name="website"
                     tabIndex={-1}
                     type="text"
-                    value=""
-                    readOnly
+                    value={formState.website || ''}
+                    onChange={handleChange}
                 />
             </div>
 

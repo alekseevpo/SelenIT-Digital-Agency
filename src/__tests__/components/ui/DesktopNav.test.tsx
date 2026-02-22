@@ -7,7 +7,11 @@ import '@/__tests__/types';
 jest.mock('framer-motion', () => ({
     motion: {
         nav: ({ children }: any) => <nav>{children}</nav>,
-        div: ({ children }: any) => <div>{children}</div>,
+        div: ({ children, className, 'data-testid': testId }: any) => (
+            <div className={className} data-testid={testId}>
+                {children}
+            </div>
+        ),
     },
 }));
 
@@ -16,13 +20,15 @@ jest.mock('next/navigation', () => ({
     usePathname: () => '/en',
 }));
 
-// Mock ThemeToggle
-jest.mock('@/components/ui/ThemeToggle', () => ({
-    ThemeToggle: () => <button data-testid="theme-toggle">Theme</button>,
+// Mock DesktopThemeToggle
+jest.mock('@/components/ui/DesktopThemeToggle', () => ({
+    __esModule: true,
+    DesktopThemeToggle: () => <button data-testid="theme-toggle">Theme</button>,
 }));
 
 // Mock LanguageSwitcher
 jest.mock('@/components/ui/LanguageSwitcher', () => ({
+    __esModule: true,
     LanguageSwitcher: () => <button data-testid="language-switcher">Language</button>,
 }));
 
@@ -59,6 +65,7 @@ describe('DesktopNav', () => {
         lang: 'en' as const,
         dict: mockDict,
         isScrolled: false,
+        isTopElementsHidden: false,
         pathname: '/en',
         navDict: mockNavDict,
         servicesSubLinks: [
@@ -96,7 +103,8 @@ describe('DesktopNav', () => {
         render(<DesktopNav {...defaultProps} isScrolled={true} />);
 
         const nav = screen.getByRole('navigation');
-        expect(nav).toHaveClass('scrolled');
+        const motionDiv = nav.firstElementChild;
+        expect(motionDiv).toHaveClass('shadow-[0_8px_32px_rgba(0,0,0,0.12)]');
     });
 
     it('does not apply scrolled class when isScrolled is false', () => {
@@ -106,12 +114,23 @@ describe('DesktopNav', () => {
         expect(nav).not.toHaveClass('scrolled');
     });
 
-    it('renders logo correctly', () => {
-        render(<DesktopNav {...defaultProps} />);
+    it('hides utility controls when isTopElementsHidden is true', () => {
+        const { container } = render(<DesktopNav {...defaultProps} isTopElementsHidden={true} />);
 
-        expect(screen.getByTestId('logo')).toBeInTheDocument();
+        // The utility controls container should have -translate-y-20
+        const utilityContainer = container.querySelector('.hidden.md\\:flex');
+        expect(utilityContainer).toHaveClass('-translate-y-20');
+        expect(utilityContainer).toHaveClass('opacity-0');
+        expect(utilityContainer).toHaveClass('pointer-events-none');
     });
 
+    it('shows utility controls when isTopElementsHidden is false', () => {
+        const { container } = render(<DesktopNav {...defaultProps} isTopElementsHidden={false} />);
+
+        const utilityContainer = container.querySelector('.hidden.md\\:flex');
+        expect(utilityContainer).toHaveClass('translate-y-0');
+        expect(utilityContainer).toHaveClass('opacity-100');
+    });
     it('renders navigation links correctly', () => {
         render(<DesktopNav {...defaultProps} />);
 
@@ -143,10 +162,11 @@ describe('DesktopNav', () => {
     });
 
     it('renders utility controls', () => {
-        render(<DesktopNav {...defaultProps} />);
+        render(<DesktopNav {...defaultProps} isScrolled={false} />);
 
-        expect(screen.getByTestId('theme-toggle')).toBeInTheDocument();
-        expect(screen.getByTestId('language-switcher')).toBeInTheDocument();
+        // Instead of test IDs, query the actual rendered controls by their accessible roles
+        expect(screen.getByRole('button', { name: /switch to (dark|light) mode/i })).toBeInTheDocument();
+        expect(screen.getByRole('group', { name: /select language/i })).toBeInTheDocument();
     });
 
     it('calls handleDesktopServicesEnter when mouse enters services', () => {
@@ -234,10 +254,11 @@ describe('DesktopNav', () => {
         const { rerender } = render(<DesktopNav {...defaultProps} isScrolled={false} />);
 
         const nav = screen.getByRole('navigation');
-        expect(nav).toHaveClass('transition-all');
+        const motionDiv = nav.firstElementChild;
+        expect(motionDiv).toHaveClass('transition-all');
 
         rerender(<DesktopNav {...defaultProps} isScrolled={true} />);
-        expect(nav).toHaveClass('scrolled');
+        expect(motionDiv).toHaveClass('shadow-[0_8px_32px_rgba(0,0,0,0.12)]');
     });
 
     it('renders with correct accessibility attributes', () => {

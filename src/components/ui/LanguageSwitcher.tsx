@@ -39,10 +39,7 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
 
     return (
         <div
-            className={`
-                flex items-center gap-0.5 transition-opacity duration-300 max-w-fit
-                px-0 py-0 -my-2.5 -mx-1
-            `}
+            className="flex items-center gap-1 transition-opacity duration-300 px-1 py-0.5"
             role="group"
             aria-label="Select language"
         >
@@ -56,10 +53,9 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
                         className={`
                             relative px-2 py-1 text-xs font-bold uppercase
                             transition-all duration-300 rounded-full
-                            ${
-                                isActive
-                                    ? 'text-red-600 dark:text-red-500'
-                                    : 'text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500'
+                            ${isActive
+                                ? 'text-red-600 dark:text-red-500'
+                                : 'text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500'
                             }
                         `}
                         aria-label={`Switch to ${localeFullNames[locale]}`}

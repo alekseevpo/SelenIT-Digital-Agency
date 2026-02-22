@@ -38,6 +38,7 @@ export default function Header({ lang, dict }: HeaderProps) {
 
     const {
         isScrolled,
+        isTopElementsHidden,
         pathname,
         navDict,
         headerDict,
@@ -54,24 +55,13 @@ export default function Header({ lang, dict }: HeaderProps) {
 
     return (
         <>
-            {/* Mobile Language Bar */}
-            <div className="md:hidden fixed top-4 left-0 right-0 z-50 px-4 py-2">
-                <div className="flex justify-center">
-                    <div className="backdrop-blur-2xl bg-white/10 dark:bg-black/10 p-1 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] relative z-10">
-                        <div className="language-switcher-mobile">
-                            <LanguageSwitcher currentLang={lang} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <header
                 className={`fixed top-0 left-0 right-0 z-50 pointer-events-none py-1 sm:py-3 md:pt-3 transition-all duration-500`}
             >
                 <div className="max-w-full flex items-center justify-between px-4 sm:px-10 lg:px-12 relative">
                     {/* Logo - Top Left */}
                     <div
-                        className={`pointer-events-auto transition-all duration-500 ${isScrolled ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
+                        className={`pointer-events-auto transition-all duration-500 ${isTopElementsHidden ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
                     >
                         <Link href={`/${lang}`} className="group">
                             <Logo
@@ -87,6 +77,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                         lang={lang}
                         dict={dict}
                         isScrolled={isScrolled}
+                        isTopElementsHidden={isTopElementsHidden}
                         pathname={pathname}
                         navDict={navDict}
                         servicesSubLinks={servicesSubLinks}
@@ -97,8 +88,11 @@ export default function Header({ lang, dict }: HeaderProps) {
 
                     {/* Mobile Controls - Top Right */}
                     <div
-                        className={`md:hidden flex items-center gap-2 pointer-events-auto transition-all duration-500 mt-4 relative z-50`}
+                        className={`md:hidden flex items-center gap-2 pointer-events-auto transition-all duration-500 relative z-50`}
                     >
+                        <div className="backdrop-blur-2xl bg-white/10 dark:bg-black/10 p-1 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] relative z-10">
+                            <LanguageSwitcher currentLang={lang} />
+                        </div>
                         <MobileThemeToggle
                             iconSize={themeToggleConfig.mobile.iconSize}
                             buttonSize={themeToggleConfig.mobile.buttonSize}

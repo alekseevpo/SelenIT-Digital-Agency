@@ -16,6 +16,7 @@ interface ServicesSubLink {
 
 export function useNavigationLogic({ lang, dict }: NavigationLogicProps) {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isTopElementsHidden, setIsTopElementsHidden] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isDesktopServicesOpen, setIsDesktopServicesOpen] = useState(false);
@@ -54,8 +55,27 @@ export function useNavigationLogic({ lang, dict }: NavigationLogicProps) {
 
     // Scroll detection
     useEffect(() => {
+        let lastScrollY = window.scrollY;
+
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            const currentScrollY = window.scrollY;
+
+            // Standard scrolled state (for header background)
+            setIsScrolled(currentScrollY > 20);
+
+            // Smart header state (hiding elements based on direction)
+            if (currentScrollY <= 20) {
+                // Always show at the very top
+                setIsTopElementsHidden(false);
+            } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down past 100px - hide
+                setIsTopElementsHidden(true);
+            } else if (currentScrollY < lastScrollY - 5) {
+                // Scrolling up by at least 5px - show
+                setIsTopElementsHidden(false);
+            }
+
+            lastScrollY = currentScrollY;
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
@@ -157,6 +177,7 @@ export function useNavigationLogic({ lang, dict }: NavigationLogicProps) {
     return {
         // State
         isScrolled,
+        isTopElementsHidden,
         isMobileMenuOpen,
         isServicesOpen,
         isDesktopServicesOpen,

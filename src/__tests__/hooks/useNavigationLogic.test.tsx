@@ -1,5 +1,5 @@
 import { act, waitFor } from '@testing-library/react';
-import { describe, it, jest, beforeEach } from '@jest/globals';
+import { describe, it, jest, beforeEach, beforeAll } from '@jest/globals';
 import { useNavigationLogic } from '@/hooks/useNavigationLogic';
 import type { Dictionary } from '@/types/dictionary';
 import { renderHook as renderHookCustom } from '../utils/renderHook';
@@ -10,28 +10,13 @@ Object.defineProperty(window, 'innerWidth', { writable: true, value: 1024 });
 Object.defineProperty(window, 'addEventListener', { writable: true, value: jest.fn() });
 Object.defineProperty(window, 'removeEventListener', { writable: true, value: jest.fn() });
 
-// Mock document methods
-Object.defineProperty(document, 'body', {
-    writable: true,
-    value: {
-        style: {
-            position: '',
-            top: '',
-            left: '',
-            right: '',
-            width: '',
-            overflow: '',
-            paddingRight: '',
-        },
-    },
-});
-
-// Mock documentElement
-Object.defineProperty(document, 'documentElement', {
-    writable: true,
-    value: {
-        clientWidth: 1024,
-    },
+// Mock document methods cleanly
+beforeAll(() => {
+    Object.defineProperty(document.documentElement, 'clientWidth', {
+        writable: true,
+        configurable: true,
+        value: 1024,
+    });
 });
 
 // Mock usePathname
@@ -61,7 +46,13 @@ const mockDict = {
     services: {
         title: 'Services',
         subtitle: 'Our services',
-        items: [],
+        menuLinks: {
+            branding: { label: 'Branding', description: 'Branding description' },
+            websites: { label: 'Websites', description: 'Websites description' },
+            seo: { label: 'SEO', description: 'SEO description' },
+            custom: { label: 'Custom', description: 'Custom description' },
+            solutions: { label: 'Solutions', description: 'Solutions description' },
+        },
     },
     home: {
         title: 'Home',
@@ -123,6 +114,35 @@ describe('useNavigationLogic', () => {
         });
 
         expect(result.current.isScrolled).toBe(true);
+    });
+
+    it('should hide top elements on scroll down, and show on scroll up', () => {
+        const { result } = renderHookCustom(() =>
+            useNavigationLogic({ lang: 'en', dict: mockDict }),
+        );
+
+        expect(result.current.isTopElementsHidden).toBe(false);
+
+        // Scroll down past 100
+        act(() => {
+            window.scrollY = 120;
+            window.dispatchEvent(new Event('scroll'));
+        });
+        expect(result.current.isTopElementsHidden).toBe(true);
+
+        // Scroll up
+        act(() => {
+            window.scrollY = 100;
+            window.dispatchEvent(new Event('scroll'));
+        });
+        expect(result.current.isTopElementsHidden).toBe(false);
+
+        // Scroll to top
+        act(() => {
+            window.scrollY = 10;
+            window.dispatchEvent(new Event('scroll'));
+        });
+        expect(result.current.isTopElementsHidden).toBe(false);
     });
 
     it('should toggle mobile menu', () => {

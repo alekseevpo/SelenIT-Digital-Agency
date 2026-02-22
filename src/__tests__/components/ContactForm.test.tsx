@@ -95,9 +95,12 @@ describe('ContactForm', () => {
                 'input[name="website"]',
             ) as HTMLInputElement;
             if (honeypotInput) {
-                // Simulate bot behavior by directly setting value and triggering change
-                honeypotInput.value = 'spam-url.com';
-                fireEvent.change(honeypotInput, { target: { value: 'spam-url.com' } });
+                // Simulate bot behavior by making it visible and typing
+                const parentDiv = honeypotInput.parentElement;
+                if (parentDiv) parentDiv.classList.remove('hidden');
+                honeypotInput.classList.remove('hidden');
+
+                await user.type(honeypotInput, 'spam-url.com');
             }
 
             // Submit

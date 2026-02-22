@@ -30,7 +30,7 @@ describe('FormFields Components', () => {
     it('FormInput renders with correct props', () => {
         render(<FormInput id="test-input" type="text" placeholder="Test placeholder" />);
 
-        const input = screen.getByTestId('form-input');
+        const input = screen.getByRole('textbox');
         expect(input).toHaveAttribute('id', 'test-input');
         expect(input).toHaveAttribute('type', 'text');
         expect(input).toHaveAttribute('placeholder', 'Test placeholder');
@@ -39,7 +39,7 @@ describe('FormFields Components', () => {
     it('FormInput shows error state', () => {
         render(<FormInput error={true} />);
 
-        const input = screen.getByTestId('form-input');
+        const input = screen.getByRole('textbox');
         expect(input).toBeInTheDocument();
     });
 
@@ -51,7 +51,7 @@ describe('FormFields Components', () => {
             </FormSelect>,
         );
 
-        const select = screen.getByTestId('form-select');
+        const select = screen.getByRole('combobox');
         expect(select).toBeInTheDocument();
         expect(screen.getByText('Option 1')).toBeInTheDocument();
         expect(screen.getByText('Option 2')).toBeInTheDocument();
@@ -60,7 +60,7 @@ describe('FormFields Components', () => {
     it('FormTextarea renders with correct props', () => {
         render(<FormTextarea rows={5} placeholder="Test placeholder" />);
 
-        const textarea = screen.getByTestId('form-textarea');
+        const textarea = screen.getByRole('textbox');
         expect(textarea).toHaveAttribute('rows', '5');
         expect(textarea).toHaveAttribute('placeholder', 'Test placeholder');
     });

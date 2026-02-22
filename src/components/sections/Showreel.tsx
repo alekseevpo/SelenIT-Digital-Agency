@@ -24,27 +24,27 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                 lang === 'ru'
                     ? 'Luxe Fashion E-Commerce'
                     : lang === 'es'
-                      ? 'Luxe Fashion E-Commerce'
-                      : 'Luxe Fashion E-Commerce',
+                        ? 'Luxe Fashion E-Commerce'
+                        : 'Luxe Fashion E-Commerce',
             category: lang === 'ru' ? 'E-Commerce' : lang === 'es' ? 'E-Commerce' : 'E-Commerce',
             color: 'from-purple-500/20 to-pink-500/20',
             description:
                 lang === 'ru'
                     ? 'Премиальная модная площадка с расширенной фильтрацией и функцией виртуальной примерки'
                     : lang === 'es'
-                      ? 'Plataforma de moda premium con filtrado avanzado y función de prueba virtual'
-                      : 'Premium fashion marketplace with advanced filtering and virtual try-on features',
+                        ? 'Plataforma de moda premium con filtrado avanzado y función de prueba virtual'
+                        : 'Premium fashion marketplace with advanced filtering and virtual try-on features',
             features:
                 lang === 'ru'
                     ? [
-                          'Виртуальная примерка',
-                          'AI рекомендации',
-                          'Безопасные платежи',
-                          'Доставка по миру',
-                      ]
+                        'Виртуальная примерка',
+                        'AI рекомендации',
+                        'Безопасные платежи',
+                        'Доставка по миру',
+                    ]
                     : lang === 'es'
-                      ? ['Prueba Virtual', 'Recomendaciones IA', 'Pagos Seguros', 'Envío Global']
-                      : [
+                        ? ['Prueba Virtual', 'Recomendaciones IA', 'Pagos Seguros', 'Envío Global']
+                        : [
                             'Virtual Try-On',
                             'AI Recommendations',
                             'Secure Payments',
@@ -60,37 +60,37 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                 lang === 'ru'
                     ? 'FinTech Analytics Dashboard'
                     : lang === 'es'
-                      ? 'FinTech Analytics Dashboard'
-                      : 'FinTech Analytics Dashboard',
+                        ? 'FinTech Analytics Dashboard'
+                        : 'FinTech Analytics Dashboard',
             category:
                 lang === 'ru'
                     ? 'Веб-приложение'
                     : lang === 'es'
-                      ? 'Aplicación Web'
-                      : 'Web Application',
+                        ? 'Aplicación Web'
+                        : 'Web Application',
             color: 'from-blue-500/20 to-cyan-500/20',
             description:
                 lang === 'ru'
                     ? 'Платформа финансовой аналитики в реальном времени с предиктивными инсайтами и автоматической отчетностью'
                     : lang === 'es'
-                      ? 'Plataforma de análisis financiero en tiempo real con insights predictivos e informes automatizados'
-                      : 'Real-time financial analytics platform with predictive insights and automated reporting',
+                        ? 'Plataforma de análisis financiero en tiempo real con insights predictivos e informes automatizados'
+                        : 'Real-time financial analytics platform with predictive insights and automated reporting',
             features:
                 lang === 'ru'
                     ? [
-                          'Данные в реальном времени',
-                          'Предиктивная аналитика',
-                          'Кастомные отчеты',
-                          'API интеграция',
-                      ]
+                        'Данные в реальном времени',
+                        'Предиктивная аналитика',
+                        'Кастомные отчеты',
+                        'API интеграция',
+                    ]
                     : lang === 'es'
-                      ? [
+                        ? [
                             'Datos en Tiempo Real',
                             'Análisis Predictivo',
                             'Informes Personalizados',
                             'Integración API',
                         ]
-                      : [
+                        : [
                             'Real-time Data',
                             'Predictive Analytics',
                             'Custom Reports',
@@ -222,6 +222,16 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                         .split(' ')
                                         .map((word) => (word === '&' ? '&' : word));
                                     return words.map((word, index) => {
+                                        if (word === '&') {
+                                            return (
+                                                <span
+                                                    key={index}
+                                                    className="text-slate-900 dark:text-white inline-block mx-2"
+                                                >
+                                                    &
+                                                </span>
+                                            );
+                                        }
                                         if (
                                             word.toLowerCase().includes('шоурил') ||
                                             word.toLowerCase().includes('showreels')
@@ -372,8 +382,8 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                                 {lang === 'ru'
                                                     ? 'Скоро'
                                                     : lang === 'es'
-                                                      ? 'Próximamente'
-                                                      : 'Coming Soon'}
+                                                        ? 'Próximamente'
+                                                        : 'Coming Soon'}
                                             </span>
                                         </div>
                                     </div>
@@ -394,8 +404,8 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                             {lang === 'ru'
                                                 ? 'Ключевые особенности'
                                                 : lang === 'es'
-                                                  ? 'Características Clave'
-                                                  : 'Key Features'}
+                                                    ? 'Características Clave'
+                                                    : 'Key Features'}
                                         </h4>
                                         <div className="flex flex-wrap gap-2">
                                             {project.features.map((feature, featureIndex) => (
@@ -416,8 +426,8 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                                             {lang === 'ru'
                                                 ? 'Технологический стек'
                                                 : lang === 'es'
-                                                  ? 'Stack Tecnológico'
-                                                  : 'Technology Stack'}
+                                                    ? 'Stack Tecnológico'
+                                                    : 'Technology Stack'}
                                         </h4>
                                         <div className="flex flex-wrap gap-2">
                                             {project.tech.map((tech, techIndex) => (

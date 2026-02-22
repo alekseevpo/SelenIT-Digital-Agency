@@ -133,7 +133,7 @@ const mockCookie = (() => {
             // Parse cookie string and update store
             newCookie.split(';').forEach((cookie) => {
                 const [name, ...valueParts] = cookie.trim().split('=');
-                if (name && valueParts.length > 0) {
+                if (typeof name === 'string' && valueParts.length > 0) {
                     const value = valueParts.join('=');
 
                     // Handle deletion - check for empty value or deletion attributes
@@ -157,7 +157,8 @@ describe('Cookie Utils', () => {
     beforeEach(() => {
         // Mock document.cookie
         Object.defineProperty(document, 'cookie', {
-            value: mockCookie.value,
+            get: () => mockCookie.value,
+            set: (val: string) => { mockCookie.value = val; },
             writable: true,
             configurable: true,
         });

@@ -6,7 +6,7 @@ import '@/__tests__/types';
 
 describe('ContactForm - Advanced Testing', () => {
     const mockDict = {
-        tabs: { message: 'Send Message', callback: 'Request Callback' },
+        tabs: { message: 'Send a message', callback: 'Request a callback' },
         title: 'Contact Us',
         subtitle: 'Get in touch',
         fullName: 'Full Name',
@@ -105,8 +105,11 @@ describe('ContactForm - Advanced Testing', () => {
         it('indicates required fields', () => {
             render(<ContactForm lang="en" dict={mockDict} />);
 
-            expect(screen.getByText('Full Name *')).toBeInTheDocument();
-            expect(screen.getByText('Email *')).toBeInTheDocument();
+            const nameLabel = document.querySelector('label[for="name"]');
+            expect(nameLabel).toHaveTextContent('Full Name *');
+
+            const emailLabel = document.querySelector('label[for="email"]');
+            expect(emailLabel).toHaveTextContent('Email *');
         });
 
         it('has proper button types', () => {
@@ -121,8 +124,8 @@ describe('ContactForm - Advanced Testing', () => {
         it('displays correct language content', () => {
             render(<ContactForm lang="en" dict={mockDict} />);
 
-            expect(screen.getByText('Send a message')).toBeInTheDocument();
-            expect(screen.getByText('Request a callback')).toBeInTheDocument();
+            expect(screen.getByText(/send a message/i)).toBeInTheDocument();
+            expect(screen.getByText(/request a callback/i)).toBeInTheDocument();
         });
     });
 

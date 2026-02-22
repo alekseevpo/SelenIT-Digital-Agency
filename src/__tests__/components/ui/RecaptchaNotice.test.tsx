@@ -125,9 +125,9 @@ describe('RecaptchaNotice Component', () => {
     it('has separator between links', () => {
         render(<RecaptchaNotice lang="en" />);
 
-        const separator = document.querySelector('.text-[8px]');
+        // Instead of querying by class, just query by text content for the separator
+        const separator = screen.getByText('&');
         expect(separator).toBeInTheDocument();
-        expect(separator).toHaveTextContent('&');
     });
 
     it('renders all elements in correct order', () => {

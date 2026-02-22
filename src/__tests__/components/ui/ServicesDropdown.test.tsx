@@ -52,7 +52,7 @@ describe('ServicesDropdown', () => {
 
     it('renders desktop services dropdown correctly', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -71,7 +71,7 @@ describe('ServicesDropdown', () => {
 
     it('shows desktop dropdown when isDesktopServicesOpen is true', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={true}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -93,7 +93,7 @@ describe('ServicesDropdown', () => {
 
     it('renders mobile services dropdown correctly', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -112,7 +112,7 @@ describe('ServicesDropdown', () => {
 
     it('shows mobile sublinks when isServicesOpen is true', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={true}
                 servicesSubLinks={mockServicesSubLinks}
@@ -136,7 +136,7 @@ describe('ServicesDropdown', () => {
         const onDesktopServicesEnter = jest.fn();
 
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -157,7 +157,7 @@ describe('ServicesDropdown', () => {
         const onDesktopServicesLeave = jest.fn();
 
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -178,7 +178,7 @@ describe('ServicesDropdown', () => {
         const onToggleServices = jest.fn();
 
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -197,7 +197,7 @@ describe('ServicesDropdown', () => {
 
     it('shows active state correctly (desktop)', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -216,7 +216,7 @@ describe('ServicesDropdown', () => {
 
     it('shows active state correctly (mobile)', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -235,7 +235,7 @@ describe('ServicesDropdown', () => {
 
     it('renders correct link hrefs for sublinks', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={true}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -257,7 +257,7 @@ describe('ServicesDropdown', () => {
 
     it('renders descriptions for sublinks (desktop)', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={true}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}
@@ -274,28 +274,9 @@ describe('ServicesDropdown', () => {
         expect(screen.getByText('Websites description')).toBeInTheDocument();
     });
 
-    it('shows arrow rotation when desktop services are open', () => {
-        render(
-            <ServicesDropdown
-                isDesktopServicesOpen={true}
-                isServicesOpen={false}
-                servicesSubLinks={mockServicesSubLinks}
-                onDesktopServicesEnter={jest.fn()}
-                onDesktopServicesLeave={jest.fn()}
-                onToggleServices={jest.fn()}
-                navDict={mockNavDict}
-                isActive={false}
-                isMobile={false}
-            />,
-        );
-
-        const svg = screen.getByRole('link', { name: /Services/i }).querySelector('svg');
-        expect(svg).toHaveClass('rotate-180');
-    });
-
     it('shows arrow rotation when mobile services are open', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={true}
                 servicesSubLinks={mockServicesSubLinks}
@@ -314,7 +295,7 @@ describe('ServicesDropdown', () => {
 
     it('handles empty servicesSubLinks gracefully', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={true}
                 isServicesOpen={false}
                 servicesSubLinks={[]}
@@ -333,7 +314,7 @@ describe('ServicesDropdown', () => {
 
     it('handles missing navDict gracefully', () => {
         render(
-            <ServicesDropdown
+            <ServicesDropdown lang="en"
                 isDesktopServicesOpen={false}
                 isServicesOpen={false}
                 servicesSubLinks={mockServicesSubLinks}

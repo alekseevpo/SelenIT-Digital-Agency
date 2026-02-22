@@ -203,11 +203,10 @@ export function MobileMenu({
                                                 {!isServices ? (
                                                     <Link
                                                         href={link.href}
-                                                        className={`group flex items-center justify-between px-4 py-3 transition-all duration-300 relative border-b border-slate-200/30 dark:border-white/10 ${
-                                                            isActive
+                                                        className={`group flex items-center justify-between px-4 py-3 transition-all duration-300 relative border-b border-slate-200/30 dark:border-white/10 ${isActive
                                                                 ? 'text-red-600 dark:text-red-500'
                                                                 : 'text-slate-700 dark:text-slate-200'
-                                                        }`}
+                                                            }`}
                                                         onClick={closeMenu}
                                                     >
                                                         <div className="flex items-center gap-3">
@@ -223,12 +222,13 @@ export function MobileMenu({
                                                         isDesktopServicesOpen={false}
                                                         isServicesOpen={isServicesOpen}
                                                         servicesSubLinks={servicesSubLinks}
-                                                        onDesktopServicesEnter={() => {}}
-                                                        onDesktopServicesLeave={() => {}}
+                                                        onDesktopServicesEnter={() => { }}
+                                                        onDesktopServicesLeave={() => { }}
                                                         onToggleServices={toggleServices}
                                                         navDict={navDict}
                                                         isActive={isActive}
                                                         isMobile={true}
+                                                        lang={lang}
                                                     />
                                                 )}
                                             </div>

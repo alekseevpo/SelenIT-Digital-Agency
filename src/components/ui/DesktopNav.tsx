@@ -12,6 +12,7 @@ interface DesktopNavProps {
     lang: Locale;
     dict: Dictionary;
     isScrolled: boolean;
+    isTopElementsHidden: boolean;
     pathname: string;
     navDict: Dictionary['common']['nav'];
     servicesSubLinks: Array<{
@@ -58,6 +59,7 @@ export function DesktopNav({
     lang,
     dict,
     isScrolled,
+    isTopElementsHidden,
     pathname,
     navDict,
     servicesSubLinks,
@@ -102,10 +104,11 @@ export function DesktopNav({
                                     servicesSubLinks={servicesSubLinks}
                                     onDesktopServicesEnter={handleDesktopServicesEnter}
                                     onDesktopServicesLeave={handleDesktopServicesLeave}
-                                    onToggleServices={() => {}}
+                                    onToggleServices={() => { }}
                                     navDict={navDict}
                                     isActive={isActive}
                                     isMobile={false}
+                                    lang={lang}
                                 />
                             );
                         }
@@ -117,10 +120,9 @@ export function DesktopNav({
                                 className={`
                                     px-5 py-2.5 rounded-full text-sm font-medium
                                     transition-colors duration-500 relative focus:outline-none
-                                    ${
-                                        isActive
-                                            ? 'text-red-600 dark:text-red-500'
-                                            : 'text-slate-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/5 dark:hover:bg-red-600/10'
+                                    ${isActive
+                                        ? 'text-red-600 dark:text-red-500'
+                                        : 'text-slate-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/5 dark:hover:bg-red-600/10'
                                     }
                                 `}
                             >
@@ -146,7 +148,7 @@ export function DesktopNav({
 
             {/* Desktop Utility Controls - Top Right */}
             <div
-                className={`hidden md:flex items-center gap-2 pointer-events-auto transition-all duration-500 ${isScrolled ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
+                className={`hidden md:flex items-center gap-2 pointer-events-auto transition-all duration-500 ${isTopElementsHidden ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
             >
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
@@ -154,10 +156,10 @@ export function DesktopNav({
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="flex items-center gap-2"
                 >
-                    <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 p-1.5 rounded-full flex items-center gap-1 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+                    <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1 rounded-full flex items-center shadow-[0_4px_16px_rgba(0,0,0,0.06)] h-[44px]">
                         <LanguageSwitcher currentLang={lang} />
                     </div>
-                    <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+                    <div className="backdrop-blur-2xl bg-cream-50/10 dark:bg-cream-50/5 border border-white/20 dark:border-white/10 p-1.5 rounded-full shadow-[0_4px_16px_rgba(0,0,0,0.06)] h-[44px] flex items-center justify-center w-[44px]">
                         <DesktopThemeToggle
                             iconSize={themeToggleConfig.desktop.iconSize}
                             buttonSize={themeToggleConfig.desktop.buttonSize}

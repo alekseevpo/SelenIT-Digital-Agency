@@ -4,8 +4,15 @@ import ContactForm from '@/components/ContactForm';
 import { mockContactFormDict } from '../utils/test-utils';
 
 describe('ContactForm - Accessibility (a11y)', () => {
+    const mockFetch = jest.fn();
+    global.fetch = mockFetch as unknown as typeof fetch;
+
     beforeEach(() => {
         jest.clearAllMocks();
+        mockFetch.mockResolvedValue({
+            ok: true,
+            json: async () => ({ success: true }),
+        });
     });
 
     describe('Form Structure Accessibility', () => {
@@ -224,7 +231,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             await new Promise((resolve) => setTimeout(resolve, 100));
 
             // Check for consistent error styling
-            const errorElements = container.querySelectorAll('[data-testid="field-error"]');
+            const errorElements = container.querySelectorAll('.text-red-500.font-semibold');
             expect(errorElements.length).toBeGreaterThan(0);
         });
 
@@ -252,7 +259,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             await new Promise((resolve) => setTimeout(resolve, 100));
 
             // Check for clear success feedback
-            const successElement = container.querySelector('[data-testid="success-message"]');
+            const successElement = screen.getByText(/We will get back to you soon/i);
             expect(successElement).toBeInTheDocument();
         });
     });
@@ -262,7 +269,7 @@ describe('ContactForm - Accessibility (a11y)', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             const submitButton = screen.getByRole('button', { name: /Send Message/i });
-            const tabButtons = screen.getAllByRole('button');
+            const tabButtons = screen.getAllByRole('button').filter(b => b.textContent !== 'Send Message' && !b.classList.contains('btn-primary'));
 
             // Check that buttons have appropriate size classes
             expect(submitButton).toHaveClass('btn-primary');

@@ -87,11 +87,11 @@ const mockCookie = (() => {
             // Parse cookie string and update store
             newCookie.split(';').forEach((cookie) => {
                 const [name, ...valueParts] = cookie.trim().split('=');
-                if (name && valueParts.length > 0) {
+                if (typeof name === 'string' && valueParts.length > 0) {
                     const value = valueParts.join('=');
 
-                    // Handle deletion - check for empty value or expiration in the past
-                    if (value === '' || newCookie.includes('expires=Thu, 01 Jan 1970')) {
+                    // Handle deletion - check for expiration in the past
+                    if (newCookie.includes('expires=Thu, 01 Jan 1970')) {
                         delete cookieStore[name];
                     } else {
                         cookieStore[name] = value;
@@ -105,10 +105,11 @@ const mockCookie = (() => {
 // Test suite for cookie utilities
 describe('Cookie Utils', () => {
     beforeEach(() => {
-        // Mock document.cookie
         Object.defineProperty(document, 'cookie', {
-            value: mockCookie.value,
-            writable: true,
+            get: () => mockCookie.value,
+            set: (val) => {
+                mockCookie.value = val;
+            },
             configurable: true,
         });
 

@@ -61,7 +61,7 @@ export default function BackToTopMobile() {
                     }}
                     whileTap={{ scale: 0.85 }}
                     onClick={scrollToTop}
-                    className="lg:hidden fixed bottom-36 right-6 z-[60] w-14 h-14 rounded-full bg-white/80 dark:bg-dark-900/80 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] text-slate-800 dark:text-slate-100 flex items-center justify-center active:bg-slate-100 dark:active:bg-dark-800 transition-colors duration-200"
+                    className="lg:hidden fixed bottom-44 right-6 z-[60] w-14 h-14 rounded-full bg-white/80 dark:bg-dark-900/80 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] text-slate-800 dark:text-slate-100 flex items-center justify-center active:bg-slate-100 dark:active:bg-dark-800 transition-colors duration-200"
                     aria-label="Наверх"
                 >
                     <ArrowUp

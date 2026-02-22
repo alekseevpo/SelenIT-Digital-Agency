@@ -5,7 +5,7 @@ import '@/__tests__/types';
 
 describe('ContactForm - Working Tests', () => {
     const mockDict = {
-        tabs: { message: 'Send Message', callback: 'Request Callback' },
+        tabs: { message: 'Send a message', callback: 'Request a callback' },
         title: 'Contact Us',
         subtitle: 'Get in touch',
         fullName: 'Full Name',

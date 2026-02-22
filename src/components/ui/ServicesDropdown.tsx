@@ -17,6 +17,7 @@ interface ServicesDropdownProps {
     navDict: Dictionary['common']['nav'];
     isActive?: boolean;
     isMobile?: boolean;
+    lang: string;
 }
 
 export function ServicesDropdown({
@@ -29,26 +30,25 @@ export function ServicesDropdown({
     navDict,
     isActive = false,
     isMobile = false,
+    lang,
 }: ServicesDropdownProps) {
     if (isMobile) {
         return (
             <div className="relative">
                 <button
                     type="button"
-                    className={`w-full flex items-center justify-between px-4 py-3 transition-all duration-300 relative border-b border-slate-200/30 dark:border-white/10 ${
-                        isServicesOpen || isActive
-                            ? 'text-red-600 dark:text-red-500'
-                            : 'text-slate-700 dark:text-slate-200'
-                    }`}
+                    className={`w-full flex items-center justify-between px-4 py-3 transition-all duration-300 relative border-b border-slate-200/30 dark:border-white/10 ${isServicesOpen || isActive
+                        ? 'text-red-600 dark:text-red-500'
+                        : 'text-slate-700 dark:text-slate-200'
+                        }`}
                     onClick={onToggleServices}
                 >
                     <div className="flex items-center gap-3">
                         <span
-                            className={`font-semibold text-base tracking-wide ${
-                                isServicesOpen || isActive
-                                    ? 'text-red-600 dark:text-red-500'
-                                    : 'text-slate-700 dark:text-slate-200'
-                            }`}
+                            className={`font-semibold text-base tracking-wide ${isServicesOpen || isActive
+                                ? 'text-red-600 dark:text-red-500'
+                                : 'text-slate-700 dark:text-slate-200'
+                                }`}
                         >
                             {navDict.services}
                         </span>
@@ -56,11 +56,10 @@ export function ServicesDropdown({
                     <motion.img
                         src="/arrow.png"
                         alt="Arrow"
-                        className={`w-4 h-4 transition-transform duration-300 mr-0 ${
-                            isServicesOpen || isActive
-                                ? 'brightness-0 saturate-100'
-                                : 'brightness-0 saturate-100 dark:brightness-0 dark:invert'
-                        }`}
+                        className={`w-4 h-4 transition-transform duration-300 mr-0 ${isServicesOpen || isActive
+                            ? 'brightness-0 saturate-100'
+                            : 'brightness-0 saturate-100 dark:brightness-0 dark:invert'
+                            }`}
                         animate={{
                             rotate: isServicesOpen ? 180 : 0,
                         }}
@@ -108,14 +107,13 @@ export function ServicesDropdown({
             onMouseLeave={onDesktopServicesLeave}
         >
             <Link
-                href={`/${navDict.services}`}
+                href={`/${lang}/services`}
                 className={`
                     px-5 py-2.5 rounded-full text-sm font-medium
                     transition-colors duration-500 relative focus:outline-none flex items-center gap-1
-                    ${
-                        isActive
-                            ? 'text-red-600 dark:text-red-500 group/active overflow-hidden'
-                            : 'text-slate-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/5 dark:hover:bg-red-600/10'
+                    ${isActive
+                        ? 'text-red-600 dark:text-red-500 group/active overflow-hidden'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/5 dark:hover:bg-red-600/10'
                     }
                 `}
             >
@@ -145,19 +143,6 @@ export function ServicesDropdown({
                 >
                     {navDict.services}
                 </span>
-                <svg
-                    className={`w-3.5 h-3.5 transition-transform duration-300 ${isDesktopServicesOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                    />
-                </svg>
             </Link>
 
             {/* Services Dropdown */}
