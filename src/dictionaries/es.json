@@ -59,7 +59,8 @@
         "form": {
             "tabs": {
                 "message": "Enviarnos un mensaje",
-                "callback": "Llamada de vuelta"
+                "callback": "Llamada de vuelta",
+                "brief": "Llenar Brief"
             },
             "title": "Escríbanos",
             "subtitle": "Complete el formulario a continuación",
@@ -91,7 +92,75 @@
             "callbackSuccessSubtitle": "Le devolveremos la llamada lo antes posible para discutir su proyecto.",
             "sendAnother": "Enviar otra solicitud",
             "selectService": "Seleccione un servicio",
-            "selectBudget": "Seleccione presupuesto"
+            "selectBudget": "Seleccione presupuesto",
+            "brief": {
+                "title": "Brief Interactivo",
+                "subtitle": "Responda unas preguntas — prepararemos una propuesta personalizada",
+                "steps": {
+                    "projectType": "¿Qué tipo de proyecto le interesa?",
+                    "projectTypeOptions": [
+                        "Sitio Web Corporativo",
+                        "Tienda Online",
+                        "Landing Page",
+                        "Aplicación Web",
+                        "Branding / Logotipo",
+                        "Promoción SEO",
+                        "Rediseño de sitio existente",
+                        "Otro"
+                    ],
+                    "goals": "¿Qué objetivos quiere alcanzar?",
+                    "goalsOptions": [
+                        "Atraer nuevos clientes",
+                        "Aumentar ventas",
+                        "Mejorar reconocimiento de marca",
+                        "Automatizar procesos",
+                        "Entrar en un nuevo mercado",
+                        "Mejorar la experiencia de usuario"
+                    ],
+                    "audience": "Describa su público objetivo",
+                    "audiencePlaceholder": "Ej.: emprendedores 30-50 años, segmento B2B, Europa...",
+                    "timeline": "¿Cuándo planea lanzar el proyecto?",
+                    "timelineOptions": [
+                        "Lo antes posible",
+                        "En 1 mes",
+                        "2-3 meses",
+                        "3-6 meses",
+                        "Solo planificando"
+                    ],
+                    "budget": "¿Qué presupuesto considera?",
+                    "budgetOptions": [
+                        "Menos de 3.000 €",
+                        "3.000 € — 10.000 €",
+                        "10.000 € — 30.000 €",
+                        "30.000 € — 50.000 €",
+                        "50.000 €+",
+                        "Necesito asesoramiento"
+                    ],
+                    "features": "¿Qué funcionalidades son importantes?",
+                    "featuresOptions": [
+                        "Diseño adaptable",
+                        "Multiidioma",
+                        "Integración con CRM",
+                        "Pagos online",
+                        "Panel de usuario",
+                        "Analíticas e informes",
+                        "Chat-bot / chat en vivo",
+                        "Optimización SEO"
+                    ],
+                    "description": "Cuéntenos más sobre el proyecto",
+                    "descriptionPlaceholder": "¿Qué es lo más importante para usted? ¿Tiene ejemplos de proyectos que le gusten?",
+                    "contact": "¿Cómo podemos contactarle?",
+                    "contactPlaceholder": "Email, teléfono o Telegram — lo que le sea más cómodo"
+                },
+                "next": "Siguiente",
+                "back": "Atrás",
+                "submit": "Enviar Brief",
+                "sending": "Enviando...",
+                "stepOf": "de",
+                "successTitle": "¡Brief Enviado!",
+                "successSubtitle": "Revisaremos sus respuestas y le contactaremos en las próximas 24 horas con una propuesta personalizada.",
+                "sendAnother": "Llenar de nuevo"
+            }
         }
     },
     "hero": {
@@ -131,17 +200,50 @@
             "watchVideo": "Ver Video",
             "comingSoon": "Próximamente",
             "companies": [
-                { "name": "REMEMBER", "link": "https://www.remember.de/en/" },
-                { "name": "AURA", "link": "https://www.aura.com/" },
-                { "name": "kw - Keller Williams", "link": "https://kw.com/" },
-                { "name": "Coachella", "link": "https://www.coachella.com/" },
-                { "name": "Publix", "link": "https://www.publix.com" },
-                { "name": "EPIC Games", "link": "https://www.epicgames.com" },
-                { "name": "Chick-fil-A", "link": "https://www.chick-fil-a.com" },
-                { "name": "StubHub", "link": "https://www.stubhub.com" },
-                { "name": "crunchyroll", "link": "https://www.crunchyroll.com" },
-                { "name": "TOSHIBA", "link": "https://toshiba.com" },
-                { "name": "WALMART", "link": "https://www.walmart.com" }
+                {
+                    "name": "REMEMBER",
+                    "link": "https://www.remember.de/en/"
+                },
+                {
+                    "name": "AURA",
+                    "link": "https://www.aura.com/"
+                },
+                {
+                    "name": "kw - Keller Williams",
+                    "link": "https://kw.com/"
+                },
+                {
+                    "name": "Coachella",
+                    "link": "https://www.coachella.com/"
+                },
+                {
+                    "name": "Publix",
+                    "link": "https://www.publix.com"
+                },
+                {
+                    "name": "EPIC Games",
+                    "link": "https://www.epicgames.com"
+                },
+                {
+                    "name": "Chick-fil-A",
+                    "link": "https://www.chick-fil-a.com"
+                },
+                {
+                    "name": "StubHub",
+                    "link": "https://www.stubhub.com"
+                },
+                {
+                    "name": "crunchyroll",
+                    "link": "https://www.crunchyroll.com"
+                },
+                {
+                    "name": "TOSHIBA",
+                    "link": "https://toshiba.com"
+                },
+                {
+                    "name": "WALMART",
+                    "link": "https://www.walmart.com"
+                }
             ]
         },
         "testimonials": {
@@ -155,17 +257,50 @@
             "title": "Todas las Reseñas de Clientes",
             "subtitle": "Colección completa de testimonios de nuestros socios y clientes de todo el mundo. Descubra cómo ayudamos a las empresas a crecer y alcanzar sus objetivos.",
             "companies": [
-                { "name": "REMEMBER", "link": null },
-                { "name": "AURA", "link": null },
-                { "name": "kw - Keller Williams", "link": null },
-                { "name": "Coachella", "link": null },
-                { "name": "Publix", "link": null },
-                { "name": "EPIC Games", "link": null },
-                { "name": "Chick-fil-A", "link": "https://www.chick-fil-a.com" },
-                { "name": "StubHub", "link": "https://www.stubhub.com" },
-                { "name": "crunchyroll", "link": "https://www.crunchyroll.com" },
-                { "name": "TOSHIBA", "link": null },
-                { "name": "WALMART", "link": null }
+                {
+                    "name": "REMEMBER",
+                    "link": null
+                },
+                {
+                    "name": "AURA",
+                    "link": null
+                },
+                {
+                    "name": "kw - Keller Williams",
+                    "link": null
+                },
+                {
+                    "name": "Coachella",
+                    "link": null
+                },
+                {
+                    "name": "Publix",
+                    "link": null
+                },
+                {
+                    "name": "EPIC Games",
+                    "link": null
+                },
+                {
+                    "name": "Chick-fil-A",
+                    "link": "https://www.chick-fil-a.com"
+                },
+                {
+                    "name": "StubHub",
+                    "link": "https://www.stubhub.com"
+                },
+                {
+                    "name": "crunchyroll",
+                    "link": "https://www.crunchyroll.com"
+                },
+                {
+                    "name": "TOSHIBA",
+                    "link": null
+                },
+                {
+                    "name": "WALMART",
+                    "link": null
+                }
             ]
         },
         "technologies": {

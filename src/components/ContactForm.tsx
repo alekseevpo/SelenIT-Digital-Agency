@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 // Lazy load heavy components
 const ContactFormFields = lazy(() => import('@/components/ContactFormFields'));
 const SubmitButton = lazy(() => import('@/components/SubmitButton'));
+const BriefWizard = lazy(() => import('@/components/BriefWizard'));
 
 interface ContactFormProps {
     lang: string;
@@ -21,7 +22,7 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ lang, dict }: ContactFormProps) {
-    const [activeTab, setActiveTab] = useState<'message' | 'callback'>('message');
+    const [activeTab, setActiveTab] = useState<'message' | 'callback' | 'brief'>('message');
     const { recaptchaLoaded, getRecaptchaToken } = useRecaptcha();
     const successMessageRef = useRef<HTMLDivElement>(null);
 
@@ -66,6 +67,43 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         [activeTab, getRecaptchaToken],
     );
 
+    const handleBriefSubmit = useCallback(
+        async (answers: Record<string, string | string[]>) => {
+            const recaptchaToken = await getRecaptchaToken();
+
+            // Format brief answers into readable message
+            const lines = Object.entries(answers)
+                .map(([key, value]) => {
+                    const formattedValue = Array.isArray(value) ? value.join(', ') : value;
+                    return `${key}: ${formattedValue}`;
+                })
+                .join('\n');
+
+            const messageContent = `Type: Interactive Brief\n\n${lines}`;
+            const contactInfo = (answers.contact as string) || '';
+            const emailMatch = contactInfo.match(/[\w.-]+@[\w.-]+\.\w+/);
+            const email = emailMatch ? emailMatch[0] : 'brief@selen.it';
+
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: contactInfo.split(/[,@]/).at(0)?.trim() || 'Brief Submission',
+                    email,
+                    company: '',
+                    message: messageContent,
+                    recaptchaToken,
+                }),
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to send brief');
+            }
+        },
+        [getRecaptchaToken],
+    );
+
     const {
         formState,
         errors,
@@ -78,11 +116,11 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
         setIsSubmitted,
     } = useContactForm({
         lang,
-        activeTab,
+        activeTab: activeTab === 'brief' ? 'message' : activeTab,
         onSubmit: handleFormSubmit,
     });
 
-    const handleTabChange = (tab: 'message' | 'callback') => {
+    const handleTabChange = (tab: 'message' | 'callback' | 'brief') => {
         setActiveTab(tab);
         // Clear errors when switching tabs
         if (errors.email || errors.phone) {
@@ -111,7 +149,7 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
 
     return (
         <div className="contact-form p-4 sm:p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500 overflow-x-hidden">
-            {isSubmitted ? (
+            {isSubmitted && activeTab !== 'brief' ? (
                 <div ref={successMessageRef} tabIndex={-1}>
                     <SuccessMessage
                         title={
@@ -135,57 +173,94 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
                         tabs={dict.tabs}
                     />
 
-                    <form
-                        onSubmit={handleSubmit}
-                        className="form-grid grid grid-cols-1 md:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6"
-                        noValidate
-                        aria-live="polite"
-                    >
-                        {/* Lazy loaded form fields */}
-                        <Suspense
-                            fallback={
-                                <div className="col-span-2 h-64 animate-pulse bg-slate-100 dark:bg-dark-800 rounded-2xl" />
-                            }
-                        >
-                            <ContactFormFields
-                                activeTab={activeTab}
-                                dict={dict}
-                                formState={formState}
-                                errors={errors}
-                                handleChange={handleChange}
-                            />
-                        </Suspense>
-
-                        {/* Lazy loaded submit button */}
-                        <Suspense
-                            fallback={
-                                <div className="col-span-2 h-12 animate-pulse bg-slate-100 dark:bg-dark-800 rounded-2xl" />
-                            }
-                        >
-                            <SubmitButton
-                                isSubmitting={isSubmitting}
-                                activeTab={activeTab}
-                                dict={dict}
-                            />
-                        </Suspense>
-                    </form>
-
-                    {/* Error display */}
-                    <AnimatePresence>
-                        {submitError && (
+                    <AnimatePresence mode="wait">
+                        {activeTab === 'brief' ? (
                             <motion.div
-                                initial={{ opacity: 0, y: -10 }}
+                                key="brief"
+                                initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.25 }}
                             >
-                                <ErrorMessage message={submitError} />
+                                <Suspense
+                                    fallback={
+                                        <div className="h-96 animate-pulse bg-slate-100 dark:bg-dark-800 rounded-2xl" />
+                                    }
+                                >
+                                    {dict.brief && (
+                                        <BriefWizard
+                                            dict={dict.brief}
+                                            lang={lang}
+                                            onSubmit={handleBriefSubmit}
+                                        />
+                                    )}
+                                </Suspense>
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="form"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.25 }}
+                            >
+                                <form
+                                    onSubmit={handleSubmit}
+                                    className="form-grid grid grid-cols-1 md:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6"
+                                    noValidate
+                                    aria-live="polite"
+                                >
+                                    {/* Lazy loaded form fields */}
+                                    <Suspense
+                                        fallback={
+                                            <div className="col-span-2 h-64 animate-pulse bg-slate-100 dark:bg-dark-800 rounded-2xl" />
+                                        }
+                                    >
+                                        <ContactFormFields
+                                            activeTab={activeTab}
+                                            dict={dict}
+                                            formState={formState}
+                                            errors={errors}
+                                            handleChange={handleChange}
+                                        />
+                                    </Suspense>
+
+                                    {/* Lazy loaded submit button */}
+                                    <Suspense
+                                        fallback={
+                                            <div className="col-span-2 h-12 animate-pulse bg-slate-100 dark:bg-dark-800 rounded-2xl" />
+                                        }
+                                    >
+                                        <SubmitButton
+                                            isSubmitting={isSubmitting}
+                                            activeTab={activeTab}
+                                            dict={dict}
+                                        />
+                                    </Suspense>
+                                </form>
+
+                                {/* Error display */}
+                                <AnimatePresence>
+                                    {submitError && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -10 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="mt-6"
+                                        >
+                                            <ErrorMessage message={submitError} />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+
+                                {/* reCAPTCHA notice */}
+                                <div className="mt-6">
+                                    <RecaptchaNotice lang={lang} />
+                                </div>
                             </motion.div>
                         )}
                     </AnimatePresence>
-
-                    {/* reCAPTCHA notice */}
-                    <RecaptchaNotice lang={lang} />
                 </div>
             )}
         </div>

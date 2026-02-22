@@ -14,7 +14,6 @@ import Footer from '@/components/layout/Footer';
 import { PageTransition } from '@/components/providers/PageTransition';
 import ChatWidget from '@/components/ui/ChatWidget';
 import BackToTop from '@/components/ui/BackToTop';
-import MusicPlayer from '@/components/MusicPlayer';
 import ProgressBar from '@/components/ui/ProgressBar';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import { OrganizationJsonLd, WebSiteJsonLd, LocalBusinessJsonLd } from '@/components/seo/JsonLd';
@@ -235,7 +234,6 @@ export default async function RootLayout({
                             <AnalyticsWrapper />
                             <ChatWidget />
                             <BackToTop />
-                            {/* <MusicPlayer /> */}
                         </CookieConsentProvider>
                     </ErrorBoundary>
                 </ThemeProvider>

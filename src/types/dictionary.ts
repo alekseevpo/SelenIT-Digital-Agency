@@ -211,6 +211,7 @@ export interface Dictionary {
             tabs: {
                 message: string;
                 callback: string;
+                brief?: string;
             };
             title: string;
             subtitle: string;
@@ -237,6 +238,36 @@ export interface Dictionary {
             sendAnother: string;
             selectService: string;
             selectBudget: string;
+            brief?: {
+                title: string;
+                subtitle: string;
+                steps: {
+                    projectType: string;
+                    projectTypeOptions: string[];
+                    goals: string;
+                    goalsOptions: string[];
+                    audience: string;
+                    audiencePlaceholder: string;
+                    timeline: string;
+                    timelineOptions: string[];
+                    budget: string;
+                    budgetOptions: string[];
+                    features: string;
+                    featuresOptions: string[];
+                    description: string;
+                    descriptionPlaceholder: string;
+                    contact: string;
+                    contactPlaceholder: string;
+                };
+                next: string;
+                back: string;
+                submit: string;
+                sending: string;
+                stepOf: string;
+                successTitle: string;
+                successSubtitle: string;
+                sendAnother: string;
+            };
         };
     };
     hero: HeroDict;
