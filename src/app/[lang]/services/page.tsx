@@ -137,10 +137,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
                                     className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
                                 >
                                     <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                                        <h3
-                                            className="font-frantz font-black uppercase tracking-wider text-5xl md:text-6xl mb-8 text-slate-900 dark:text-white leading-none origin-left inline-block"
-                                            style={{ transform: 'scaleY(1.5) scaleX(1.1)' }}
-                                        >
+                                        <h3 className="font-frantz font-black uppercase tracking-wider text-5xl md:text-6xl mb-8 text-slate-900 dark:text-white leading-none heading-service-title">
                                             {service.title}
                                         </h3>
                                         <p className="text-lg text-slate-600 dark:text-dark-400 mb-8 transition-colors duration-300">
@@ -204,10 +201,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
                                     <div className="text-7xl font-bold text-slate-900/5 dark:text-white/5 absolute top-6 right-8 group-hover:text-red-600/10 dark:group-hover:text-red-500/10 transition-colors">
                                         {item.step}
                                     </div>
-                                    <h3
-                                        className="text-4xl sm:text-5xl font-frantz font-black text-slate-900 dark:text-white mb-6 relative z-10 uppercase tracking-normal leading-[0.9] origin-left"
-                                        style={{ transform: 'scaleY(1.4) scaleX(1.05)' }}
-                                    >
+                                    <h3 className="text-4xl sm:text-5xl font-frantz font-black text-slate-900 dark:text-white mb-6 relative z-10 uppercase tracking-normal leading-[0.9] heading-process-title">
                                         {item.title}
                                     </h3>
                                     <p className="text-slate-600 dark:text-dark-400 relative z-10 transition-colors duration-300">

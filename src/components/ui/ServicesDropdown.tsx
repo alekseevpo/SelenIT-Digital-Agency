@@ -111,42 +111,18 @@ export function ServicesDropdown({
         >
             <Link
                 href={`/${lang}/services`}
+                data-active={isActive ? 'true' : undefined}
                 className={`
                     px-5 py-2.5 rounded-full text-sm font-medium
                     transition-colors duration-500 relative focus:outline-none flex items-center gap-1
                     ${
                         isActive
-                            ? 'text-red-600 dark:text-red-500 group/active overflow-hidden'
+                            ? 'text-red-600 dark:text-red-500'
                             : 'text-slate-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/5 dark:hover:bg-red-600/10'
                     }
                 `}
             >
-                {isActive && (
-                    <>
-                        <motion.div
-                            layoutId="activeTabOutline"
-                            className="absolute inset-0 border-2 border-red-600 dark:border-red-500 rounded-full -z-10 shadow-[0_0_12px_rgba(220,38,38,0.15)]"
-                            transition={{
-                                type: 'spring',
-                                bounce: 0.25,
-                                duration: 0.5,
-                            }}
-                        />
-                        <div className="absolute inset-[2px] bg-red-600 dark:bg-red-500 rounded-full -z-10 scale-y-0 origin-bottom group-hover/active:scale-y-100 transition-transform duration-[1500ms] ease-[cubic-bezier(0.23,1,0.32,1)]" />
-                        <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover/active:opacity-100 transition-opacity duration-[1500ms] ease-[cubic-bezier(0.23,1,0.32,1)] z-10">
-                            {navDict.services}
-                        </span>
-                    </>
-                )}
-                <span
-                    className={
-                        isActive
-                            ? 'opacity-100 group-hover/active:opacity-0 transition-opacity duration-500'
-                            : ''
-                    }
-                >
-                    {navDict.services}
-                </span>
+                {navDict.services}
             </Link>
 
             {/* Services Dropdown */}

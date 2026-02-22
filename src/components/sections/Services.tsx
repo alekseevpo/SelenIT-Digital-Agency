@@ -84,22 +84,8 @@ export default function Services({ lang, dict, servicesList }: ServicesProps) {
             <div className="container-custom relative z-10">
                 {/* Section Header */}
                 <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 md:mb-16">
-                    <h2
-                        className="mb-4 sm:mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] 2xl:text-[5rem] font-bold leading-[1.15] tracking-wide font-frantz"
-                        style={{
-                            fontFamily: 'var(--font-frantz) !important',
-                            transform: 'scaleY(1.7) scaleX(1.15) !important',
-                            transformOrigin: 'center !important',
-                            lineHeight: '0.75 !important',
-                            letterSpacing: '0.03em !important',
-                            textTransform: 'uppercase !important',
-                            padding: '0.4em 0 !important',
-                            fontWeight: '400 !important',
-                            color: 'inherit !important',
-                            display: 'inline-block !important',
-                        }}
-                    >
-                        <span style={{ color: 'inherit !important' }}>
+                    <h2 className="mb-4 sm:mb-6 heading-hero text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] 2xl:text-[5rem]">
+                        <span>
                             {dict.title1}{' '}
                             <span style={{ color: '#dc2626' }}>{dict.titleGradient}</span>
                         </span>

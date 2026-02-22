@@ -1,8 +1,10 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { DesktopThemeToggle } from './DesktopThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import { Logo } from './Logo';
 import { ServicesDropdown } from './ServicesDropdown';
 import { themeToggleConfig } from '@/config/theme-toggle';
 import type { Locale } from '@/i18n-config';
@@ -55,6 +57,12 @@ const getNavLinks = (lang: string): { href: string; label: NavLinkLabel; icon: s
     },
 ];
 
+interface IndicatorState {
+    left: number;
+    width: number;
+    opacity: number;
+}
+
 export function DesktopNav({
     lang,
     dict,
@@ -68,6 +76,41 @@ export function DesktopNav({
     handleDesktopServicesLeave,
 }: DesktopNavProps) {
     const navLinks = getNavLinks(lang);
+    const navRef = useRef<HTMLDivElement>(null);
+    const [indicator, setIndicator] = useState<IndicatorState>({ left: 0, width: 0, opacity: 0 });
+    const [isFirstRender, setIsFirstRender] = useState(true);
+
+    const updateIndicator = useCallback(() => {
+        const nav = navRef.current;
+        if (!nav) return;
+        const activeEl = nav.querySelector<HTMLElement>('[data-active="true"]');
+        if (activeEl) {
+            const navRect = nav.getBoundingClientRect();
+            const activeRect = activeEl.getBoundingClientRect();
+            setIndicator({
+                left: activeRect.left - navRect.left,
+                width: activeRect.width,
+                opacity: 1,
+            });
+        } else {
+            setIndicator((prev) => ({ ...prev, opacity: 0 }));
+        }
+    }, []);
+
+    useEffect(() => {
+        // Small delay to ensure DOM is ready and fonts are measured
+        const timer = setTimeout(() => {
+            updateIndicator();
+            setIsFirstRender(false);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, [pathname, updateIndicator]);
+
+    // Recalculate on window resize
+    useEffect(() => {
+        window.addEventListener('resize', updateIndicator);
+        return () => window.removeEventListener('resize', updateIndicator);
+    }, [updateIndicator]);
 
     return (
         <>
@@ -77,11 +120,12 @@ export function DesktopNav({
                 className="absolute left-1/2 -translate-x-1/2 hidden md:block pointer-events-auto"
             >
                 <motion.div
+                    ref={navRef}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className={`
-                        px-1.5 py-1.5 rounded-full flex items-center gap-0.5
+                        relative px-1.5 py-1.5 rounded-full flex items-center gap-0.5
                         backdrop-blur-2xl
                         bg-cream-50/10 dark:bg-cream-50/5
                         border border-white/20 dark:border-white/10
@@ -91,6 +135,27 @@ export function DesktopNav({
                         ${isScrolled ? 'bg-cream-50/20 dark:bg-black/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]' : ''}
                     `}
                 >
+                    {/* Sliding active indicator — "thick water" effect */}
+                    <motion.div
+                        className="absolute top-1.5 bottom-1.5 border-2 border-red-600 dark:border-red-500 rounded-full shadow-[0_0_12px_rgba(220,38,38,0.15)] pointer-events-none"
+                        initial={false}
+                        animate={{
+                            left: indicator.left,
+                            width: indicator.width,
+                            opacity: indicator.opacity,
+                        }}
+                        transition={
+                            isFirstRender
+                                ? { duration: 0 }
+                                : {
+                                      type: 'spring',
+                                      stiffness: 170,
+                                      damping: 26,
+                                      mass: 1.2,
+                                  }
+                        }
+                    />
+
                     {navLinks.map((link) => {
                         const isActive = pathname === link.href;
                         const isServices = link.label === 'services';
@@ -117,6 +182,7 @@ export function DesktopNav({
                             <Link
                                 key={link.href}
                                 href={link.href}
+                                data-active={isActive ? 'true' : undefined}
                                 className={`
                                     px-5 py-2.5 rounded-full text-sm font-medium
                                     transition-colors duration-500 relative focus:outline-none
@@ -127,20 +193,7 @@ export function DesktopNav({
                                     }
                                 `}
                             >
-                                {isActive && (
-                                    <motion.div
-                                        layoutId="activeTabOutline"
-                                        className="absolute inset-0 border-2 border-red-600 dark:border-red-500 rounded-full -z-10 shadow-[0_0_12px_rgba(220,38,38,0.15)]"
-                                        transition={{
-                                            type: 'spring',
-                                            bounce: 0.25,
-                                            duration: 0.5,
-                                        }}
-                                    />
-                                )}
-                                <span className={isActive ? 'opacity-100' : ''}>
-                                    {navDict[link.label]}
-                                </span>
+                                {navDict[link.label]}
                             </Link>
                         );
                     })}

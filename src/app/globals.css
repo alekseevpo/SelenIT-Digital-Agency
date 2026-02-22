@@ -269,6 +269,32 @@ article p {
     transform: scaleY(1.3) scaleX(0.95);
 }
 
+.heading-service-title {
+    font-family: var(--font-frantz);
+    font-variation-settings: 'wght' 900;
+    display: inline-block;
+    transform: none;
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.fonts-loaded .heading-service-title {
+    transform: scaleY(1.5) scaleX(1.1);
+}
+
+.heading-process-title {
+    font-family: var(--font-frantz);
+    font-variation-settings: 'wght' 900;
+    display: inline-block;
+    transform: none;
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.fonts-loaded .heading-process-title {
+    transform: scaleY(1.4) scaleX(1.05);
+}
+
 .mobile-center-text {
     text-align: center !important;
     display: block !important;
