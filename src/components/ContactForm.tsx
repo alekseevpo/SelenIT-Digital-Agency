@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, lazy, Suspense, useRef } from 'react';
+import { useState, useCallback, lazy, Suspense, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContactForm, type FormState } from '@/hooks/useContactForm';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
@@ -9,7 +9,7 @@ import { TabSwitcher } from '@/components/ui/TabSwitcher';
 import { SuccessMessage } from '@/components/ui/SuccessMessage';
 import { ErrorMessage } from '@/components/ui/ErrorMessage';
 import { RecaptchaNotice } from '@/components/ui/RecaptchaNotice';
-import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 // Lazy load heavy components
 const ContactFormFields = lazy(() => import('@/components/ContactFormFields'));
@@ -22,9 +22,28 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ lang, dict }: ContactFormProps) {
-    const [activeTab, setActiveTab] = useState<'message' | 'callback' | 'brief'>('message');
+    const searchParams = useSearchParams();
+    const initialTab = searchParams.get('tab');
+    const [activeTab, setActiveTab] = useState<'message' | 'callback' | 'brief'>(
+        initialTab === 'brief' ? 'brief' : initialTab === 'callback' ? 'callback' : 'message',
+    );
     const { recaptchaLoaded, getRecaptchaToken } = useRecaptcha();
     const successMessageRef = useRef<HTMLDivElement>(null);
+    const formContainerRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll to form when arriving with ?tab=brief
+    useEffect(() => {
+        if (initialTab === 'brief' && formContainerRef.current) {
+            // Small delay to ensure the component has rendered
+            const timer = setTimeout(() => {
+                formContainerRef.current?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            }, 300);
+            return () => clearTimeout(timer);
+        }
+    }, [initialTab]);
 
     const handleFormSubmit = useCallback(
         async (formState: FormState) => {
@@ -148,7 +167,10 @@ export default function ContactForm({ lang, dict }: ContactFormProps) {
     }, [isSubmitted]);
 
     return (
-        <div className="contact-form p-4 sm:p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500 overflow-x-hidden">
+        <div
+            ref={formContainerRef}
+            className="contact-form p-4 sm:p-6 lg:p-10 shadow-2xl relative overflow-hidden group/card transition-all duration-500 overflow-x-hidden scroll-mt-24"
+        >
             {isSubmitted && activeTab !== 'brief' ? (
                 <div ref={successMessageRef} tabIndex={-1}>
                     <SuccessMessage
