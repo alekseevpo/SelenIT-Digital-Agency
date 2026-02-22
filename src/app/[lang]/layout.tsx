@@ -195,7 +195,7 @@ export default async function RootLayout({
                 <link rel="preload" href="/terrible_design.png" as="image" type="image/png" />
             </head>
             <body
-                className={`${inter.variable} ${ttFrantz.variable} font-sans antialiased transition-colors duration-300`}
+                className={`${inter.variable} ${ttFrantz.variable} font-sans antialiased transition-colors duration-300 overflow-x-hidden`}
             >
                 <ProgressBar />
                 <ThemeProvider
