@@ -193,6 +193,24 @@ export default async function RootLayout({
                 <LocalBusinessJsonLd url="https://selen.it" />
                 <link rel="preload" href="/conversation_two.png" as="image" type="image/png" />
                 <link rel="preload" href="/terrible_design.png" as="image" type="image/png" />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function() {
+                                if (document.fonts && document.fonts.ready) {
+                                    document.fonts.ready.then(function() {
+                                        document.documentElement.classList.add('fonts-loaded');
+                                    });
+                                } else {
+                                    // Fallback for older browsers
+                                    window.addEventListener('load', function() {
+                                        document.documentElement.classList.add('fonts-loaded');
+                                    });
+                                }
+                            })();
+                        `,
+                    }}
+                />
             </head>
             <body
                 className={`${inter.variable} ${ttFrantz.variable} font-sans antialiased transition-colors duration-300 overflow-x-hidden`}

@@ -195,7 +195,7 @@ article p {
 .services-hero-title {
     font-size: clamp(80px, 20vw, 240px) !important;
     font-family: var(--font-frantz) !important;
-    transform: scaleY(1.7) scaleX(1.15) !important;
+    transform: none !important;
     transform-origin: center !important;
     line-height: 0.8 !important;
     letter-spacing: 0.03em !important;
@@ -203,6 +203,11 @@ article p {
     padding: 0.4em 0 !important;
     font-weight: 400 !important;
     color: inherit !important;
+    transition: transform 0.3s ease;
+}
+
+.fonts-loaded .services-hero-title {
+    transform: scaleY(1.7) scaleX(1.15) !important;
 }
 
 .heading-hero {
@@ -212,7 +217,7 @@ article p {
         'MHLN' 1000,
         'wght' 300;
     display: inline-block;
-    transform: scaleY(calc(1.7 * var(--hero-scale))) scaleX(calc(1.15 * var(--hero-scale)));
+    transform: none;
     transform-origin: center;
     max-width: 100%;
     overflow-wrap: break-word;
@@ -225,6 +230,11 @@ article p {
     text-transform: uppercase;
     padding: 0.4em 0;
     margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.fonts-loaded .heading-hero {
+    transform: scaleY(calc(1.7 * var(--hero-scale))) scaleX(calc(1.15 * var(--hero-scale)));
 }
 
 .font-frantz-stretch {
@@ -248,10 +258,15 @@ article p {
         'wght' 300;
     letter-spacing: normal;
     display: inline-block;
-    transform: scaleY(1.3) scaleX(0.95);
+    transform: none;
     transform-origin: bottom center;
     line-height: 1.1;
     font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+.fonts-loaded .heading-secondary-stretch {
+    transform: scaleY(1.3) scaleX(0.95);
 }
 
 .mobile-center-text {

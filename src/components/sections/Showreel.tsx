@@ -122,7 +122,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
                         <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
                             {/* Left Column: Title */}
                             <div className="text-left">
-                                <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
+                                <h2 className="mb-6 inline-block origin-center break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
                                     {(() => {
                                         const title = dict.title;
                                         // Для русского языка вручную формируем с пробелами
@@ -212,7 +212,7 @@ export default function Showreel({ lang, dict }: ShowreelProps) {
 
                         {/* Mobile/Tablet: Single Column Layout */}
                         <div className="lg:hidden text-center">
-                            <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
+                            <h2 className="mb-6 inline-block origin-center break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
                                 {(() => {
                                     const title = dict.title;
                                     // Для русского языка вручную формируем с пробелами

@@ -132,7 +132,7 @@ export default function Technologies({ dict }: TechnologiesProps) {
             <div className="container-custom mb-10 md:mb-14 px-4">
                 <div className="text-center max-w-4xl mx-auto">
                     <Reveal width="100%" delay={0.3}>
-                        <h2 className="mb-6 inline-block origin-center scale-y-[1.7] scale-x-[1.05] break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
+                        <h2 className="mb-6 inline-block origin-center break-words max-w-full heading-hero text-[3.5rem] sm:text-[4.5rem] md:text-7xl lg:text-[7rem] xl:text-8rem 2xl:text-9rem font-bold leading-[0.85] lg:leading-[0.84] tracking-wide font-frantz">
                             <span className="text-slate-900 dark:text-white">
                                 {dict.title} <br className="lg:hidden" />{' '}
                                 <motion.span
