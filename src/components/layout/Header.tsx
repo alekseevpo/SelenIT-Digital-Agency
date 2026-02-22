@@ -64,7 +64,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                         className={`pointer-events-auto transition-all duration-500 ${isTopElementsHidden ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
                     >
                         <Link href={`/${lang}`} className="group relative block z-50">
-                            <div className="sm:p-0 sm:bg-transparent sm:dark:bg-transparent sm:backdrop-blur-none sm:border-transparent sm:dark:border-transparent sm:shadow-none backdrop-blur-xl bg-white/20 dark:bg-black/20 p-2 rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-white/20 dark:border-white/10 transition-all duration-300">
+                            <div className="sm:p-0 sm:bg-transparent sm:dark:bg-transparent sm:backdrop-blur-none sm:border-transparent sm:dark:border-transparent sm:shadow-none sm:-mt-0 sm:rounded-none backdrop-blur-xl bg-white/20 dark:bg-black/20 -mt-1 pt-1.5 pb-3 px-3 rounded-b-2xl rounded-t-none border-x border-b border-white/20 dark:border-white/10 transition-all duration-300">
                                 <Logo
                                     size={42}
                                     showText={true}

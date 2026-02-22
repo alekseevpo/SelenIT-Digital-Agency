@@ -62,7 +62,7 @@ export default async function ContactPage({ params }: PageProps) {
     ];
 
     return (
-        <div className="min-h-screen transition-colors duration-300">
+        <div className="min-h-screen transition-colors duration-300 overflow-x-hidden">
             <BreadcrumbJsonLd items={breadcrumbs} />
             {/* Hero Section */}
             <section className="pt-32 pb-20 relative overflow-hidden bg-transparent dark:bg-dark-950 transition-colors duration-300 overflow-x-hidden">
