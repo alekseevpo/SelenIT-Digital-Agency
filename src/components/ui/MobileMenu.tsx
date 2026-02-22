@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ServicesDropdown } from './ServicesDropdown';
+import { Logo } from './Logo';
 import type { Locale } from '@/i18n-config';
 import type { Dictionary } from '@/types/dictionary';
 
@@ -141,7 +142,7 @@ export function MobileMenu({
                     data-testid="mobile-menu"
                 >
                     <div
-                        className="absolute inset-0 bg-cream-50/70 dark:bg-dark-950/70 backdrop-blur-2xl"
+                        className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-md"
                         onClick={closeMenu}
                         data-testid="mobile-menu-backdrop"
                     />
@@ -150,7 +151,7 @@ export function MobileMenu({
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="absolute inset-0 w-full h-full bg-cream-50/80 dark:bg-dark-950/80 backdrop-blur-2xl overflow-hidden"
+                        className="absolute inset-0 w-full h-full bg-white/40 dark:bg-black/40 backdrop-blur-md overflow-hidden"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div className="relative z-10 h-full flex flex-col p-5 pt-8">
@@ -159,10 +160,21 @@ export function MobileMenu({
                                 className="flex justify-between items-center mb-8 mr-2"
                                 variants={itemVariants}
                             >
-                                <h2 className="text-7xl sm:text-8xl md:text-9xl lg:text-10xl font-bold text-slate-900 dark:text-white ml-4 relative">
-                                    {headerDict.menu}
-                                    <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-red-500 -mb-2"></span>
-                                </h2>
+                                <div className="flex items-end gap-4 sm:gap-6 ml-4">
+                                    <h2 className="text-7xl sm:text-8xl md:text-9xl lg:text-10xl font-bold text-slate-900 dark:text-white relative leading-none pb-2">
+                                        {headerDict.menu}
+                                        <span className="absolute bottom-0 left-0 w-full h-[3px] sm:h-1 bg-gradient-to-r from-red-600 to-red-500"></span>
+                                    </h2>
+                                    <div className="relative pb-2">
+                                        <Logo
+                                            size={56}
+                                            showText={true}
+                                            hideUnderline={true}
+                                            className="sm:scale-[1.1] sm:origin-left"
+                                        />
+                                        <span className="absolute bottom-0 left-0 w-full h-[3px] sm:h-1 bg-gradient-to-r from-red-600 to-red-500"></span>
+                                    </div>
+                                </div>
                                 <motion.button
                                     onClick={closeMenu}
                                     className="flex items-center gap-2 text-slate-500 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors -mt-7"
@@ -203,10 +215,11 @@ export function MobileMenu({
                                                 {!isServices ? (
                                                     <Link
                                                         href={link.href}
-                                                        className={`group flex items-center justify-between px-4 py-3 transition-all duration-300 relative border-b border-slate-200/30 dark:border-white/10 ${isActive
+                                                        className={`group flex items-center justify-between px-4 py-3 transition-all duration-300 relative border-b border-slate-200/30 dark:border-white/10 ${
+                                                            isActive
                                                                 ? 'text-red-600 dark:text-red-500'
                                                                 : 'text-slate-700 dark:text-slate-200'
-                                                            }`}
+                                                        }`}
                                                         onClick={closeMenu}
                                                     >
                                                         <div className="flex items-center gap-3">
@@ -222,8 +235,8 @@ export function MobileMenu({
                                                         isDesktopServicesOpen={false}
                                                         isServicesOpen={isServicesOpen}
                                                         servicesSubLinks={servicesSubLinks}
-                                                        onDesktopServicesEnter={() => { }}
-                                                        onDesktopServicesLeave={() => { }}
+                                                        onDesktopServicesEnter={() => {}}
+                                                        onDesktopServicesLeave={() => {}}
                                                         onToggleServices={toggleServices}
                                                         navDict={navDict}
                                                         isActive={isActive}

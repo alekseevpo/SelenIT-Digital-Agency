@@ -7,9 +7,16 @@ interface LogoProps {
     size?: number;
     showText?: boolean;
     animated?: boolean;
+    hideUnderline?: boolean;
 }
 
-export function Logo({ className = '', size = 32, showText = true, animated = true }: LogoProps) {
+export function Logo({
+    className = '',
+    size = 32,
+    showText = true,
+    animated = true,
+    hideUnderline = false,
+}: LogoProps) {
     return (
         <motion.div
             className={`flex items-center gap-1 relative ${className}`}
@@ -31,25 +38,31 @@ export function Logo({ className = '', size = 32, showText = true, animated = tr
             >
                 .IT
             </span>
-            <span
-                className="font-frantz font-black text-slate-500 tracking-tight leading-none inline-block pointer-events-none ml-1.5"
-                style={{ fontVariationSettings: "'wght' 900" }}
-            >
-                Agency
-            </span>
-            <motion.div
-                className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full sm:hidden"
-                initial={{ width: '100%' }}
-                animate={{ width: '100%' }}
-            />
-            <motion.div
-                className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full hidden sm:block"
-                initial={{ width: 0 }}
-                variants={{
-                    hover: { width: '100%' },
-                }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-            />
+            {showText && (
+                <span
+                    className="font-frantz font-black text-slate-500 tracking-tight leading-none inline-block pointer-events-none ml-1.5"
+                    style={{ fontVariationSettings: "'wght' 900" }}
+                >
+                    Agency
+                </span>
+            )}
+            {!hideUnderline && (
+                <>
+                    <motion.div
+                        className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full sm:hidden"
+                        initial={{ width: '100%' }}
+                        animate={{ width: '100%' }}
+                    />
+                    <motion.div
+                        className="absolute -bottom-1 left-0 h-[2.5px] bg-red-600 rounded-full hidden sm:block"
+                        initial={{ width: 0 }}
+                        variants={{
+                            hover: { width: '100%' },
+                        }}
+                        transition={{ duration: 0.8, ease: 'easeInOut' }}
+                    />
+                </>
+            )}
         </motion.div>
     );
 }

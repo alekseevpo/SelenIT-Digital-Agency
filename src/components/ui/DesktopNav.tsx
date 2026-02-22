@@ -104,7 +104,7 @@ export function DesktopNav({
                                     servicesSubLinks={servicesSubLinks}
                                     onDesktopServicesEnter={handleDesktopServicesEnter}
                                     onDesktopServicesLeave={handleDesktopServicesLeave}
-                                    onToggleServices={() => { }}
+                                    onToggleServices={() => {}}
                                     navDict={navDict}
                                     isActive={isActive}
                                     isMobile={false}
@@ -120,9 +120,10 @@ export function DesktopNav({
                                 className={`
                                     px-5 py-2.5 rounded-full text-sm font-medium
                                     transition-colors duration-500 relative focus:outline-none
-                                    ${isActive
-                                        ? 'text-red-600 dark:text-red-500'
-                                        : 'text-slate-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/5 dark:hover:bg-red-600/10'
+                                    ${
+                                        isActive
+                                            ? 'text-red-600 dark:text-red-500'
+                                            : 'text-slate-700 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-500 hover:bg-red-600/5 dark:hover:bg-red-600/10'
                                     }
                                 `}
                             >

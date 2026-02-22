@@ -63,12 +63,14 @@ export default function Header({ lang, dict }: HeaderProps) {
                     <div
                         className={`pointer-events-auto transition-all duration-500 ${isTopElementsHidden ? '-translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}
                     >
-                        <Link href={`/${lang}`} className="group">
-                            <Logo
-                                size={42}
-                                showText={true}
-                                className="sm:scale-[1.65] sm:origin-left"
-                            />
+                        <Link href={`/${lang}`} className="group relative block z-50">
+                            <div className="backdrop-blur-xl bg-white/20 dark:bg-black/20 p-2 sm:p-2.5 rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-white/20 dark:border-white/10 transition-all duration-300">
+                                <Logo
+                                    size={42}
+                                    showText={true}
+                                    className="sm:scale-[1.65] sm:origin-left"
+                                />
+                            </div>
                         </Link>
                     </div>
 
@@ -90,9 +92,6 @@ export default function Header({ lang, dict }: HeaderProps) {
                     <div
                         className={`md:hidden flex items-center gap-2 pointer-events-auto transition-all duration-500 relative z-50`}
                     >
-                        <div className="backdrop-blur-2xl bg-white/10 dark:bg-black/10 p-1 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.04)] relative z-10">
-                            <LanguageSwitcher currentLang={lang} />
-                        </div>
                         <MobileThemeToggle
                             iconSize={themeToggleConfig.mobile.iconSize}
                             buttonSize={themeToggleConfig.mobile.buttonSize}

@@ -53,9 +53,10 @@ export function LanguageSwitcher({ currentLang }: { currentLang: Locale }) {
                         className={`
                             relative px-2 py-1 text-xs font-bold uppercase
                             transition-all duration-300 rounded-full
-                            ${isActive
-                                ? 'text-red-600 dark:text-red-500'
-                                : 'text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500'
+                            ${
+                                isActive
+                                    ? 'text-red-600 dark:text-red-500'
+                                    : 'text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-500'
                             }
                         `}
                         aria-label={`Switch to ${localeFullNames[locale]}`}

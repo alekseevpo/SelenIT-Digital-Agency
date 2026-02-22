@@ -165,7 +165,9 @@ describe('DesktopNav', () => {
         render(<DesktopNav {...defaultProps} isScrolled={false} />);
 
         // Instead of test IDs, query the actual rendered controls by their accessible roles
-        expect(screen.getByRole('button', { name: /switch to (dark|light) mode/i })).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', { name: /switch to (dark|light) mode/i }),
+        ).toBeInTheDocument();
         expect(screen.getByRole('group', { name: /select language/i })).toBeInTheDocument();
     });
 

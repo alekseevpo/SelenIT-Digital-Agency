@@ -158,7 +158,9 @@ describe('Cookie Utils', () => {
         // Mock document.cookie
         Object.defineProperty(document, 'cookie', {
             get: () => mockCookie.value,
-            set: (val: string) => { mockCookie.value = val; },
+            set: (val: string) => {
+                mockCookie.value = val;
+            },
             writable: true,
             configurable: true,
         });

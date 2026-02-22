@@ -269,7 +269,11 @@ describe('ContactForm - Accessibility (a11y)', () => {
             render(<ContactForm lang="en" dict={mockContactFormDict} />);
 
             const submitButton = screen.getByRole('button', { name: /Send Message/i });
-            const tabButtons = screen.getAllByRole('button').filter(b => b.textContent !== 'Send Message' && !b.classList.contains('btn-primary'));
+            const tabButtons = screen
+                .getAllByRole('button')
+                .filter(
+                    (b) => b.textContent !== 'Send Message' && !b.classList.contains('btn-primary'),
+                );
 
             // Check that buttons have appropriate size classes
             expect(submitButton).toHaveClass('btn-primary');
